@@ -1,2 +1,0 @@
-# mamuju
-aplikasi mamuju
