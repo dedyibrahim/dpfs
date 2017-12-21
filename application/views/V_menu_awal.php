@@ -67,7 +67,7 @@ if($level == 'admin' || $level == 'user')
                             <div class="mask">
                               <p>ANAMNESA SAMPLE</p>
                               <div class="tools tools-bottom">
-                                <a href="<?php echo base_url('C_amnesa'); ?>"><i class="fa fa-link"></i></a>
+                                <a href="<?php echo base_url('C_anamnesa'); ?>"><i class="fa fa-link"></i></a>
                               </div>
                             </div>
                           </div>

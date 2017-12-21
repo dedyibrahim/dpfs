@@ -5,8 +5,7 @@ class C_fpps extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-     //   require_once (APPPATH.'third_party/dompdf/dompdf_config.inc.php');
-          $this->load->helper('form');
+        $this->load->helper('form');
         $this->load->library('session');
          $this->load->model('M_customer');
            
@@ -144,8 +143,11 @@ class C_fpps extends CI_Controller {
          
         $this->db->insert('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps);
         
-    $jenis_penyakit = $this->input->post('jenis_penyakit');
-    $bakteri = $this->input->post('bakteri');
+    $jenis_penyakit          = $this->input->post('jenis_penyakit');
+    $bakteri                 = $this->input->post('bakteri');
+    $identifikasi_parasit    = $this->input->post('identifikasi_parasit');
+    $logam_berat             = $this->input->post('logam_berat');
+    $record_number_parameter = $this->input->post('record_number');
     
     $i =0;
     
@@ -154,9 +156,21 @@ class C_fpps extends CI_Controller {
         $this->db->insert('parameter_penyakit', 
             array(
                 'jenis_penyakit'=>$jenis,
-                 'identifikasi_bakteri'=>(
-                !empty($bakteri[$i])? $bakteri[$i]:!NULL)
-               ));
+                
+                'record_number_parameter'=>($record_number_parameter),
+                
+                'identifikasi_bakteri'=>(
+                !empty($bakteri[$i])? $bakteri[$i]:!NULL),
+                
+                'identifikasi_parasit'=>(
+                !empty($identifikasi_parasit[$i])? $identifikasi_parasit[$i]:!NULL),
+               
+                'logam_berat'=>(
+                !empty($logam_berat[$i])? $logam_berat[$i]:!NULL)
+               
+            
+            
+            ));
        $i++;
         
     }
@@ -198,6 +212,7 @@ public function hapus_fpps(){
     $this->db->delete('kaji_ulang_permintaan',['record_number_kaji_ulang'=>$hapus]);
     $this->db->delete('penguji_subkontrak',['record_number_penguji_subkontrak'=>$hapus]);
     $this->db->delete('penjelasan_penerimaan_fpps',['record_number_penjelasan'=>$hapus]);
+    $this->db->delete('parameter_penyakit',['record_number_parameter'=>$hapus]);
     
     
     redirect('C_fpps/daftar_fpps');
@@ -209,12 +224,16 @@ public function hapus_fpps(){
  }
  
  public function cetak_fpps(){
+ $this->load->view('V_fpps/umum/V_header');
+                
 $this->load->library('Mypdf');
+
+$keluar= '/FPPS/SKIPM-MMJ/';
 
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);     
 $pdf->SetCreator(PDF_CREATOR);
 
-$pdf->SetTitle('SILABKARIMUTU SYSTEM');
+$pdf->SetTitle($keluar);
 
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -234,26 +253,24 @@ $pdf->AddPage();
 $html ='<hr>';
 $pdf->writeHTML($html, true, false, true, false, '');
 
-
-// output some RTL HTML content
-
-$html = '<div style="text-align:center">PERMINTAAN PENGUJIAN SAMPEL DAN KAJI ULANG PERMINTAAN</div>';
-
-$html.= '<div style="text-align:center">No:......../FPPS/SKIPM-MMJ/...../20....</div>';
-$html.= "<p align ='left'>Nama Pelanggan        :   {nama_customer}</p>";
-$html.= "<p align ='left'>Alamat                :   {alamat}</p>";
-$html.= "<p align ='left'>                 Telp : {telp}</p>";
-$html.= "<p align ='left'>Jenis Sample          :{data_sample}</p>";
-$html.= "<p align ='left'>Jumlah Sample         :{jumlah_sample}</p>";
-$html.= "<p align ='left'>Deskripsi Sample      :{deskripsi_sample}</p>";
-
-$html.= "<p align ='left'>Dalam bentuuk         : {bentuk}</p>";
-$html.= "<p align ='left'>Wadah                 : </p>";
-$html.= "<p align ='left'>{tgl_penerimaan}</p>";
-$html.= "<p align ='right'>{tgl_sampling}</p>";
+$html = '<span align="center">PERMINTAAN PENGUJIAN SAMPEL DAN KAJI ULANG PERMINTAAN'
+        . '<br>No:{record_number_customer}/FPPS/SKIPM-MMJ/...../{tahun}</spam>';
+$html.='<div style="text-align:left; line-height: 25px;">Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
+Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
+Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
+Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
+Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
+Dalam bentuuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
+Tanggal penerimaan sample&nbsp;: {tgl_penerimaan}<br>
+Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br></div>';
 
 $html.= <<<EOD
-<table border="1" cellpadding="2" cellspacing="2" nobr="true">
+<table cellpadding="2" class="table-striped" style="clear: both;
+margin-top: 6px !important;
+margin-bottom: 6px !important;
+max-width: none !important;
+border-collapse: separate !important;
+border: 1px solid #ddd;" nobr="true">
  <tr>
   <th colspan="3" align="center">KAJI ULANG PERMINTAAN</th>
  </tr>
@@ -263,26 +280,26 @@ $html.= <<<EOD
   <td align="center">HASIL KAJI ULANG</td>
  </tr>
  <tr>
-  <td>1</td>
+  <td align="center">1</td>
   <td>Kemampuan Personel</td>
   <td>{kesiapan_personel}</td>
  </tr>
  <tr>
-  <td>2</td>
+  <td align="center">2</td>
   <td>Kondisi Akomodasi</td>
   <td>{kondisi_akomodasi}</td>
  </tr>
 <tr>
-  <td>3</td>
+  <td align="center">3</td>
   <td>Beban Pekerjaan Laboratorium</td>
   <td>{beban_pekerjaan}</td>
  </tr>
 <tr>
-  <td>4</td>
+  <td align="center">4</td>
   <td>Kondisi Peralatan Laboratorium</td>
   <td>{kondisi_peralatan}</td>
  </tr><tr>
-  <td>5</td>
+  <td align="center">5</td>
   <td>Kesesuaian Metode</td>
   <td>{kesesuaian_metode}</td>
  </tr>
@@ -339,8 +356,10 @@ $id_customer = $cetak['id_customer_fpps_customer'];
 $customer_id = $id_customer;
 $data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
 foreach($query->result_array() as $cetak);{
+     $html = str_replace('{tahun}',date("Y"),$html);
      $html = str_replace('{data_sample}',$cetak['data_sample'],$html);
      $html = str_replace('{jumlah_sample}',$cetak['jumlah_sample'],$html);
+     $html = str_replace('{record_number_customer}',$cetak['record_number_customer'],$html);
      $html = str_replace('{bentuk}',$cetak['bentuk'],$html);
      $html = str_replace('{tgl_penerimaan}',$cetak['tgl_penerimaan'],$html);
      $html = str_replace('{tgl_sampling}',$cetak['tgl_sampling'],$html);
@@ -365,8 +384,7 @@ foreach ($data_customer->result_array() as $data_cs){
    }
 $pdf->writeHTML($html, true, false, true, false, '');
    
-
-$pdf->Output('example_003.pdf', 'I');
+$pdf->Output($keluar.'.pdf', 'I');
 
 
  }

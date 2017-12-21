@@ -290,7 +290,7 @@
      <div class="col-md-2">
      <h4></h4>
      
-       <div class="checkbox" >
+     <div class="checkbox" style="line-height: 10px; " >
                 <label>
                     <input value="" id="bakteri" type="radio"> Identifikasi Bakteri
                 </label>
@@ -315,10 +315,10 @@
      <h4></h4>
        <div class="checkbox">
                 <label>
-                    <input value="Identifikasi parasit" name="identfikasi" type="checkbox"> Identifikasi Parasit
+                    <input value="Identifikasi parasit" name="identifikasi_parasit[]" type="checkbox"> Identifikasi Parasit
                 </label>
            <label>
-                    <input value="identifikasi Jamur"name="identfikasi" type="checkbox"> Identifikasi Jamur
+                    <input value="identifikasi Jamur" name="identifikasi_parasit[]" type="checkbox"> Identifikasi Jamur
                 </label>
                 
                 
@@ -333,17 +333,17 @@
                 <div id="show_logam" style="display:none;">
            
            <label>
-                    <input value="HG" name="logam" type="checkbox"> HG
+                    <input value="HG" name="logam_berat[]" type="checkbox"> HG
                 </label><br>
             <label>
-                    <input value="PB" name="logam" type="checkbox"> PB
+                    <input value="PB" name="logam_berat[]" type="checkbox"> PB
                 </label><br>
             <label>
-                    <input value="CD" name="logam" type="checkbox"> CD
+                    <input value="CD" name="logam_berat[]" type="checkbox"> CD
                 </label><br>
                 
                  <label>
-                    <input value="" name="logam" type="checkbox"> ...
+                    <input value="other" name="logam_berat[]" type="checkbox"> ...
                 </label>
                 </div>
        </div>    
