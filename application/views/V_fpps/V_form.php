@@ -296,7 +296,7 @@
                 </label>
            <div id="show_bakteri" style="display:none;">
                <label>
-                    <input value="" type="checkbox"> BAKTERI HPI / HPIK
+                    <input value="BAKTERI HPI / HPIK" name="bakteri[]" type="checkbox"> BAKTERI HPI / HPIK
                 </label>
                 <label>
                     <input value="E.Coli" name="bakteri[]" type="checkbox"> E.Coli

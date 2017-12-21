@@ -144,30 +144,25 @@ class C_fpps extends CI_Controller {
          
         $this->db->insert('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps);
         
-    //$jenis_penyakit = $_POST['jenis_penyakit'];
-      
-      //foreach ($jenis_penyakit as $jenis_penyakit=>$value ){
-          
-        //  $jenis = array(
-              
-          //  'jenis_penyakit'=>$value  
-         // );
-          // $this->db->insert('parameter_penyakit',$jenis);
-           
-      //}
-       
-   //$bakteri = $_POST['bakteri'];
-       
-     //  foreach ($bakteri as $bakteri=>$value ){
-          
-       //   $bakteri = array(
-          // /   
-           // 'bakteri'=>$value  
-         // /);
-           //$this->db->insert('parameter_penyakit',$bakteri);
-       
+    $jenis_penyakit = $this->input->post('jenis_penyakit');
+    $bakteri = $this->input->post('bakteri');
+    
+    $i =0;
+    
+    foreach ($jenis_penyakit as $jenis){
+    
+        $this->db->insert('parameter_penyakit', 
+            array(
+                'jenis_penyakit'=>$jenis,
+                 'identifikasi_bakteri'=>(
+                !empty($bakteri[$i])? $bakteri[$i]:!NULL)
+               ));
+       $i++;
         
-           redirect('C_fpps/daftar_fpps');
+    }
+     
+    
+      redirect('C_fpps/daftar_fpps');
       }
       
      
