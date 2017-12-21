@@ -19,7 +19,7 @@ if($level == 'admin' )
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="<?php echo base_url('assets/');?>white_logo.png" type="image/ico" />
 
     <title>Silabkarimutu</title>
     <link href="<?php echo base_url('assets'); ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@ if($level == 'admin' )
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Silabkarimutu</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -61,7 +61,7 @@ if($level == 'admin' )
               </div>
               <div class="profile_info">
                 <span>Selamat Datang,</span>
-                <h2><?php echo  $valid['nama']; ?></h2>
+                <h2><?php echo  $valid['nama'] ;?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->

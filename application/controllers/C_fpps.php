@@ -185,7 +185,7 @@ class C_fpps extends CI_Controller {
  public function daftar_fpps(){
      
      
-     $this->load->view('V_fpps/umum/V_header');
+            $this->load->view('V_fpps/umum/V_header');
             $this->load->view('V_fpps/umum/V_sidebar');
             $this->load->view('V_fpps/umum/V_top_navigasi');
             $this->load->view('V_fpps/V_daftar_fpps');
@@ -234,7 +234,8 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 
 $pdf->SetTitle($keluar);
-
+$pdf->SetFont('helvetica', 'B', 20);
+        
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -271,10 +272,12 @@ margin-bottom: 6px !important;
 max-width: none !important;
 border-collapse: separate !important;
 border: 1px solid #ddd;" nobr="true">
- <tr>
-  <th colspan="3" align="center">KAJI ULANG PERMINTAAN</th>
+ <tr style="background-color: #0073ea;
+         box-sizing: border-box;
+">
+  <td colspan="3" align="center">KAJI ULANG PERMINTAAN</td>
  </tr>
- <tr>
+ <tr style="background-color: #0073ea;">
   <td width="30" align="center">NO</td>
   <td width="390" align="center">UNSUR KAJI ULANG</td>
   <td align="center">HASIL KAJI ULANG</td>
@@ -298,7 +301,8 @@ border: 1px solid #ddd;" nobr="true">
   <td align="center">4</td>
   <td>Kondisi Peralatan Laboratorium</td>
   <td>{kondisi_peralatan}</td>
- </tr><tr>
+ </tr>
+     <tr>
   <td align="center">5</td>
   <td>Kesesuaian Metode</td>
   <td>{kesesuaian_metode}</td>
@@ -325,18 +329,6 @@ $html.= "<p align ='left'>{diterima_oleh}</p>";
 
 $html.= "<p align ='left'>{alamat}</p>";
 $html.= "<p align ='left'>{telp}</p>";
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $ambil = $this->uri->segment(3);    
@@ -387,6 +379,130 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Output($keluar.'.pdf', 'I');
 
 
+ }
+ 
+ 
+ public function edit(){
+if(isset($_POST['btn_fpps'])){
+     $id = $this->uri->segment(3);
+     
+           
+     $record_number = array(
+            'project_id'    => $this->input->post('record_number'),
+        );
+         
+    $this->db->update('record_number', $record_number, array('project_id' => $id)); 
+    
+        
+      $jenis_sample = array(
+            'record_number_sample'  => $this->input->post('record_number'),
+            'data_sample'           => $this->input->post('data_sample'),
+            'jumlah_sample'         => $this->input->post('jumlah_sample'),
+            'bentuk'                => $this->input->post('bentuk'),
+            'deskripsi_sample'      => $this->input->post('deskripsi_sample'),
+            'berat_isi'             => $this->input->post('berat_isi'),
+            'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
+            'tgl_sampling'          => $this->input->post('tgl_sampling'),
+        );
+         
+        $this->db->update('jenis_sample',$jenis_sample, array('record_number_sample' => $id)); 
+        
+        $kaji_ulang_permintaan = array(
+            'record_number_kaji_ulang'      => $this->input->post('record_number'),
+            'kesiapan_personel'             => $this->input->post('kesiapan_personel'),
+            'kondisi_akomodasi'             => $this->input->post('kondisi_akomodasi'),
+            'beban_pekerjaan'               => $this->input->post('beban_pekerjaan'),
+            'kondisi_peralatan'             => $this->input->post('kondisi_peralatan'),
+            'kesesuaian_metode'             => $this->input->post('kesesuaian_metode'),
+            'kesesuaian_biaya'              => $this->input->post('kesesuaian_biaya'),
+        );
+         
+        $this->db->update('kaji_ulang_permintaan',$kaji_ulang_permintaan, array('record_number_kaji_ulang' => $id));
+        
+          $penguji_subkontrak = array(
+            'record_number_penguji_subkontrak' => $this->input->post('record_number'),
+            'nama_lab_subkontrak'              => $this->input->post('nama_lab_subkontrak'),
+            'kesimpulan'                       => $this->input->post('kesimpulan'),
+            'parameter_penyakit_ikan'          => $this->input->post('parameter_penyakit_ikan'),
+           
+        );
+         
+        $this->db->update('penguji_subkontrak',$penguji_subkontrak, array('record_number_penguji_subkontrak' => $id));
+        
+        $penjelasan_penerimaan_fpps = array(
+            'record_number_penjelasan'             => $this->input->post('record_number'),
+            'diberikan_oleh'                       => $this->input->post('diberikan_oleh'),
+            'diterima_oleh'                         => $this->input->post('diterima_oleh'),
+           
+        );
+         
+        $this->db->update('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps, array('record_number_penjelasan' => $id));
+        
+    $jenis_penyakit          = $this->input->post('jenis_penyakit');
+    $bakteri                 = $this->input->post('bakteri');
+    $identifikasi_parasit    = $this->input->post('identifikasi_parasit');
+    $logam_berat             = $this->input->post('logam_berat');
+    $record_number_parameter = $this->input->post('record_number');
+    
+    /*$i =0;
+    
+    foreach ($jenis_penyakit as $jenis){
+    
+        $this->db->update('parameter_penyakit', 
+            array(
+                'jenis_penyakit'=>$jenis,
+                
+                'record_number_parameter'=>($record_number_parameter),
+                
+                'identifikasi_bakteri'=>(
+                !empty($bakteri[$i])? $bakteri[$i]:!NULL),
+                
+                'identifikasi_parasit'=>(
+                !empty($identifikasi_parasit[$i])? $identifikasi_parasit[$i]:!NULL),
+               
+                'logam_berat'=>(
+                !empty($logam_berat[$i])? $logam_berat[$i]:!NULL)
+               
+            
+            
+            ),array('record_number_parameter' => $id));
+       $i++;
+   }
+      */  
+  
+      redirect('C_fpps/edit/'.$this->uri->segment(3));
+      }else{
+      
+$ambil = $this->uri->segment(3);    
+$this->db->select('*');
+$this->db->from('customer_fpps');
+$this->db->where('record_number_customer',$ambil);
+$this->db->join('jenis_sample','record_number_sample = record_number_customer');
+$this->db->join('record_number','project_id = record_number_customer');
+$this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
+$this->db->join('penguji_subkontrak','record_number_penguji_subkontrak = record_number_customer');
+$this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
+$this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
+$query = $this->db->get();
+
+//ambil customer data//
+
+foreach($query->result_array() as $cetak);{
+
+    $id_customer = $cetak['id_customer_fpps_customer'];
+}
+$customer_id = $id_customer;
+$data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
+
+
+            $this->load->view('V_fpps/umum/V_header');
+            $this->load->view('V_fpps/umum/V_sidebar');
+            $this->load->view('V_fpps/umum/V_top_navigasi');
+            $this->load->view('V_fpps/V_edit',['query'=>$query,'data_customer'=>$data_customer]);
+            $this->load->view('V_fpps/umum/V_footer');
+         
+     
+      } 
  }
 
 }
