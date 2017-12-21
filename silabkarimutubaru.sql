@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 17, 2017 at 11:50 PM
+-- Generation Time: Dec 22, 2017 at 12:52 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -47,7 +47,11 @@ INSERT INTO `customer` (`id_customer`, `nama_customer`, `alamat`, `telp`, `proje
 (5, 'PT ANGKASINDO DUNIA', 'JL.MUARA KARANG BLOK L9 T NO.8 PENJARINGAN JAKARTA UTARA', '0216697706', '1', 'Bapak Dedi', '083818152213'),
 (6, 'PT PILOT PEN INDONESIA', 'JL. INDUSTRI KARAWANG JAWABARAT INDONESIA', '0218894898', '12', 'Bapak Kohar', '09839793989'),
 (7, 'PT INDORAMA MULTI PACKAGING', 'KAWASAN INDUSTKRI BEKASI JL.JABABEKA BARAT', '0398098', '12', 'Bapak Sukoco', '03287992'),
-(8, 'PT MASWANDI', 'JL SUDIRMAN NO.87 KAV.JAKARTA', '023478383', '123', 'Bapak Wanfdi', '021284902');
+(8, 'PT MASWANDI', 'JL SUDIRMAN NO.87 KAV.JAKARTA', '023478383', '123', 'Bapak Wanfdi', '021284902'),
+(9, 'PT FORISA', 'JL.BEKASI', '0998789', '', 'RONI', 'OK'),
+(10, 'PT MANTAP', 'HGKJH', 'JKKJHK', 'JHGJG', 'JHGJH', 'JKNK'),
+(11, 'PT ECART WEB PORTAL INDONESIA', 'Jl.muara karang Blok L9 T .NO,8', '0216697706', '10', '0216697707', '0287327'),
+(12, 'PT SN CARGO', 'Jl.muara karang Blok L9 T .NO,8', '0216697706', '03', '0216697707', '223');
 
 -- --------------------------------------------------------
 
@@ -66,9 +70,7 @@ CREATE TABLE `customer_fpps` (
 --
 
 INSERT INTO `customer_fpps` (`id_customer_fpps`, `id_customer_fpps_customer`, `record_number_customer`) VALUES
-(69, '6', '1'),
-(70, '7', '2'),
-(71, '8', '4');
+(136, '5', '0');
 
 -- --------------------------------------------------------
 
@@ -93,9 +95,7 @@ CREATE TABLE `jenis_sample` (
 --
 
 INSERT INTO `jenis_sample` (`id_jenis_sample`, `record_number_sample`, `data_sample`, `jumlah_sample`, `bentuk`, `tgl_penerimaan`, `deskripsi_sample`, `berat_isi`, `tgl_sampling`) VALUES
-(64, '1', 'Ikan Manila', '1', 'cairan', '12/17/2017 7:04 PM', 'siap sample', '10 kg', ''),
-(65, '2', 'Ikan Dori', '2', 'cairan', '12/17/2017 11:16 PM', 'siap sample', '10 kg', '12/17/2017 11:16 PM'),
-(66, '4', 'Daging Sapi', '2', 'Padat', '12/17/2017 11:22 PM', 'Siap', '10 kg', '12/17/2017 11:22 PM');
+(131, '0', 'IKAN DOsiap', 'ad', 'hidupan', '12/22/2017 12:19 AM', 'ad', 'ok', '12/22/2017 12:17 AM');
 
 -- --------------------------------------------------------
 
@@ -119,9 +119,7 @@ CREATE TABLE `kaji_ulang_permintaan` (
 --
 
 INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_kaji_ulang`, `kesiapan_personel`, `kondisi_akomodasi`, `beban_pekerjaan`, `kondisi_peralatan`, `kesesuaian_metode`, `kesesuaian_biaya`) VALUES
-(58, '1', 'Mampu', 'Tidak Mampu', 'Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Mampu'),
-(59, '2', 'Tidak Mampu', 'Mampu', 'Tidak Mampu', 'Mampu', 'Tidak Mampu', 'Mampu'),
-(60, '4', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu');
+(125, '0', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu');
 
 -- --------------------------------------------------------
 
@@ -130,97 +128,27 @@ INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_
 --
 
 CREATE TABLE `parameter_penyakit` (
-  `id_paramater` int(11) NOT NULL,
-  `record_number_parameter_penyakit` varchar(100) NOT NULL,
+  `id_parameter` int(11) NOT NULL,
+  `record_number_parameter` varchar(100) NOT NULL,
   `jenis_penyakit` varchar(100) NOT NULL,
-  `bakteri` varchar(100) NOT NULL,
-  `identikasi` varchar(100) NOT NULL,
-  `logam` varchar(100) NOT NULL
+  `identifikasi_bakteri` varchar(100) NOT NULL,
+  `identifikasi_parasit` varchar(100) NOT NULL,
+  `logam_berat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `parameter_penyakit`
 --
 
-INSERT INTO `parameter_penyakit` (`id_paramater`, `record_number_parameter_penyakit`, `jenis_penyakit`, `bakteri`, `identikasi`, `logam`) VALUES
-(0, '', 'Wsspv', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'Klinis', '', '', ''),
-(0, '', 'TSV', '', '', ''),
-(0, '', 'IMNV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'Salmonelia', '', ''),
-(0, '', '', 'TPC', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'Salmonelia', '', ''),
-(0, '', '', 'TPC', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'Salmonelia', '', ''),
-(0, '', '', 'TPC', '', ''),
-(0, '', 'IMNV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', 'IMNV', '', '', ''),
-(0, '', 'VNN', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', 'IMNV', '', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'TPC', '', ''),
-(0, '', 'IMNV', '', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', 'IMNV', '', '', ''),
-(0, '', 'KHV', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', '', 'E.Coli', '', ''),
-(0, '', '', 'TPC', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'Wsspv', '', '', ''),
-(0, '', 'Iridoviru', '', '', ''),
-(0, '', 'Megalocity', '', '', ''),
-(0, '', 'Wsspv', '', '', '');
+INSERT INTO `parameter_penyakit` (`id_parameter`, `record_number_parameter`, `jenis_penyakit`, `identifikasi_bakteri`, `identifikasi_parasit`, `logam_berat`) VALUES
+(154, '0', 'Klinis', 'BAKTERI HPI / HPIK', 'Identifikasi parasit', 'HG'),
+(155, '0', 'TSV', 'E.Coli', 'identifikasi Jamur', 'PB'),
+(156, '0', 'IMNV', 'Salmonelia', '1', 'CD'),
+(157, '0', 'KHV', 'TPC', '1', 'other'),
+(158, '0', 'VNN', '1', '1', '1'),
+(159, '0', 'Iridoviru', '1', '1', '1'),
+(160, '0', 'Megalocity', '1', '1', '1'),
+(161, '0', 'Wsspv', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -241,9 +169,7 @@ CREATE TABLE `penguji_subkontrak` (
 --
 
 INSERT INTO `penguji_subkontrak` (`id_penguji_subkontrak`, `record_number_penguji_subkontrak`, `nama_lab_subkontrak`, `kesimpulan`, `parameter_penyakit_ikan`) VALUES
-(6, '1', 'Lab mandiri', 'siap', 'bakteri'),
-(7, '2', 'siap pakai', 'siap', 'tidak ada'),
-(8, '4', 'Lab PDAM', 'BAGUS', 'SIAP PAKAI');
+(73, '0', 'OK', 'SIAP PAKAI', 'MANTAP');
 
 -- --------------------------------------------------------
 
@@ -263,9 +189,7 @@ CREATE TABLE `penjelasan_penerimaan_fpps` (
 --
 
 INSERT INTO `penjelasan_penerimaan_fpps` (`id_penjelasan`, `record_number_penjelasan`, `diberikan_oleh`, `diterima_oleh`) VALUES
-(3, '1', 'Bapak Jani', 'Bapak sandi'),
-(4, '2', 'Bapak sukoco', 'Bapak sandi'),
-(5, '4', 'Bapak sukoco', 'IBU INEM');
+(70, '0', 'DEDI', 'JANI');
 
 -- --------------------------------------------------------
 
@@ -283,9 +207,7 @@ CREATE TABLE `record_number` (
 --
 
 INSERT INTO `record_number` (`record_number`, `project_id`) VALUES
-(69, '1'),
-(70, '2'),
-(72, '4');
+(137, '0');
 
 -- --------------------------------------------------------
 
@@ -341,6 +263,12 @@ ALTER TABLE `kaji_ulang_permintaan`
   ADD PRIMARY KEY (`id_kaji_ulang_permintaan`);
 
 --
+-- Indexes for table `parameter_penyakit`
+--
+ALTER TABLE `parameter_penyakit`
+  ADD PRIMARY KEY (`id_parameter`);
+
+--
 -- Indexes for table `penguji_subkontrak`
 --
 ALTER TABLE `penguji_subkontrak`
@@ -372,37 +300,42 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `customer_fpps`
 --
 ALTER TABLE `customer_fpps`
-  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 --
 -- AUTO_INCREMENT for table `jenis_sample`
 --
 ALTER TABLE `jenis_sample`
-  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 --
 -- AUTO_INCREMENT for table `kaji_ulang_permintaan`
 --
 ALTER TABLE `kaji_ulang_permintaan`
-  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+--
+-- AUTO_INCREMENT for table `parameter_penyakit`
+--
+ALTER TABLE `parameter_penyakit`
+  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 --
 -- AUTO_INCREMENT for table `penguji_subkontrak`
 --
 ALTER TABLE `penguji_subkontrak`
-  MODIFY `id_penguji_subkontrak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_penguji_subkontrak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
 -- AUTO_INCREMENT for table `penjelasan_penerimaan_fpps`
 --
 ALTER TABLE `penjelasan_penerimaan_fpps`
-  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `record_number`
 --
 ALTER TABLE `record_number`
-  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 --
 -- AUTO_INCREMENT for table `user`
 --

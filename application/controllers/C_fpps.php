@@ -277,7 +277,7 @@ border: 1px solid #ddd;" nobr="true">
 ">
   <td colspan="3" align="center">KAJI ULANG PERMINTAAN</td>
  </tr>
- <tr style="background-color: #0073ea;">
+ <tr>
   <td width="30" align="center">NO</td>
   <td width="390" align="center">UNSUR KAJI ULANG</td>
   <td align="center">HASIL KAJI ULANG</td>
