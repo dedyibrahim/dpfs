@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2017 at 12:52 AM
+-- Generation Time: Dec 23, 2017 at 08:34 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -119,7 +119,7 @@ CREATE TABLE `kaji_ulang_permintaan` (
 --
 
 INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_kaji_ulang`, `kesiapan_personel`, `kondisi_akomodasi`, `beban_pekerjaan`, `kondisi_peralatan`, `kesesuaian_metode`, `kesesuaian_biaya`) VALUES
-(125, '0', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu');
+(125, '0', 'Mampu', 'Tidak Mampu', 'Mampu', 'Tidak Mampu', 'Mampu', 'Tidak Mampu');
 
 -- --------------------------------------------------------
 
@@ -149,6 +149,24 @@ INSERT INTO `parameter_penyakit` (`id_parameter`, `record_number_parameter`, `je
 (159, '0', 'Iridoviru', '1', '1', '1'),
 (160, '0', 'Megalocity', '1', '1', '1'),
 (161, '0', 'Wsspv', '1', '1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penerimaan_sample`
+--
+
+CREATE TABLE `penerimaan_sample` (
+  `id_penerimaan_sample` int(11) NOT NULL,
+  `record_number_penerimaan_sample` varchar(100) NOT NULL,
+  `no_urut` varchar(100) NOT NULL,
+  `kode_contoh_uji` varchar(100) NOT NULL,
+  `bakteri_penerimaan_sample` varchar(100) NOT NULL,
+  `parasit_penerimaan_sample` varchar(100) NOT NULL,
+  `jamur_penerimaan_sample` varchar(100) NOT NULL,
+  `virus_penerimaan_sample` varchar(100) NOT NULL,
+  `logam_penerimaan_sample` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -269,6 +287,12 @@ ALTER TABLE `parameter_penyakit`
   ADD PRIMARY KEY (`id_parameter`);
 
 --
+-- Indexes for table `penerimaan_sample`
+--
+ALTER TABLE `penerimaan_sample`
+  ADD PRIMARY KEY (`id_penerimaan_sample`);
+
+--
 -- Indexes for table `penguji_subkontrak`
 --
 ALTER TABLE `penguji_subkontrak`
@@ -321,6 +345,11 @@ ALTER TABLE `kaji_ulang_permintaan`
 --
 ALTER TABLE `parameter_penyakit`
   MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+--
+-- AUTO_INCREMENT for table `penerimaan_sample`
+--
+ALTER TABLE `penerimaan_sample`
+  MODIFY `id_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `penguji_subkontrak`
 --
