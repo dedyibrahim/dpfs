@@ -26,9 +26,13 @@ class C_anamnesa extends CI_Controller {
             $this->load->view('V_anamnesa/umum/V_sidebar');
             $this->load->view('V_anamnesa/umum/V_top_navigasi');
             $this->load->view('V_anamnesa/V_form_anamnesa');
+            $this->load->view('V_anamnesa/V_data_anamnesa');
             $this->load->view('V_anamnesa/umum/V_footer');
            
 	}
+ public function json() {
+        header('Content-Type: application/json');
+        echo $this->Data_anamnesa->json();       
+ }      
  
-
 }

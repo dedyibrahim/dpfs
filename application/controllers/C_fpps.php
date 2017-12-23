@@ -247,7 +247,7 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('times', '', 12);
+$pdf->SetFont('courier', '', 12);
 
 $pdf->AddPage();
 
@@ -257,7 +257,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $html = '<span align="center">PERMINTAAN PENGUJIAN SAMPEL DAN KAJI ULANG PERMINTAAN'
         . '<br>No:{record_number_customer}/FPPS/SKIPM-MMJ/...../{tahun}</spam>';
 $html.='<div style="text-align:left; line-height: 25px;">Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
-Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
+Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
 Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
 Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
 Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
@@ -302,25 +302,19 @@ border: 1px solid #ddd;" nobr="true">
   <td>Kondisi Peralatan Laboratorium</td>
   <td>{kondisi_peralatan}</td>
  </tr>
-     <tr>
+  <tr>
   <td align="center">5</td>
   <td>Kesesuaian Metode</td>
   <td>{kesesuaian_metode}</td>
  </tr>
-</table>
+  <tr>
+  <td align="center">6</td>
+  <td>Kesesuaian Biaya</td>
+  <td>{kesesuaian_biaya}</td>
+ </tr>
+
+   </table>
 EOD;
-
-
-
-
-
-
-$html.= "<p align ='left'></p>";
-$html.= "<p align ='left'></p>";
-$html.= "<p align ='left'></p>";
-$html.= "<p align ='left'></p>";
-$html.= "<p align ='left'></p>";
-$html.= "<p align ='left'>{kesesuaian_biaya}</p>";
 $html.= "<p align ='left'>{nama_lab_subkontrak}</p>";
 $html.= "<p align ='left'>{kesimpulan}</p>";
 $html.= "<p align ='left'>{parameter_penyakit_ikan}</p>";
