@@ -16,7 +16,7 @@ class C_anamnesa extends CI_Controller {
         $this->load->helper('url');
         
         $this->load->library('datatables');
-        $this->load->model('World_model');
+        $this->load->model('Data_anamnesa');
         
     }
 
