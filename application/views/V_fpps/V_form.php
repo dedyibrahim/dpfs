@@ -246,15 +246,7 @@
                      <input value="Tidak Mampu" name="kesesuaian_metode" type="radio"> Tidak Mampu
                    </div>
           </div>
-            <div class="radio">
-            <div class="col-xs-4">Kesesuaian biaya</div>
-                   <div class="col-xs-3">
-                         <input checked="" value="Mampu"  name="kesesuaian_biaya" type="radio"> Mampu 
-                    </div>
-                    <div class="col-xs-4">
-                     <input value="Tidak Mampu"  name="kesesuaian_biaya" type="radio"> Tidak Mampu
-                   </div>
-          </div>
+            
             
        </div>
  </div>
