@@ -6,9 +6,8 @@ class C_anamnesa extends CI_Controller {
     public function __construct() {
         parent::__construct();
          $this->load->helper('form');
-        $this->load->library('session');
+         $this->load->library('session');
          $this->load->model('M_customer');
-           
         $this->load->library('upload');
         $this->load->library('form_validation');
         $this->load->database();
