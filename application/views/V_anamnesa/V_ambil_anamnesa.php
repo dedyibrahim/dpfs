@@ -8,76 +8,100 @@ foreach ($data_customer->result_array() as $customer){
  
             
 }?>
-<?php 
-foreach ($sample->result_array() as $_sample){
- 
-            
-}?>
-<div class="x_panel" >
- <div class="x_content">
-    <div class="x_title">
+
   
  <form action="<?php echo base_url('C_anamnesa/simpan')?>" method="post" enctype="multipart/formdata">
-    <h2>Form Anamnesa</h2>
+<div class="x_panel">
+ <div class="x_content">
+    <div class="x_title">
+    <h2>Informasi Kegiatan Anamnesa</h2>
         <ul class="nav navbar-right panel_toolbox">
-            <li><input class="form-control" value="<?php echo  $data['record_number_customer'];?>"  readonly="" name="record_number" placeholder="record number" type="text">
+           <li><input class="form-control"  readonly="" name="record_number" placeholder="record number" type="text">
                 </li>
                     </ul>              
-<div class="clearfix"></div>
+        <div class="clearfix"></div>
+    </div>
      
-    </div> 
-           
-   <div class="col-md-6">
+<div class="col-md-6">
        
      <div class="form-group">
-         <label>Nama Customer</label>
-         <input type="text" value ="<?php echo  $customer['nama_customer'];?>" class="form-control" readonly="" placeholder="Nama customer">
+         <label>Kegiatan</label>
+         <input type="text" value ="" class="form-control" placeholder="Kegiatan">
      </div>
-     <div class="form-group">
-         <label>Jenis Sample</label>
-         <input type="text" class="form-control" value="<?php echo $_sample['data_sample'];?>" readonly="" placeholder="Jenis Sample">
-     </div>
-       <div class="col-md-6">   
-     <div class="form-group">
-         <label>Kode Contoh Uji</label>
-            <input type="text" name="kode_contoh_uji" class="form-control" placeholder="kode contoh uji">
-     </div></div>
-       <div class="col-md-6"> 
+       
       <div class="form-group">
-         <label>Nomor urut</label>
-         <input type="text" name="no_urut" class="form-control" placeholder="Nomor urut">
-     </div>     
+          <label>tanggal sampling</label>
+          <input class="form-control" value="<?php echo $data['tgl_sampling'];?>" readonly="" type="text" name="tgl_sampling" placeholder="Tanggal sampling">
+              
        </div>
-        </div>
-    <div class="col-md-6">
-        <label>Kode Jenis Contoh uji : </label><br>
-         
-                <label>
-                    <input value="1" name="bakteri_penerimaan_sample" type="checkbox"> Bakteri<br>
-                </label>
-                 <label>
-                    <input value="1" name="parasit_penerimaan_sample" type="checkbox"> Parasit<br>
-                </label>
-                <label>
-                    <input value="1" name="jamur_penerimaan_sample" type="checkbox"> Jamur<br>
-                </label>
-                <label>
-                    <input value="1" name="virus_penerimaan_sample" type="checkbox"> Virus<br>
-                </label>
-                <label>
-                    <input value="1" name="air_penerimaan_sample" type="checkbox"> KUalitas air<br>
-                </label>
-               <label>
-                   <input value="1" name="logam_penerimaan_sample" type="checkbox"> Logam berat<br>
-                </label>
+     
+     <div class="form-group">
+         <label>Nama pemilik</label>
+         <input type="text" value="<?php echo $customer['nama_customer'];?>" readonly="" class="form-control" placeholder="Nama Pemilik">
+     </div>
+     
+    <div class="form-group">
+        <label>Lokasi sampling</label>
+         <input type="text" class="form-control" placeholder="Lokasi Sampling">
        </div>
-    </div>    
+
+    <div class="form-group">
+        <label>Asal sample</label>
+         <select class="form-control">
+                            <option>--Asal sample--</option>
+                            <option>Budidaya</option>
+                            <option>Hasil tangkapan</option>
+                </select>
+       </div>    
+             
+     
+       <div class="form-group">
+           <label>Jenis sample</label>
+               
+           <input type="text" value="<?php echo $data['data_sample'];?>" readonly="" value ="" class="form-control" placeholder="Jenis Sample">
+       </div>
        
- </div>
-<div class="x_panel">
+       <div class="form-group">
+           <label>Jumlah sample</label>
+           <input type="text" value="<?php echo $data['jumlah_sample'];?>" readonly="" class="form-control" placeholder="Jumlah Sample">
+       </div>
+  
+</div>
+     <!------ asal sample------------>    
+     <div class="col-md-6">
+         <label>Bentuk sample</label>
+        <div class="form-group">
+            <input type="text" value="<?php echo $data['bentuk'];?>"  readonly="" name="bentuk_sample" class="form-control" placeholder="bentuk sample"> 
+        </div>
+        <div class="form-group">
+            <label>Kode sample</label>
+           <input type="text" class="form-control" placeholder="Kode Sampel">
+        </div>
+       <div class="form-group">
+           <label>Gejala klinis</label>
+         <input type="text" class="form-control" placeholder="Gejala Klinis">
+        </div>
+      
+        <div class="form-group">
+            <label>keterangan lain-lain</label>
+           <textarea class="form-control" placeholder="Keterangan lain-lain"></textarea>
+        </div>
+          
+     </div>
+        
+         
+   </div>
+     
+  
+</form>
+ 
+</div>
+
+     
+     <div class="x_panel">
         <div class="x_content">
            <div class="col-xs-2 ">
-              <button type="reset" class="btn btn-warning btn-block btn-flat">Batal</button>
+               <a href="<?php echo base_url('C_anamnesa');?>"><button type="reset" class="btn btn-warning btn-block btn-flat">Batal</button></a>
           </div>
      
           <div class="col-xs-2 pull-right">

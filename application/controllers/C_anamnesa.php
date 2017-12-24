@@ -33,23 +33,34 @@ class C_anamnesa extends CI_Controller {
         public function ambil_data(){
             $ambil = $this->uri->segment(3);
             
-            $query =  $this->db->get_where('customer_fpps',['record_number_customer'=>$ambil]);
+            //$query =  $this->db->get_where('customer_fpps',['record_number_customer'=>$ambil]);
             
+            //foreach($query->result_array() as $cetak);{
+            //$id_customer = $cetak['id_customer_fpps_customer'];
+            //$record= $cetak['record_number_customer'];
+            //}
+            $ambil = $this->uri->segment(3);    
+            $this->db->select('*');
+            $this->db->from('customer_fpps');
+            $this->db->where('record_number_customer',$ambil);
+            $this->db->join('jenis_sample','record_number_sample = record_number_customer');
+            $this->db->join('record_number','project_id = record_number_customer');
+            $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
+            $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
+            $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
+            $query = $this->db->get();
+           
             foreach($query->result_array() as $cetak);{
-            $id_customer = $cetak['id_customer_fpps_customer'];
-            $record= $cetak['record_number_customer'];
-            }
-            
+             $id_customer = $cetak['id_customer_fpps_customer'];
+             }
+
             $customer_id = $id_customer;
             $data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
-            
-            $record_number_customer= $record;
-            $sample = $this->db->get_where('jenis_sample',['record_number_sample'=>$record_number_customer]);
             
             $this->load->view('V_anamnesa/umum/V_header');
             $this->load->view('V_anamnesa/umum/V_sidebar');
             $this->load->view('V_anamnesa/umum/V_top_navigasi');
-            $this->load->view('V_anamnesa/V_ambil_anamnesa',['data_customer'=>$data_customer,'query'=>$query,'sample'=>$sample]);
+            $this->load->view('V_anamnesa/V_ambil_anamnesa',['data_customer'=>$data_customer,'query'=>$query]);
             $this->load->view('V_anamnesa/V_data_anamnesa');
             $this->load->view('V_anamnesa/umum/V_footer');   
         }
