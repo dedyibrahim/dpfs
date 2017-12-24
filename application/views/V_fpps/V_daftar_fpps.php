@@ -23,7 +23,7 @@
                 var t = $("#mytable").dataTable({
                     initComplete: function() {
                         var api = this.api();
-                        $('#mytable_filter input')
+                        $('#mytable')
                                 .off('.DT')
                                 .on('keyup.DT', function(e) {
                                     if (e.keyCode == 13) {

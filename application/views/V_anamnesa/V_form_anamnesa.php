@@ -2,29 +2,25 @@
  <div class="x_content">
     <div class="x_title">
   
- <!--------- end input customer--------------->     
-     
- <form action="http://localhost/mamuju/C_fpps/simpan_fpps" method="post" enctype="multipart/formdata">
+ <form action="<?php echo base_url('C_anamnesa')?>" method="post" enctype="multipart/formdata">
     <h2>Form Anamnesa</h2>
         <ul class="nav navbar-right panel_toolbox">
            <li><input class="form-control"  readonly="" name="record_number" placeholder="record number" type="text">
                 </li>
                     </ul>              
 <div class="clearfix"></div>
- </form>
      
     </div> 
-            <form class="form-horizontal form-label-left">
            
    <div class="col-md-6">
        
      <div class="form-group">
          <label>Nama Customer</label>
-            <input type="text" class="form-control" placeholder="Nama customer">
+         <input type="text" value ="" class="form-control" readonly="" placeholder="Nama customer">
      </div>
      <div class="form-group">
          <label>Jenis Sample</label>
-            <input type="text" class="form-control" placeholder="Jenis Sample">
+         <input type="text" class="form-control" readonly="" placeholder="Jenis Sample">
      </div>
        <div class="col-md-6">   
      <div class="form-group">
@@ -65,3 +61,17 @@
     </div>    
        
  </div>
+<div class="x_panel">
+        <div class="x_content">
+           <div class="col-xs-2 ">
+               <button type="reset" disabled="" class="btn btn-warning btn-block btn-flat">Batal</button>
+          </div>
+     
+          <div class="col-xs-2 pull-right">
+              <button type="button" disabled="" name="btn_anamnesa" class="btn btn-primary btn-block btn-flat">Simpan</button>
+          
+          </div>
+        </div>
+</form>
+ 
+</div>
