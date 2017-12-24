@@ -10,13 +10,13 @@ foreach ($data_customer->result_array() as $customer){
 }?>
 
   
- <form action="<?php echo base_url('C_anamnesa/simpan')?>" method="post" enctype="multipart/formdata">
+<form action="<?php echo base_url('C_anamnesa/simpan')?>" method="post" enctype="multipart/formdata">
 <div class="x_panel">
  <div class="x_content">
     <div class="x_title">
     <h2>Informasi Kegiatan Anamnesa</h2>
         <ul class="nav navbar-right panel_toolbox">
-           <li><input class="form-control"  readonly="" name="record_number" placeholder="record number" type="text">
+           <li><input class="form-control" value="<?php echo $data['record_number_customer'];?>"  readonly="" name="record_number" placeholder="record number" type="text">
                 </li>
                     </ul>              
         <div class="clearfix"></div>
@@ -26,7 +26,7 @@ foreach ($data_customer->result_array() as $customer){
        
      <div class="form-group">
          <label>Kegiatan</label>
-         <input type="text" value ="" class="form-control" placeholder="Kegiatan">
+         <input type="text" name="kegiatan" value ="<?php echo $data['kegiatan'];?>" class="form-control" placeholder="Kegiatan">
      </div>
        
       <div class="form-group">
@@ -42,13 +42,14 @@ foreach ($data_customer->result_array() as $customer){
      
     <div class="form-group">
         <label>Lokasi sampling</label>
-         <input type="text" class="form-control" placeholder="Lokasi Sampling">
+        <input type="text" value="<?php echo $data['lokasi_sampling'];?>" name="lokasi_sampling" class="form-control" placeholder="Lokasi Sampling">
        </div>
 
     <div class="form-group">
         <label>Asal sample</label>
-         <select class="form-control">
-                            <option>--Asal sample--</option>
+        <select name="asal_sample" class="form-control">
+                           <option><?php echo $data['asal_sample'];?></option> 
+                           <option>--Asal sample--</option>
                             <option>Budidaya</option>
                             <option>Hasil tangkapan</option>
                 </select>
@@ -75,16 +76,16 @@ foreach ($data_customer->result_array() as $customer){
         </div>
         <div class="form-group">
             <label>Kode sample</label>
-           <input type="text" class="form-control" placeholder="Kode Sampel">
+            <input type="text" value="<?php echo $data['kode_sample'];?>" name="kode_sample" class="form-control" placeholder="Kode Sampel">
         </div>
        <div class="form-group">
            <label>Gejala klinis</label>
-         <input type="text" class="form-control" placeholder="Gejala Klinis">
+           <input type="text" value="<?php echo $data['gejala_klinis'];?>" name="gejala_klinis" class="form-control" placeholder="Gejala Klinis">
         </div>
       
         <div class="form-group">
             <label>keterangan lain-lain</label>
-           <textarea class="form-control" placeholder="Keterangan lain-lain"></textarea>
+            <textarea name="keterangan_lain_lain" class="form-control" placeholder="Keterangan lain-lain"><?php echo $data['keterangan_lain_lain'];?></textarea>
         </div>
           
      </div>
@@ -93,7 +94,7 @@ foreach ($data_customer->result_array() as $customer){
    </div>
      
   
-</form>
+
  
 </div>
 
@@ -106,7 +107,7 @@ foreach ($data_customer->result_array() as $customer){
      
           <div class="col-xs-2 pull-right">
               <button type="submit" name="btn_anamnesa" class="btn btn-primary btn-block btn-flat">Simpan</button>
-          
+            </form>
           </div>
         </div>
 </form>

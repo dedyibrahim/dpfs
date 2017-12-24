@@ -32,13 +32,6 @@ class C_anamnesa extends CI_Controller {
 	}
         public function ambil_data(){
             $ambil = $this->uri->segment(3);
-            
-            //$query =  $this->db->get_where('customer_fpps',['record_number_customer'=>$ambil]);
-            
-            //foreach($query->result_array() as $cetak);{
-            //$id_customer = $cetak['id_customer_fpps_customer'];
-            //$record= $cetak['record_number_customer'];
-            //}
             $ambil = $this->uri->segment(3);    
             $this->db->select('*');
             $this->db->from('customer_fpps');
@@ -48,6 +41,7 @@ class C_anamnesa extends CI_Controller {
             $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
             $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
             $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
+            $this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
             $query = $this->db->get();
            
             foreach($query->result_array() as $cetak);{
@@ -71,10 +65,10 @@ class C_anamnesa extends CI_Controller {
         echo $this->Data_anamnesa->json();       
         }      
         
-        public function simpan(){
-       $cek_record = $this->input->post('record_number');
+    public function simpan(){
+     $cek_record = $this->input->post('record_number');
         
-       $cek= $this->db->get_where('penerimaan_sample',['record_number_penerimaan_sample'=>$cek_record]);
+       $cek= $this->db->get_where('data_penerimaan_sample',['record_number_penerimaan_sample'=>$cek_record]);
     
        foreach ($cek->result_array() as $hasil_cek){
         
@@ -82,47 +76,44 @@ class C_anamnesa extends CI_Controller {
         }
        
         $gaada = $cek_kosong;
-       
+        
     if(isset($_POST['btn_anamnesa']) &&  $cek_kosong == null){
+        
             $simpan_penerimaan_sample = array(
-            'record_number_penerimaan_sample'                  => $this->input->post('record_number'),
-            'no_urut'                                          => $this->input->post('no_urut'),
-            'kode_contoh_uji'                                  => $this->input->post('kode_contoh_uji'),
-            'bakteri_penerimaan_sample'                         => !empty($this->input->post('bakteri_penerimaan_sample'))? $this->input->post('bakteri_penerimaan_sample'):0,
-            'parasit_penerimaan_sample'                         => !empty($this->input->post('parasit_penerimaan_sample')?'parasit_penerimaan_sample':0),
-            'jamur_penerimaan_sample'                           => !empty($this->input->post('jamur_penerimaan_sample')?'jamur_penerimaan_sample':0),
-            'virus_penerimaan_sample'                           => !empty($this->input->post('virus_penerimaan_sample')?'virus_penerimaan_sample':0),
-            'logam_penerimaan_sample'                           => !empty($this->input->post('logam_penerimaan_sample')?'logam_penerimaan_sample':0),
-            'other_penerimaan_sample'                           => !empty($this->input->post('other_penerimaan_sample')?'other_penerimaan_sample':0),
-               );
-            $this->db->insert('penerimaan_sample',$simpan_penerimaan_sample);
+            'record_number_penerimaan_sample'         => $this->input->post('record_number'),
+            'kegiatan'                                => $this->input->post('kegiatan'),
+            'lokasi_sampling'                         => $this->input->post('lokasi_sampling'),
+            'asal_sample'                             => $this->input->post('asal_sample'),
+            'kode_sample'                             => $this->input->post('kode_sample'),
+            'gejala_klinis'                           => $this->input->post('gejala_klinis'),
+            'keterangan_lain_lain'                    => $this->input->post('keterangan_lain_lain'),
+            );
+            $this->db->insert('data_penerimaan_sample',$simpan_penerimaan_sample);
             
             redirect('C_anamnesa');
-        }elseif($gaada = !null) {
+    }elseif($gaada = !null) {
         
             $update_penerimaan_sample = array(
-            'record_number_penerimaan_sample'                  => $this->input->post('record_number'),
-            'no_urut'                                          => $this->input->post('no_urut'),
-            'kode_contoh_uji'                                  => $this->input->post('kode_contoh_uji'),
-            'bakteri_penerimaan_sample'                         => !empty($this->input->post('bakteri_penerimaan_sample'))? $this->input->post('bakteri_penerimaan_sample'):0,
-            'parasit_penerimaan_sample'                         => !empty($this->input->post('parasit_penerimaan_sample')?'parasit_penerimaan_sample':0),
-            'jamur_penerimaan_sample'                           => !empty($this->input->post('jamur_penerimaan_sample')?'jamur_penerimaan_sample':0),
-            'virus_penerimaan_sample'                           => !empty($this->input->post('virus_penerimaan_sample')?'virus_penerimaan_sample':0),
-            'logam_penerimaan_sample'                           => !empty($this->input->post('logam_penerimaan_sample')?'logam_penerimaan_sample':0),
-            'other_penerimaan_sample'                           => !empty($this->input->post('other_penerimaan_sample')?'other_penerimaan_sample':0),
-           );
+            'record_number_penerimaan_sample'         => $this->input->post('record_number'),
+            'kegiatan'                                => $this->input->post('kegiatan'),
+            'lokasi_sampling'                         => $this->input->post('lokasi_sampling'),
+            'asal_sample'                             => $this->input->post('asal_sample'),
+            'kode_sample'                             => $this->input->post('kode_sample'),
+            'gejala_klinis'                           => $this->input->post('gejala_klinis'),
+            'keterangan_lain_lain'                    => $this->input->post('keterangan_lain_lain'),
+            );
             $this->db->where('record_number_penerimaan_sample', $cek_record);
-            $this->db->update('penerimaan_sample',$update_penerimaan_sample);
+            $this->db->update('data_penerimaan_sample',$update_penerimaan_sample);
            redirect('C_anamnesa');
            
         
         }else{
             
             echo 'gagal menginsert dan update data' ;
+      
         }
-        }
-        
-        public function cetak_anamnesa(){
+    }
+  public function cetak_anamnesa(){
             
                           
 $this->load->library('Mypdf');
@@ -153,7 +144,7 @@ $pdf->AddPage();
 $html ='<hr>';
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$html = '<span align="center" style="font-size: 19px;" ><u>INFORMASI ANAMNESA SAMPEL</u></span><br>';
+$html = '<span align="center" style="font-size: 15px;" ><u>INFORMASI ANAMNESA SAMPEL</u></span><br>';
 
 $html.='<div style="text-align:left; line-height: 25px;">Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
 Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
@@ -162,7 +153,15 @@ Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
 Dalam bentuuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
 Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
-Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br></div>';
+Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+Kegiatan : {kegiatan}<br>
+lokasi sampling : {lokasi_sampling}<br>
+asal sample : {asal_sample}<br>
+kode sample : {kode_sample}<br>
+gejala klinis : {gejala_klinis}<br>
+keterangan lain_lain : {keterangan_lain_lain}<br>
+
+</div>';
 
 $html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
 
@@ -177,7 +176,7 @@ $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
-$this->db->join('penguji_subkontrak','record_number_penguji_subkontrak = record_number_customer');
+$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
     
 $query = $this->db->get();
@@ -195,17 +194,15 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{tgl_penerimaan}',$cetak['tgl_penerimaan'],$html);
      $html = str_replace('{tgl_sampling}',$cetak['tgl_sampling'],$html);
      $html = str_replace('{deskripsi_sample}',$cetak['deskripsi_sample'],$html);
-     $html = str_replace('{kesiapan_personel}',$cetak['kesiapan_personel'],$html);
-     $html = str_replace('{kondisi_akomodasi}',$cetak['kondisi_akomodasi'],$html);
-     $html = str_replace('{beban_pekerjaan}',$cetak['beban_pekerjaan'],$html);
-     $html = str_replace('{kondisi_peralatan}',$cetak['kondisi_peralatan'],$html);
-     $html = str_replace('{kesesuaian_metode}',$cetak['kesesuaian_metode'],$html);
-     $html = str_replace('{kesesuaian_biaya}',$cetak['kesesuaian_biaya'],$html);
-     $html = str_replace('{nama_lab_subkontrak}',$cetak['nama_lab_subkontrak'],$html);
-     $html = str_replace('{kesimpulan}',$cetak['kesimpulan'],$html);
-     $html = str_replace('{parameter_penyakit_ikan}',$cetak['parameter_penyakit_ikan'],$html);
      $html = str_replace('{diberikan_oleh}',$cetak['diberikan_oleh'],$html);
      $html = str_replace('{diterima_oleh}',$cetak['diterima_oleh'],$html);
+     $html = str_replace('{kegiatan}',$cetak['kegiatan'],$html);
+     $html = str_replace('{lokasi_sampling}',$cetak['lokasi_sampling'],$html);
+     $html = str_replace('{asal_sample}',$cetak['asal_sample'],$html);
+     $html = str_replace('{kode_sample}',$cetak['kode_sample'],$html);
+     $html = str_replace('{gejala_klinis}',$cetak['gejala_klinis'],$html);
+     $html = str_replace('{keterangan_lain_lain}',$cetak['keterangan_lain_lain'],$html);
+
 }
 foreach ($data_customer->result_array() as $data_cs){
      $html = str_replace('{nama_customer}',$data_cs['nama_customer'],$html);

@@ -88,10 +88,16 @@ foreach ($data_customer->result_array() as $data_user){
       </div>
      </div>
      <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control" value="<?php echo $customer['bentuk'];?>"  id="bentuk" name="bentuk" placeholder="Bentuk" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
-      </div>
+       <select name="bentuk" class="form-control">
+           <option><?php echo $customer['bentuk'] ?></option>
+                           <option>--Asal sample--</option>
+                            <option>Segar</option>
+                            <option>Hidup</option>
+                             <option>Beku</option>
+                            <option>Kering</option>
+                            <option>lainnya</option>
+                </select>
+      
      </div>
         
      <div class="col-xs-6">
@@ -166,15 +172,7 @@ foreach ($data_customer->result_array() as $data_user){
                      <input <?php if ( $customer['kesesuaian_metode'] == 'Tidak Mampu'){echo"checked=''";}else{};?> value="Tidak Mampu" name="kesesuaian_metode" type="radio"> Tidak Mampu
                    </div>
           </div>
-            <div class="radio">
-            <div class="col-xs-4">Kesesuaian biaya</div>
-                   <div class="col-xs-3">
-                         <input <?php if ( $customer['kesesuaian_biaya'] == 'Mampu'){echo"checked=''";}else{};?> value="Mampu"  name="kesesuaian_biaya" type="radio"> Mampu 
-                    </div>
-                    <div class="col-xs-4">
-                     <input <?php if ( $customer['kesesuaian_biaya'] == 'Tidak Mampu'){echo"checked=''";}else{};?> value="Tidak Mampu"  name="kesesuaian_biaya" type="radio"> Tidak Mampu
-                   </div>
-          </div>
+            
             
        </div>
  </div>

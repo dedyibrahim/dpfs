@@ -362,7 +362,6 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{kondisi_peralatan}',$cetak['kondisi_peralatan'],$html);
      $html = str_replace('{wadah}',$cetak['wadah'],$html);
      $html = str_replace('{kesesuaian_metode}',$cetak['kesesuaian_metode'],$html);
-     $html = str_replace('{kesesuaian_biaya}',$cetak['kesesuaian_biaya'],$html);
      $html = str_replace('{diberikan_oleh}',$cetak['diberikan_oleh'],$html);
      $html = str_replace('{diterima_oleh}',$cetak['diterima_oleh'],$html);
      $html = str_replace('{identifikasi_bakteri}',$cetak['identifikasi_bakteri'],$html);
@@ -419,7 +418,6 @@ if(isset($_POST['btn_fpps'])){
             'beban_pekerjaan'               => $this->input->post('beban_pekerjaan'),
             'kondisi_peralatan'             => $this->input->post('kondisi_peralatan'),
             'kesesuaian_metode'             => $this->input->post('kesesuaian_metode'),
-            'kesesuaian_biaya'              => $this->input->post('kesesuaian_biaya'),
         );
          
         $this->db->update('kaji_ulang_permintaan',$kaji_ulang_permintaan, array('record_number_kaji_ulang' => $id));

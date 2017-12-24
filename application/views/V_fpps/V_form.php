@@ -168,10 +168,15 @@
       </div>
      </div>
      <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control"  id="bentuk" name="bentuk" placeholder="Bentuk" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
-      </div>
+       <select name="bentuk" class="form-control">
+                           <option>--Asal sample--</option>
+                            <option>Segar</option>
+                            <option>Hidup</option>
+                             <option>Beku</option>
+                            <option>Kering</option>
+                            <option>lainnya</option>
+                </select>
+      
      </div>
         
      <div class="col-xs-6">

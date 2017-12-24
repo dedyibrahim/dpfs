@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 24, 2017 at 09:08 PM
+-- Generation Time: Dec 25, 2017 at 12:57 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -72,7 +72,34 @@ CREATE TABLE `customer_fpps` (
 
 INSERT INTO `customer_fpps` (`id_customer_fpps`, `id_customer_fpps_customer`, `record_number_customer`) VALUES
 (225, '13', '0'),
-(227, '5', '1');
+(228, '7', '1'),
+(229, '8', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_penerimaan_sample`
+--
+
+CREATE TABLE `data_penerimaan_sample` (
+  `id_data_penerimaan_sample` int(11) NOT NULL,
+  `record_number_penerimaan_sample` varchar(100) NOT NULL,
+  `kegiatan` varchar(100) NOT NULL,
+  `lokasi_sampling` varchar(100) NOT NULL,
+  `asal_sample` varchar(100) NOT NULL,
+  `kode_sample` varchar(100) NOT NULL,
+  `gejala_klinis` varchar(100) NOT NULL,
+  `keterangan_lain_lain` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_penerimaan_sample`
+--
+
+INSERT INTO `data_penerimaan_sample` (`id_data_penerimaan_sample`, `record_number_penerimaan_sample`, `kegiatan`, `lokasi_sampling`, `asal_sample`, `kode_sample`, `gejala_klinis`, `keterangan_lain_lain`) VALUES
+(1, '0', 'Mengambil sample', 'Mamuju', 'Hasil tangkapan', '001', 'Siap pakai', 'ga ada si'),
+(2, '1', 'sda', 'asd', 'Budidaya', '002', 'asd', 'asd'),
+(3, '2', 'SAMPLE HIU', 'ABUDABI', 'Hasil tangkapan', '003', 'kurang obat', 'siap bos');
 
 -- --------------------------------------------------------
 
@@ -98,8 +125,9 @@ CREATE TABLE `jenis_sample` (
 --
 
 INSERT INTO `jenis_sample` (`id_jenis_sample`, `record_number_sample`, `data_sample`, `jumlah_sample`, `bentuk`, `tgl_penerimaan`, `deskripsi_sample`, `berat_isi`, `tgl_sampling`, `wadah`) VALUES
-(220, '0', 'IKAN NEMO', '110', 'CAIRAN', '12/24/2017 7:17 PM', 'SIAP ', '1 kg', '12/24/2017 7:17 PM', ''),
-(222, '1', 'IKAN dedi', 'ok', 'sa', '12/24/2017 9:06 PM', 'asd', 'asd', '12/24/2017 8:48 PM', 'asd');
+(220, '0', 'IKAN NEMO', '110', 'Kering', '12/24/2017 7:17 PM', 'SIAP ', '1 kg', '12/24/2017 7:17 PM', 'asd'),
+(223, '1', 'SIAP SAMPLE', '2', '2', '12/25/2017 12:15 AM', 'SIAP SAMLE', '10 kg', '12/25/2017 12:15 AM', 'dori'),
+(224, '2', 'IKAN BETUTU', '2', 'Beku', '12/25/2017 12:49 AM', 'siap\\', '10 kg', '12/25/2017 12:49 AM', 'nampan');
 
 -- --------------------------------------------------------
 
@@ -114,17 +142,17 @@ CREATE TABLE `kaji_ulang_permintaan` (
   `kondisi_akomodasi` varchar(100) NOT NULL,
   `beban_pekerjaan` varchar(100) NOT NULL,
   `kondisi_peralatan` varchar(100) NOT NULL,
-  `kesesuaian_metode` varchar(100) NOT NULL,
-  `kesesuaian_biaya` varchar(100) NOT NULL
+  `kesesuaian_metode` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kaji_ulang_permintaan`
 --
 
-INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_kaji_ulang`, `kesiapan_personel`, `kondisi_akomodasi`, `beban_pekerjaan`, `kondisi_peralatan`, `kesesuaian_metode`, `kesesuaian_biaya`) VALUES
-(214, '0', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu'),
-(216, '1', 'Mampu', 'Mampu', 'Mampu', 'Tidak Mampu', 'Tidak Mampu', 'Tidak Mampu');
+INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_kaji_ulang`, `kesiapan_personel`, `kondisi_akomodasi`, `beban_pekerjaan`, `kondisi_peralatan`, `kesesuaian_metode`) VALUES
+(214, '0', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu'),
+(217, '1', 'Mampu', 'Mampu', 'Mampu', 'Tidak Mampu', ''),
+(218, '2', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu');
 
 -- --------------------------------------------------------
 
@@ -146,27 +174,9 @@ CREATE TABLE `parameter_penyakit` (
 --
 
 INSERT INTO `parameter_penyakit` (`id_parameter`, `record_number_parameter`, `identifikasi_virus`, `identifikasi_bakteri`, `identifikasi_parasit`, `identifikasi_logam`) VALUES
-(1, '0', 'Virus', '1', '1', '1'),
-(205, '1', 'Virus', 'Bakteri', '&nbsp;', '&nbsp;');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `penerimaan_sample`
---
-
-CREATE TABLE `penerimaan_sample` (
-  `id_penerimaan_sample` int(11) NOT NULL,
-  `record_number_penerimaan_sample` varchar(100) NOT NULL,
-  `no_urut` varchar(100) NOT NULL,
-  `kode_contoh_uji` varchar(100) NOT NULL,
-  `bakteri_penerimaan_sample` varchar(100) NOT NULL,
-  `parasit_penerimaan_sample` varchar(100) NOT NULL,
-  `jamur_penerimaan_sample` varchar(100) NOT NULL,
-  `virus_penerimaan_sample` varchar(100) NOT NULL,
-  `logam_penerimaan_sample` varchar(100) NOT NULL,
-  `other_penerimaan_sample` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, '0', '&nbsp;', '&nbsp;', '&nbsp;', '&nbsp;'),
+(206, '1', 'Virus', 'Bakteri', 'Parasit', '&nbsp;'),
+(207, '2', '&nbsp;', 'Bakteri', 'Parasit', '&nbsp;');
 
 -- --------------------------------------------------------
 
@@ -187,7 +197,8 @@ CREATE TABLE `penjelasan_penerimaan_fpps` (
 
 INSERT INTO `penjelasan_penerimaan_fpps` (`id_penjelasan`, `record_number_penjelasan`, `diberikan_oleh`, `diterima_oleh`) VALUES
 (157, '0', 'RONI', 'DEDI'),
-(159, '1', 'Roni', 'Dedi');
+(160, '1', 'JUMAS', 'SANDI'),
+(161, '2', 'DEDI', 'JUMAS');
 
 -- --------------------------------------------------------
 
@@ -206,7 +217,8 @@ CREATE TABLE `record_number` (
 
 INSERT INTO `record_number` (`record_number`, `project_id`) VALUES
 (226, '0'),
-(228, '1');
+(229, '1'),
+(230, '2');
 
 -- --------------------------------------------------------
 
@@ -250,6 +262,12 @@ ALTER TABLE `customer_fpps`
   ADD PRIMARY KEY (`id_customer_fpps`);
 
 --
+-- Indexes for table `data_penerimaan_sample`
+--
+ALTER TABLE `data_penerimaan_sample`
+  ADD PRIMARY KEY (`id_data_penerimaan_sample`);
+
+--
 -- Indexes for table `jenis_sample`
 --
 ALTER TABLE `jenis_sample`
@@ -266,12 +284,6 @@ ALTER TABLE `kaji_ulang_permintaan`
 --
 ALTER TABLE `parameter_penyakit`
   ADD PRIMARY KEY (`id_parameter`);
-
---
--- Indexes for table `penerimaan_sample`
---
-ALTER TABLE `penerimaan_sample`
-  ADD PRIMARY KEY (`id_penerimaan_sample`);
 
 --
 -- Indexes for table `penjelasan_penerimaan_fpps`
@@ -304,37 +316,37 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_fpps`
 --
 ALTER TABLE `customer_fpps`
-  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
+  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
+--
+-- AUTO_INCREMENT for table `data_penerimaan_sample`
+--
+ALTER TABLE `data_penerimaan_sample`
+  MODIFY `id_data_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jenis_sample`
 --
 ALTER TABLE `jenis_sample`
-  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
 --
 -- AUTO_INCREMENT for table `kaji_ulang_permintaan`
 --
 ALTER TABLE `kaji_ulang_permintaan`
-  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 --
 -- AUTO_INCREMENT for table `parameter_penyakit`
 --
 ALTER TABLE `parameter_penyakit`
-  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
---
--- AUTO_INCREMENT for table `penerimaan_sample`
---
-ALTER TABLE `penerimaan_sample`
-  MODIFY `id_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 --
 -- AUTO_INCREMENT for table `penjelasan_penerimaan_fpps`
 --
 ALTER TABLE `penjelasan_penerimaan_fpps`
-  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 --
 -- AUTO_INCREMENT for table `record_number`
 --
 ALTER TABLE `record_number`
-  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 --
 -- AUTO_INCREMENT for table `user`
 --
