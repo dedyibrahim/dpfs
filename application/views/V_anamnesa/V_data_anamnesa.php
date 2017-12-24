@@ -3,14 +3,11 @@
     <div class="x_title">
   
  <!--------- end input customer--------------->     
-     
- <form action="http://localhost/mamuju/C_fpps/simpan_fpps" method="post" enctype="multipart/formdata">
     <h2>DATA TABEL ANAMNESA</h2>
         <ul class="nav navbar-right panel_toolbox">
                 </li>
                     </ul>              
 <div class="clearfix"></div>
- </form>
      </div> 
  <div class="col-md-12">
    <script type="text/javascript" language="javascript" src="<?php echo base_url('assets/');?>vendors/datatables/datatables/media/js/jquery.js"></script>
@@ -32,7 +29,7 @@
                 var t = $("#mytable").dataTable({
                     initComplete: function() {
                         var api = this.api();
-                        $('#mytable_filter input')
+                        $('#mytable')
                                 .off('.DT')
                                 .on('keyup.DT', function(e) {
                                     if (e.keyCode == 13) {
@@ -52,16 +49,17 @@
                             "orderable": false
                         },
                         {"data": "record"},
-                        {"data": "nama"},
-                        {"data": "telpon"},
                         {"data": "tgl_terima"},
-                        {"data": "sample"},
                         {"data": "no_antrian"},
-                        {"data": "virus"},
-                        {"data": "jamur"},
+                        {"data": "sample"},
+                        {"data": "jml_sample"},
+                        {"data": "kode"},
+                        {"data": "nama"},
                         {"data": "bakteri"},
-                        {"data": "logam"},
                         {"data": "parasit"},
+                        {"data": "jamur"},
+                        {"data": "virus"},
+                        {"data": "logam"},
                         {"data": "view"}
                         
                         
@@ -84,6 +82,7 @@
      <table id="mytable" class="table table-striped table-bordered dataTable" align="center" role="grid" aria-describedby="datatable-fixed-header_info"><thead>
        <tr role="row">
            <th class="sorting_asc"   aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">No</th>
+<<<<<<< HEAD
            <th class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 60px;" aria-label="Name: activate to sort column descending">RECORD</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">NAMA</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">TELEPON</th>
@@ -96,6 +95,21 @@
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">KUALITAS AIR</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">LOGAM BERAT</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">ACTION</th>
+=======
+           <th class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 60px;" aria-label="Name: activate to sort column descending">Record</th>
+           <th class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 60px;" aria-label="Name: activate to sort column descending">Tgl.terima</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">No.urut</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Jenis</th>
+           <th class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Name: activate to sort column descending" >Jumlah</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">contoh_uji</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">pemilik</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Bakteri</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Parasit</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">jamur</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Virus</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Logam</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Action</th>
+>>>>>>> 155f9cdfa597dd3c4a7ecc6f14bc32113432dcba
          </thead>
         <tbody>
         </table>

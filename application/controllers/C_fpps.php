@@ -224,7 +224,6 @@ public function hapus_fpps(){
  }
  
  public function cetak_fpps(){
- $this->load->view('V_fpps/umum/V_header');
                 
 $this->load->library('Mypdf');
 
