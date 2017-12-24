@@ -87,7 +87,7 @@ class C_anamnesa extends CI_Controller {
                );
             $this->db->insert('penerimaan_sample',$simpan_penerimaan_sample);
             
-            redirect('C_anamnesa/insert');
+            redirect('C_anamnesa');
         }elseif($gaada = !null) {
         
             $update_penerimaan_sample = array(
@@ -103,7 +103,7 @@ class C_anamnesa extends CI_Controller {
            );
             $this->db->where('record_number_penerimaan_sample', $cek_record);
             $this->db->update('penerimaan_sample',$update_penerimaan_sample);
-           redirect('C_anamnesa/update');
+           redirect('C_anamnesa');
            
         
         }else{
