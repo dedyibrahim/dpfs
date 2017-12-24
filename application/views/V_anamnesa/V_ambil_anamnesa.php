@@ -70,9 +70,7 @@ foreach ($sample->result_array() as $_sample){
                <label>
                    <input value="1" name="logam_penerimaan_sample" type="checkbox"> Logam berat<br>
                 </label>
-        <label>
-            <input type="text" name="other_penerimaan_sample" class="form-control" placeholder="Lainnya"></label>
-     </div>
+       </div>
     </div>    
        
  </div>

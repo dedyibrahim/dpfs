@@ -55,8 +55,6 @@
                <label>
                    <input value="VNN" name="jenis_penyakit[]" type="checkbox"> Logam berat<br>
                 </label>
-        <label>
-            <input type="text" class="form-control" placeholder="Lainnya"></label>
      </div>
     </div>    
        
