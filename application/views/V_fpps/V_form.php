@@ -139,12 +139,20 @@
     <div class="x_panel">
 
     <div class="col-md-6">
-      <div class="input-group">
+        
+     <div class="col-xs-6">
+       <div class="form-group  has-feedback">
           <input class="form-control" id="data_sample"  placeholder="Jenis Sample" name="data_sample" type="text">
-              <span class="input-group-btn">
-                 <button type="button" id="" class="btn btn-primary"><span class="fa fa-plus"></span></button>
-               </span>
-        </div>
+        <span class="fa fa-book form-control-feedback"></span>
+      </div>
+     </div>
+        
+     <div class="col-xs-6">
+       <div class="form-group  has-feedback">
+          <input class="form-control"  id="wadah" name="wadah" placeholder="wadah" type="text">
+        <span class="fa fa-book form-control-feedback"></span>
+      </div>
+     </div>
         
      <div class="col-xs-6">
        <div class="form-group  has-feedback">
@@ -257,127 +265,40 @@
     
  <div class="radio">
      <h4>Parameter penyakit</h4>
-     <div class="col-md-1">
-     <h4></h4>
-       <div class="checkbox">
-                <label>
-                    <input value="Klinis" name="jenis_penyakit[]" type="checkbox"> Klinis<br>
-                </label>
-           <label>
-                    <input value="TSV" name="jenis_penyakit[]" type="checkbox"> TSV<br>
-                </label>
-                <label>
-                    <input value="IMNV" name="jenis_penyakit[]" type="checkbox"> IMNV<br>
-                </label>
-                <label>
-                    <input value="KHV" name="jenis_penyakit[]" type="checkbox"> KHV<br>
-                </label>
-                <label>
-                    <input value="VNN" name="jenis_penyakit[]" type="checkbox"> VNN<br>
-                </label>
-                <label>
-                    <input value="Iridoviru" name="jenis_penyakit[]" type="checkbox"> Iridoviru<br>
-                </label>
-                <label>
-                    <input value="Megalocity" name="jenis_penyakit[]" type="checkbox"> Megalocity <br>
-                </label>
-                <label>
-                    <input value="Wsspv" name="jenis_penyakit[]" type="checkbox"> Wsspv<br>
-                </label>
-                
-                          </div>    
-      </div> 
-     <div class="col-md-2">
-     <h4></h4>
+   <div class="col-md-2">
+     <div class="checkbox">
+      <label>
+            <input value="Virus" name="identifikasi_virus" type="checkbox">Virus
+      </label>
+     </div>    
+   </div> 
      
-     <div class="checkbox" style="line-height: 10px; " >
-                <label>
-                    <input value="" id="bakteri" type="radio"> Identifikasi Bakteri
-                </label>
-           <div id="show_bakteri" style="display:none;">
-               <label>
-                    <input value="BAKTERI HPI / HPIK" name="bakteri[]" type="checkbox"> BAKTERI HPI / HPIK
-                </label>
-                <label>
-                    <input value="E.Coli" name="bakteri[]" type="checkbox"> E.Coli
-                </label><br>
-                <label>
-                    <input value="Salmonelia" name="bakteri[]" type="checkbox"> Salmonelia
-                </label><br>
-                <label>
-                    <input value="TPC" name="bakteri[]" type="checkbox"> TPC
-                </label>
-               
-           </div>    
-          </div>    
-      </div> 
-     <div class="col-md-2">
-     <h4></h4>
+  <div class="col-md-2">
+    <div class="checkbox">
+        <label>
+            <input value="Bakteri" name="identifikasi_bakteri" type="checkbox">Bakteri
+        </label>
+        </div>   
+     </div> 
+     
+    <div class="col-md-2">
        <div class="checkbox">
                 <label>
-                    <input value="Identifikasi parasit" name="identifikasi_parasit[]" type="checkbox"> Identifikasi Parasit
+                    <input value="Parasit" name="identifikasi_parasit" type="checkbox">Parasit
                 </label>
-           <label>
-                    <input value="identifikasi Jamur" name="identifikasi_parasit[]" type="checkbox"> Identifikasi Jamur
-                </label>
-                
-                
-                          </div>    
+         </div>    
       </div> 
-      <div class="col-md-2">
-     <h4></h4>
+    <div class="col-md-2">
        <div class="checkbox">
                 <label>
-                    <input value="" id="logam" type="radio"> Logam Berat (AAS)
-                </label><br>
-                <div id="show_logam" style="display:none;">
-           
-           <label>
-                    <input value="HG" name="logam_berat[]" type="checkbox"> HG
-                </label><br>
-            <label>
-                    <input value="PB" name="logam_berat[]" type="checkbox"> PB
-                </label><br>
-            <label>
-                    <input value="CD" name="logam_berat[]" type="checkbox"> CD
-                </label><br>
-                
-                 <label>
-                    <input value="other" name="logam_berat[]" type="checkbox"> ...
+                    <input value="Logam" name="identifikasi_logam" type="checkbox"> Logam Berat
                 </label>
-                </div>
+         </div>
        </div>    
-      </div> 
+      
+ </div> 
      
-     <!-----pengujian sub kontrak---->
-     <div class="col-md-5">
-         <h4>Untuk pengujian yang di subkontrakan </h4>
-         <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control"  id="nama_lab_subkontrak" name="nama_lab_subkontrak" placeholder="Nama lab" type="text">
-        <span class="fa fa-pencil form-control-feedback"></span>
-      </div>
-     </div>
-        
-     <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control"  id="parameter_penyakit_ikan" name="parameter_penyakit_ikan" placeholder="Parameter penyakit" type="text">
-        <span class="fa fa-pencil form-control-feedback"></span>
-      </div>
-     </div>
-         <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control"  id="kesimpulan" name="kesimpulan" placeholder="Kesimpulan" type="text">
-        <span class="fa fa-pencil form-control-feedback"></span>
-      </div>
-     </div>
-         
-     </div>
-    
 </div>
-</div>
-
-
 <!--------------jenis sample ---------------->
 <div class="x_panel">
         <div class="x_content">

@@ -108,6 +108,7 @@ class C_fpps extends CI_Controller {
             'berat_isi'             => $this->input->post('berat_isi'),
             'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
             'tgl_sampling'          => $this->input->post('tgl_sampling'),
+            'wadah'                 => $this->input->post('wadah'),
         );
          
         $this->db->insert('jenis_sample',$jenis_sample); 
@@ -124,15 +125,8 @@ class C_fpps extends CI_Controller {
          
         $this->db->insert('kaji_ulang_permintaan',$kaji_ulang_permintaan);
         
-          $penguji_subkontrak = array(
-            'record_number_penguji_subkontrak' => $this->input->post('record_number'),
-            'nama_lab_subkontrak'              => $this->input->post('nama_lab_subkontrak'),
-            'kesimpulan'                       => $this->input->post('kesimpulan'),
-            'parameter_penyakit_ikan'          => $this->input->post('parameter_penyakit_ikan'),
-           
-        );
          
-        $this->db->insert('penguji_subkontrak',$penguji_subkontrak);
+         
         
         $penjelasan_penerimaan_fpps = array(
             'record_number_penjelasan'             => $this->input->post('record_number'),
@@ -142,14 +136,18 @@ class C_fpps extends CI_Controller {
         );
          
         $this->db->insert('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps);
-        
-    $jenis_penyakit          = $this->input->post('jenis_penyakit');
-    $bakteri                 = $this->input->post('bakteri');
-    $identifikasi_parasit    = $this->input->post('identifikasi_parasit');
-    $logam_berat             = $this->input->post('logam_berat');
-    $record_number_parameter = $this->input->post('record_number');
+   
+    $parameter_penyakit = array(
+    'identifikasi_virus'          => !empty($this->input->post('identifikasi_virus'))?$this->input->post('identifikasi_virus'):'&nbsp;',
+    'identifikasi_bakteri'        => !empty($this->input->post('identifikasi_bakteri'))?$this->input->post('identifikasi_bakteri'):'&nbsp;',
+    'identifikasi_parasit'       =>  !empty($this->input->post('identifikasi_parasit'))?$this->input->post('identifikasi_parasit'):'&nbsp;',
+    'identifikasi_logam'          => !empty($this->input->post('identifikasi_logam'))?$this->input->post('identifikasi_logam'):'&nbsp;',
+    'record_number_parameter'     => $this->input->post('record_number'),
+     );
+         
+        $this->db->insert('parameter_penyakit',$parameter_penyakit);
     
-    $i =0;
+    /*$i =0;
     
     foreach ($jenis_penyakit as $jenis){
     
@@ -173,7 +171,7 @@ class C_fpps extends CI_Controller {
             ));
        $i++;
         
-    }
+    }*/
      
     
       redirect('C_fpps/daftar_fpps');
@@ -210,7 +208,6 @@ public function hapus_fpps(){
     $this->db->delete('customer_fpps',['record_number_customer'=>$hapus]);
     $this->db->delete('jenis_sample',['record_number_sample'=>$hapus]);
     $this->db->delete('kaji_ulang_permintaan',['record_number_kaji_ulang'=>$hapus]);
-    $this->db->delete('penguji_subkontrak',['record_number_penguji_subkontrak'=>$hapus]);
     $this->db->delete('penjelasan_penerimaan_fpps',['record_number_penjelasan'=>$hapus]);
     $this->db->delete('parameter_penyakit',['record_number_parameter'=>$hapus]);
     
@@ -260,9 +257,26 @@ Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
 Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
 Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
-Dalam bentuuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
+Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
+Wadah &nbsp;&nbsp;: {wadah}<br>
 Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
-Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br></div>';
+Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+Untuk dilakukan pengujian sebagai berikut : <br>
+
+<table cellpadding="1"  style="clear: both; " nobr="true">
+<tr style="background-color: #0073ea; ">
+  <td colspan="4"  border="1px;" align="center">PARAMETER TERPILIH</td>
+ </tr>
+ <tr>
+  <td border="1px;" align="center">{identifikasi_parasit}</td>
+  <td border="1px;" align="center">{identifikasi_bakteri}</td>
+  <td border="1px;" align="center">{identifikasi_logam}</td>
+  <td border="1px;" align="center">{identifikasi_virus}</td>
+ </tr>
+   
+</table>
+
+</div>';
 
 $html.= <<<EOD
 <table cellpadding="2" class="table-striped" style="clear: both;
@@ -315,18 +329,10 @@ border: 1px solid #ddd;" nobr="true">
    </table>
         
 EOD;
-//$html.= "<p align ='left'>{nama_lab_subkontrak}</p>";
-//$html.= "<p align ='left'>{kesimpulan}</p>";
-//$html.= "<p align ='left'>{parameter_penyakit_ikan}</p>";
-//$html.= "<p align ='left'>{diberikan_oleh}</p>";
 
 $html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
 
 $html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diberikan_oleh}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diterima_oleh},<br>';
-
-
-//$html.= "<p align ='left'>{alamat}</p>";
-//$html.= "<p align ='left'>{telp}</p>";
 
 
 $ambil = $this->uri->segment(3);    
@@ -336,7 +342,7 @@ $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
-$this->db->join('penguji_subkontrak','record_number_penguji_subkontrak = record_number_customer');
+$this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
     
 $query = $this->db->get();
@@ -358,13 +364,17 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{kondisi_akomodasi}',$cetak['kondisi_akomodasi'],$html);
      $html = str_replace('{beban_pekerjaan}',$cetak['beban_pekerjaan'],$html);
      $html = str_replace('{kondisi_peralatan}',$cetak['kondisi_peralatan'],$html);
+     $html = str_replace('{wadah}',$cetak['wadah'],$html);
      $html = str_replace('{kesesuaian_metode}',$cetak['kesesuaian_metode'],$html);
      $html = str_replace('{kesesuaian_biaya}',$cetak['kesesuaian_biaya'],$html);
-     $html = str_replace('{nama_lab_subkontrak}',$cetak['nama_lab_subkontrak'],$html);
-     $html = str_replace('{kesimpulan}',$cetak['kesimpulan'],$html);
-     $html = str_replace('{parameter_penyakit_ikan}',$cetak['parameter_penyakit_ikan'],$html);
      $html = str_replace('{diberikan_oleh}',$cetak['diberikan_oleh'],$html);
      $html = str_replace('{diterima_oleh}',$cetak['diterima_oleh'],$html);
+     $html = str_replace('{identifikasi_bakteri}',$cetak['identifikasi_bakteri'],$html);
+     $html = str_replace('{identifikasi_parasit}',$cetak['identifikasi_parasit'],$html);
+     $html = str_replace('{identifikasi_virus}',$cetak['identifikasi_virus'],$html);
+     $html = str_replace('{identifikasi_logam}',$cetak['identifikasi_logam'],$html);
+
+     
 }
 foreach ($data_customer->result_array() as $data_cs){
      $html = str_replace('{nama_customer}',$data_cs['nama_customer'],$html);
@@ -401,6 +411,7 @@ if(isset($_POST['btn_fpps'])){
             'berat_isi'             => $this->input->post('berat_isi'),
             'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
             'tgl_sampling'          => $this->input->post('tgl_sampling'),
+            'wadah'                 => $this->input->post('wadah'),
         );
          
         $this->db->update('jenis_sample',$jenis_sample, array('record_number_sample' => $id)); 
@@ -417,16 +428,6 @@ if(isset($_POST['btn_fpps'])){
          
         $this->db->update('kaji_ulang_permintaan',$kaji_ulang_permintaan, array('record_number_kaji_ulang' => $id));
         
-          $penguji_subkontrak = array(
-            'record_number_penguji_subkontrak' => $this->input->post('record_number'),
-            'nama_lab_subkontrak'              => $this->input->post('nama_lab_subkontrak'),
-            'kesimpulan'                       => $this->input->post('kesimpulan'),
-            'parameter_penyakit_ikan'          => $this->input->post('parameter_penyakit_ikan'),
-           
-        );
-         
-        $this->db->update('penguji_subkontrak',$penguji_subkontrak, array('record_number_penguji_subkontrak' => $id));
-        
         $penjelasan_penerimaan_fpps = array(
             'record_number_penjelasan'             => $this->input->post('record_number'),
             'diberikan_oleh'                       => $this->input->post('diberikan_oleh'),
@@ -435,40 +436,19 @@ if(isset($_POST['btn_fpps'])){
         );
          
         $this->db->update('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps, array('record_number_penjelasan' => $id));
-        
-    $jenis_penyakit          = $this->input->post('jenis_penyakit');
-    $bakteri                 = $this->input->post('bakteri');
-    $identifikasi_parasit    = $this->input->post('identifikasi_parasit');
-    $logam_berat             = $this->input->post('logam_berat');
-    $record_number_parameter = $this->input->post('record_number');
-    
-    /*$i =0;
-    
-    foreach ($jenis_penyakit as $jenis){
-    
-        $this->db->update('parameter_penyakit', 
-            array(
-                'jenis_penyakit'=>$jenis,
-                
-                'record_number_parameter'=>($record_number_parameter),
-                
-                'identifikasi_bakteri'=>(
-                !empty($bakteri[$i])? $bakteri[$i]:!NULL),
-                
-                'identifikasi_parasit'=>(
-                !empty($identifikasi_parasit[$i])? $identifikasi_parasit[$i]:!NULL),
-               
-                'logam_berat'=>(
-                !empty($logam_berat[$i])? $logam_berat[$i]:!NULL)
-               
-            
-            
-            ),array('record_number_parameter' => $id));
-       $i++;
-   }
-      */  
+   
+    $parameter_penyakit = array(
+    'identifikasi_virus'          => !empty($this->input->post('identifikasi_virus'))?$this->input->post('identifikasi_virus'):'&nbsp;',
+    'identifikasi_bakteri'        => !empty($this->input->post('identifikasi_bakteri'))?$this->input->post('identifikasi_bakteri'):'&nbsp;',
+    'identifikasi_parasit'       =>  !empty($this->input->post('identifikasi_parasit'))?$this->input->post('identifikasi_parasit'):'&nbsp;',
+    'identifikasi_logam'          => !empty($this->input->post('identifikasi_logam'))?$this->input->post('identifikasi_logam'):'&nbsp;',
+    'record_number_parameter'     => $this->input->post('record_number'),
+        );
+         
+        $this->db->update('parameter_penyakit',$parameter_penyakit ,array('record_number_parameter' => $id));
   
-      redirect('C_fpps/edit/'.$this->uri->segment(3));
+    
+       redirect('C_fpps/edit/'.$this->uri->segment(3));
       }else{
       
 $ambil = $this->uri->segment(3);    
@@ -478,7 +458,6 @@ $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
-$this->db->join('penguji_subkontrak','record_number_penguji_subkontrak = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
 $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $query = $this->db->get();
