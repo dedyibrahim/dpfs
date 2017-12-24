@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <form action="<?php echo base_url('C_anamnesa')?>" method="post" enctype="multipart/formdata">
-    <h2>Form Informasi Kegiatan Anamnesa</h2>
+    <h2>Informasi Kegiatan Anamnesa</h2>
         <ul class="nav navbar-right panel_toolbox">
            <li><input class="form-control"  readonly="" name="record_number" placeholder="record number" type="text">
                 </li>
