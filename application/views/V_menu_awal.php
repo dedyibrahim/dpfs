@@ -94,23 +94,7 @@ if($level == 'admin' || $level == 'user')
                           
                         </div>
                 </div>
-           <div class="col-md-3 col-sm-3">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="<?php echo base_url('assets'); ?>/images/media4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>KIMIA</p>
-                              <div class="tools tools-bottom">
-                                <a href="<?php echo base_url('C_lab_kimia'); ?>"><i class="fa fa-link"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                            <div class="caption">
-                                <h5 align="center">LAB KIMIA</h5>
-                          </div>
-                          
-                        </div>
-                </div>
+          
           <div class="col-md-pull-11">
                <div class="col-sm-3">
                         <div class="thumbnail">
