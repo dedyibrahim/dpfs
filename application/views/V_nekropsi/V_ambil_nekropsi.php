@@ -14,7 +14,7 @@ foreach ($data_customer->result_array() as $customer){
  <div class="x_content">
     <div class="x_title">
   
- <form action="<?php echo base_url('C_anamnesa')?>" method="post" enctype="multipart/formdata">
+ <form action="<?php echo base_url('C_nekropsi/simpan')?>" method="post" enctype="multipart/formdata">
     <h2>Buku Nekropsi</h2>
         <ul class="nav navbar-right panel_toolbox">
                     </ul>              
@@ -23,45 +23,59 @@ foreach ($data_customer->result_array() as $customer){
 <div class="col-md-6">
        
      <div class="form-group">
-         <label>No Record</label>
-         <input readonly="" type="text" value ="" class="form-control" placeholder="No.record">
+         <label>No.Record</label>
+         <input readonly="" name="record_number" type="text" value ="<?php echo $data['record_number_customer'];?>" class="form-control" placeholder="No.record">
      </div>
        
-      <div class="input-group date" id="datetimepicker6">
+      <div class="form-group" >
           <label>tanggal kegiatan</label>
-          <input readonly="" class="form-control" type="text" name="tgl_sampling" placeholder="Tanggal Kegiatan">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+          <input readonly="" value ="<?php echo $data['tgl_sampling'];?>" class="form-control" type="text" placeholder="Tanggal Kegiatan">
+         
        </div>
      
      <div class="form-group">
          <label>Kode Sample</label>
-         <input readonly="" type="text" class="form-control" placeholder="Kode Sample">
+         <input readonly="" value ="<?php echo $data['kode_sample'];?>" type="text" class="form-control" placeholder="Kode Sample">
      </div>
     <div class="form-group">
          <label>Gejala Klinis</label>
-         <input readonly="" type="text" class="form-control" placeholder="Gejala Klinis">
+         <input readonly="" value ="<?php echo $data['gejala_klinis'];?>" type="text" class="form-control" placeholder="Gejala Klinis">
      </div>
 </div>
    <div class="col-md-6">  
      <div class="form-group">
-        <label>UKURAN</label>
-        <input type="text" class="form-control" placeholder="Panjang"><br>
-         <input type="text" class="form-control" placeholder="Berat">
+        <label>Ukuran</label>
+        <input type="text" value ="<?php echo $data['panjang'];?>" name="panjang" class="form-control" placeholder="Panjang"><br>
+        <input type="text" value ="<?php echo $data['berat'];?>"  name="berat"  class="form-control" placeholder="Berat">
        </div>
     
  <div class="form-group">
         <label>Organ Target</label>
-        <input type="text" class="form-control" placeholder="Parasit"><br>
-        <input type="text" class="form-control" placeholder="Bakteri"><br>
-        <input type="text" class="form-control" placeholder="Jamur"><br>
-        <input type="text" class="form-control" placeholder="Virus"><br>
+        <input type="text" value ="<?php echo $data['nekropsi_parasit'];?>" name="nekropsi_parasit" class="form-control" placeholder="Parasit"><br>
+        <input type="text" value ="<?php echo $data['nekropsi_bakteri'];?>" name="nekropsi_bakteri" class="form-control" placeholder="Bakteri"><br>
+        <input type="text" value ="<?php echo $data['nekropsi_jamur'];?>" name="nekropsi_jamur" class="form-control" placeholder="Jamur"><br>
+        <input type="text" value ="<?php echo $data['nekropsi_virus'];?>" name="nekropsi_virus"class="form-control" placeholder="Virus">
        </div>
     
     <div class="form-group">
         <label>Analis</label>
-         <input type="text" class="form-control" placeholder="Analis">
+        <input type="text" value ="<?php echo $data['analis_nekropsi'];?>" name="analis_nekropsi" class="form-control" placeholder="Analis">
        </div>
       </div>
     </div>
+    
+</div>
+<div class="x_panel">
+        <div class="x_content">
+           <div class="col-xs-2 ">
+               <a href="<?php echo base_url('C_anamnesa');?>"><button type="reset" class="btn btn-warning btn-block btn-flat">Batal</button></a>
+          </div>
+     
+          <div class="col-xs-2 pull-right">
+              <button type="submit" name="btn_anamnesa" class="btn btn-primary btn-block btn-flat">Simpan</button>
+            </form>
+          </div>
+        </div>
+</form>
+ 
+</div>

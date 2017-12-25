@@ -34,17 +34,14 @@ class C_nekropsi extends CI_Controller {
     
      }
      public function ambil_data(){
-            $ambil = $this->uri->segment(3);
             $ambil = $this->uri->segment(3);    
             $this->db->select('*');
             $this->db->from('customer_fpps');
             $this->db->where('record_number_customer',$ambil);
             $this->db->join('jenis_sample','record_number_sample = record_number_customer');
             $this->db->join('record_number','project_id = record_number_customer');
-            $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
-            $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
-            $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
             $this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
+            $this->db->join('data_nekropsi','record_number_nekropsi = record_number_customer','left');
             $query = $this->db->get();
            
             foreach($query->result_array() as $cetak);{
@@ -61,4 +58,58 @@ class C_nekropsi extends CI_Controller {
             $this->load->view('V_nekropsi/V_data_nekropsi');
             $this->load->view('V_nekropsi/umum/V_footer');   
         }
+        
+        
+        public function simpan (){
+       $cek_record = $this->input->post('record_number');
+        
+       $cek= $this->db->get_where('data_nekropsi',['record_number_nekropsi'=>$cek_record]);
+    
+       foreach ($cek->result_array() as $hasil_cek){
+        
+         $cek_kosong = $hasil_cek['record_number_nekropsi'];
+        }
+       
+        $gaada = $cek_kosong;
+        
+    if(isset($_POST['btn_anamnesa']) &&  $cek_kosong == null){
+        
+            $simpan_nekropsi = array(
+            'record_number_nekropsi'        => $this->input->post('record_number'),
+            'panjang'                       => $this->input->post('panjang'),
+            'berat'                         => $this->input->post('berat'),
+            'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
+            'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
+            'nekropsi_jamur'                => $this->input->post('nekropsi_jamur'),
+            'nekropsi_virus'                => $this->input->post('nekropsi_virus'),
+            'analis_nekropsi'                => $this->input->post('analis_nekropsi'),
+            );
+            $this->db->insert('data_nekropsi',$simpan_nekropsi);
+            
+            redirect('C_nekropsi');
+    }elseif($gaada = !null) {
+        
+            $update_nekropsi = array(
+            'record_number_nekropsi'        => $this->input->post('record_number'),
+            'panjang'                       => $this->input->post('panjang'),
+            'berat'                         => $this->input->post('berat'),
+            'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
+            'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
+            'nekropsi_jamur'                => $this->input->post('nekropsi_jamur'),
+            'nekropsi_virus'                => $this->input->post('nekropsi_virus'),
+             'analis_nekropsi'                => $this->input->post('analis_nekropsi'),
+            );
+            $this->db->where('record_number_nekropsi', $cek_record);
+            $this->db->update('data_nekropsi',$update_nekropsi);
+           redirect('C_nekropsi');
+           
+        
+        }else{
+            
+            echo 'gagal menginsert dan update data' ;
+      
+        }
+            
+            echo print_r($_POST);
+    }
 }

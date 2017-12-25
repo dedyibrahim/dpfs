@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <!--------- end input customer--------------->     
-    <h2>DATA TABEL NEKROPSI</h2>
+    <h2>DATA TABEL ANAMNESA</h2>
         <ul class="nav navbar-right panel_toolbox">
                 </li>
                     </ul>              
@@ -42,7 +42,7 @@
                     },
                     processing: true,
                     serverSide: true,
-                    ajax: {"url": "<?php echo base_url('C_nekropsi/json') ?> ", "type": "POST"},
+                    ajax: {"url": "<?php echo base_url('C_anamnesa/json') ?> ", "type": "POST"},
                     columns: [
                         {
                             "data": "record_number_customer",
@@ -84,10 +84,10 @@
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Jenis</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">pemilik</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Kode sampel</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Bakteri</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Parasit</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Virus</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending"> Organ Jamur</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Bakteri</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Parasit</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Virus</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Logam</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Action</th>
          </thead>
         <tbody>

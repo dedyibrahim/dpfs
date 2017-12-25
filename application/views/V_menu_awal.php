@@ -163,6 +163,22 @@ if($level == 'admin' || $level == 'user')
                           </div>
                         </div>
                    </div>
+               <div class="col-md-3 col-sm-3">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="<?php echo base_url('assets'); ?>/images/media8.jpg" alt="image" />
+                            <div class="mask">
+                              <p>DISTRIBUSI</p>
+                              <div class="tools tools-bottom">
+                                <a href="<?php echo base_url('C_distribusi'); ?>"><i class="fa fa-link"></i></a>
+                              </div>
+                            </div>
+                          </div>
+                            <div class="caption">
+                                <h5 align="center">DATA DISTRIBUSI</h5>
+                          </div>
+                        </div>
+                   </div>
               
         
     <!-- jQuery -->
