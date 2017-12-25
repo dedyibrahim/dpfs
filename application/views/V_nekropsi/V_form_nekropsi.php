@@ -55,43 +55,9 @@
            <label>Jumlah sample</label>
          <input readonly="" type="text" value ="" class="form-control" placeholder="Jumlah Sample">
        </div>
-  
 </div>
-     <!------ asal sample------------>    
-     <div class="col-md-6">
-         <label>Bentuk sample</label>
-        <div class="form-group">
-            <input readonly="" type="text"  name="bentuk_sample" class="form-control" placeholder="bentuk sample"> 
-        </div>
-        <div class="form-group">
-            <label>Kode sample</label>
-           <input readonly="" type="text" class="form-control" placeholder="Kode Sampel">
-        </div>
-       <div class="form-group">
-           <label>Gejala klinis</label>
-         <input readonly="" type="text" class="form-control" placeholder="Gejala Klinis">
-        </div>
-      
-        <div class="form-group">
-            <label>keterangan lain-lain</label>
-           <textarea readonly="" class="form-control" placeholder="Keterangan lain-lain"></textarea>
-        </div>
-         
-         <div class="form-group">
-           <label>Pelaksana_sampling 1</label>
-         <input readonly="" type="text" class="form-control" placeholder="Pelaksana sampling 1">
-        </div> 
-         
-         <div class="form-group">
-           <label>Pelaksana sampling 2</label>
-         <input readonly="" type="text" class="form-control" placeholder="Pelaksana sampling 2">
-        </div> 
-     </div>
-        
          
    </div>
-     
-  
 </form>
  
 </div>

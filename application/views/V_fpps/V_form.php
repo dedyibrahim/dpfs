@@ -3,7 +3,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#modal1").click(function(){
-          $("#modal-info").show();
+        $("#modal-info").slideToggle("slow");
         });
    
     });
@@ -11,7 +11,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#close").click(function(){
-          $("#modal-info").hide();
+          $("#modal-info").slideToggle("slow");
         });
    
     });
@@ -35,7 +35,7 @@
     });
     </script>
     
-<div class="modal modal-info fade in" id="modal-info" style="display: block; display: none; ;">
+<div class="modal modal-info fade in" id="modal-info" style="display: block; display: none;  ">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">

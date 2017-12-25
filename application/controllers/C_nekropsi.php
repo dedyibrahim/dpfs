@@ -13,7 +13,6 @@ class C_nekropsi extends CI_Controller {
         $this->load->database();
         $this->load->helper('html');
         $this->load->helper('url');
-        
         $this->load->library('datatables');
         $this->load->model('Data_anamnesa');
         
