@@ -84,7 +84,7 @@ if($level == 'admin' || $level == 'user')
                             <div class="mask">
                               <p>NEKROPSI</p>
                               <div class="tools tools-bottom">
-                                <a href="<?php echo base_url('C_lab_nekropsi'); ?>"><i class="fa fa-link"></i></a>
+                                <a href="<?php echo base_url('C_nekropsi'); ?>"><i class="fa fa-link"></i></a>
                               </div>
                             </div>
                           </div>

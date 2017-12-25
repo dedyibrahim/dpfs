@@ -87,6 +87,8 @@ class C_anamnesa extends CI_Controller {
             'kode_sample'                             => $this->input->post('kode_sample'),
             'gejala_klinis'                           => $this->input->post('gejala_klinis'),
             'keterangan_lain_lain'                    => $this->input->post('keterangan_lain_lain'),
+            'pelaksana1'                             => $this->input->post('pelaksana1'),
+            'pelaksana2'                               => $this->input->post('pelaksana2'),
             );
             $this->db->insert('data_penerimaan_sample',$simpan_penerimaan_sample);
             
@@ -101,6 +103,8 @@ class C_anamnesa extends CI_Controller {
             'kode_sample'                             => $this->input->post('kode_sample'),
             'gejala_klinis'                           => $this->input->post('gejala_klinis'),
             'keterangan_lain_lain'                    => $this->input->post('keterangan_lain_lain'),
+            'pelaksana1'                             => $this->input->post('pelaksana1'),
+            'pelaksana2'                               => $this->input->post('pelaksana2'),
             );
             $this->db->where('record_number_penerimaan_sample', $cek_record);
             $this->db->update('data_penerimaan_sample',$update_penerimaan_sample);
@@ -149,6 +153,7 @@ $html = '<span align="center" style="font-size: 15px;" ><u>INFORMASI ANAMNESA SA
 $html.='<div style="text-align:left; line-height: 25px;">
 Kegiatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {kegiatan}<br>
 Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+<<<<<<< HEAD
 Nama Pemilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
 lokasi sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {lokasi_sampling}<br>
 asal sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {asal_sample}<br>
@@ -159,14 +164,22 @@ kode sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 gejala klinis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {gejala_klinis}<br>
 
 keterangan lain_lain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {keterangan_lain_lain}<br>
+=======
+Kegiatan : {kegiatan}<br>
+lokasi sampling : {lokasi_sampling}<br>
+asal sample : {asal_sample}<br>
+kode sample : {kode_sample}<br>
+gejala klinis : {gejala_klinis}<br>
+keterangan lain_lain : {keterangan_lain_lain}<br>
+pelaksana1 : {pelaksana1}<br>
+pelaksana2 : {pelaksana2}<br>
+>>>>>>> 9077eec93ac010e32f3eeedc6c65be22059c9c39
 
 </div>';
 
 $html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
 
 $html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diberikan_oleh}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diterima_oleh},<br>';
-
-
 
 $ambil = $this->uri->segment(3);    
 $this->db->select('*');
@@ -175,8 +188,9 @@ $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
-$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer');
+$this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
+$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
     
 $query = $this->db->get();
 foreach($query->result_array() as $cetak);{
@@ -184,6 +198,7 @@ $id_customer = $cetak['id_customer_fpps_customer'];
 }
 $customer_id = $id_customer;
 $data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
+
 foreach($query->result_array() as $cetak);{
      $html = str_replace('{tahun}',date("Y"),$html);
      $html = str_replace('{data_sample}',$cetak['data_sample'],$html);
@@ -201,6 +216,8 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{kode_sample}',$cetak['kode_sample'],$html);
      $html = str_replace('{gejala_klinis}',$cetak['gejala_klinis'],$html);
      $html = str_replace('{keterangan_lain_lain}',$cetak['keterangan_lain_lain'],$html);
+     $html = str_replace('{pelaksana1}',$cetak['pelaksana1'],$html);
+     $html = str_replace('{pelaksana2}',$cetak['pelaksana2'],$html);
 
 }
 foreach ($data_customer->result_array() as $data_cs){
