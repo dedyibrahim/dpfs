@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <form action="<?php echo base_url('C_anamnesa')?>" method="post" enctype="multipart/formdata">
-    <h2>Buku Nekropsi</h2>
+    <h2>Pemeriksaan Jamur</h2>
         <ul class="nav navbar-right panel_toolbox">
                     </ul>              
 <div class="clearfix"></div>
@@ -28,26 +28,27 @@
          <input readonly="" type="text" class="form-control" placeholder="Kode Sample">
      </div>
     <div class="form-group">
-         <label>Gejala Klinis</label>
-         <input readonly="" type="text" class="form-control" placeholder="Gejala Klinis">
+         <label>Jenis Sample</label>
+         <input readonly="" type="text" class="form-control" placeholder="Jenis Sample">
      </div>
+    
 </div>
    <div class="col-md-6">  
      <div class="form-group">
-        <label>UKURAN</label>
-        <input type="text" class="form-control" placeholder="Panjang"><br>
-         <input type="text" class="form-control" placeholder="Berat">
+        <label>Organ Target Jamur</label>
+        <input type="text" class="form-control" placeholder="Organ Target">
        </div>
     
  <div class="form-group">
-        <label>Organ Target</label>
-        <input type="text" class="form-control" placeholder="Parasit"><br>
-        <input type="text" class="form-control" placeholder="Bakteri"><br>
-        <input type="text" class="form-control" placeholder="Jamur"><br>
-        <input type="text" class="form-control" placeholder="Virus"><br>
+        <label>Jamur Yang Di temukan</label>
+        <input type="text" class="form-control" placeholder="Jamur Yang ditemukan">
        </div>
     
     <div class="form-group">
+        <label>Jumlah Jamur</label>
+         <input type="text" class="form-control" placeholder="Jumlah Jamur">
+       </div>
+       <div class="form-group">
         <label>Analis</label>
          <input type="text" class="form-control" placeholder="Analis">
        </div>
