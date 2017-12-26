@@ -9,7 +9,6 @@ foreach ($data_customer->result_array() as $customer){
             
 }?>
 
-  
 <div class="x_panel">
  <div class="x_content">
     <div class="x_title">
@@ -26,7 +25,13 @@ foreach ($data_customer->result_array() as $customer){
          <label>No.Record</label>
          <input readonly="" name="record_number" type="text" value ="<?php echo $data['record_number_customer'];?>" class="form-control" placeholder="No.record">
      </div>
-       
+      
+    <div class="form-group" >
+          <label>Pemilik</label>
+          <input readonly="" value ="<?php echo $customer['nama_customer'];?>" class="form-control" type="text" placeholder="Tanggal Kegiatan">
+         
+       </div>
+     
       <div class="form-group" >
           <label>tanggal kegiatan</label>
           <input readonly="" value ="<?php echo $data['tgl_sampling'];?>" class="form-control" type="text" placeholder="Tanggal Kegiatan">
@@ -51,10 +56,10 @@ foreach ($data_customer->result_array() as $customer){
     
  <div class="form-group">
         <label>Organ Target</label>
-        <input type="text" value ="<?php echo $data['nekropsi_parasit'];?>" name="nekropsi_parasit" class="form-control" placeholder="Parasit"><br>
-        <input type="text" value ="<?php echo $data['nekropsi_bakteri'];?>" name="nekropsi_bakteri" class="form-control" placeholder="Bakteri"><br>
-        <input type="text" value ="<?php echo $data['nekropsi_jamur'];?>" name="nekropsi_jamur" class="form-control" placeholder="Jamur"><br>
-        <input type="text" value ="<?php echo $data['nekropsi_virus'];?>" name="nekropsi_virus"class="form-control" placeholder="Virus">
+        <input type="text" <?php if ($data['identifikasi_parasit']!= 'Parasit'){echo 'readonly=""';}else if($data['nekropsi_parasit']== null ){ echo "value=''";}else {echo "value=".$data['nekropsi_parasit'];};?> name="nekropsi_parasit" class="form-control" placeholder="Parasit"><br>
+        <input type="text" <?php if ($data['identifikasi_bakteri']!= 'Bakteri'){echo 'readonly=""';}else if($data['nekropsi_bakteri']== null ){ echo "value=''";}else {echo "value=".$data['nekropsi_bakteri'];};?> name="nekropsi_bakteri" class="form-control" placeholder="Bakteri"><br>
+        <input type="text" <?php if ($data['identifikasi_jamur']!= 'Jamur'){echo 'readonly=""';}else if($data['nekropsi_jamur']== null ){ echo "value=''";}else {echo "value=".$data['nekropsi_jamur'];};?>  name="nekropsi_jamur" class="form-control" placeholder="Jamur"><br>
+        <input type="text" <?php if ($data['identifikasi_virus']!= 'Virus'){echo 'readonly=""';}else if($data['nekropsi_virus']== null ){ echo "value=''";}else {echo "value=".$data['nekropsi_virus'];};?>  name="nekropsi_virus"class="form-control" placeholder="Virus">
        </div>
     
     <div class="form-group">

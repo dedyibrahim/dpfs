@@ -6,10 +6,7 @@ foreach ($query->result_array() as $customer){
 foreach ($data_customer->result_array() as $data_user){
 }
 ?>
-<?php echo $customer['identifikasi_bakteri'];?>
-<?php echo $customer['identifikasi_virus'];?>
-<?php echo $customer['identifikasi_logam'];?>
-<?php echo $customer['identifikasi_parasit'];?>
+
 <div class="x_panel">
 <div class="x_title">
   
@@ -207,7 +204,7 @@ foreach ($data_customer->result_array() as $data_user){
     <div class="col-md-2">
        <div class="checkbox">
                 <label>
-                    <input value="Logam" <?php if ( $customer['identifikasi_logam'] == 'Logam'){echo"checked=''";}else{};?> name="identifikasi_logam" type="checkbox"> Logam Berat
+                    <input value="Jamur" <?php if ( $customer['identifikasi_jamur'] == 'Jamur'){echo"checked=''";}else{};?> name="identifikasi_jamur" type="checkbox">Jamur
                 </label>
          </div>
        </div>    

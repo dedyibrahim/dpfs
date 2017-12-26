@@ -56,7 +56,7 @@
                         {"data": "bakteri"},
                         {"data": "parasit"},
                         {"data": "virus"},
-                        {"data": "logam"},
+                        {"data": "jamur"},
                         {"data": "view"}
                         
                         

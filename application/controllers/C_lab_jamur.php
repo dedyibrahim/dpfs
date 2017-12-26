@@ -14,7 +14,7 @@ class C_lab_jamur extends CI_Controller {
         $this->load->helper('html');
         $this->load->helper('url');
         $this->load->library('datatables');
-        $this->load->model('Data_nekropsi');
+        $this->load->model('Data_lab_jamur');
         
     }
   
@@ -28,5 +28,10 @@ class C_lab_jamur extends CI_Controller {
             $this->load->view('V_lab_jamur/umum/V_footer');
             
 	}
+     public function json() {
+        header('Content-Type: application/json');
+        echo $this->Data_lab_jamur->json();
+    
+}
   
 }

@@ -40,8 +40,13 @@ class C_nekropsi extends CI_Controller {
             $this->db->where('record_number_customer',$ambil);
             $this->db->join('jenis_sample','record_number_sample = record_number_customer');
             $this->db->join('record_number','project_id = record_number_customer');
+            $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
             $this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
             $this->db->join('data_nekropsi','record_number_nekropsi = record_number_customer','left');
+            $this->db->join('data_nekropsi_bakteri','record_number_bakteri = record_number_customer','left');
+            $this->db->join('data_nekropsi_virus','record_number_virus = record_number_customer','left');
+            $this->db->join('data_nekropsi_jamur','record_number_jamur = record_number_customer','left');
+            $this->db->join('data_nekropsi_parasit','record_number_parasit = record_number_customer','left');
             $query = $this->db->get();
            
             foreach($query->result_array() as $cetak);{
@@ -78,13 +83,33 @@ class C_nekropsi extends CI_Controller {
             'record_number_nekropsi'        => $this->input->post('record_number'),
             'panjang'                       => $this->input->post('panjang'),
             'berat'                         => $this->input->post('berat'),
-            'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
-            'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
-            'nekropsi_jamur'                => $this->input->post('nekropsi_jamur'),
-            'nekropsi_virus'                => $this->input->post('nekropsi_virus'),
             'analis_nekropsi'                => $this->input->post('analis_nekropsi'),
             );
             $this->db->insert('data_nekropsi',$simpan_nekropsi);
+           
+            $simpan_nekropsi_parasit = array(
+              'record_number_parasit'        => $this->input->post('record_number'),
+              'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
+            );
+            $this->db->insert('data_nekropsi_parasit',$simpan_nekropsi_parasit);
+            
+             $simpan_nekropsi_bakteri = array(
+                'record_number_bakteri'        => $this->input->post('record_number'),
+                 'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
+            );
+            $this->db->insert('data_nekropsi_bakteri',$simpan_nekropsi_bakteri);
+            
+             $simpan_nekropsi_jamur = array(
+                 'record_number_jamur'        => $this->input->post('record_number'),
+                 'nekropsi_jamur'              => $this->input->post('nekropsi_jamur'),
+            );
+            $this->db->insert('data_nekropsi_jamur',$simpan_nekropsi_jamur);
+            
+             $simpan_nekropsi_virus = array(
+                 'record_number_virus'        => $this->input->post('record_number'),
+                 'nekropsi_virus'              => $this->input->post('nekropsi_virus'),
+            );
+            $this->db->insert('data_nekropsi_virus',$simpan_nekropsi_virus);
             
             redirect('C_nekropsi');
     }elseif($gaada = !null) {
@@ -93,15 +118,42 @@ class C_nekropsi extends CI_Controller {
             'record_number_nekropsi'        => $this->input->post('record_number'),
             'panjang'                       => $this->input->post('panjang'),
             'berat'                         => $this->input->post('berat'),
-            'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
-            'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
-            'nekropsi_jamur'                => $this->input->post('nekropsi_jamur'),
-            'nekropsi_virus'                => $this->input->post('nekropsi_virus'),
-             'analis_nekropsi'                => $this->input->post('analis_nekropsi'),
+            'analis_nekropsi'                => $this->input->post('analis_nekropsi'),
             );
             $this->db->where('record_number_nekropsi', $cek_record);
             $this->db->update('data_nekropsi',$update_nekropsi);
-           redirect('C_nekropsi');
+           
+            $update_nekropsi_parasit = array(
+              'record_number_parasit'        => $this->input->post('record_number'),
+              'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
+            );
+            $this->db->where('record_number_parasit', $cek_record);
+            $this->db->update('data_nekropsi_parasit',$update_nekropsi_parasit);
+            
+            $update_nekropsi_bakteri = array(
+                'record_number_bakteri'        => $this->input->post('record_number'),
+                 'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
+            );
+            $this->db->where('record_number_bakteri', $cek_record);
+            $this->db->update('data_nekropsi_bakteri',$update_nekropsi_bakteri);
+            
+            $update_nekropsi_jamur = array(
+                 'record_number_jamur'        => $this->input->post('record_number'),
+                 'nekropsi_jamur'              => $this->input->post('nekropsi_jamur'),
+            );
+            $this->db->where('record_number_jamur',$cek_record);
+            $this->db->update('data_nekropsi_jamur',$update_nekropsi_jamur);
+            
+            $update_nekropsi_virus = array(
+                 'record_number_virus'        => $this->input->post('record_number'),
+                 'nekropsi_virus'              => $this->input->post('nekropsi_virus'),
+            );
+            $this->db->where('record_number_virus', $cek_record);
+            $this->db->update('data_nekropsi_virus',$update_nekropsi_virus);
+            
+            
+            
+            redirect('C_nekropsi');
            
         
         }else{

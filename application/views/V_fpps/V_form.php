@@ -169,7 +169,7 @@
      </div>
      <div class="col-xs-6">
        <select name="bentuk" class="form-control">
-                           <option>--Asal sample--</option>
+                           <option>--Bentuk sample--</option>
                             <option>Segar</option>
                             <option>Hidup</option>
                              <option>Beku</option>
@@ -288,7 +288,7 @@
     <div class="col-md-2">
        <div class="checkbox">
                 <label>
-                    <input value="Logam" name="identifikasi_logam" type="checkbox"> Logam Berat
+                    <input value="Jamur" name="identifikasi_Jamur" type="checkbox"> Jamur
                 </label>
          </div>
        </div>    

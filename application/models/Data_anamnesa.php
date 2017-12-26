@@ -15,7 +15,7 @@ class Data_anamnesa extends CI_Model {
                 . 'parameter_penyakit.identifikasi_virus as virus,'
                 . 'parameter_penyakit.identifikasi_bakteri as bakteri,'
                 . 'parameter_penyakit.identifikasi_parasit as parasit,'
-                . 'parameter_penyakit.identifikasi_logam as logam,'
+                . 'parameter_penyakit.identifikasi_jamur as jamur,'
                 . 'data_penerimaan_sample.kode_sample as kode,');
         $this->datatables->from('customer_fpps');
         $this->datatables->join('jenis_sample','jenis_sample.record_number_sample = customer_fpps.record_number_customer');

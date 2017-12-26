@@ -141,7 +141,7 @@ class C_fpps extends CI_Controller {
     'identifikasi_virus'          => !empty($this->input->post('identifikasi_virus'))?$this->input->post('identifikasi_virus'):'&nbsp;',
     'identifikasi_bakteri'        => !empty($this->input->post('identifikasi_bakteri'))?$this->input->post('identifikasi_bakteri'):'&nbsp;',
     'identifikasi_parasit'       =>  !empty($this->input->post('identifikasi_parasit'))?$this->input->post('identifikasi_parasit'):'&nbsp;',
-    'identifikasi_logam'          => !empty($this->input->post('identifikasi_logam'))?$this->input->post('identifikasi_logam'):'&nbsp;',
+    'identifikasi_jamur'          => !empty($this->input->post('identifikasi_jamur'))?$this->input->post('identifikasi_jamur'):'&nbsp;',
     'record_number_parameter'     => $this->input->post('record_number'),
      );
          
@@ -270,7 +270,7 @@ Untuk dilakukan pengujian sebagai berikut : <br>
  <tr>
   <td border="1px;" align="center">{identifikasi_parasit}</td>
   <td border="1px;" align="center">{identifikasi_bakteri}</td>
-  <td border="1px;" align="center">{identifikasi_logam}</td>
+  <td border="1px;" align="center">{identifikasi_jamur}</td>
   <td border="1px;" align="center">{identifikasi_virus}</td>
  </tr>
    
@@ -367,7 +367,7 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{identifikasi_bakteri}',$cetak['identifikasi_bakteri'],$html);
      $html = str_replace('{identifikasi_parasit}',$cetak['identifikasi_parasit'],$html);
      $html = str_replace('{identifikasi_virus}',$cetak['identifikasi_virus'],$html);
-     $html = str_replace('{identifikasi_logam}',$cetak['identifikasi_logam'],$html);
+     $html = str_replace('{identifikasi_jamur}',$cetak['identifikasi_jamur'],$html);
 
      
 }
@@ -435,7 +435,7 @@ if(isset($_POST['btn_fpps'])){
     'identifikasi_virus'          => !empty($this->input->post('identifikasi_virus'))?$this->input->post('identifikasi_virus'):'&nbsp;',
     'identifikasi_bakteri'        => !empty($this->input->post('identifikasi_bakteri'))?$this->input->post('identifikasi_bakteri'):'&nbsp;',
     'identifikasi_parasit'       =>  !empty($this->input->post('identifikasi_parasit'))?$this->input->post('identifikasi_parasit'):'&nbsp;',
-    'identifikasi_logam'          => !empty($this->input->post('identifikasi_logam'))?$this->input->post('identifikasi_logam'):'&nbsp;',
+    'identifikasi_jamur'          => !empty($this->input->post('identifikasi_jamur'))?$this->input->post('identifikasi_jamur'):'&nbsp;',
     'record_number_parameter'     => $this->input->post('record_number'),
         );
          
