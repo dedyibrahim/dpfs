@@ -29,7 +29,7 @@ class Data_distribusi_bakteri extends CI_Model {
        $this->datatables->join('status_distribusi_bakteri','status_distribusi_bakteri.record_number_status_distribusi =data_nekropsi_bakteri.record_number_bakteri','left');
        $this->datatables->join('data_penerimaan_sample','data_penerimaan_sample.record_number_penerimaan_sample =data_nekropsi_bakteri.record_number_bakteri','left');
         
-        $this->datatables->add_column('view','<a class="btn btn-sm btn-success " href="'.base_url().'C_anamnesa/ambil_data/$1">DISTRIBUSIKAN</a>', 'record_number_customer');
+        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_distribusi/set_terdistribusi/$1">DISTRIBUSIKAN</a>', 'record_number_bakteri');
         return $this->datatables->generate();
        
     }

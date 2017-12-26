@@ -94,7 +94,9 @@
     <h2>Form FPPS</h2>
         <ul class="nav navbar-right panel_toolbox">
            <li><input type="text" class="form-control" value="<?php echo $record;?>" readonly="" name="record_number" placeholder="record number" ></i></a>
-                </li>
+            <input type="hidden" class="form-control" value="dijemput" readonly="" name="status_fpps" placeholder="record number" ></i></a>
+                  
+           </li>
                     </ul>              
 <div class="clearfix"></div>
  </div>
@@ -203,7 +205,7 @@
      </div>
         <div class="col-xs-6">
        <div class="form-group  has-feedback">
-          <input class="form-control" id="data_sample"  placeholder="Petugas Sampling" name="data_sample" type="text">
+          <input class="form-control" id="data_sample"  placeholder="Petugas Sampling" name="petugas_sampling" type="text">
         <span class="fa fa-book form-control-feedback"></span>
       </div>
      </div>
@@ -211,14 +213,14 @@
      
         <div class="col-xs-6">
        <div class="form-group  has-feedback">
-          <input class="form-control" id="data_sample"  placeholder="Lokasi Sampling" name="data_sample" type="text">
+          <input class="form-control" id="data_sample"  placeholder="Lokasi Sampling" name="lokasi_sampling" type="text">
         <span class="fa fa-book form-control-feedback"></span>
       </div>
      </div>
         <div class="col-xs-6">
                    <div class="form-group  has-feedback">
 
-       <select name="bentuk" class="form-control">
+       <select name="yang_menandatangani" class="form-control">
                            <option>Yang Menandatangani</option>
                             <option>MP</option>
                             <option>MA</option>
@@ -229,7 +231,7 @@
                    </div>      
      </div>
         <div class="col-xs-6">
-       <select name="bentuk" class="form-control">
+       <select name="penandatangan" class="form-control">
            <option>Penandatangan</option>
                             <option>Abdurrohman, S.St.Pi.,M.Si</option>
                             <option>Hidup</option>

@@ -35,5 +35,18 @@ class C_distribusi extends CI_Controller {
     
         header('Content-Type: application/json');
         echo $this->Data_distribusi_bakteri->json_bakteri();       
-    }       
+    }
+    public function set_terdistribusi(){
+        $data_set = "<a class='btn btn-sm btn-danger' href='C_distribusi/gagal_distribusi/'".$this->uri->segment(3)."'>TERDISTRIBUSI</a>";
+        
+        $set = array(
+            'record_number_status_distribusi'            => $this->uri->segment(3),
+            'status_bakteri'    => $data_set,
+        );
+         
+        $this->db->insert('status_distribusi_bakteri',$set);
+        
+        redirect('C_distribusi');
+        
+    }
 }

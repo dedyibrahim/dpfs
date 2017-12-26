@@ -95,7 +95,9 @@
     <h2>Form FPPS</h2>
         <ul class="nav navbar-right panel_toolbox">
            <li><input type="text" class="form-control" value="<?php echo $record;?>" readonly="" name="record_number" placeholder="record number" ></i></a>
-                </li>
+               <input type="hidden" class="form-control" value="diantar" readonly="" name="status_fpps" placeholder="record number" ></i></a>
+                   
+           </li>
                     </ul>              
 <div class="clearfix"></div>
  </div>
@@ -121,7 +123,6 @@
       </div>
        
   </div>
-    
     <div class="col-md-6">
       <div class="form-group has-feedback">
           <input class="form-control" readonly="" id="contact_person" name="contact_person" placeholder="Contact Person" type="text">
