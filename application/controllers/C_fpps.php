@@ -40,6 +40,20 @@ class C_fpps extends CI_Controller {
         
         
     }
+    public function form_fpps_jemput(){
+        
+        $query=$this->db->get('record_number');
+       $record = $query->num_rows();
+        
+            $this->load->view('V_fpps/umum/V_header');
+            $this->load->view('V_fpps/umum/V_sidebar');
+            $this->load->view('V_fpps/umum/V_top_navigasi');
+            $this->load->view('V_fpps/V_form_jemput',['record'=>$record]);
+            $this->load->view('V_fpps/umum/V_footer');
+        
+        
+        
+    }
     public function simpan_customer(){
         
         if(isset($_POST['simpan_customer'])){
