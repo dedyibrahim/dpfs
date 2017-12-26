@@ -1,5 +1,4 @@
-<
-script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
+<script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#modal1").click(function(){
