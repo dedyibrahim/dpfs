@@ -15,7 +15,7 @@ class C_distribusi extends CI_Controller {
         $this->load->helper('url');
         
         $this->load->library('datatables');
-        $this->load->model('Data_anamnesa');
+        $this->load->model('Data_distribusi_bakteri');
         
     }
 
@@ -25,10 +25,15 @@ class C_distribusi extends CI_Controller {
             $this->load->view('V_distribusi/umum/V_header');
             $this->load->view('V_distribusi/umum/V_sidebar');
             $this->load->view('V_distribusi/umum/V_top_navigasi');
-            $this->load->view('V_distribusi/V_form_distribusi');
             $this->load->view('V_distribusi/V_data_distribusi');
             $this->load->view('V_distribusi/umum/V_footer');
             
 	     
         }
+        
+    public function json_bakteri() {
+    
+        header('Content-Type: application/json');
+        echo $this->Data_distribusi_bakteri->json_bakteri();       
+    }       
 }
