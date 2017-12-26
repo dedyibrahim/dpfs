@@ -208,12 +208,7 @@
       </div>
      </div>
         
-        <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control"  id="wadah" name="Wakil" placeholder="Wakil Pelanggan" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
-      </div>
-     </div>
+     
         <div class="col-xs-6">
        <div class="form-group  has-feedback">
           <input class="form-control" id="data_sample"  placeholder="Lokasi Sampling" name="data_sample" type="text">
@@ -233,6 +228,18 @@
                 </select>
                    </div>      
      </div>
+        <div class="col-xs-6">
+       <select name="bentuk" class="form-control">
+           <option>Penandatangan</option>
+                            <option>Abdurrohman, S.St.Pi.,M.Si</option>
+                            <option>Hidup</option>
+                             <option>Beku</option>
+                            <option>Kering</option>
+                            <option>lainnya</option>
+                </select>
+      
+     </div>
+        
   <!--------------------------------------------------------------->     
     </div> 
         <div class="col-md-6">
