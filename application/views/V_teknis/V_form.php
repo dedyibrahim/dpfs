@@ -1,3 +1,4 @@
+
 <script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -94,8 +95,7 @@
     <h2>Form FPPS</h2>
         <ul class="nav navbar-right panel_toolbox">
            <li><input type="text" class="form-control" value="<?php echo $record;?>" readonly="" name="record_number" placeholder="record number" ></i></a>
-                  
-           </li>
+                </li>
                     </ul>              
 <div class="clearfix"></div>
  </div>
@@ -202,45 +202,6 @@
                             </span>
                         </div>
      </div>
-        <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control" id="data_sample"  placeholder="Petugas Sampling" name="petugas_sampling" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
-      </div>
-     </div>
-        
-     
-        <div class="col-xs-6">
-       <div class="form-group  has-feedback">
-          <input class="form-control" id="data_sample"  placeholder="Lokasi Sampling" name="lokasi_sampling" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
-      </div>
-     </div>
-        <div class="col-xs-6">
-                   <div class="form-group  has-feedback">
-
-       <select name="yang_menandatangani" class="form-control">
-                           <option>Yang Menandatangani</option>
-                            <option>Manager Puncak</option>
-                            <option>Manager Administrasi</option>
-                             <option>Manager Teknis</option>
-                            <option>Manager M</option>
-                            <option>lainnya</option>
-                </select>
-                   </div>      
-     </div>
-        <div class="col-xs-6">
-       <select name="penandatangan" class="form-control">
-           <option>Penandatangan</option>
-                            <option>Abdurrohman, S.St.Pi.,M.Si</option>
-                            <option>Hidup</option>
-                             <option>Beku</option>
-                            <option>Kering</option>
-                            <option>lainnya</option>
-                </select>
-      
-     </div>
-        
   <!--------------------------------------------------------------->     
     </div> 
         <div class="col-md-6">

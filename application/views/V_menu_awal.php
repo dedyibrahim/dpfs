@@ -27,8 +27,8 @@ if($level == 'admin' || $level == 'user')
         
           <section class="login_content">
   <div>
-      <p style="font-size: 35px;color: #F7F7F7"><i class="fa fa-paw"></i>Aplikasi Perizinan Karantina Ikan!</h1>
-                  <p style="font-size: 15px;color: #F7F7F7">©2016 All Rights Reserved.BKIPM Mamuju </p>
+      <p style="font-size: 35px;color: #F7F7F7"><i class="fa fa-anchor"></i>Aplikasi Perizinan Karantina Ikan!</h1>
+                  <p style="font-size: 15px;color: #F7F7F7">©2018 All Rights Reserved.BKIPM Mamuju </p>
                 </div>        
          </div>
     <!-- Bootstrap -->
