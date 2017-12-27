@@ -82,7 +82,6 @@ class C_anamnesa extends CI_Controller {
             $simpan_penerimaan_sample = array(
             'record_number_penerimaan_sample'         => $this->input->post('record_number'),
             'kegiatan'                                => $this->input->post('kegiatan'),
-            'lokasi_sampling'                         => $this->input->post('lokasi_sampling'),
             'asal_sample'                             => $this->input->post('asal_sample'),
             'kode_sample'                             => $this->input->post('kode_sample'),
             'gejala_klinis'                           => $this->input->post('gejala_klinis'),
@@ -98,7 +97,6 @@ class C_anamnesa extends CI_Controller {
             $update_penerimaan_sample = array(
             'record_number_penerimaan_sample'         => $this->input->post('record_number'),
             'kegiatan'                                => $this->input->post('kegiatan'),
-            'lokasi_sampling'                         => $this->input->post('lokasi_sampling'),
             'asal_sample'                             => $this->input->post('asal_sample'),
             'kode_sample'                             => $this->input->post('kode_sample'),
             'gejala_klinis'                           => $this->input->post('gejala_klinis'),

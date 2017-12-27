@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2017 at 04:26 PM
+-- Generation Time: Dec 27, 2017 at 10:36 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -72,7 +72,8 @@ CREATE TABLE `customer_fpps` (
 --
 
 INSERT INTO `customer_fpps` (`id_customer_fpps`, `id_customer_fpps_customer`, `record_number_customer`) VALUES
-(1, '5', '0');
+(1, '5', '0'),
+(2, '', '1');
 
 -- --------------------------------------------------------
 
@@ -154,6 +155,34 @@ CREATE TABLE `data_penerimaan_sample` (
   `pelaksana2` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `data_penerimaan_sample`
+--
+
+INSERT INTO `data_penerimaan_sample` (`id_data_penerimaan_sample`, `record_number_penerimaan_sample`, `kegiatan`, `asal_sample`, `kode_sample`, `gejala_klinis`, `keterangan_lain_lain`, `pelaksana1`, `pelaksana2`) VALUES
+(1, '0', 'Mengambil sample', 'Budidaya', '001', 'gejala klinis', 'ok', 'roni', 'jumas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_penganalis`
+--
+
+CREATE TABLE `data_penganalis` (
+  `id_data_penganalis` int(11) NOT NULL,
+  `record_number_penganalis` varchar(100) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `jabatan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_penganalis`
+--
+
+INSERT INTO `data_penganalis` (`id_data_penganalis`, `record_number_penganalis`, `nama`, `jabatan`) VALUES
+(11, '0', 'DEDI.M.KOM', 'NGEHAYAL'),
+(15, '0', 'RONI.S.IKOM', 'AMIN');
+
 -- --------------------------------------------------------
 
 --
@@ -182,7 +211,8 @@ CREATE TABLE `jenis_sample` (
 --
 
 INSERT INTO `jenis_sample` (`id_jenis_sample`, `record_number_sample`, `data_sample`, `jumlah_sample`, `bentuk`, `tgl_penerimaan`, `deskripsi_sample`, `berat_isi`, `tgl_sampling`, `wadah`, `petugas_sampling`, `lokasi_sampling`, `yang_menandatangani`, `penandatangan`) VALUES
-(1, '0', 'IKAN BETUTUASD', '1ASD', 'Kering', '12/27/2017 4:16 PM', 'SIAP SAMLEASD', '10 kgASD', '12/27/2017 4:16 PM', 'WARNA HIJAUASD', 'RONIASD', 'ROMANASD', 'MT', 'Abdurrohman, S.St.Pi.,M.Si');
+(1, '0', 'IKAN BETUTUASD', '1ASD', 'Kering', '12/27/2017 4:16 PM', 'SIAP SAMLEASD', '10 kgASD', '12/27/2017 4:16 PM', 'WARNA HIJAUASD', 'RONIASD', 'ROMANASD', 'MT', 'Abdurrohman, S.St.Pi.,M.Si'),
+(2, '1', '', '', '--Bentuk sample--', '', '', '', '', '', '', '', 'Yang Menandatangani', 'Penandatangan');
 
 -- --------------------------------------------------------
 
@@ -205,7 +235,8 @@ CREATE TABLE `kaji_ulang_permintaan` (
 --
 
 INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_kaji_ulang`, `kesiapan_personel`, `kondisi_akomodasi`, `beban_pekerjaan`, `kondisi_peralatan`, `kesesuaian_metode`) VALUES
-(1, '0', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu');
+(1, '0', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu'),
+(2, '1', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu');
 
 -- --------------------------------------------------------
 
@@ -232,6 +263,30 @@ INSERT INTO `parameter_penyakit` (`id_parameter`, `record_number_parameter`, `id
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `penganalis`
+--
+
+CREATE TABLE `penganalis` (
+  `id_penganalis` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `jabatan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `penganalis`
+--
+
+INSERT INTO `penganalis` (`id_penganalis`, `nama`, `jabatan`) VALUES
+(2, 'DEDI', 'IT'),
+(3, 'DEDI', 'MARKETING'),
+(4, 'JUMAS', 'MARKETING'),
+(5, 'asd', 'asd'),
+(6, 'RONI.S.IKOM', 'AMIN'),
+(7, 'DEDI.M.KOM', 'NGEHAYAL');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `penjelasan_penerimaan_fpps`
 --
 
@@ -247,7 +302,8 @@ CREATE TABLE `penjelasan_penerimaan_fpps` (
 --
 
 INSERT INTO `penjelasan_penerimaan_fpps` (`id_penjelasan`, `record_number_penjelasan`, `diberikan_oleh`, `diterima_oleh`) VALUES
-(1, '0', 'JUMAS', 'RONI');
+(1, '0', 'JUMAS', 'RONI'),
+(2, '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -265,7 +321,8 @@ CREATE TABLE `record_number` (
 --
 
 INSERT INTO `record_number` (`record_number`, `project_id`) VALUES
-(1, '0');
+(1, '0'),
+(2, '1');
 
 -- --------------------------------------------------------
 
@@ -393,6 +450,12 @@ ALTER TABLE `data_penerimaan_sample`
   ADD PRIMARY KEY (`id_data_penerimaan_sample`);
 
 --
+-- Indexes for table `data_penganalis`
+--
+ALTER TABLE `data_penganalis`
+  ADD PRIMARY KEY (`id_data_penganalis`);
+
+--
 -- Indexes for table `jenis_sample`
 --
 ALTER TABLE `jenis_sample`
@@ -409,6 +472,12 @@ ALTER TABLE `kaji_ulang_permintaan`
 --
 ALTER TABLE `parameter_penyakit`
   ADD PRIMARY KEY (`id_parameter`);
+
+--
+-- Indexes for table `penganalis`
+--
+ALTER TABLE `penganalis`
+  ADD PRIMARY KEY (`id_penganalis`);
 
 --
 -- Indexes for table `penjelasan_penerimaan_fpps`
@@ -465,7 +534,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_fpps`
 --
 ALTER TABLE `customer_fpps`
-  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `data_nekropsi`
 --
@@ -495,32 +564,42 @@ ALTER TABLE `data_nekropsi_virus`
 -- AUTO_INCREMENT for table `data_penerimaan_sample`
 --
 ALTER TABLE `data_penerimaan_sample`
-  MODIFY `id_data_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_data_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `data_penganalis`
+--
+ALTER TABLE `data_penganalis`
+  MODIFY `id_data_penganalis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `jenis_sample`
 --
 ALTER TABLE `jenis_sample`
-  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `kaji_ulang_permintaan`
 --
 ALTER TABLE `kaji_ulang_permintaan`
-  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `parameter_penyakit`
 --
 ALTER TABLE `parameter_penyakit`
-  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `penganalis`
+--
+ALTER TABLE `penganalis`
+  MODIFY `id_penganalis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `penjelasan_penerimaan_fpps`
 --
 ALTER TABLE `penjelasan_penerimaan_fpps`
-  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `record_number`
 --
 ALTER TABLE `record_number`
-  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `status_distribusi_bakteri`
 --

@@ -37,7 +37,7 @@
 
     <div class="form-group">
         <label>Asal sample</label>
-         <select  readonly="" class="form-control">
+        <select disabled=""  readonly="" class="form-control">
                             <option>--Asal sample--</option>
                             <option>Budidaya</option>
                             <option>Hasil tangkapan</option>

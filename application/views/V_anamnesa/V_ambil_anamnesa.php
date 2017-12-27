@@ -42,7 +42,7 @@ foreach ($data_customer->result_array() as $customer){
      
     <div class="form-group">
         <label>Lokasi sampling</label>
-        <input type="text" value="<?php echo $data['lokasi_sampling'];?>" name="lokasi_sampling" class="form-control" placeholder="Lokasi Sampling">
+        <input type="text" readonly="" value="<?php echo $data['lokasi_sampling'];?>" class="form-control" placeholder="Lokasi Sampling">
        </div>
 
     <div class="form-group">
