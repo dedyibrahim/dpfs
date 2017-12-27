@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/mamuju/application/controllers/C_distribusi.php</file>
-            <file>file:/var/www/html/mamuju/application/models/Data_distribusi_bakteri.php</file>
+            <file>file:/var/www/html/mamuju/application/views/V_lab_jamur/V_form_jamur.php</file>
+            <file>file:/var/www/html/mamuju/application/views/V_teknis/V_form_teknis.php</file>
+            <file>file:/var/www/html/mamuju/application/views/V_lab_parasit/V_form_parasit.php</file>
             <file>file:/var/www/html/mamuju/application/controllers/C_fpps.php</file>
-            <file>file:/var/www/html/mamuju/application/models/Data_nekropsi.php</file>
+            <file>file:/var/www/html/mamuju/application/controllers/C_anamnesa.php</file>
+            <file>file:/var/www/html/mamuju/application/controllers/C_lab_bakteri.php</file>
+            <file>file:/var/www/html/mamuju/application/views/V_teknis/umum/V_sidebar.php</file>
+            <file>file:/var/www/html/mamuju/application/views/V_lab_virus/V_form_virus.php</file>
         </group>
     </open-files>
 </project-private>

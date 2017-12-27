@@ -21,7 +21,7 @@ if($level == 'admin' || $level == 'user')
     <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="icon" href="<?php echo base_url('assets/');?>white_logo.png" type="image/ico" />
 
-    <title>Silabkarimutu</title>
+    <title>Lab Bakteri</title>
     <link href="<?php echo base_url('assets'); ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@ if($level == 'admin' || $level == 'user')
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Silabkarimutu</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-anchor"></i> <span>Lab Bakteri</span></a>
             </div>
 
             <div class="clearfix"></div>

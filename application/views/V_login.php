@@ -49,8 +49,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> SilabKarimutu Mamuju!</h1>
-                  <p>©2016 All Rights Reserved.BKIPM Mamuju</p>
+                  <h1><i class="fa fa-anchor"></i> SilabKarimutu Mamuju!</h1>
+                  <p>©2018 All Rights Reserved.BKIPM Mamuju</p>
                 </div>
               </div>
             </form>
