@@ -49,7 +49,6 @@
                         {"data": "tgl_sampling"},
                         {"data": "sample"},
                         {"data": "jml_sample"},
-                        {"data": "status"},
                         {"data": "view"}
                         
                        ],
@@ -77,7 +76,6 @@
            <th class="sorting"     aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Name: activate to sort column descending" >Tgl sampling</th>
            <th class="sorting"      aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Sample</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Position: activate to sort column ascending">Jml</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Position: activate to sort column ascending">Status</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Action</th>
          </thead>
         <tbody align="center">

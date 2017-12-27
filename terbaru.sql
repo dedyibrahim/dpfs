@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2017 at 04:16 AM
+-- Generation Time: Dec 27, 2017 at 04:26 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -72,30 +72,7 @@ CREATE TABLE `customer_fpps` (
 --
 
 INSERT INTO `customer_fpps` (`id_customer_fpps`, `id_customer_fpps_customer`, `record_number_customer`) VALUES
-(241, '7', '0'),
-(242, '11', '1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `data_fpps_dijemput`
---
-
-CREATE TABLE `data_fpps_dijemput` (
-  `id_data_fpps_dijemput` int(11) NOT NULL,
-  `record_number_fpps_dijemput` varchar(100) NOT NULL,
-  `petugas_sampling` varchar(100) NOT NULL,
-  `lokasi_sampling` varchar(100) NOT NULL,
-  `yang_menandatangani` varchar(100) NOT NULL,
-  `penandatangan` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_fpps_dijemput`
---
-
-INSERT INTO `data_fpps_dijemput` (`id_data_fpps_dijemput`, `record_number_fpps_dijemput`, `petugas_sampling`, `lokasi_sampling`, `yang_menandatangani`, `penandatangan`) VALUES
-(2, '1', 'OM FARHAN', 'ABUDABI', 'Yang Menandatangani', 'Penandatangan');
+(1, '5', '0');
 
 -- --------------------------------------------------------
 
@@ -111,14 +88,6 @@ CREATE TABLE `data_nekropsi` (
   `analis_nekropsi` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `data_nekropsi`
---
-
-INSERT INTO `data_nekropsi` (`id_nekropsi`, `record_number_nekropsi`, `panjang`, `berat`, `analis_nekropsi`) VALUES
-(12, '0', '10', '10', 'Analis'),
-(13, '1', '10 kg', 'sdfj', '');
-
 -- --------------------------------------------------------
 
 --
@@ -130,14 +99,6 @@ CREATE TABLE `data_nekropsi_bakteri` (
   `record_number_bakteri` varchar(100) NOT NULL,
   `nekropsi_bakteri` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_nekropsi_bakteri`
---
-
-INSERT INTO `data_nekropsi_bakteri` (`id_nekropsi_bakteri`, `record_number_bakteri`, `nekropsi_bakteri`) VALUES
-(6, '0', 'Bakteri'),
-(7, '1', 'KEPas');
 
 -- --------------------------------------------------------
 
@@ -151,14 +112,6 @@ CREATE TABLE `data_nekropsi_jamur` (
   `nekropsi_jamur` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `data_nekropsi_jamur`
---
-
-INSERT INTO `data_nekropsi_jamur` (`id_nekropsi_jamur`, `record_number_jamur`, `nekropsi_jamur`) VALUES
-(10, '0', ''),
-(11, '1', '');
-
 -- --------------------------------------------------------
 
 --
@@ -170,14 +123,6 @@ CREATE TABLE `data_nekropsi_parasit` (
   `record_number_parasit` varchar(100) NOT NULL,
   `nekropsi_parasit` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_nekropsi_parasit`
---
-
-INSERT INTO `data_nekropsi_parasit` (`id_nekropsi_parasit`, `record_number_parasit`, `nekropsi_parasit`) VALUES
-(6, '0', 'parasit'),
-(7, '1', '');
 
 -- --------------------------------------------------------
 
@@ -191,14 +136,6 @@ CREATE TABLE `data_nekropsi_virus` (
   `nekropsi_virus` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `data_nekropsi_virus`
---
-
-INSERT INTO `data_nekropsi_virus` (`id_nekropsi_virus`, `record_number_virus`, `nekropsi_virus`) VALUES
-(10, '0', 'Virus'),
-(11, '1', '');
-
 -- --------------------------------------------------------
 
 --
@@ -209,7 +146,6 @@ CREATE TABLE `data_penerimaan_sample` (
   `id_data_penerimaan_sample` int(11) NOT NULL,
   `record_number_penerimaan_sample` varchar(100) NOT NULL,
   `kegiatan` varchar(100) NOT NULL,
-  `lokasi_sampling` varchar(100) NOT NULL,
   `asal_sample` varchar(100) NOT NULL,
   `kode_sample` varchar(100) NOT NULL,
   `gejala_klinis` varchar(100) NOT NULL,
@@ -217,14 +153,6 @@ CREATE TABLE `data_penerimaan_sample` (
   `pelaksana1` varchar(100) NOT NULL,
   `pelaksana2` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_penerimaan_sample`
---
-
-INSERT INTO `data_penerimaan_sample` (`id_data_penerimaan_sample`, `record_number_penerimaan_sample`, `kegiatan`, `lokasi_sampling`, `asal_sample`, `kode_sample`, `gejala_klinis`, `keterangan_lain_lain`, `pelaksana1`, `pelaksana2`) VALUES
-(10, '0', 'ok', 'asd', '--Asal sample--', 'asd', 'asd', 'asd', 'asd', 'asd'),
-(11, '1', 'PELAKASNANN SAMPLING IKAN NEMO', 'asd', 'Budidaya', 'asd', 'asd', 'as', 'as', 'as');
 
 -- --------------------------------------------------------
 
@@ -243,16 +171,18 @@ CREATE TABLE `jenis_sample` (
   `berat_isi` varchar(100) NOT NULL,
   `tgl_sampling` varchar(100) NOT NULL,
   `wadah` varchar(100) NOT NULL,
-  `status_fpps` varchar(100) NOT NULL
+  `petugas_sampling` varchar(100) NOT NULL,
+  `lokasi_sampling` varchar(100) NOT NULL,
+  `yang_menandatangani` varchar(100) NOT NULL,
+  `penandatangan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jenis_sample`
 --
 
-INSERT INTO `jenis_sample` (`id_jenis_sample`, `record_number_sample`, `data_sample`, `jumlah_sample`, `bentuk`, `tgl_penerimaan`, `deskripsi_sample`, `berat_isi`, `tgl_sampling`, `wadah`, `status_fpps`) VALUES
-(236, '0', 'IKAN BETUTU', '2', 'Hidup', '10/01/2017 12:00 AM', 'ok', '10', '12/26/2017 11:57 PM', '10', 'diantar'),
-(237, '1', 'IKAN JAER', '10', 'Hidup', '12/26/2017 11:59 PM', 'SIAP SAMLE', '10', '12/26/2017 11:59 PM', 'MANGKOK', 'dijemput');
+INSERT INTO `jenis_sample` (`id_jenis_sample`, `record_number_sample`, `data_sample`, `jumlah_sample`, `bentuk`, `tgl_penerimaan`, `deskripsi_sample`, `berat_isi`, `tgl_sampling`, `wadah`, `petugas_sampling`, `lokasi_sampling`, `yang_menandatangani`, `penandatangan`) VALUES
+(1, '0', 'IKAN BETUTUASD', '1ASD', 'Kering', '12/27/2017 4:16 PM', 'SIAP SAMLEASD', '10 kgASD', '12/27/2017 4:16 PM', 'WARNA HIJAUASD', 'RONIASD', 'ROMANASD', 'MT', 'Abdurrohman, S.St.Pi.,M.Si');
 
 -- --------------------------------------------------------
 
@@ -275,8 +205,7 @@ CREATE TABLE `kaji_ulang_permintaan` (
 --
 
 INSERT INTO `kaji_ulang_permintaan` (`id_kaji_ulang_permintaan`, `record_number_kaji_ulang`, `kesiapan_personel`, `kondisi_akomodasi`, `beban_pekerjaan`, `kondisi_peralatan`, `kesesuaian_metode`) VALUES
-(230, '0', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu'),
-(231, '1', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu');
+(1, '0', 'Mampu', 'Mampu', 'Mampu', 'Mampu', 'Mampu');
 
 -- --------------------------------------------------------
 
@@ -298,8 +227,7 @@ CREATE TABLE `parameter_penyakit` (
 --
 
 INSERT INTO `parameter_penyakit` (`id_parameter`, `record_number_parameter`, `identifikasi_virus`, `identifikasi_bakteri`, `identifikasi_parasit`, `identifikasi_jamur`) VALUES
-(219, '0', 'Virus', 'Bakteri', 'Parasit', '&nbsp;'),
-(220, '1', '&nbsp;', 'Bakteri', '&nbsp;', '&nbsp;');
+(1, '0', '&nbsp;', '&nbsp;', 'Parasit', 'Jamur');
 
 -- --------------------------------------------------------
 
@@ -319,8 +247,7 @@ CREATE TABLE `penjelasan_penerimaan_fpps` (
 --
 
 INSERT INTO `penjelasan_penerimaan_fpps` (`id_penjelasan`, `record_number_penjelasan`, `diberikan_oleh`, `diterima_oleh`) VALUES
-(173, '0', 'dedi', 'jumas'),
-(174, '1', 'dedi', 'sandi');
+(1, '0', 'JUMAS', 'RONI');
 
 -- --------------------------------------------------------
 
@@ -338,8 +265,7 @@ CREATE TABLE `record_number` (
 --
 
 INSERT INTO `record_number` (`record_number`, `project_id`) VALUES
-(242, '0'),
-(243, '1');
+(1, '0');
 
 -- --------------------------------------------------------
 
@@ -353,12 +279,41 @@ CREATE TABLE `status_distribusi_bakteri` (
   `status_bakteri` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `status_distribusi_bakteri`
+-- Table structure for table `status_distribusi_jamur`
 --
 
-INSERT INTO `status_distribusi_bakteri` (`id_status_distribusi_bakteri`, `record_number_status_distribusi`, `status_bakteri`) VALUES
-(12, '0', '<a class=\'btn btn-sm btn-danger\' href=\'C_distribusi/gagal_distribusi/\'0\'>TERDISTRIBUSI</a>');
+CREATE TABLE `status_distribusi_jamur` (
+  `id_status_distribusi_jamur` int(11) NOT NULL,
+  `record_number_status_distribusi` varchar(100) NOT NULL,
+  `status_jamur` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_distribusi_parasit`
+--
+
+CREATE TABLE `status_distribusi_parasit` (
+  `id_status_distribusi_parasit` int(11) NOT NULL,
+  `record_number_status_distribusi` varchar(100) NOT NULL,
+  `status_parasit` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_distribusi_virus`
+--
+
+CREATE TABLE `status_distribusi_virus` (
+  `id_status_distribusi_bakteri` int(11) NOT NULL,
+  `record_number_status_distribusi` varchar(100) NOT NULL,
+  `status_virus` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -400,12 +355,6 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `customer_fpps`
   ADD PRIMARY KEY (`id_customer_fpps`);
-
---
--- Indexes for table `data_fpps_dijemput`
---
-ALTER TABLE `data_fpps_dijemput`
-  ADD PRIMARY KEY (`id_data_fpps_dijemput`);
 
 --
 -- Indexes for table `data_nekropsi`
@@ -480,6 +429,24 @@ ALTER TABLE `status_distribusi_bakteri`
   ADD PRIMARY KEY (`id_status_distribusi_bakteri`);
 
 --
+-- Indexes for table `status_distribusi_jamur`
+--
+ALTER TABLE `status_distribusi_jamur`
+  ADD PRIMARY KEY (`id_status_distribusi_jamur`);
+
+--
+-- Indexes for table `status_distribusi_parasit`
+--
+ALTER TABLE `status_distribusi_parasit`
+  ADD PRIMARY KEY (`id_status_distribusi_parasit`);
+
+--
+-- Indexes for table `status_distribusi_virus`
+--
+ALTER TABLE `status_distribusi_virus`
+  ADD PRIMARY KEY (`id_status_distribusi_bakteri`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -498,72 +465,82 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_fpps`
 --
 ALTER TABLE `customer_fpps`
-  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
---
--- AUTO_INCREMENT for table `data_fpps_dijemput`
---
-ALTER TABLE `data_fpps_dijemput`
-  MODIFY `id_data_fpps_dijemput` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `data_nekropsi`
 --
 ALTER TABLE `data_nekropsi`
-  MODIFY `id_nekropsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_nekropsi` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `data_nekropsi_bakteri`
 --
 ALTER TABLE `data_nekropsi_bakteri`
-  MODIFY `id_nekropsi_bakteri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_nekropsi_bakteri` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `data_nekropsi_jamur`
 --
 ALTER TABLE `data_nekropsi_jamur`
-  MODIFY `id_nekropsi_jamur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_nekropsi_jamur` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `data_nekropsi_parasit`
 --
 ALTER TABLE `data_nekropsi_parasit`
-  MODIFY `id_nekropsi_parasit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_nekropsi_parasit` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `data_nekropsi_virus`
 --
 ALTER TABLE `data_nekropsi_virus`
-  MODIFY `id_nekropsi_virus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_nekropsi_virus` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `data_penerimaan_sample`
 --
 ALTER TABLE `data_penerimaan_sample`
-  MODIFY `id_data_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_data_penerimaan_sample` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jenis_sample`
 --
 ALTER TABLE `jenis_sample`
-  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
+  MODIFY `id_jenis_sample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `kaji_ulang_permintaan`
 --
 ALTER TABLE `kaji_ulang_permintaan`
-  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
+  MODIFY `id_kaji_ulang_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `parameter_penyakit`
 --
 ALTER TABLE `parameter_penyakit`
-  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `id_parameter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `penjelasan_penerimaan_fpps`
 --
 ALTER TABLE `penjelasan_penerimaan_fpps`
-  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id_penjelasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `record_number`
 --
 ALTER TABLE `record_number`
-  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `status_distribusi_bakteri`
 --
 ALTER TABLE `status_distribusi_bakteri`
-  MODIFY `id_status_distribusi_bakteri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_status_distribusi_bakteri` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `status_distribusi_jamur`
+--
+ALTER TABLE `status_distribusi_jamur`
+  MODIFY `id_status_distribusi_jamur` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `status_distribusi_parasit`
+--
+ALTER TABLE `status_distribusi_parasit`
+  MODIFY `id_status_distribusi_parasit` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `status_distribusi_virus`
+--
+ALTER TABLE `status_distribusi_virus`
+  MODIFY `id_status_distribusi_bakteri` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --

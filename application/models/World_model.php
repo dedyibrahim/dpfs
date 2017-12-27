@@ -8,7 +8,7 @@ class World_model extends CI_Model {
     }
     
     function json() {
-        $this->datatables->select('record_number_customer,customer.nama_customer as nama,customer.telp as telpon,jenis_sample.data_sample as sample,jenis_sample.tgl_penerimaan as tgl_terima,jenis_sample.tgl_sampling as tgl_sampling,jenis_sample.jumlah_sample as jml_sample,jenis_sample.status_fpps as status');
+        $this->datatables->select('record_number_customer,customer.nama_customer as nama,customer.telp as telpon,jenis_sample.data_sample as sample,jenis_sample.tgl_penerimaan as tgl_terima,jenis_sample.tgl_sampling as tgl_sampling,jenis_sample.jumlah_sample as jml_sample');
         $this->datatables->from('customer_fpps');
         $this->datatables->join('customer','customer.id_customer = customer_fpps.id_customer_fpps_customer');
         $this->datatables->join('jenis_sample','jenis_sample.record_number_sample = customer_fpps.record_number_customer');

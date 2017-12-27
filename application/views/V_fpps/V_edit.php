@@ -120,6 +120,49 @@ foreach ($data_customer->result_array() as $data_user){
                             </span>
                         </div>
      </div>
+        
+        
+     <div class="col-xs-6">
+       <div class="form-group  has-feedback">
+          <input class="form-control" value="<?php echo $customer['petugas_sampling'];?>" id="data_sample"  placeholder="Petugas Sampling" name="petugas_sampling" type="text">
+        <span class="fa fa-book form-control-feedback"></span>
+      </div>
+     </div>
+        
+     
+        <div class="col-xs-6">
+       <div class="form-group  has-feedback">
+          <input class="form-control" value="<?php echo $customer['lokasi_sampling'];?>" id="data_sample"  placeholder="Lokasi Sampling" name="lokasi_sampling" type="text">
+        <span class="fa fa-book form-control-feedback"></span>
+      </div>
+     </div>
+        <div class="col-xs-6">
+                   <div class="form-group  has-feedback">
+
+       <select name="yang_menandatangani" class="form-control">
+                           <option><?php echo $customer['yang_menandatangani'];?></option>
+                            <option>Yang Menandatangani</option>
+                            <option>MP</option>
+                            <option>MA</option>
+                             <option>MT</option>
+                            <option>MM</option>
+                            <option>lainnya</option>
+                </select>
+                   </div>      
+     </div>
+        <div class="col-xs-6">
+       <select name="penandatangan" class="form-control">
+           <option><?php echo $customer['penandatangan'];?></option>
+           <option>Penandatangan</option>
+                             <option>Abdurrohman, S.St.Pi.,M.Si</option>
+                            <option>Hidup</option>
+                             <option>Beku</option>
+                            <option>Kering</option>
+                            <option>lainnya</option>
+                </select>
+      
+     </div>    
+        
   <!--------------------------------------------------------------->     
     </div> 
         <div class="col-md-6">

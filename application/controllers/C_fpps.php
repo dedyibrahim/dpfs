@@ -40,20 +40,7 @@ class C_fpps extends CI_Controller {
         
         
     }
-    public function form_fpps_jemput(){
-        
-        $query=$this->db->get('record_number');
-       $record = $query->num_rows();
-        
-            $this->load->view('V_fpps/umum/V_header');
-            $this->load->view('V_fpps/umum/V_sidebar');
-            $this->load->view('V_fpps/umum/V_top_navigasi');
-            $this->load->view('V_fpps/V_form_jemput',['record'=>$record]);
-            $this->load->view('V_fpps/umum/V_footer');
-        
-        
-        
-    }
+    
     public function simpan_customer(){
         
         if(isset($_POST['simpan_customer'])){
@@ -98,9 +85,8 @@ class C_fpps extends CI_Controller {
     }
 
    public function simpan_fpps(){
- if(isset($_POST['btn_fpps'])&& $_POST['status_fpps']=='diantar'){
-     
-     $record_number = array(
+ if(isset($_POST['btn_fpps'])){
+      $record_number = array(
             'project_id'    => $this->input->post('record_number'),
         );
          
@@ -112,6 +98,7 @@ class C_fpps extends CI_Controller {
         );
          
         $this->db->insert('customer_fpps',$customer_fpps);
+     
         
       $jenis_sample = array(
             'record_number_sample'  => $this->input->post('record_number'),
@@ -123,83 +110,11 @@ class C_fpps extends CI_Controller {
             'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
             'tgl_sampling'          => $this->input->post('tgl_sampling'),
             'wadah'                 => $this->input->post('wadah'),
-            'status_fpps'           => $this->input->post('status_fpps'),
-        );
-         
-        $this->db->insert('jenis_sample',$jenis_sample); 
-        
-        $kaji_ulang_permintaan = array(
-            'record_number_kaji_ulang'      => $this->input->post('record_number'),
-            'kesiapan_personel'             => $this->input->post('kesiapan_personel'),
-            'kondisi_akomodasi'             => $this->input->post('kondisi_akomodasi'),
-            'beban_pekerjaan'               => $this->input->post('beban_pekerjaan'),
-            'kondisi_peralatan'             => $this->input->post('kondisi_peralatan'),
-            'kesesuaian_metode'             => $this->input->post('kesesuaian_metode'),
-            
-        );
-         
-        $this->db->insert('kaji_ulang_permintaan',$kaji_ulang_permintaan);
-        
-         
-         
-        
-        $penjelasan_penerimaan_fpps = array(
-            'record_number_penjelasan'             => $this->input->post('record_number'),
-            'diberikan_oleh'                       => $this->input->post('diberikan_oleh'),
-            'diterima_oleh'                         => $this->input->post('diterima_oleh'),
-           
-        );
-         
-        $this->db->insert('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps);
-   
-    $parameter_penyakit = array(
-    'identifikasi_virus'          => !empty($this->input->post('identifikasi_virus'))?$this->input->post('identifikasi_virus'):'&nbsp;',
-    'identifikasi_bakteri'        => !empty($this->input->post('identifikasi_bakteri'))?$this->input->post('identifikasi_bakteri'):'&nbsp;',
-    'identifikasi_parasit'       =>  !empty($this->input->post('identifikasi_parasit'))?$this->input->post('identifikasi_parasit'):'&nbsp;',
-    'identifikasi_jamur'          => !empty($this->input->post('identifikasi_jamur'))?$this->input->post('identifikasi_jamur'):'&nbsp;',
-    'record_number_parameter'     => $this->input->post('record_number'),
-     );
-     $this->db->insert('parameter_penyakit',$parameter_penyakit);
-     
-     redirect('C_fpps/daftar_fpps');
-      
-     }else if($_POST['status_fpps']=='dijemput'){
-          
-        $record_number = array(
-            'project_id'    => $this->input->post('record_number'),
-        );
-         
-        $this->db->insert('record_number',$record_number);
-     
-     $customer_fpps = array(
-            'id_customer_fpps_customer'               => $this->input->post('id_customer'),
-            'record_number_customer'    => $this->input->post('record_number'),
-        );
-         
-        $this->db->insert('customer_fpps',$customer_fpps);
-     
-        $data_fpps_dijemput = array(
-            'record_number_fpps_dijemput'    => $this->input->post('record_number'),
             'petugas_sampling'               => $this->input->post('petugas_sampling'),
             'lokasi_sampling'                => $this->input->post('lokasi_sampling'),
             'yang_menandatangani'            => $this->input->post('yang_menandatangani'),
             'penandatangan'                  => $this->input->post('penandatangan'),
-        
-            );
-         
-        $this->db->insert('data_fpps_dijemput',$data_fpps_dijemput);
-        
-      $jenis_sample = array(
-            'record_number_sample'  => $this->input->post('record_number'),
-            'data_sample'           => $this->input->post('data_sample'),
-            'jumlah_sample'         => $this->input->post('jumlah_sample'),
-            'bentuk'                => $this->input->post('bentuk'),
-            'deskripsi_sample'      => $this->input->post('deskripsi_sample'),
-            'berat_isi'             => $this->input->post('berat_isi'),
-            'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
-            'tgl_sampling'          => $this->input->post('tgl_sampling'),
-            'wadah'                 => $this->input->post('wadah'),
-            'status_fpps'           => $this->input->post('status_fpps'),
+       
         );
          
         $this->db->insert('jenis_sample',$jenis_sample); 
@@ -246,8 +161,6 @@ class C_fpps extends CI_Controller {
  }
  
  public function daftar_fpps(){
-     
-     
             $this->load->view('V_fpps/umum/V_header');
             $this->load->view('V_fpps/umum/V_sidebar');
             $this->load->view('V_fpps/umum/V_top_navigasi');
@@ -256,8 +169,6 @@ class C_fpps extends CI_Controller {
      
  }
  public function data_cetak(){
-     
-     
             $this->load->view('V_fpps/umum/V_header');
             $this->load->view('V_fpps/umum/V_sidebar');
             $this->load->view('V_fpps/umum/V_top_navigasi');
@@ -287,6 +198,7 @@ public function hapus_fpps(){
     
     redirect('C_fpps/daftar_fpps');
  }
+/*--------------------------------UNTUK CETAK FORM FPPS----------------------------------------------*/
  public function cetak_fpps(){
                 
 $this->load->library('Mypdf');
@@ -328,6 +240,13 @@ Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
 Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
 Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+petugas{petugas_sampling}<br>
+lokasi{lokasi_sampling}<br>
+yangpenanda{yang_menandatangani}<br>
+penanda{penandatangan}<br>
+
+
+
 Untuk dilakukan pengujian sebagai berikut : <br>
 
 <table cellpadding="1"  style="clear: both; " nobr="true">
@@ -404,10 +323,10 @@ $this->db->from('customer_fpps');
 $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
+$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
 $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
-    
 $query = $this->db->get();
 foreach($query->result_array() as $cetak);{
 $id_customer = $cetak['id_customer_fpps_customer'];
@@ -435,6 +354,10 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{identifikasi_parasit}',$cetak['identifikasi_parasit'],$html);
      $html = str_replace('{identifikasi_virus}',$cetak['identifikasi_virus'],$html);
      $html = str_replace('{identifikasi_jamur}',$cetak['identifikasi_jamur'],$html);
+     $html = str_replace('{petugas_sampling}',$cetak['petugas_sampling'],$html);
+     $html = str_replace('{lokasi_sampling}',$cetak['lokasi_sampling'],$html);
+     $html = str_replace('{yang_menandatangani}',$cetak['yang_menandatangani'],$html);
+     $html = str_replace('{penandatangan}',$cetak['penandatangan'],$html);
 
      
 }
@@ -451,8 +374,14 @@ $pdf->Output('de'.'.pdf', 'I');
 
 
  }
+ 
+ 
+ 
+/*--------------------------------UNTUK CETAK FORM SURAT TUGAS----------------------------------------------*/
+ 
+ 
+ 
  public function surat_tugas(){
-                
 $this->load->library('Mypdf');
 
 $keluar= '/FPPS/SKIPM-MMJ/';
@@ -492,6 +421,13 @@ Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
 Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
 Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+petugas{petugas_sampling}<br>
+lokasi{lokasi_sampling}<br>
+yangpenanda{yang_menandatangani}<br>
+penanda{penandatangan}<br>
+
+
+
 Untuk dilakukan pengujian sebagai berikut : <br>
 
 <table cellpadding="1"  style="clear: both; " nobr="true">
@@ -568,10 +504,10 @@ $this->db->from('customer_fpps');
 $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
+$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
 $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
-    
 $query = $this->db->get();
 foreach($query->result_array() as $cetak);{
 $id_customer = $cetak['id_customer_fpps_customer'];
@@ -599,6 +535,10 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{identifikasi_parasit}',$cetak['identifikasi_parasit'],$html);
      $html = str_replace('{identifikasi_virus}',$cetak['identifikasi_virus'],$html);
      $html = str_replace('{identifikasi_jamur}',$cetak['identifikasi_jamur'],$html);
+     $html = str_replace('{petugas_sampling}',$cetak['petugas_sampling'],$html);
+     $html = str_replace('{lokasi_sampling}',$cetak['lokasi_sampling'],$html);
+     $html = str_replace('{yang_menandatangani}',$cetak['yang_menandatangani'],$html);
+     $html = str_replace('{penandatangan}',$cetak['penandatangan'],$html);
 
      
 }
@@ -609,14 +549,18 @@ foreach ($data_customer->result_array() as $data_cs){
      
    }
 ob_start();   
-
 $pdf->writeHTML($html, true, false, true, false, '');
+   
 $pdf->Output('de'.'.pdf', 'I');
 
+
  }
+ 
+ 
+ /*--------------------------------UNTUK CETAK FORM BERITA ACARA----------------------------------------------*/
+
  
  public function berita_acara(){
-                
 $this->load->library('Mypdf');
 
 $keluar= '/FPPS/SKIPM-MMJ/';
@@ -656,6 +600,13 @@ Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
 Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
 Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+petugas{petugas_sampling}<br>
+lokasi{lokasi_sampling}<br>
+yangpenanda{yang_menandatangani}<br>
+penanda{penandatangan}<br>
+
+
+
 Untuk dilakukan pengujian sebagai berikut : <br>
 
 <table cellpadding="1"  style="clear: both; " nobr="true">
@@ -732,10 +683,10 @@ $this->db->from('customer_fpps');
 $this->db->where('record_number_customer',$ambil);
 $this->db->join('jenis_sample','record_number_sample = record_number_customer');
 $this->db->join('record_number','project_id = record_number_customer');
+$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
 $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
-    
 $query = $this->db->get();
 foreach($query->result_array() as $cetak);{
 $id_customer = $cetak['id_customer_fpps_customer'];
@@ -763,6 +714,10 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{identifikasi_parasit}',$cetak['identifikasi_parasit'],$html);
      $html = str_replace('{identifikasi_virus}',$cetak['identifikasi_virus'],$html);
      $html = str_replace('{identifikasi_jamur}',$cetak['identifikasi_jamur'],$html);
+     $html = str_replace('{petugas_sampling}',$cetak['petugas_sampling'],$html);
+     $html = str_replace('{lokasi_sampling}',$cetak['lokasi_sampling'],$html);
+     $html = str_replace('{yang_menandatangani}',$cetak['yang_menandatangani'],$html);
+     $html = str_replace('{penandatangan}',$cetak['penandatangan'],$html);
 
      
 }
@@ -777,20 +732,12 @@ $pdf->writeHTML($html, true, false, true, false, '');
    
 $pdf->Output('de'.'.pdf', 'I');
 
- }
+}
  public function edit(){
- $data = $this->uri->segment(3);
- 
- $query= $this->db->get_where('jenis_sample',['record_number_sample'=>$data]);
- 
- foreach ($query->result_array() as $cek){
-     
-     $hasil_cek = $cek['status_fpps'];
- }
-     
-     
-if(isset($_POST['btn_fpps'])&& $hasil_cek == 'diantar'){
-     $id = $this->uri->segment(3);
+  
+if(isset($_POST['btn_fpps'])){
+    
+    $id = $this->uri->segment(3);
      
            
      $record_number = array(
@@ -810,77 +757,15 @@ if(isset($_POST['btn_fpps'])&& $hasil_cek == 'diantar'){
             'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
             'tgl_sampling'          => $this->input->post('tgl_sampling'),
             'wadah'                 => $this->input->post('wadah'),
-        );
-         
-        $this->db->update('jenis_sample',$jenis_sample, array('record_number_sample' => $id)); 
-        
-        $kaji_ulang_permintaan = array(
-            'record_number_kaji_ulang'      => $this->input->post('record_number'),
-            'kesiapan_personel'             => $this->input->post('kesiapan_personel'),
-            'kondisi_akomodasi'             => $this->input->post('kondisi_akomodasi'),
-            'beban_pekerjaan'               => $this->input->post('beban_pekerjaan'),
-            'kondisi_peralatan'             => $this->input->post('kondisi_peralatan'),
-            'kesesuaian_metode'             => $this->input->post('kesesuaian_metode'),
-        );
-         
-        $this->db->update('kaji_ulang_permintaan',$kaji_ulang_permintaan, array('record_number_kaji_ulang' => $id));
-        
-        $penjelasan_penerimaan_fpps = array(
-            'record_number_penjelasan'             => $this->input->post('record_number'),
-            'diberikan_oleh'                       => $this->input->post('diberikan_oleh'),
-            'diterima_oleh'                         => $this->input->post('diterima_oleh'),
-           
-        );
-         
-        $this->db->update('penjelasan_penerimaan_fpps',$penjelasan_penerimaan_fpps, array('record_number_penjelasan' => $id));
-   
-    $parameter_penyakit = array(
-    'identifikasi_virus'          => !empty($this->input->post('identifikasi_virus'))?$this->input->post('identifikasi_virus'):'&nbsp;',
-    'identifikasi_bakteri'        => !empty($this->input->post('identifikasi_bakteri'))?$this->input->post('identifikasi_bakteri'):'&nbsp;',
-    'identifikasi_parasit'       =>  !empty($this->input->post('identifikasi_parasit'))?$this->input->post('identifikasi_parasit'):'&nbsp;',
-    'identifikasi_jamur'          => !empty($this->input->post('identifikasi_jamur'))?$this->input->post('identifikasi_jamur'):'&nbsp;',
-    'record_number_parameter'     => $this->input->post('record_number'),
-        );
-         
-        $this->db->update('parameter_penyakit',$parameter_penyakit ,array('record_number_parameter' => $id));
-       redirect('C_fpps/edit/'.$this->uri->segment(3));
-      
-     }elseif (isset($_POST['btn_fpps'])&&$hasil_cek == 'dijemput'){
-         
-           $id = $this->uri->segment(3);
-     
-           
-     $record_number = array(
-            'project_id'    => $this->input->post('record_number'),
-        );
-         
-    $this->db->update('record_number', $record_number, array('project_id' => $id)); 
-    
-        
-      $jenis_sample = array(
-            'record_number_sample'  => $this->input->post('record_number'),
-            'data_sample'           => $this->input->post('data_sample'),
-            'jumlah_sample'         => $this->input->post('jumlah_sample'),
-            'bentuk'                => $this->input->post('bentuk'),
-            'deskripsi_sample'      => $this->input->post('deskripsi_sample'),
-            'berat_isi'             => $this->input->post('berat_isi'),
-            'tgl_penerimaan'        => $this->input->post('tgl_penerimaan'),
-            'tgl_sampling'          => $this->input->post('tgl_sampling'),
-            'wadah'                 => $this->input->post('wadah'),
-        );
-         
-        $this->db->update('jenis_sample',$jenis_sample, array('record_number_sample' => $id)); 
-        
-        $data_fpps_dijemput = array(
-            'record_number_fpps_dijemput'    => $this->input->post('record_number'),
-            'petugas_sampling'               => $this->input->post('petugas_sampling'),
+           'petugas_sampling'               => $this->input->post('petugas_sampling'),
             'lokasi_sampling'                => $this->input->post('lokasi_sampling'),
             'yang_menandatangani'            => $this->input->post('yang_menandatangani'),
             'penandatangan'                  => $this->input->post('penandatangan'),
-        
-            );
+       
+          );
          
-        $this->db->update('data_fpps_dijemput',$data_fpps_dijemput, array('record_number_fpps_dijemput' => $id)); 
+        $this->db->update('jenis_sample',$jenis_sample, array('record_number_sample' => $id)); 
+        
         
         $kaji_ulang_permintaan = array(
             'record_number_kaji_ulang'      => $this->input->post('record_number'),
@@ -909,42 +794,9 @@ if(isset($_POST['btn_fpps'])&& $hasil_cek == 'diantar'){
     'identifikasi_jamur'          => !empty($this->input->post('identifikasi_jamur'))?$this->input->post('identifikasi_jamur'):'&nbsp;',
     'record_number_parameter'     => $this->input->post('record_number'),
         );
-         
         $this->db->update('parameter_penyakit',$parameter_penyakit ,array('record_number_parameter' => $id));
        redirect('C_fpps/edit/'.$this->uri->segment(3));
-     
-          
-      }elseif ($hasil_cek == 'dijemput') {
-          
- $ambil = $this->uri->segment(3);    
-$this->db->select('*');
-$this->db->from('customer_fpps');
-$this->db->where('record_number_customer',$ambil);
-$this->db->join('jenis_sample','record_number_sample = record_number_customer');
-$this->db->join('record_number','project_id = record_number_customer');
-$this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
-$this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
-$this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
-$this->db->join('data_fpps_dijemput','record_number_fpps_dijemput = record_number_customer');
-$query = $this->db->get();
-
-//ambil customer data//
-
-foreach($query->result_array() as $cetak);{
-
-    $id_customer = $cetak['id_customer_fpps_customer'];
-}
-$customer_id = $id_customer;
-$data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
-
-
-            $this->load->view('V_fpps/umum/V_header');
-            $this->load->view('V_fpps/umum/V_sidebar');
-            $this->load->view('V_fpps/umum/V_top_navigasi');
-            $this->load->view('V_fpps/V_edit_dijemput',['query'=>$query,'data_customer'=>$data_customer]);
-            $this->load->view('V_fpps/umum/V_footer');
-         
-       }else{
+      }else{
       
 $ambil = $this->uri->segment(3);    
 $this->db->select('*');

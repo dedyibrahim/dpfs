@@ -86,30 +86,51 @@ class C_nekropsi extends CI_Controller {
             'analis_nekropsi'                => $this->input->post('analis_nekropsi'),
             );
             $this->db->insert('data_nekropsi',$simpan_nekropsi);
-           
+         
+            if($this->input->post('nekropsi_parasit') == !NULL){
+               
             $simpan_nekropsi_parasit = array(
               'record_number_parasit'        => $this->input->post('record_number'),
               'nekropsi_parasit'              => $this->input->post('nekropsi_parasit'),
             );
-            $this->db->insert('data_nekropsi_parasit',$simpan_nekropsi_parasit);
-            
+            $this->db->insert('data_nekropsi_parasit',$simpan_nekropsi_parasit);    
+               
+           }
+           
+            if($this->input->post('nekropsi_bakteri') == !NULL){
+                
              $simpan_nekropsi_bakteri = array(
                 'record_number_bakteri'        => $this->input->post('record_number'),
                  'nekropsi_bakteri'              => $this->input->post('nekropsi_bakteri'),
             );
             $this->db->insert('data_nekropsi_bakteri',$simpan_nekropsi_bakteri);
+                
+                
+            }
             
+           if($this->input->post('nekropsi_jamur') == !NULL){
+               
+               
              $simpan_nekropsi_jamur = array(
                  'record_number_jamur'        => $this->input->post('record_number'),
                  'nekropsi_jamur'              => $this->input->post('nekropsi_jamur'),
             );
             $this->db->insert('data_nekropsi_jamur',$simpan_nekropsi_jamur);
-            
-             $simpan_nekropsi_virus = array(
+               
+               
+           }
+         
+           if($this->input->post('nekropsi_virus') == !NULL){
+             
+               $simpan_nekropsi_virus = array(
                  'record_number_virus'        => $this->input->post('record_number'),
                  'nekropsi_virus'              => $this->input->post('nekropsi_virus'),
             );
             $this->db->insert('data_nekropsi_virus',$simpan_nekropsi_virus);
+               
+               
+           }
+         
             
             redirect('C_nekropsi');
     }elseif($gaada = !null) {

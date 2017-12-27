@@ -1,5 +1,5 @@
-<script type="text/javascript" language="javascript" src="<?php echo base_url('assets/');?>vendors/datatables/datatables/media/js/jquery.js"></script>
-<script type="text/javascript">
+
+ <script type="text/javascript">
             $(document).ready(function() {
                 $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
                 {
@@ -14,10 +14,10 @@
                     };
                 };
 
-                var t = $("#mytable").dataTable({
+                var t = $("#parasit").dataTable({
                     initComplete: function() {
                         var api = this.api();
-                        $('#mytable')
+                        $('#parasit')
                                 .off('.DT')
                                 .on('keyup.DT', function(e) {
                                     if (e.keyCode == 13) {
@@ -30,10 +30,10 @@
                     },
                     processing: true,
                     serverSide: true,
-                    ajax: {"url": "<?php echo base_url('C_distribusi/json_bakteri') ?> ", "type": "POST"},
+                    ajax: {"url": "<?php echo base_url('C_distribusi/json_parasit') ?> ", "type": "POST"},
                     columns: [
                         {
-                            "data": "record_number_bakteri",
+                            "data": "record_number_parasit",
                             "orderable": false
                         },
                         {"data": "record"},
@@ -41,8 +41,8 @@
                         {"data": "nama"},
                         {"data": "jml_sample"},
                         {"data": "kode"},
-                        {"data": "data_bakteri"},
-                        {"data": "bakteri"},
+                        {"data": "data_parasit"},
+                        {"data": "parasit"},
                         {"data": "status"},
                         {"data": "view"},
                         
@@ -61,8 +61,9 @@
         </script>
     
     
-    
-     <table id="mytable" style="width: 100%;" class="table table-striped table-bordered dataTable" align="center" role="grid" aria-describedby="datatable-fixed-header_info"><thead>
+     
+    <div class="dashboard_graph">
+     <table id="parasit" style="width: 100%;" class="table table-striped table-bordered dataTable" align="center" role="grid" aria-describedby="datatable-fixed-header_info"><thead>
        <tr role="row">
            <th class="sorting_asc"   aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">No</th>
            <th class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 60px;" aria-label="Name: activate to sort column descending">Record</th>
@@ -76,5 +77,6 @@
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Action</th>
          </thead>
         <tbody>
-      </table>
-   
+        </table>
+       
+    </div>

@@ -49,21 +49,21 @@
                       
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                             <!-- start user projects -->
-                            <?php echo "HALLO2";?>
-                          
+                            <?php $this->load->view('V_distribusi/V_distribusi_jamur');?>
+                       
                             <!-- end user projects -->
 
                      </div>
                      
                      <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                             
-                          <?php echo "HALLO3";?>
-                          
+                         <?php $this->load->view('V_distribusi/V_distribusi_parasit');?>
+                                
                       </div>
                         
                       <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
                             
-                          <?php echo "HALLO4";?>
+                         <?php $this->load->view('V_distribusi/V_distribusi_virus');?>
                           
                       </div>
                        </div>
