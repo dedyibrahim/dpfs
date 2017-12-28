@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <form action="<?php echo base_url('C_anamnesa')?>" method="post" enctype="multipart/formdata">
-    <h2>Pemeriksaan Virus</h2>
+    <h2>Pemeriksaan Jamur</h2>
         <ul class="nav navbar-right panel_toolbox">
                     </ul>              
 <div class="clearfix"></div>
@@ -35,18 +35,18 @@
 </div>
    <div class="col-md-6">  
      <div class="form-group">
-        <label>Organ Target</label>
+        <label>Organ Target Jamur</label>
         <input type="text" class="form-control" placeholder="Organ Target">
        </div>
     
  <div class="form-group">
-        <label>Virus Yang Di temukan</label>
-        <input type="text" class="form-control" placeholder="Virus Yang ditemukan">
+        <label>Jamur Yang Di temukan</label>
+        <input type="text" class="form-control" placeholder="Jamur Yang ditemukan">
        </div>
     
     <div class="form-group">
-        <label>Jumlah Virus</label>
-         <input type="text" class="form-control" placeholder="Jumlah Virus">
+        <label>Jumlah Jamur</label>
+         <input type="text" class="form-control" placeholder="Jumlah Jamur">
        </div>
        <div class="form-group">
         <label>Analis</label>

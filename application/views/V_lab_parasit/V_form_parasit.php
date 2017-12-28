@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <form action="<?php echo base_url('C_anamnesa')?>" method="post" enctype="multipart/formdata">
-    <h2>Pemeriksaan Parasit</h2>
+    <h2>Pemeriksaan Jamur</h2>
         <ul class="nav navbar-right panel_toolbox">
                     </ul>              
 <div class="clearfix"></div>
@@ -35,24 +35,23 @@
 </div>
    <div class="col-md-6">  
      <div class="form-group">
-        <label>Organ Targer Parasit</label>
+        <label>Organ Target Jamur</label>
         <input type="text" class="form-control" placeholder="Organ Target">
        </div>
     
  <div class="form-group">
-        <label>Parasit Yang Di temukan</label>
-        <input type="text" class="form-control" placeholder="Parasit Yang ditemukan">
+        <label>Jamur Yang Di temukan</label>
+        <input type="text" class="form-control" placeholder="Jamur Yang ditemukan">
        </div>
     
     <div class="form-group">
-        <label>Jumlah Parasit</label>
-         <input type="text" class="form-control" placeholder="Jumlah Parasit">
+        <label>Jumlah Jamur</label>
+         <input type="text" class="form-control" placeholder="Jumlah Jamur">
        </div>
        <div class="form-group">
         <label>Analis</label>
          <input type="text" class="form-control" placeholder="Analis">
        </div>
-       
       </div>
     </div>
 </div>

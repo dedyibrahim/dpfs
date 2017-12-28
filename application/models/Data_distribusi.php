@@ -79,7 +79,7 @@ class Data_distribusi extends CI_Model {
                 . 'jenis_sample.jumlah_sample as jml_sample,'
                 . 'jenis_sample.data_sample as sample,'
                 . 'parameter_penyakit.identifikasi_parasit as parasit,'
-               . 'status_distribusi_jamur.status_jamur as status,'
+               . 'status_distribusi_parasit.status_parasit as status,'
                 
                 );
         $this->datatables->from('data_nekropsi_parasit');
@@ -87,10 +87,10 @@ class Data_distribusi extends CI_Model {
         $this->datatables->join('customer_fpps','customer_fpps.record_number_customer = data_nekropsi_parasit.record_number_parasit');
         $this->datatables->join('customer','customer.id_customer = customer_fpps.id_customer_fpps_customer','left');
         $this->datatables->join('parameter_penyakit','parameter_penyakit.record_number_parameter = data_nekropsi_parasit.record_number_parasit','left');
-       $this->datatables->join('status_distribusi_jamur','status_distribusi_jamur.record_number_status_distribusi =data_nekropsi_parasit.record_number_parasit','left');
+       $this->datatables->join('status_distribusi_parasit','status_distribusi_parasit.record_number_status_distribusi =data_nekropsi_parasit.record_number_parasit','left');
        $this->datatables->join('data_penerimaan_sample','data_penerimaan_sample.record_number_penerimaan_sample =data_nekropsi_parasit.record_number_parasit','left');
         
-        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_distribusi/set_terdistribusi/$1">DISTRIBUSIKAN</a>', 'record_number_bakteri');
+        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_manajer/set_terdistribusi_parasit/$1">DISTRIBUSIKAN</a>', 'record_number_parasit');
         return $this->datatables->generate();
        
     }
@@ -118,7 +118,7 @@ class Data_distribusi extends CI_Model {
        $this->datatables->join('status_distribusi_virus','status_distribusi_virus.record_number_status_distribusi =data_nekropsi_virus.record_number_virus','left');
        $this->datatables->join('data_penerimaan_sample','data_penerimaan_sample.record_number_penerimaan_sample =data_nekropsi_virus.record_number_virus','left');
         
-        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_distribusi/set_terdistribusi/$1">DISTRIBUSIKAN</a>', 'record_number_bakteri');
+        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_manajer/set_terdistribusi_virus/$1">DISTRIBUSIKAN</a>', 'record_number_virus');
         return $this->datatables->generate();
        
     }

@@ -360,5 +360,75 @@ $pdf->Output('de'.'.pdf', 'I');
             
         }
     }
+    public function set_terdistribusi_parasit(){
+        $query = $this->uri->segment(3);
+     
+        $cek = $this->db->get_where('status_distribusi_parasit',['record_number_status_distribusi'=>$query]);
+        
+        foreach ($cek->result_array() as $hasil_cek){
+            
+            $ok = $hasil_cek['record_number_status_distribusi'];
+            
+        }
+        
+        
+        if($ok== null){
+            
+        $data_set = "<a class='btn btn-sm btn-success  glyphicon glyphicon-ok'></a>";
+        $set = array(
+            'record_number_status_distribusi'  => $this->uri->segment(3),
+            'status_parasit'                   => $data_set,
+        );
+        $this->db->insert('status_distribusi_parasit',$set);
+        
+        redirect('C_manajer/distribusi');
+       
+        }elseif ($ok==!null || $ok == 0) {
+            
+        $this->db->delete('status_distribusi_parasit',['record_number_status_distribusi'=>$query]);
+        redirect('C_manajer/distribusi');  
+            
+        }else{
+            
+            redirect('C_manajer/distribusi');
+            
+        }
+        
+    }
+     public function set_terdistribusi_virus(){
+        $query = $this->uri->segment(3);
+     
+        $cek = $this->db->get_where('status_distribusi_virus',['record_number_status_distribusi'=>$query]);
+        
+        foreach ($cek->result_array() as $hasil_cek){
+            
+            $ok = $hasil_cek['record_number_status_distribusi'];
+            
+        }
+        
+        
+        if($ok== null){
+            
+        $data_set = "<a class='btn btn-sm btn-success  glyphicon glyphicon-ok'></a>";
+        $set = array(
+            'record_number_status_distribusi'  => $this->uri->segment(3),
+            'status_virus'                   => $data_set,
+        );
+        $this->db->insert('status_distribusi_virus',$set);
+        
+        redirect('C_manajer/distribusi');
+       
+        }elseif ($ok==!null || $ok == 0) {
+            
+        $this->db->delete('status_distribusi_virus',['record_number_status_distribusi'=>$query]);
+        redirect('C_manajer/distribusi');  
+            
+        }else{
+            
+            redirect('C_manajer/distribusi');
+            
+        }
+        
+    }
   
 }
