@@ -19,6 +19,7 @@ class Data_distribusi extends CI_Model {
                 . 'jenis_sample.data_sample as sample,'
                . 'parameter_penyakit.identifikasi_bakteri as bakteri,'
                 . 'status_distribusi_bakteri.status_bakteri as status,'
+                . 'data_nekropsi.analis_nekropsi as analis,'
                 
                 );
         $this->datatables->from('data_nekropsi_bakteri');
@@ -28,6 +29,7 @@ class Data_distribusi extends CI_Model {
         $this->datatables->join('parameter_penyakit','parameter_penyakit.record_number_parameter = data_nekropsi_bakteri.record_number_bakteri','left');
        $this->datatables->join('status_distribusi_bakteri','status_distribusi_bakteri.record_number_status_distribusi =data_nekropsi_bakteri.record_number_bakteri','left');
        $this->datatables->join('data_penerimaan_sample','data_penerimaan_sample.record_number_penerimaan_sample =data_nekropsi_bakteri.record_number_bakteri','left');
+       $this->datatables->join('data_nekropsi','data_nekropsi.record_number_nekropsi =data_nekropsi_bakteri.record_number_bakteri','left');
         
         $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_manajer/set_terdistribusi_bakteri/$1">DISTRIBUSIKAN</a>', 'record_number_bakteri');
         return $this->datatables->generate();

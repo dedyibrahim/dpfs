@@ -30,7 +30,7 @@
                     },
                     processing: true,
                     serverSide: true,
-                    ajax: {"url": "<?php echo base_url('C_distribusi/json_bakteri') ?> ", "type": "POST"},
+                    ajax: {"url": "<?php echo base_url('C_manajer/json_bakteri') ?> ", "type": "POST"},
                     columns: [
                         {
                             "data": "record_number_bakteri",
@@ -41,6 +41,7 @@
                         {"data": "nama"},
                         {"data": "jml_sample"},
                         {"data": "kode"},
+                        {"data": "analis"},
                         {"data": "data_bakteri"},
                         {"data": "bakteri"},
                         {"data": "status"},
@@ -70,6 +71,7 @@
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Pemilik</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Jml sample</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Kode sampel</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Analis nekropsi</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Bakteri</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Jenis</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Status</th>
