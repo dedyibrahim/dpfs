@@ -16,7 +16,7 @@ foreach ($data_customer->result_array() as $customer){
   
  <form action="<?php echo base_url('C_lab_bakteri/simpan')?>" method="post" enctype="multipart/formdata">
     <h2>Buku Nekropsi</h2>
-    <a href="<?php echo base_url()?>C_lab_bakteri/lhus/<?php echo $data['record_number_customer'];?>"><button type="button" class="btn btn-primary fa fa-print pull-right"> CETAK LHUS</button>
+    <a href="<?php echo base_url()?>C_lab_bakteri/lhus/<?php echo $data['record_number_customer'];?>"><button type="button" class="btn btn-primary fa fa-print pull-right"> CETAK LHUS</button></a>
         <ul class="nav navbar-right panel_toolbox">
                     </ul>              
 <div class="clearfix"></div>

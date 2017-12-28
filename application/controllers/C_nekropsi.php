@@ -14,7 +14,7 @@ class C_nekropsi extends CI_Controller {
         $this->load->helper('html');
         $this->load->helper('url');
         $this->load->library('datatables');
-        $this->load->model('Data_lab_bakteri');
+        $this->load->model('Data_nekropsi');
         
     }
   
