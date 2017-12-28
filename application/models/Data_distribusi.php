@@ -60,7 +60,7 @@ class Data_distribusi extends CI_Model {
        $this->datatables->join('status_distribusi_jamur','status_distribusi_jamur.record_number_status_distribusi =data_nekropsi_jamur.record_number_jamur','left');
        $this->datatables->join('data_penerimaan_sample','data_penerimaan_sample.record_number_penerimaan_sample =data_nekropsi_jamur.record_number_jamur','left');
         
-        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_distribusi/set_terdistribusi_jamur/$1">DISTRIBUSIKAN</a>', 'record_number_jamur');
+        $this->datatables->add_column('view','<a class="btn btn-sm btn-warning " href="'.base_url().'C_manajer/set_terdistribusi_jamur/$1">DISTRIBUSIKAN</a>', 'record_number_jamur');
         return $this->datatables->generate();
        
     }

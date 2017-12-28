@@ -267,8 +267,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Output('de'.'.pdf', 'I');
 
 
- }
-public function json_bakteri() {
+ } 
+   public function json_bakteri() {
     
         header('Content-Type: application/json');
         echo $this->Data_distribusi->json_bakteri();       
@@ -338,8 +338,6 @@ public function json_bakteri() {
             $ok = $hasil_cek['record_number_status_distribusi'];
             
         }
-        
-        
         if($ok== null){
             
         $data_set = "<a class='btn btn-sm btn-success  glyphicon glyphicon-ok'></a>";
@@ -349,7 +347,7 @@ public function json_bakteri() {
         );
         $this->db->insert('status_distribusi_jamur',$set);
         
-        redirect('C_manajer');
+        redirect('C_manajer/distribusi');
        
         }elseif ($ok==!null || $ok == 0) {
             
@@ -358,7 +356,7 @@ public function json_bakteri() {
             
         }else{
             
-            redirect('C_manajer');
+            redirect('C_manajer/distribusi');
             
         }
     }
