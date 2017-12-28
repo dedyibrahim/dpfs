@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 28, 2017 at 07:57 PM
+-- Generation Time: Dec 28, 2017 at 09:43 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -96,7 +96,53 @@ CREATE TABLE `data_lab_bakteri` (
 
 INSERT INTO `data_lab_bakteri` (`id_data_lab_bakteri`, `record_number_lab_bakteri`, `bakteri_ditemukan`, `jumlah_bakteri`) VALUES
 (0, '2', 'E.coli', '100'),
-(0, '3', 'makan', 'makan');
+(0, '3', 'MANGAN', '100');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_lab_jamur`
+--
+
+CREATE TABLE `data_lab_jamur` (
+  `id_data_lab_jamur` int(11) NOT NULL,
+  `record_number_lab_jamur` varchar(100) NOT NULL,
+  `jumlah_jamur` varchar(100) NOT NULL,
+  `jamur_ditemukan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_lab_jamur`
+--
+
+INSERT INTO `data_lab_jamur` (`id_data_lab_jamur`, `record_number_lab_jamur`, `jumlah_jamur`, `jamur_ditemukan`) VALUES
+(1, '0', '100 JAMUR', 'JAMUR');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_lab_parasit`
+--
+
+CREATE TABLE `data_lab_parasit` (
+  `id_data_lab_parasit` int(11) NOT NULL,
+  `record_number_lab_parasit` varchar(100) NOT NULL,
+  `jumlah_parasit` varchar(100) NOT NULL,
+  `parasit_ditemukan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_lab_virus`
+--
+
+CREATE TABLE `data_lab_virus` (
+  `id_data_lab_virus` int(11) NOT NULL,
+  `record_number_lab_virus` varchar(100) NOT NULL,
+  `jumlah_virus` varchar(100) NOT NULL,
+  `virus_ditemukan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -117,7 +163,7 @@ CREATE TABLE `data_nekropsi` (
 --
 
 INSERT INTO `data_nekropsi` (`id_nekropsi`, `record_number_nekropsi`, `panjang`, `berat`, `analis_nekropsi`) VALUES
-(1, '0', '10 kg', '10 kg', ''),
+(1, '0', '10 kg', '10 kg', 'MAK'),
 (2, '2', '10 cm', '10 kg', 'LARAS'),
 (3, '3', '10 cm', '10 kg', 'SAYA');
 
@@ -158,7 +204,7 @@ CREATE TABLE `data_nekropsi_jamur` (
 --
 
 INSERT INTO `data_nekropsi_jamur` (`id_nekropsi_jamur`, `record_number_jamur`, `nekropsi_jamur`) VALUES
-(1, '0', 'KEPALA JAMUR');
+(1, '0', 'KEPALA');
 
 -- --------------------------------------------------------
 
@@ -177,7 +223,7 @@ CREATE TABLE `data_nekropsi_parasit` (
 --
 
 INSERT INTO `data_nekropsi_parasit` (`id_nekropsi_parasit`, `record_number_parasit`, `nekropsi_parasit`) VALUES
-(1, '0', 'KEPALA IKAN');
+(1, '0', 'KEPALA');
 
 -- --------------------------------------------------------
 
@@ -430,6 +476,13 @@ CREATE TABLE `status_distribusi_jamur` (
   `status_jamur` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `status_distribusi_jamur`
+--
+
+INSERT INTO `status_distribusi_jamur` (`id_status_distribusi_jamur`, `record_number_status_distribusi`, `status_jamur`) VALUES
+(2, '0', '<a class=\'btn btn-sm btn-success  glyphicon glyphicon-ok\'></a>');
+
 -- --------------------------------------------------------
 
 --
@@ -494,6 +547,24 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `customer_fpps`
   ADD PRIMARY KEY (`id_customer_fpps`);
+
+--
+-- Indexes for table `data_lab_jamur`
+--
+ALTER TABLE `data_lab_jamur`
+  ADD PRIMARY KEY (`id_data_lab_jamur`);
+
+--
+-- Indexes for table `data_lab_parasit`
+--
+ALTER TABLE `data_lab_parasit`
+  ADD PRIMARY KEY (`id_data_lab_parasit`);
+
+--
+-- Indexes for table `data_lab_virus`
+--
+ALTER TABLE `data_lab_virus`
+  ADD PRIMARY KEY (`id_data_lab_virus`);
 
 --
 -- Indexes for table `data_nekropsi`
@@ -618,6 +689,21 @@ ALTER TABLE `customer`
 ALTER TABLE `customer_fpps`
   MODIFY `id_customer_fpps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `data_lab_jamur`
+--
+ALTER TABLE `data_lab_jamur`
+  MODIFY `id_data_lab_jamur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `data_lab_parasit`
+--
+ALTER TABLE `data_lab_parasit`
+  MODIFY `id_data_lab_parasit` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `data_lab_virus`
+--
+ALTER TABLE `data_lab_virus`
+  MODIFY `id_data_lab_virus` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `data_nekropsi`
 --
 ALTER TABLE `data_nekropsi`
@@ -691,7 +777,7 @@ ALTER TABLE `status_distribusi_bakteri`
 -- AUTO_INCREMENT for table `status_distribusi_jamur`
 --
 ALTER TABLE `status_distribusi_jamur`
-  MODIFY `id_status_distribusi_jamur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_status_distribusi_jamur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `status_distribusi_parasit`
 --
