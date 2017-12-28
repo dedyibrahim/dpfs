@@ -16,6 +16,7 @@ foreach ($data_customer->result_array() as $customer){
   
  <form action="<?php echo base_url('C_lab_bakteri/simpan')?>" method="post" enctype="multipart/formdata">
     <h2>Buku Nekropsi</h2>
+    <a href="<?php echo base_url()?>C_lab_bakteri/lhus/<?php echo $data['record_number_customer'];?>"><button type="button" class="btn btn-primary fa fa-print pull-right"> CETAK LHUS</button>
         <ul class="nav navbar-right panel_toolbox">
                     </ul>              
 <div class="clearfix"></div>
@@ -49,12 +50,12 @@ foreach ($data_customer->result_array() as $customer){
     
  <div class="form-group">
         <label>Bakteri Yang Di temukan</label>
-        <input type="text" name="bakteri_ditemukan" class="form-control" placeholder="Bakteri Yang ditemukan">
+        <input type="text" value ="<?php echo $data['bakteri_ditemukan'];?>" name="bakteri_ditemukan" class="form-control" placeholder="Bakteri Yang ditemukan">
        </div>
     
     <div class="form-group">
         <label>Jumlah Bakteri</label>
-        <input type="text" name="jumlah_bakteri"  class="form-control" placeholder="Jumlah Bakteri">
+        <input type="text" value ="<?php echo $data['jumlah_bakteri'];?>" name="jumlah_bakteri"  class="form-control" placeholder="Jumlah Bakteri">
        </div>
            
        <div class="form-group">
