@@ -42,14 +42,14 @@
                           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 
                             <!-- start recent activity -->
-                         <?php $this->load->view('V_distribusi/V_distribusi_bakteri');?>
+                         <?php $this->load->view('V_manajer/V_distribusi_bakteri');?>
                          <!-- end recent activity -->
 
                        </div>
                       
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                             <!-- start user projects -->
-                            <?php $this->load->view('V_distribusi/V_distribusi_jamur');?>
+                            <?php $this->load->view('V_manajer/V_distribusi_jamur');?>
                        
                             <!-- end user projects -->
 
@@ -57,13 +57,13 @@
                      
                      <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                             
-                         <?php $this->load->view('V_distribusi/V_distribusi_parasit');?>
+                         <?php $this->load->view('V_manajer/V_distribusi_parasit');?>
                                 
                       </div>
                         
                       <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
                             
-                         <?php $this->load->view('V_distribusi/V_distribusi_virus');?>
+                         <?php $this->load->view('V_manajer/V_distribusi_virus');?>
                           
                       </div>
                        </div>

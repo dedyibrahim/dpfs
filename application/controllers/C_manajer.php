@@ -15,6 +15,7 @@ class C_manajer extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('datatables');
         $this->load->model('Data_manajer');
+        $this->load->model('Data_distribusi');
         
     }
   
@@ -28,6 +29,16 @@ class C_manajer extends CI_Controller {
             $this->load->view('V_manajer/umum/V_footer');
             
 	}
+        
+    public function distribusi()
+	{
+            $this->load->view('V_manajer/umum/V_header');
+            $this->load->view('V_manajer/umum/V_sidebar');
+            $this->load->view('V_manajer/umum/V_top_navigasi');
+            $this->load->view('V_manajer/V_data_distribusi');
+            $this->load->view('V_manajer/umum/V_footer');
+            
+	}    
         
       public function simpan_penganalis(){
         
@@ -257,6 +268,99 @@ $pdf->Output('de'.'.pdf', 'I');
 
 
  }
-
+public function json_bakteri() {
+    
+        header('Content-Type: application/json');
+        echo $this->Data_distribusi->json_bakteri();       
+    }
+    
+    public function json_jamur() {
+    
+        header('Content-Type: application/json');
+        echo $this->Data_distribusi->json_jamur();       
+    }
+    
+    public function json_parasit() {
+    
+        header('Content-Type: application/json');
+        echo $this->Data_distribusi->json_parasit();       
+    }
+    public function json_virus() {
+    
+        header('Content-Type: application/json');
+        echo $this->Data_distribusi->json_virus();       
+    }
+    
+    public function set_terdistribusi_bakteri(){
+        $query = $this->uri->segment(3);
+     
+        $cek = $this->db->get_where('status_distribusi_bakteri',['record_number_status_distribusi'=>$query]);
+        
+        foreach ($cek->result_array() as $hasil_cek){
+            
+            $ok = $hasil_cek['record_number_status_distribusi'];
+            
+        }
+        
+        
+        if($ok== null){
+            
+        $data_set = "<a class='btn btn-sm btn-success  glyphicon glyphicon-ok'></a>";
+        $set = array(
+            'record_number_status_distribusi'  => $this->uri->segment(3),
+            'status_bakteri'                   => $data_set,
+        );
+        $this->db->insert('status_distribusi_bakteri',$set);
+        
+        redirect('C_manajer/distribusi');
+       
+        }elseif ($ok==!null || $ok == 0) {
+            
+        $this->db->delete('status_distribusi_bakteri',['record_number_status_distribusi'=>$query]);
+        redirect('C_manajer/distribusi');  
+            
+        }else{
+            
+            redirect('C_manajer/distribusi');
+            
+        }
+        
+       
+        
+    }
+    public function set_terdistribusi_jamur(){
+        $query = $this->uri->segment(3);
+     
+        $cek = $this->db->get_where('status_distribusi_jamur',['record_number_status_distribusi'=>$query]);
+        
+        foreach ($cek->result_array() as $hasil_cek){
+            
+            $ok = $hasil_cek['record_number_status_distribusi'];
+            
+        }
+        
+        
+        if($ok== null){
+            
+        $data_set = "<a class='btn btn-sm btn-success  glyphicon glyphicon-ok'></a>";
+        $set = array(
+            'record_number_status_distribusi'  => $this->uri->segment(3),
+            'status_jamur'                   => $data_set,
+        );
+        $this->db->insert('status_distribusi_jamur',$set);
+        
+        redirect('C_manajer');
+       
+        }elseif ($ok==!null || $ok == 0) {
+            
+        $this->db->delete('status_distribusi_jamur',['record_number_status_distribusi'=>$query]);
+        redirect('C_manajer');  
+            
+        }else{
+            
+            redirect('C_manajer');
+            
+        }
+    }
   
 }

@@ -6,7 +6,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-user"></i>BUKU BAKTERI <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="<?php echo base_url(); ?>C_nekropsi">DAFTAR LAB BAKTERI</a></li>
+                        <li><a href="<?php echo base_url(); ?>C_lab_bakteri">DAFTAR LAB BAKTERI</a></li>
                     </ul>
                   </li>
                 </ul>

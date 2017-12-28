@@ -1,5 +1,5 @@
 
- <script type="text/javascript">
+<script type="text/javascript">
             $(document).ready(function() {
                 $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
                 {
@@ -14,10 +14,10 @@
                     };
                 };
 
-                var t = $("#parasit").dataTable({
+                var t = $("#virus").dataTable({
                     initComplete: function() {
                         var api = this.api();
-                        $('#parasit')
+                        $('#virus')
                                 .off('.DT')
                                 .on('keyup.DT', function(e) {
                                     if (e.keyCode == 13) {
@@ -30,10 +30,10 @@
                     },
                     processing: true,
                     serverSide: true,
-                    ajax: {"url": "<?php echo base_url('C_distribusi/json_parasit') ?> ", "type": "POST"},
+                    ajax: {"url": "<?php echo base_url('C_manajer/json_virus') ?> ", "type": "POST"},
                     columns: [
                         {
-                            "data": "record_number_parasit",
+                            "data": "record_number_virus",
                             "orderable": false
                         },
                         {"data": "record"},
@@ -41,8 +41,8 @@
                         {"data": "nama"},
                         {"data": "jml_sample"},
                         {"data": "kode"},
-                        {"data": "data_parasit"},
-                        {"data": "parasit"},
+                        {"data": "data_virus"},
+                        {"data": "virus"},
                         {"data": "status"},
                         {"data": "view"},
                         
@@ -61,9 +61,9 @@
         </script>
     
     
-     
+    
     <div class="dashboard_graph">
-     <table id="parasit" style="width: 100%;" class="table table-striped table-bordered dataTable" align="center" role="grid" aria-describedby="datatable-fixed-header_info"><thead>
+     <table id="virus" style="width: 100%;" class="table table-striped table-bordered dataTable" align="center" role="grid" aria-describedby="datatable-fixed-header_info"><thead>
        <tr role="row">
            <th class="sorting_asc"   aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">No</th>
            <th class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 60px;" aria-label="Name: activate to sort column descending">Record</th>
@@ -80,3 +80,5 @@
         </table>
        
     </div>
+
+</div>

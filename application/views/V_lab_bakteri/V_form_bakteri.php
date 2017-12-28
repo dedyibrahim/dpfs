@@ -36,21 +36,21 @@
    <div class="col-md-6">  
      <div class="form-group">
         <label>Organ Target</label>
-        <input type="text" class="form-control" placeholder="Organ Target">
+        <input type="text" readonly="" class="form-control" placeholder="Organ Target">
        </div>
     
  <div class="form-group">
         <label>Bakteri Yang Di temukan</label>
-        <input type="text" class="form-control" placeholder="Bakteri Yang ditemukan">
+        <input type="text" readonly="" class="form-control" placeholder="Bakteri Yang ditemukan">
        </div>
     
     <div class="form-group">
         <label>Jumlah Bakteri</label>
-         <input type="text" class="form-control" placeholder="Jumlah Bakteri">
+        <input type="text" readonly="" class="form-control" placeholder="Jumlah Bakteri">
        </div>
        <div class="form-group">
         <label>Analis</label>
-         <input type="text" class="form-control" placeholder="Analis">
+        <input type="text" readonly="" class="form-control" placeholder="Analis">
        </div>
    </div>
     </div>

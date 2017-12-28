@@ -53,10 +53,6 @@
                         {"data": "sample"},
                         {"data": "nama"},
                         {"data": "kode"},
-                        {"data": "bakteri"},
-                        {"data": "parasit"},
-                        {"data": "virus"},
-                        {"data": "jamur"},
                         {"data": "view"}
                         
                         
@@ -84,10 +80,6 @@
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Jenis</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">pemilik</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Kode sampel</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Bakteri</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Parasit</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Organ Virus</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending"> Organ Jamur</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Action</th>
          </thead>
         <tbody>
