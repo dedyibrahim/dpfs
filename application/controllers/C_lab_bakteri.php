@@ -56,10 +56,12 @@ class C_lab_bakteri extends CI_Controller {
             $customer_id = $id_customer;
             $data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
             
+            $data_penganalis = $this->db->get_where('data_penganalis',['record_number_penganalis'=>$ambil]);
+            
             $this->load->view('V_lab_bakteri/umum/V_header');
             $this->load->view('V_lab_bakteri/umum/V_sidebar');
             $this->load->view('V_lab_bakteri/umum/V_top_navigasi');
-            $this->load->view('V_lab_bakteri/V_ambil_bakteri',['data_customer'=>$data_customer,'query'=>$query]);
+            $this->load->view('V_lab_bakteri/V_ambil_bakteri',['data_customer'=>$data_customer,'query'=>$query,'data_penganalis'=>$data_penganalis]);
             $this->load->view('V_lab_bakteri/V_data_bakteri');
             $this->load->view('V_lab_bakteri/umum/V_footer');   
         }

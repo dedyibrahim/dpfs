@@ -57,12 +57,13 @@ foreach ($data_customer->result_array() as $customer){
         <label>Jumlah Bakteri</label>
         <input type="text" value ="<?php echo $data['jumlah_bakteri'];?>" name="jumlah_bakteri"  class="form-control" placeholder="Jumlah Bakteri">
        </div>
-           
+      <?php $no = 1; foreach ($data_penganalis->result_array() as $penganalis){?>   
        <div class="form-group">
-        <label>Analis</label>
-        <input type="text" readonly="" class="form-control" placeholder="Analis">
+        <label>Penganalis <?php echo $no++ ?></label>
+        <input type="text" readonly="" value="<?php echo $penganalis['nama']; ?> " class="form-control" placeholder="Analis">
        </div>
-   </div>
+      <?php }?>
+       </div>
     </div>
 <div class="x_panel">
         <div class="x_content">
