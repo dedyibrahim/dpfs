@@ -405,28 +405,43 @@ $pdf->AddPage();
 $html ='<hr>';
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$html = '<span align="center">PERMINTAAN PENGUJIAN SAMPEL DAN KAJI ULANG PERMINTAAN'
-        . '<br>No:{record_number_customer}/FPPS/SKIPM-MMJ/...../{tahun}</spam>';
-$html.='<div style="text-align:left; line-height: 25px;">Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
-Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
-Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
-Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
-Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
-Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
-Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
-Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
-Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
-petugas{petugas_sampling}<br>
-lokasi{lokasi_sampling}<br>
-yangpenanda{yang_menandatangani}<br>
-penanda{penandatangan}<br>
+$html = '<span align="center">SURAT TUGAS PENGAMBILAN SAMPLE<br>';
+$html.='<div style="text-align:left; line-height: 25px;">Ditugaskan Kepada :<br><br>';
+$html.='<table border="1" width="600px">
+    <tr>
+        <th width="50px" style="text-align:center">No</th>
+        <th width="300px" style="text-align:center">Nama</th>
+        <th width="250px" style="text-align:center">Jabatan</th>
+        
+    </tr>
+    <tr>
+        <th width="50px" style="text-align:center">1</th>
+        <th width="300px">&nbsp;{petugas_sampling}</th>
+        <th width="250px" style="text-align:center"></th>
+    </tr>
+    <tr>
+        <th width="50px" style="text-align:center"></th>
+        <th width="300px" style="text-align:center"></th>
+        <th width="250px" style="text-align:center"></th>
+    </tr>
+    <tr>
+        <th width="50px" style="text-align:center"></th>
+        <th width="300px" style="text-align:center"></th>
+        <th width="250px" style="text-align:center"></th>
+    </tr>
+    <tr>
+        <th width="50px" style="text-align:center"></th>
+        <th width="300px" style="text-align:center"></th>
+        <th width="250px" style="text-align:center"></th>
+    </tr>
+    </table>';
 
 
-
-Untuk dilakukan pengujian sebagai berikut : <br>
-
-<table cellpadding="1"  style="clear: both; " nobr="true">
-<tr style="background-color: #0073ea; ">
+$html.='Jenis Sample &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data_sample}<br>
+No.FPPS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {record_number_customer}<br>  
+Parameter *);<br>
+<table width="600px" nobr="true">
+<tr>
   <td colspan="4"  border="1px;" align="center">PARAMETER TERPILIH</td>
  </tr>
  <tr>
@@ -438,60 +453,11 @@ Untuk dilakukan pengujian sebagai berikut : <br>
    
 </table>
 
-</div>';
-
-$html.= <<<EOD
-<table cellpadding="2" class="table-striped" style="clear: both;
-margin-top: 6px !important;
-margin-bottom: 6px !important;
-max-width: none !important;
-border-collapse: separate !important;
-border: 1px solid #ddd;" nobr="true">
- <tr style="background-color: #0073ea;
-         box-sizing: border-box;
-">
-  <td colspan="3" border="1" align="center">KAJI ULANG PERMINTAAN</td>
- </tr>
- <tr>
-  <td width="30" align="center">NO</td>
-  <td width="390" align="center">UNSUR KAJI ULANG</td>
-  <td align="center">HASIL KAJI ULANG</td>
- </tr>
- <tr>
-  <td align="center">1</td>
-  <td>Kemampuan Personel</td>
-  <td>{kesiapan_personel}</td>
- </tr>
- <tr>
-  <td align="center">2</td>
-  <td>Kondisi Akomodasi</td>
-  <td>{kondisi_akomodasi}</td>
- </tr>
-<tr>
-  <td align="center">3</td>
-  <td>Beban Pekerjaan Laboratorium</td>
-  <td>{beban_pekerjaan}</td>
- </tr>
-<tr>
-  <td align="center">4</td>
-  <td>Kondisi Peralatan Laboratorium</td>
-  <td>{kondisi_peralatan}</td>
- </tr>
-  <tr>
-  <td align="center">5</td>
-  <td>Kesesuaian Metode</td>
-  <td>{kesesuaian_metode}</td>
- </tr>
-  
-
-   </table>
-        
-EOD;
-
-$html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
-
-$html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diberikan_oleh}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diterima_oleh},<br>';
-
+';
+$html.='<div style="text-align:left">Untuk Segera melaksanakan pengambilan sample tersebut diatas.</div><br>';
+$html.='<div style="text-align:right">Mamuju,{tgl_sampling}<br>';
+$html.='<div style="text-align:right">{yang_menandatangani},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br><br>';
+$html.='<div style="text-align:right">{penandatangan},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 
 $ambil = $this->uri->segment(3);    
 $this->db->select('*');
@@ -590,137 +556,57 @@ $html.='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nama :1. {pe
 $html.='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. {nama_customer} (Wakil Pelanggan/Perusahaan)<br>';
 $html.='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tanggal : {tgl_sampling}<br>';
 $html.='Telah  Dilakukan pengambilan sample dari {lokasi_sampling} untuk dianalisis di SKIPM Kelas II Mamuju<br><br>';
+$html.='<table border="1" width="600px">
+    <tr>
+        <th width="50px" style="text-align:center">No</th>
+        <th width="230px" style="text-align:center">Lokasi Sampling</th>
+        <th width="60px" style="text-align:center">Jam</th>
+        <th width="100px" style="text-align:center">Jenis Sample</th>
+        <th width="80px" style="text-align:center">Jumlah</th>
+        <th width="90px" style="text-align:center">keterangan</th>
+    </tr>
+    <tr>
+        <td style="text-align:center">1</td>
+        <td>{lokasi_sampling}</td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center">{data_sample}</td>
+        <td style="text-align:center">{jumlah_sample}</td>
+        <td style="text-align:center"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"></td>
+        <td></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"></td>
+        <td></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"></td>
+        <td></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+    </tr>
+    </table>';
 
-$html.='<table cellpadding="2" class="table-striped" style="clear: both;
-margin-top: 6px !important;
-margin-bottom: 6px !important;
-max-width: none !important;
-border-collapse: separate !important;
-border: 1px solid #ddd;" nobr="true">
- <tr style="background-color: #0073ea;
-         box-sizing: border-box;
-">
-  <td colspan="3" border="1" align="center">KAJI ULANG PERMINTAAN</td>
- </tr>
- <tr>
-  <td width="30" align="center">NO</td>
-  <td width="390" align="center">UNSUR KAJI ULANG</td>
-  <td align="center">HASIL KAJI ULANG</td>
- </tr>
- <tr>
-  <td align="center">1</td>
-  <td>Kemampuan Personel</td>
-  <td>{kesiapan_personel}</td>
- </tr>
- <tr>
-  <td align="center">2</td>
-  <td>Kondisi Akomodasi</td>
-  <td>{kondisi_akomodasi}</td>
- </tr>
-<tr>
-  <td align="center">3</td>
-  <td>Beban Pekerjaan Laboratorium</td>
-  <td>{beban_pekerjaan}</td>
- </tr>
-<tr>
-  <td align="center">4</td>
-  <td>Kondisi Peralatan Laboratorium</td>
-  <td>{kondisi_peralatan}</td>
- </tr>
-  <tr>
-  <td align="center">5</td>
-  <td>Kesesuaian Metode</td>
-  <td>{kesesuaian_metode}</td>
- </tr>
-  
-
-   </table>';
-
-$html.='Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
-Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
-Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
-Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
-Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
-Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
-Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
-Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <br>
-petugas<br>
-lokasi<br>
-yangpenanda{yang_menandatangani}<br>
-penanda{penandatangan}<br>
-
-
-
-
-
-Untuk dilakukan pengujian sebagai berikut : <br>
-
-<table cellpadding="1"  style="clear: both; " nobr="true">
-<tr style="background-color: #0073ea; ">
-  <td colspan="4"  border="1px;" align="center">PARAMETER TERPILIH</td>
- </tr>
- <tr>
-  <td border="1px;" align="center">{identifikasi_parasit}</td>
-  <td border="1px;" align="center">{identifikasi_bakteri}</td>
-  <td border="1px;" align="center">{identifikasi_jamur}</td>
-  <td border="1px;" align="center">{identifikasi_virus}</td>
- </tr>
-   
-</table>
-
-</div>';
-
-$html.= <<<EOD
-<table cellpadding="2" class="table-striped" style="clear: both;
-margin-top: 6px !important;
-margin-bottom: 6px !important;
-max-width: none !important;
-border-collapse: separate !important;
-border: 1px solid #ddd;" nobr="true">
- <tr style="background-color: #0073ea;
-         box-sizing: border-box;
-">
-  <td colspan="3" border="1" align="center">KAJI ULANG PERMINTAAN</td>
- </tr>
- <tr>
-  <td width="30" align="center">NO</td>
-  <td width="390" align="center">UNSUR KAJI ULANG</td>
-  <td align="center">HASIL KAJI ULANG</td>
- </tr>
- <tr>
-  <td align="center">1</td>
-  <td>Kemampuan Personel</td>
-  <td>{kesiapan_personel}</td>
- </tr>
- <tr>
-  <td align="center">2</td>
-  <td>Kondisi Akomodasi</td>
-  <td>{kondisi_akomodasi}</td>
- </tr>
-<tr>
-  <td align="center">3</td>
-  <td>Beban Pekerjaan Laboratorium</td>
-  <td>{beban_pekerjaan}</td>
- </tr>
-<tr>
-  <td align="center">4</td>
-  <td>Kondisi Peralatan Laboratorium</td>
-  <td>{kondisi_peralatan}</td>
- </tr>
-  <tr>
-  <td align="center">5</td>
-  <td>Kesesuaian Metode</td>
-  <td>{kesesuaian_metode}</td>
- </tr>
-  
-
-   </table>
-        
+    
 EOD;
 
-$html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
+$html.='(*):Tuliskan nama pelanggan/perusahaan dan lokasi titik sampling.<br>';
+$html.='<div style="text-align: right">Mamuju {tgl_sampling}<br>';
+$html.='<p style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas Sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan<br><br><br><br></p>';
+$html.='<p style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{petugas_sampling}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{nama_customer}';
 
-$html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diberikan_oleh}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diterima_oleh},<br>';
 
 
 $ambil = $this->uri->segment(3);    
