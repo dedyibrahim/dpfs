@@ -16,6 +16,7 @@ class C_manajer extends CI_Controller {
         $this->load->library('datatables');
         $this->load->model('Data_manajer');
         $this->load->model('Data_distribusi');
+        $this->load->model('Data_lhu');
         
     }
   
@@ -430,5 +431,157 @@ $pdf->Output('de'.'.pdf', 'I');
         }
         
     }
+    public function data_lhu () {
+        
+            $this->load->view('V_manajer/umum/V_header');
+            $this->load->view('V_manajer/umum/V_sidebar');
+            $this->load->view('V_manajer/umum/V_top_navigasi');
+            $this->load->view('V_manajer/V_data_lhu');
+            $this->load->view('V_manajer/umum/V_footer');
+  
+        
+    }
+    public function json_lhu() {
+        header('Content-Type: application/json');
+        echo $this->Data_lhu->json();
+    
+}
+public function cetak_lhu(){
+                
+$this->load->library('Mypdf');
+
+$keluar= '/FPPS/SKIPM-MMJ/';
+
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);     
+$pdf->SetCreator(PDF_CREATOR);
+
+$pdf->SetTitle($keluar);
+$pdf->SetFont('helvetica', 'B', 20);
+        
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+$pdf->SetFont('times', '', 12);
+
+$pdf->AddPage();
+
+$html ='<hr>';
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$html = '<span align="center">PERMINTAAN PENGUJIAN SAMPEL DAN KAJI ULANG PERMINTAAN'
+        . '<br>No:{record_number_customer}/FPPS/SKIPM-MMJ/...../{tahun}</spam>';
+$html.='<div style="text-align:left; line-height: 25px;">Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
+Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
+Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
+Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
+Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
+Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
+Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
+Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
+Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
+petugas{petugas_sampling}<br>
+lokasi{lokasi_sampling}<br>
+yangpenanda{yang_menandatangani}<br>
+penanda{penandatangan}<br>
+
+
+
+Untuk dilakukan pengujian sebagai berikut : <br>
+
+<table cellpadding="1"  style="clear: both; " nobr="true">
+<tr style="background-color: #0073ea; ">
+  <td colspan="4"  border="1px;" align="center">PARAMETER TERPILIH</td>
+ </tr>
+ <tr>
+  <td border="1px;" align="center">{identifikasi_parasit}</td>
+  <td border="1px;" align="center">{identifikasi_bakteri}</td>
+  <td border="1px;" align="center">{identifikasi_jamur}</td>
+  <td border="1px;" align="center">{identifikasi_virus}</td>
+ </tr>
+   
+</table>
+
+</div>';
+
+
+$ambil = $this->uri->segment(3);    
+
+$data_penganalis = $this->db->get_where('data_penganalis',['record_number_penganalis'=>$ambil]);
+
+foreach ($data_penganalis->result_array() as $penganalis){
+    
+    $html.='<div>'.$penganalis['nama'].''.$penganalis['jabatan'].'</div>';
+    
+}
+
+$html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
+
+$html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diberikan_oleh}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{diterima_oleh},<br>';
+
+
+$ambil = $this->uri->segment(3);    
+$this->db->select('*');
+$this->db->from('customer_fpps');
+$this->db->where('record_number_customer',$ambil);
+$this->db->join('jenis_sample','record_number_sample = record_number_customer');
+$this->db->join('record_number','project_id = record_number_customer');
+$this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
+$this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
+$this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
+$this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
+$query = $this->db->get();
+foreach($query->result_array() as $cetak);{
+$id_customer = $cetak['id_customer_fpps_customer'];
+}
+$customer_id = $id_customer;
+$data_customer = $this->db->get_where('customer',['id_customer'=>$customer_id]);
+foreach($query->result_array() as $cetak);{
+     $html = str_replace('{tahun}',date("Y"),$html);
+     $html = str_replace('{data_sample}',$cetak['data_sample'],$html);
+     $html = str_replace('{jumlah_sample}',$cetak['jumlah_sample'],$html);
+     $html = str_replace('{record_number_customer}',$cetak['record_number_customer'],$html);
+     $html = str_replace('{bentuk}',$cetak['bentuk'],$html);
+     $html = str_replace('{tgl_penerimaan}',$cetak['tgl_penerimaan'],$html);
+     $html = str_replace('{tgl_sampling}',$cetak['tgl_sampling'],$html);
+     $html = str_replace('{deskripsi_sample}',$cetak['deskripsi_sample'],$html);
+     $html = str_replace('{kesiapan_personel}',$cetak['kesiapan_personel'],$html);
+     $html = str_replace('{kondisi_akomodasi}',$cetak['kondisi_akomodasi'],$html);
+     $html = str_replace('{beban_pekerjaan}',$cetak['beban_pekerjaan'],$html);
+     $html = str_replace('{kondisi_peralatan}',$cetak['kondisi_peralatan'],$html);
+     $html = str_replace('{wadah}',$cetak['wadah'],$html);
+     $html = str_replace('{kesesuaian_metode}',$cetak['kesesuaian_metode'],$html);
+     $html = str_replace('{diberikan_oleh}',$cetak['diberikan_oleh'],$html);
+     $html = str_replace('{diterima_oleh}',$cetak['diterima_oleh'],$html);
+     $html = str_replace('{identifikasi_bakteri}',$cetak['identifikasi_bakteri'],$html);
+     $html = str_replace('{identifikasi_parasit}',$cetak['identifikasi_parasit'],$html);
+     $html = str_replace('{identifikasi_virus}',$cetak['identifikasi_virus'],$html);
+     $html = str_replace('{identifikasi_jamur}',$cetak['identifikasi_jamur'],$html);
+     $html = str_replace('{petugas_sampling}',$cetak['petugas_sampling'],$html);
+     $html = str_replace('{lokasi_sampling}',$cetak['lokasi_sampling'],$html);
+     $html = str_replace('{yang_menandatangani}',$cetak['yang_menandatangani'],$html);
+     $html = str_replace('{penandatangan}',$cetak['penandatangan'],$html);
+
+     
+}
+foreach ($data_customer->result_array() as $data_cs){
+     $html = str_replace('{nama_customer}',$data_cs['nama_customer'],$html);
+     $html = str_replace('{alamat}',$data_cs['alamat'],$html);
+      $html = str_replace('{telp}',$data_cs['telp'],$html);
+     
+   }
+ob_start();   
+$pdf->writeHTML($html, true, false, true, false, '');
+   
+$pdf->Output('de'.'.pdf', 'I');
+
+}
   
 }
