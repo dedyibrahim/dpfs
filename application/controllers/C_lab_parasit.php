@@ -142,26 +142,66 @@ $pdf->AddPage();
 $html ='<hr>';
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$html = '<span align="center" style="font-size: 15px;" ><u>INFORMASI ANAMNESA SAMPEL</u></span><br>';
+$html = '<span align="center" style="font-size: 15px;" ><u>LAPORAN HASIL UJI SEMENTARA (LHUS)</u></span><br>';
 
-$html.='<div style="text-align:left; line-height: 25px;">
-Kegiatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {kegiatan}<br>
-Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
-Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
-lokasi sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {lokasi_sampling}<br>
-asal sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {asal_sample}<br>
-Jenis Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data_sample}<br>
-Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
-Bentuk Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
-kode sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {kode_sample}<br>
-gejala klinis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {gejala_klinis}<br>
-keterangan lain_lain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {keterangan_lain_lain}<br>
-<h4>Pelaksana Sampling</h4><br>
-1. Nama : {pelaksana1}<br>
-2. Nama : {pelaksana2}<br>
-1. Nama : {jumlah_bakteri}<br>
-2. Nama : {bakteri_ditemukan}<br>
-</div>';
+$html.='<div style="text-align:left; line-height: 25px;">';
+
+$html.='Bidang pengujian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Bakteri<br>
+kode sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {kode_sample}<br>
+Jenis Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data_sample}<br>
+Tanggal pengujian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>';
+$html.='<table border="1" width="600px">
+    <tr>
+        <th width="50px" style="text-align:center">No.</th>
+        <th width="100px" style="text-align:center">Organ Target</th>
+        <th width="100px" style="text-align:center">Metode Uji</th>
+        <th width="200px" style="text-align:center">Hasil Uji</th>
+        <th width="50px" style="text-align:center">Ket.*</th>
+        <th width="90px" style="text-align:center">Nama Analis</th>
+        <th width="90px" style="text-align:center">Paraf</th>
+    </tr>
+    <tr>
+        <td style="text-align:center">1</td>
+        <td>{organ_target}</td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center">{bakteri_ditemukan}</td>
+        <td style="text-align:center">{jumlah_bakteri}</td>
+        <td style="text-align:center">{nama}</td>
+        <td style="text-align:center"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"></td>
+        <td></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"></td>
+        <td></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"></td>
+        <td></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+    </tr>
+    </table>';
+
+$html.='<div style="text-align: right"><br><br>Mamuju {tgl_sampling}<br>';
+$html.='<div style="text-align: right">Mengetahui :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+$html.='<div style="text-align: right">Penyelia terkait&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>';
+$html.='<div style="text-align: right">{nama}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>';
 $ambil = $this->uri->segment(3);    
 $this->db->select('*');
 $this->db->from('customer_fpps');
@@ -172,7 +212,9 @@ $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_numbe
 $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
 $this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = record_number_customer','left');
-$this->db->join('data_lab_bakteri','record_number_lab_bakteri = record_number_customer','left');
+$this->db->join('data_lab_parasit','record_number_lab_parasit = record_number_customer','left');
+$this->db->join('data_nekropsi_parasit','record_number_parasit = record_number_customer','left');
+  $this->db->join('data_penganalis','record_number_penganalis= record_number_customer','left');
     
 $query = $this->db->get();
 foreach($query->result_array() as $cetak);{
@@ -200,8 +242,12 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{keterangan_lain_lain}',$cetak['keterangan_lain_lain'],$html);
      $html = str_replace('{pelaksana1}',$cetak['pelaksana1'],$html);
      $html = str_replace('{pelaksana2}',$cetak['pelaksana2'],$html);
-     $html = str_replace('{bakteri_ditemukan}',$cetak['bakteri_ditemukan'],$html);
-     $html = str_replace('{jumlah_bakteri}',$cetak['jumlah_bakteri'],$html);
+     $html = str_replace('{bakteri_ditemukan}',$cetak['parasit_ditemukan'],$html);
+     $html = str_replace('{jumlah_bakteri}',$cetak['jumlah_parasit'],$html);
+      $html = str_replace('{jumlah_bakteri}',$cetak['jumlah_parasit'],$html);
+     $html = str_replace('{organ_target}',$cetak['nekropsi_parasit'],$html);
+      $html = str_replace('{nama}',$cetak['nama'],$html);
+     $html = str_replace('{jabatan}',$cetak['jabatan'],$html);
 
 }
 foreach ($data_customer->result_array() as $data_cs){
