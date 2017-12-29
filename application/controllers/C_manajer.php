@@ -481,6 +481,14 @@ petugas{petugas_sampling}<br>
 lokasi{lokasi_sampling}<br>
 yangpenanda{yang_menandatangani}<br>
 penanda{penandatangan}<br>
+yangpenanda{bakteri_ditemukan}<br>
+penanda{jumlah_bakteri}<br>
+yangpenanda{virus_ditemukan}<br>
+penanda{jumlah_virus}<br>
+yangpenanda{parasit_ditemukan}<br>
+penanda{jumlah_parasit}<br>
+yangpenanda{virus_ditemukan}<br>
+penanda{jumlah_virus}<br>
 
 
 
@@ -527,6 +535,10 @@ $this->db->join('data_penerimaan_sample','record_number_penerimaan_sample = reco
 $this->db->join('kaji_ulang_permintaan','record_number_kaji_ulang = record_number_customer');
 $this->db->join('parameter_penyakit','record_number_parameter = record_number_customer');
 $this->db->join('penjelasan_penerimaan_fpps','record_number_penjelasan = record_number_customer');
+$this->db->join('data_lab_bakteri','record_number_lab_bakteri = record_number_customer','left');
+$this->db->join('data_lab_jamur','record_number_lab_jamur = record_number_customer','left');
+$this->db->join('data_lab_virus','record_number_lab_virus = record_number_customer','left');
+$this->db->join('data_lab_parasit','record_number_lab_parasit = record_number_customer','left');
 $query = $this->db->get();
 foreach($query->result_array() as $cetak);{
 $id_customer = $cetak['id_customer_fpps_customer'];
@@ -558,6 +570,14 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{lokasi_sampling}',$cetak['lokasi_sampling'],$html);
      $html = str_replace('{yang_menandatangani}',$cetak['yang_menandatangani'],$html);
      $html = str_replace('{penandatangan}',$cetak['penandatangan'],$html);
+     $html = str_replace('{bakteri_ditemukan}',$cetak['bakteri_ditemukan'],$html);
+     $html = str_replace('{jumlah_bakteri}',$cetak['jumlah_bakteri'],$html);
+     $html = str_replace('{jamur_ditemukan}',$cetak['jamur_ditemukan'],$html);
+     $html = str_replace('{jumlah_jamur}',$cetak['jumlah_jamur'],$html);
+     $html = str_replace('{virus_ditemukan}',$cetak['virus_ditemukan'],$html);
+     $html = str_replace('{jumlah_virus}',$cetak['jumlah_virus'],$html);
+      $html = str_replace('{parasit_ditemukan}',$cetak['parasit_ditemukan'],$html);
+     $html = str_replace('{jumlah_parasit}',$cetak['jumlah_parasit'],$html);
 
      
 }
