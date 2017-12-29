@@ -466,33 +466,14 @@ $pdf->AddPage();
 $html ='<hr>';
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$html = '<span align="center">PERMINTAAN PENGUJIAN SAMPEL DAN KAJI ULANG PERMINTAAN'
-        . '<br>No:{record_number_customer}/FPPS/SKIPM-MMJ/...../{tahun}</spam>';
-$html.='<div style="text-align:left; line-height: 25px;">Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
-Alamat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {alamat}<br>
-Telp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {telp}<br>
-Jumlah Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {jumlah_sample}<br>
-Deskripsi Sample&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {deskripsi_sample}<br>
-Dalam bentuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bentuk}<br>
-Wadah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {wadah}<br>
-Tanggal penerimaan sample&nbsp;&nbsp;: {tgl_penerimaan}<br>
-Tanggal sampling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_sampling}<br>
-petugas{petugas_sampling}<br>
-lokasi{lokasi_sampling}<br>
-yangpenanda{yang_menandatangani}<br>
-penanda{penandatangan}<br>
-yangpenanda{bakteri_ditemukan}<br>
-penanda{jumlah_bakteri}<br>
-yangpenanda{virus_ditemukan}<br>
-penanda{jumlah_virus}<br>
-yangpenanda{parasit_ditemukan}<br>
-penanda{jumlah_parasit}<br>
-yangpenanda{virus_ditemukan}<br>
-penanda{jumlah_virus}<br>
+$html = '<span align="center">LAPORAN HASIL UJI</span>';
 
-
-
-Untuk dilakukan pengujian sebagai berikut : <br>
+$html.='<div style="text-align:left; line-height: 25px;">
+Nomor LHU &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {record_number_customer}/LHU/SKIPM-MMJ/...../{tahun}<br>
+Kode Contoh UJi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {kode_sample}<br>
+Tanggal Diterima &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {tgl_penerimaan}<br>
+Nama Pelanggan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {nama_customer}<br>
+ALamat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {alamat}<br>
 
 <table cellpadding="1"  style="clear: both; " nobr="true">
 <tr style="background-color: #0073ea; ">
@@ -504,21 +485,33 @@ Untuk dilakukan pengujian sebagai berikut : <br>
   <td border="1px;" align="center">{identifikasi_jamur}</td>
   <td border="1px;" align="center">{identifikasi_virus}</td>
  </tr>
-   
+
 </table>
+
+<table cellpadding="1"  style="clear: both; " nobr="true">
+<tr style="background-color: #0073ea; ">
+  <td colspan="10"  border="1px;" align="center">DATA UJI</td>
+ </tr>
+ <tr>
+  <td border="1px;" align="center">{bakteri_ditemukan}</td>
+  <td border="1px;" align="center">{jumlah_bakteri}</td>
+  <td border="1px;" align="center">{virus_ditemukan}</td>
+ <td border="1px;" align="center">{jumlah_virus}</td>
+  <td border="1px;" align="center">{parasit_ditemukan}</td>
+ <td border="1px;" align="center">{jumlah_parasit}</td>
+  <td border="1px;" align="center">{jamur_ditemukan}</td>
+ <td border="1px;" align="center">{jumlah_jamur}</td>
+  
+</tr>
+
+
+</table>
+
+
 
 </div>';
 
 
-$ambil = $this->uri->segment(3);    
-
-$data_penganalis = $this->db->get_where('data_penganalis',['record_number_penganalis'=>$ambil]);
-
-foreach ($data_penganalis->result_array() as $penganalis){
-    
-    $html.='<div>'.$penganalis['nama'].''.$penganalis['jabatan'].'</div>';
-    
-}
 
 $html.='<div style="text-align:left; line-height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelanggan,<br><br><br>';
 
@@ -578,6 +571,7 @@ foreach($query->result_array() as $cetak);{
      $html = str_replace('{jumlah_virus}',$cetak['jumlah_virus'],$html);
       $html = str_replace('{parasit_ditemukan}',$cetak['parasit_ditemukan'],$html);
      $html = str_replace('{jumlah_parasit}',$cetak['jumlah_parasit'],$html);
+       $html = str_replace('{kode_sample}',$cetak['kode_sample'],$html);
 
      
 }
