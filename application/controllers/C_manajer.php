@@ -490,17 +490,17 @@ ALamat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 
 <table cellpadding="1"  style="clear: both; " nobr="true">
 <tr style="background-color: #0073ea; ">
-  <td colspan="8"  border="1px;" align="center">DATA UJI</td>
+  <td colspan="8"  border="1px;" align="center">DATA UJI YANG DITEMUKAN BERDASRAKAN PARAMETER</td>
  </tr>
  <tr>
-  <td border="1px;" align="center">Bakteri ditemukan</td>
-  <td border="1px;" align="center">Jumlah bakteri</td>
-  <td border="1px;" align="center">Virus ditemukan</td>
- <td border="1px;" align="center">Jumlah virus</td>
-  <td border="1px;" align="center">Parasit ditemukan</td>
- <td border="1px;" align="center">Jumlah parasit</td>
-  <td border="1px;" align="center">Jamur ditemukan</td>
- <td border="1px;" align="center">Jumlah Jamur</td>
+  <td border="1px;" align="center">Bakteri </td>
+  <td border="1px;" align="center">Jumlah</td>
+  <td border="1px;" align="center">Virus </td>
+ <td border="1px;" align="center">Jumlah </td>
+  <td border="1px;" align="center">Parasit </td>
+ <td border="1px;" align="center">Jumlah</td>
+  <td border="1px;" align="center">Jamur</td>
+ <td border="1px;" align="center">Jumlah</td>
   
 </tr>
  <tr>
