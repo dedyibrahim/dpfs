@@ -518,7 +518,10 @@ ALamat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 
 </table>
 
-
+Catatan : <br>
+1.Hasil uji mewakili poulasi yang di ambil/hasil uji ini berlaku hannya untuk contoh uji<br>
+2.Laporan Hasil uji ini terdiri dari 1 (satu)  lembar (stempel asli)<br>
+3.Laporan hasil uji ini tidak boleh digandakan  Kecuali secara lengkap dan seijzin tertulis<br>Manager puncak Stasiun KIPM kelas II Mamuju stempel Copy<br>
 
 </div>';
 
