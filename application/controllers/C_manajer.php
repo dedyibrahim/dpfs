@@ -490,8 +490,19 @@ ALamat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 
 <table cellpadding="1"  style="clear: both; " nobr="true">
 <tr style="background-color: #0073ea; ">
-  <td colspan="10"  border="1px;" align="center">DATA UJI</td>
+  <td colspan="8"  border="1px;" align="center">DATA UJI</td>
  </tr>
+ <tr>
+  <td border="1px;" align="center">Bakteri ditemukan</td>
+  <td border="1px;" align="center">Jumlah bakteri</td>
+  <td border="1px;" align="center">Virus ditemukan</td>
+ <td border="1px;" align="center">Jumlah virus</td>
+  <td border="1px;" align="center">Parasit ditemukan</td>
+ <td border="1px;" align="center">Jumlah parasit</td>
+  <td border="1px;" align="center">Jamur ditemukan</td>
+ <td border="1px;" align="center">Jumlah Jamur</td>
+  
+</tr>
  <tr>
   <td border="1px;" align="center">{bakteri_ditemukan}</td>
   <td border="1px;" align="center">{jumlah_bakteri}</td>
