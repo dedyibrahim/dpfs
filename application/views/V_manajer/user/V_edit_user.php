@@ -1,24 +1,31 @@
+<?php foreach ($data_user->result_array() as $data){
+    
+}
+?>
 <div class="x_panel">
 <div class="x_title">
                     <h2>Daftar User</h2>
                    
                     <div class="clearfix"></div>
                   </div>
-<form action="<?php echo base_url('C_admin/daftar'); ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url('C_manajer/update_user'); ?>" method="post" enctype="multipart/form-data">
    
      <div class="col-md-6">
       <div class="form-group has-feedback">
-          <input type="text" class="form-control" name="nama" placeholder="Full name">
+          <input type="hidden" class="form-control" value="<?php echo $data['id_user'];?>" name="id_user" placeholder="Full name">
+       
+          <input type="text" class="form-control" value="<?php echo $data['nama'];?>" name="nama" placeholder="Full name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
     
       <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" placeholder="Email">
+          <input type="email" class="form-control" value="<?php echo $data['email'];?>" name="email" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       
      <div class="form-group has-feedback">
          <select class="form-control" name="level">
+                    <option><?php echo $data['level'];?></option>
                     <option>level</option>
                     <option>admin</option>
                     <option>user</option>
@@ -28,6 +35,7 @@
             
      <div class="form-group has-feedback">
          <select class="form-control" name="status" >
+                    <option><?php echo $data['status'];?></option>
                     <option>status</option>
                     <option>aktif</option>
                     <option>tidak</option>
@@ -61,7 +69,7 @@
           </div>
      
           <div class="col-xs-2 pull-right">
-              <button type="submit" name="btnDaftar" class="btn btn-primary btn-block btn-flat">Mendaftar</button>
+              <button type="submit" name="btnDaftar" class="btn btn-primary btn-block btn-flat">Simpan</button>
           </div>
         </div>
                       
@@ -80,7 +88,7 @@
                 $('#datatable10').DataTable( {
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "<?php echo base_url() ;?>C_admin/data_user"
+                    "ajax": "<?php echo base_url() ;?>C_manajer/data_user"
                 } );
             } );
     </script>

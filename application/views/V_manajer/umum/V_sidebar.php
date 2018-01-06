@@ -19,6 +19,17 @@
                         <li><a href="<?php echo base_url(); ?>C_manajer/data_lhu">LHU</a></li>
                     </ul>
                   </li>
+                  <li>
+                    <a><i class="fa fa-user"></i>DATA<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_user">USER</a></li>
+                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_user">CUSTOMER</a></li>
+                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_user">PENGANALIS</a></li>
+                   
+                    </ul>
+                     
+                 </li>
+               
                 </ul>
               </div>
             </div>

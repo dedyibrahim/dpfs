@@ -1,61 +1,77 @@
-<div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">DATA USER</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Kecilin">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Tutup">
-              <i class="fa fa-times"></i></button>
-          </div>
-        </div>
-<div class="box-body" style="">
-   
-<?php 
-foreach ($data_user->result_array() as $tampil ){
+<?php foreach ($data_user->result_array() as $data){
     
+}
 ?>
-            
-            
-   <div class="col-md-6">
-      <div class="form-group has-feedback ">
-          <input type="text" class="form-control" name="nama"  placeholder="Full name" readonly="" value="<?php echo $tampil['nama']; ?>">
+<div class="x_panel">
+<div class="x_title">
+                    <h2>Data user</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+   
+     <div class="col-md-6">
+      <div class="form-group has-feedback">
+          <input type="text " class="form-control" value="<?php echo $data['nama'];?>" readonly="" placeholder="Full name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
+    
       <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" placeholder="Email" readonly="" value="<?php echo $tampil['email']; ?>">
+          <input type="email" class="form-control" value="<?php echo $data['email'];?>" readonly="" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       
       <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="level" placeholder="level" readonly="" value="<?php echo $tampil['level']; ?>">
-        <span class="fa fa-backward form-control-feedback"></span>
+          <input type="email" class="form-control" value="<?php echo $data['level'];?>" readonly="" placeholder="Level">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
     
-            
-       <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="status" placeholder="status" readonly="" value="<?php echo $tampil['status']; ?>">
-        <span class="fa fa-backward form-control-feedback"></span>
+      <div class="form-group has-feedback">
+          <input type="email" class="form-control" value="<?php echo $data['status'];?>" readonly="" placeholder="Status">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-    
-      
-    
-        </div>
+   
+      </div>
         <div class="col-md-6">
-            <div class="form-group has-feedback">
-                <p align="center "><img src="<?php echo base_url('uploads/user/') ?><?php echo $tampil['gambar'];?> " style="width: auto; height:250px;  " > 
-                </p></div>
-            
+            <p align="center"> 
+            <img class="img-thumbnail" style="width:400 px; height:170px;" src="<?php echo base_url('uploads/user_thumb/');echo $data['gambar']; ?>"       
+                 </p>
         </div> 
-      
+            
+</div>
 
-       </div>
-        <div class="box-footer with-border">
-          <div class="col-xs-2 pull-left">
-              <a href="<?php echo base_url('C_daftar'); ?>" ><button class="btn btn-warning btn-block btn-flat">Back</button></a>
-          </div>
-     
-      </div>
-<?php } ?>  
-</div></div>
 
+<div class="x_panel">
+<div class="x_title">
+                    <h2>User Terdaftar</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url('assets/');?>vendors/datatables/datatables/media/js/jquery.js"></script>
+ <script type="text/javascript"  >
+            $(document).ready(function() {
+                $('#datatable10').DataTable( {
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "<?php echo base_url() ;?>C_manajer/data_user"
+                } );
+            } );
+    </script>
+    <div class="dashboard_graph">
+     <table id="datatable10" class="table table-striped table-bordered dataTable" align="center" role="grid" aria-describedby="datatable-fixed-header_info"><thead>
+       <tr role="row">
+           <th class="sorting_asc"  tabindex="0" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 161px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">Nama</th>
+           <th class="sorting_asc" tabindex="0" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 161px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">Email</th>
+           <th class="sorting" tabindex="0" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Level</th>
+           <th class="sorting" tabindex="0" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Office: activate to sort column ascending">Status</th>
+           <th class="sorting" tabindex="0" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 119px;" aria-label="Age: activate to sort column ascending">Gambar</th>
+           <th class="sorting" tabindex="0" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 114px;" aria-label="Start date: activate to sort column ascending">Aksi</th>
+         </thead>
+        <tbody>
+        </table>
+       
+    </div>
+    
+</div>
+
+
+</div>

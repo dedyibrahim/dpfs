@@ -4,7 +4,7 @@
                    
                     <div class="clearfix"></div>
                   </div>
-<form action="<?php echo base_url('C_admin/daftar'); ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url('C_manajer/daftar'); ?>" method="post" enctype="multipart/form-data">
    
      <div class="col-md-6">
       <div class="form-group has-feedback">
@@ -80,7 +80,7 @@
                 $('#datatable10').DataTable( {
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "<?php echo base_url() ;?>C_admin/data_user"
+                    "ajax": "<?php echo base_url() ;?>C_manajer/data_user"
                 } );
             } );
     </script>

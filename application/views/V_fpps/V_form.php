@@ -1,48 +1,13 @@
 <script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#modal1").click(function(){
-        $("#modal-info").slideToggle("slow");
-        });
-   
-    });
-    </script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#close").click(function(){
-          $("#modal-info").slideToggle("slow");
-        });
-   
-    });
-    </script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#bakteri").click(function(){
-        
-          $("#show_bakteri").toggle();
-        });
-   
-    });
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $("#logam").click(function(){
-        
-          $("#show_logam").toggle();
-        });
-   
-    });
-    </script>
-    
-<div class="modal modal-info fade in" id="modal-info" style="display: block; display: none;  ">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Input Customer</h4>
-              </div>
-                
-              <div class="modal-body">
-               <form action="<?php echo base_url('C_fpps/simpan_customer');?>" method="post" enctype="multipart/formdata">
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel2">BUAT DATA CUSTOMER</h4>
+                        </div>
+                        <div class="modal-body">
+                <form action="<?php echo base_url('C_fpps/simpan_customer');?>" method="post" enctype="multipart/formdata">
                 <input class="form-control"  placeholder="nama customer" name="nama_customer" type="text"><br>
                 <input class="form-control"  name="alamat" placeholder="Alamat" type="text"><br>
                 <input class="form-control"  name="telp" placeholder="Telp" type="text"><br>
@@ -50,17 +15,17 @@
                 <input class="form-control"  name="contact_person" placeholder="Contact Person" type="text"><br>
                 <input class="form-control"  name="telp_fax" placeholder="Telp/Fax" type="text">
     
-              </div>
-              <div class="modal-footer">
-                  <button type="button" id="close"  class="btn btn-outline pull-left">close</button>
-                 <button type="submit" name="simpan_customer" class="btn btn-outline">Simpan Customer</button>
-              </form>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
+                             
+                       </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-default"data-dismiss="modal">Close</button>
+                            <button type="submit" name="simpan_customer" class="btn btn-primary ">Save</button>
+                        </form>
+                        </div>
+               </div>
+           </div>
+    </div>
+    
 
 
 <link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet">
@@ -104,7 +69,7 @@
           <input class="form-control" id="id_customer"   name="id_customer" type="hidden">
           <input class="form-control" id="customer"  placeholder="nama customer" name="nama_customer" type="text">
               <span class="input-group-btn">
-                 <button type="button" id="modal1" class="btn btn-primary"><span class="fa fa-plus"></span></button>
+                 <button type="button" id="modal1" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-primary"><span class="fa fa-plus"></span></button>
                </span>
         </div>
        <div class="form-group has-feedback">
@@ -233,10 +198,6 @@
        <select name="penandatangan" class="form-control">
            <option>Penandatangan</option>
                             <option>Abdurrohman, S.St.Pi.,M.Si</option>
-                            <option>Hidup</option>
-                             <option>Beku</option>
-                            <option>Kering</option>
-                            <option>lainnya</option>
                 </select>
       
      </div>

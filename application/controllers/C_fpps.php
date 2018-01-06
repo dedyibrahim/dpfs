@@ -55,7 +55,7 @@ class C_fpps extends CI_Controller {
            );
             $this->db->insert('customer',$daftar);
             
-            redirect('C_fpps/form_fpps');
+           redirect('C_fpps/form_fpps');
         }else{
             redirect('C_fpps/form_fpps');
         }

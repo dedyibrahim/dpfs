@@ -25,7 +25,7 @@ class C_admin extends CI_Controller {
             $this->load->view('V_admin/umum/V_footer');
            
 	}
-         public function daftar_user()
+   public function daftar_user()
 	{
            
             $this->load->view('V_admin/umum/V_header');
@@ -35,7 +35,7 @@ class C_admin extends CI_Controller {
             $this->load->view('V_admin/umum/V_footer');
            
 	}
-        public function daftar(){
+   public function daftar(){
     
     if($_POST['password1'] != $_POST['password2'] ){
         
@@ -105,65 +105,11 @@ class C_admin extends CI_Controller {
     }
     
 }
-public function data_user(){
-$table = 'user';
-$primaryKey = 'id_user';
-$columns = array(
-	array( 'db' => 'nama',      'dt' => 0 ),
-	array( 'db' => 'email',      'dt' => 1 ),
-	array( 'db' => 'level',     'dt' => 2 ),
-	array( 'db' => 'status',    'dt' => 3 ),
-	
-        array( 'db' => 'gambar',    
-               'dt' => 4,
-               'formatter' => function ( $d, $row) {
-          
-       $image = array(
-        'src'   => 'uploads/user_thumb/'.$d,
-        'alt'   => '',
-        'width' => '100',
-        'height'=> '80',
-       );
-         return  img($image);
-               
-                       
-            }),
-            
-        array( 'db' => 'id_user',    
-               'dt' => 5,
-               'formatter' => function ( $d, $row) {
-                return anchor('C_admin/lihat_user/'.md5($d),'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success'").' '.
-                       anchor('C_admin/edit_user/'.md5($d),'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
-                       anchor('C_admin/hapus/'.md5($d),'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
-                       
-            })
-           
-            );
-       
-            
-           
-$sql_details = array(
-	'user' => $this->db->username,
-	'pass' => $this->db->password,
-	'db'   => $this->db->database,
-	'host' => $this->db->hostname
-);
 
 
-$this->load->library('ssp');
-
-echo json_encode(
-	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
-);
-
-
-
-    
-}
-
-function hapus(){
+function hapus_user(){
       
-    //$this->db->where('md5id_user',$id_user);
+    $this->db->where('md5(id_user)',$id_user);
   
     $id_user = $this->uri->segment(3);
     
