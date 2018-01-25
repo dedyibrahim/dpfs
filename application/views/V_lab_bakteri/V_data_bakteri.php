@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <!--------- end input customer--------------->     
-    <h2>DATA TABEL NEKROPSI</h2>
+    <h2>DATA TABEL UJI BAKTERI</h2>
         <ul class="nav navbar-right panel_toolbox">
                 </li>
                     </ul>              

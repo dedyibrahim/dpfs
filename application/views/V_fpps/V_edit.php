@@ -32,10 +32,6 @@ foreach ($data_customer->result_array() as $data_user){
           <input class="form-control" value="<?php echo $data_user['telp'];?>" readonly="" id="telp" name="telp" placeholder="Telp" type="text">
         <span class="fa fa-tty form-control-feedback"></span>
       </div>
-       <div class="form-group has-feedback">
-          <input class="form-control" value="<?php echo $data_user['project_id'];?>" readonly="" id="project_id" name="project_id" placeholder="Project Id" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
-      </div>
        
   </div>
     

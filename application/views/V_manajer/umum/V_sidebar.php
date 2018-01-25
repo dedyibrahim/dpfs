@@ -4,27 +4,27 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-user"></i>MANAJER TEKNIK<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-gears"></i>MANAJER TEKNIK<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="<?php echo base_url(); ?>C_manajer">FORM MANAJER TEKNIK</a></li>
                     </ul>
                   </li>
-                   <li><a><i class="fa fa-user"></i>DISTRIBUSI<span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-send"></i>DISTRIBUSI<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="<?php echo base_url(); ?>C_manajer/distribusi">DATA DISTRIBUSI</a></li>
                     </ul>
                   </li>
-                 <li><a><i class="fa fa-user"></i>DATA LHU<span class="fa fa-chevron-down"></span></a>
+                 <li><a><i class="fa fa-envelope"></i>DATA LHU<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="<?php echo base_url(); ?>C_manajer/data_lhu">LHU</a></li>
                     </ul>
                   </li>
                   <li>
-                    <a><i class="fa fa-user"></i>DATA<span class="fa fa-chevron-down"></span></a>
+                    <a><i class="fa fa-book"></i>DATA<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="<?php echo base_url(); ?>C_manajer/daftar_user">USER</a></li>
-                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_user">CUSTOMER</a></li>
-                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_user">PENGANALIS</a></li>
+                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_customer">CUSTOMER</a></li>
+                        <li><a href="<?php echo base_url(); ?>C_manajer/daftar_penganalis">PENGANALIS</a></li>
                    
                     </ul>
                      

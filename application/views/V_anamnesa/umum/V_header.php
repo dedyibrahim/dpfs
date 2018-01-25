@@ -43,6 +43,11 @@ if($level == 'admin' || $level == 'user')
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('assets'); ?>/build/css/custom.min.css" rel="stylesheet">
+      <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
   </head>
   
   <body class="nav-md">

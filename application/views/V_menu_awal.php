@@ -178,8 +178,7 @@ if($level == 'admin' || $level == 'user')
                                 <h5 align="center">MANAJER TEKNIK</h5>
                           </div>
                         </div>
-                   </div>
-              
+           
         
     <!-- jQuery -->
     <script src="<?php echo base_url('assets'); ?>/vendors/jquery/dist/jquery.min.js"></script>

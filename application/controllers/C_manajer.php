@@ -726,20 +726,28 @@ if($level == 'admin')
          
     }
     else if(isset($_POST['btnDaftar'])){
-                 $field_name ="gambar";
-   
-        $this->load->library('upload',$config);
-      
+         
+         $config = [
+                    'upload_path'    => './uploads/user/',
+                    'allowed_types' => 'jpg|gif|png|zip|pdf',
+                    'max_size'      =>'200000000'
+                   ];
+           $config['upload_path']; 
+           $config['overwrite'] = TRUE;
            
+            $field_name ="gambar";
+            $this->upload->initialize($config);                
+            $this->load->library('upload', $config);
+    
     if ($this->upload->do_upload($field_name)){
 
-        $image_data = $this->upload->data();
-        $config['image_library']  ='gd2';
-        $config['source_image']   =$this->upload->upload_path.$this->upload->file_name;
-        $config['maintain_ratio'] = TRUE;
-        $config['width']          = 800;
-        $config['height']         = 800;
-        //$config['upload_path']      ='./uploads/user/';
+        $image_data                = $this->upload->data();
+        $config2['image_library']  ='gd2';
+        $config2['source_image']   = $this->upload->upload_path.$this->upload->file_name;
+        $config2['maintain_ratio'] = TRUE;
+        $config2['overwrite']      = TRUE;
+        $config2['width']          = 800;
+        $config2['height']         = 800;
          
         $this->load->library('image_lib',$config2);
         $this->image_lib->initialize($config2);
@@ -748,10 +756,11 @@ if($level == 'admin')
 ////membuat thumbnail ////
 
         $conf['image_library']  ='gd2';
-        $conf['source_image']   =$this->upload->upload_path.$this->upload->file_name;
+        $conf['source_image']   = $this->upload->upload_path.$this->upload->file_name;
         $conf['new_image']      ='./uploads/user_thumb/';
         $conf['create_thumb']   = TRUE;
         $conf['maintain_ratio'] = TRUE;
+        $conf['overwrite']      = TRUE;
         $conf['width']          = 400;
         $conf['height']         = 400;
         
@@ -777,12 +786,17 @@ if($level == 'admin')
     }else{
         echo  $this->upload->display_errors();
     }
-        
+       
     }else{
         echo 'DAFTAR GAGAL';
     }
     
 }
+
+
+
+
+
 public function daftar(){
     
     if($_POST['password1'] != $_POST['password2'] ){
@@ -803,9 +817,9 @@ public function daftar(){
 
     if ($this->upload->do_upload($field_name)){
 
-        $image_data = $this->upload->data();
+        $image_data                = $this->upload->data();
         $config2['image_library']  ='gd2';
-        $config2['source_image']   =$this->upload->upload_path.$this->upload->file_name;
+        $config2['source_image']   = $this->upload->upload_path.$this->upload->file_name;
         $config2['maintain_ratio'] = TRUE;
         $config2['width']          = 800;
         $config2['height']         = 800;
@@ -816,14 +830,14 @@ public function daftar(){
 
 ////membuat thumbnail ////
 
-        $conf['image_library'] ='gd2';
-        $conf['source_image'] =$this->upload->upload_path.$this->upload->file_name;
-        $conf['new_image']='./uploads/user_thumb/';
-        $conf['create_thumb'] = TRUE;
-        $conf['overwrite']=TRUE;
+        $conf['image_library']  ='gd2';
+        $conf['source_image']   =$this->upload->upload_path.$this->upload->file_name;
+        $conf['new_image']      ='./uploads/user_thumb/';
+        $conf['create_thumb']   = TRUE;
+        $conf['overwrite']      =TRUE;
         $conf['maintain_ratio'] = TRUE;
-        $conf['width']         = 400;
-        $conf['height']       = 400;
+        $conf['width']          = 400;
+        $conf['height']         = 400;
         
         $this->load->library('image_lib',$conf);
 
@@ -853,5 +867,187 @@ public function daftar(){
     }
     
 }
+ public function daftar_customer()
+	{
+            
+       
+           
+            $this->load->view('V_manajer/umum/V_header');
+            $this->load->view('V_manajer/umum/V_sidebar');
+            $this->load->view('V_manajer/umum/V_top_navigasi');
+            $this->load->view('V_manajer/customer/V_daftar');
+            $this->load->view('V_manajer/umum/V_footer');
+           
+	}
+        
+        public function data_customer(){
+$table = 'customer';
+$primaryKey = 'id_customer';
+$columns = array(
+	array( 'db' => 'nama_customer',      'dt' => 0 ),
+	array( 'db' => 'contact_person',      'dt' => 1 ),
+	array( 'db' => 'telp',     'dt' => 2 ),
+	    
+        array( 'db' => 'id_customer',    
+               'dt' => 3,
+               'formatter' => function ( $d, $row) {
+                return anchor('C_manajer/edit_customer/'.md5($d),'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
+                       anchor('C_manajer/hapus_customer/'.md5($d),'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
+                       
+            })
+           
+            );
+       
+            
+           
+$sql_details = array(
+	'user' => $this->db->username,
+	'pass' => $this->db->password,
+	'db'   => $this->db->database,
+	'host' => $this->db->hostname
+);
+
+
+$this->load->library('ssp');
+
+echo json_encode(
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+);
   
 }
+
+public function edit_customer(){
+    $valid =  $this->session->all_userdata();
+    $level    = $valid['level'];
+ 
+    if($level == 'admin')
+             {
+     
+    $customer = $this->uri->segment(3);
+    $data_customer = $this->db->get_where('customer',['md5(id_customer)'=>$customer]);
+  
+    $this->load->view('V_manajer/umum/V_header');
+    $this->load->view('V_manajer/umum/V_sidebar');
+    $this->load->view('V_manajer/umum/V_top_navigasi');
+    $this->load->view('V_manajer/customer/V_edit_customer',['data_customer' =>$data_customer]);
+    $this->load->view('V_manajer/umum/V_footer');
+    
+}else{
+  echo 'ANDA TIDAK MEMILIKI AKSES KEHALAMAN INI'  ; 
+}     
+     
+
+ }
+ public function update_customer(){
+     $id_customer = $this->input->post('id_customer'); 
+     
+     $update_customer = array(
+            'nama_customer'      => $this->input->post('nama_customer'),
+            'alamat'             => $this->input->post('alamat'),
+            'telp'               => $this->input->post('telp'),
+            'contact_person'     => $this->input->post('contact_person'),
+            'telp_fax'           => $this->input->post('telp_fax')
+        );
+         
+        $this->db->update('customer',$update_customer,array('id_customer' => $id_customer)); 
+                
+        redirect('C_manajer/daftar_customer');
+     
+ }
+   public function hapus_customer(){
+     $hapus = $this->uri->segment(3);
+    $this->db->delete('customer',['md5(id_customer)'=>$hapus]);
+    redirect('C_manajer/daftar_customer/');
+ }
+ 
+public function daftar_penganalis()
+	{
+            $this->load->view('V_manajer/umum/V_header');
+            $this->load->view('V_manajer/umum/V_sidebar');
+            $this->load->view('V_manajer/umum/V_top_navigasi');
+            $this->load->view('V_manajer/penganalis/V_daftar');
+            $this->load->view('V_manajer/umum/V_footer');
+           
+	}
+        
+public function penganalis(){
+    $table = 'penganalis';
+    $primaryKey = 'id_penganalis';
+    $columns = array(
+	array( 'db' => 'nama',      'dt' => 0 ),
+	array( 'db' => 'jabatan',      'dt' => 1 ),
+	array( 'db' => 'id_penganalis',    
+               'dt' => 2,
+               'formatter' => function ( $d, $row) {
+                return anchor('C_manajer/edit_penganalis/'.md5($d),'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
+                       anchor('C_manajer/hapus_penganalis/'.md5($d),'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
+                       
+            })
+           
+            );
+       
+            
+           
+$sql_details = array(
+	'user' => $this->db->username,
+	'pass' => $this->db->password,
+	'db'   => $this->db->database,
+	'host' => $this->db->hostname
+);
+
+
+$this->load->library('ssp');
+
+echo json_encode(
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+);
+
+
+
+    
+}
+
+public function edit_penganalis(){
+    $valid =  $this->session->all_userdata();
+    $level    = $valid['level'];
+ 
+    if($level == 'admin')
+             {
+     
+    $penganalis = $this->uri->segment(3);
+    $data_penganalis = $this->db->get_where('penganalis',['md5(id_penganalis)'=>$penganalis]);
+  
+    $this->load->view('V_manajer/umum/V_header');
+    $this->load->view('V_manajer/umum/V_sidebar');
+    $this->load->view('V_manajer/umum/V_top_navigasi');
+    $this->load->view('V_manajer/penganalis/V_edit_penganalis',['data_penganalis' =>$data_penganalis]);
+    $this->load->view('V_manajer/umum/V_footer');
+    
+}else{
+    
+  echo 'ANDA TIDAK MEMILIKI AKSES KEHALAMAN INI'  ; 
+}     
+     
+
+ }
+ public function update_penganalis(){
+     $id_penganalis = $this->input->post('id_penganalis'); 
+     
+     $update_penganalis = array(
+            'nama'                => $this->input->post('nama'),
+            'jabatan'             => $this->input->post('jabatan'),
+                             );
+         
+        $this->db->update('penganalis',$update_penganalis,array('id_penganalis' => $id_penganalis)); 
+                
+        redirect('C_manajer/daftar_penganalis');
+     
+ }
+  public function hapus_penganalis(){
+     $hapus = $this->uri->segment(3);
+    $this->db->delete('penganalis',['md5(id_penganalis)'=>$hapus]);
+    redirect('C_manajer/daftar_penganalis/');
+ }
+
+ }
+ 

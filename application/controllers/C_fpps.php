@@ -49,7 +49,6 @@ class C_fpps extends CI_Controller {
             'nama_customer'      => $this->input->post('nama_customer'),
             'alamat'             => $this->input->post('alamat'),
             'telp'               => $this->input->post('telp'),
-            'project_id'         => $this->input->post('project_id'),
             'contact_person'     => $this->input->post('contact_person'),
             'telp_fax'           => $this->input->post('telp_fax')
            );
@@ -77,7 +76,6 @@ class C_fpps extends CI_Controller {
                 'contact_person'        => $d->contact_person , //variabel yg dibawa ke id nama
                 'alamat'                => $d->alamat, //variabel yang dibawa ke id ibukota
                 'telp'                  => $d->telp, //variabel yang dibawa ke id ibukota
-                'project_id'            => $d->project_id, //variabel yang dibawa ke id ibukota
                 'telp_fax'              => $d->telp_fax, //variabel yang dibawa ke id ibukota
             );
         }
@@ -269,9 +267,9 @@ border: 1px solid #ddd;" nobr="true">
   <td colspan="3" border="1" align="center">KAJI ULANG PERMINTAAN</td>
  </tr>
  <tr>
-  <td width="30" align="center">NO</td>
-  <td width="390" align="center">UNSUR KAJI ULANG</td>
-  <td align="center">HASIL KAJI ULANG</td>
+  <td width="30" >NO</td>
+  <td width="390" >UNSUR KAJI ULANG</td>
+  <td >HASIL KAJI ULANG</td>
  </tr>
  <tr>
   <td align="center">1</td>

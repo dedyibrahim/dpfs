@@ -22,7 +22,7 @@ class Data_anamnesa extends CI_Model {
         $this->datatables->join('customer','customer.id_customer = customer_fpps.id_customer_fpps_customer');
         $this->datatables->join('parameter_penyakit','customer_fpps.record_number_customer = parameter_penyakit.record_number_parameter','left');
         $this->datatables->join('data_penerimaan_sample','customer_fpps.record_number_customer = data_penerimaan_sample.record_number_penerimaan_sample','left');
-        $this->datatables->add_column('view','<a class="btn btn-xs btn-warning btn" href="'.base_url().'C_anamnesa/ambil_data/$1">Get</a>| <a class="btn btn-xs btn-success" href="'.base_url('C_anamnesa/').'cetak_anamnesa/$1">Print</a>', 'record_number_customer');
+        $this->datatables->add_column('view','<a  href="'.base_url().'C_anamnesa/ambil_data/$1"><button type="button" class="btn btn-md btn-warning btn fa fa-pencil-square-o" ></button></a><a class="btn btn-md btn-success fa fa-print" href="'.base_url('C_anamnesa/').'cetak_anamnesa/$1"></a>', 'record_number_customer');
         return $this->datatables->generate();
         
     }

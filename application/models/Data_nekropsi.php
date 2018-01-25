@@ -26,7 +26,7 @@ class Data_nekropsi extends CI_Model {
         $this->datatables->join('data_nekropsi_parasit','customer_fpps.record_number_customer = data_nekropsi_parasit.record_number_parasit','left');
         $this->datatables->join('data_nekropsi_virus','customer_fpps.record_number_customer = data_nekropsi_virus.record_number_virus','left');
         $this->datatables->join('data_penerimaan_sample','customer_fpps.record_number_customer = data_penerimaan_sample.record_number_penerimaan_sample','left');
-        $this->datatables->add_column('view','<a class="btn btn-xs btn-warning btn" href="'.base_url().'C_nekropsi/ambil_data/$1">Get</a> ', 'record_number_customer');
+        $this->datatables->add_column('view','<a class="btn btn-md btn-warning btn" href="'.base_url().'C_nekropsi/ambil_data/$1">Get</a> ', 'record_number_customer');
         return $this->datatables->generate();
         
     }

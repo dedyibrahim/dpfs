@@ -86,7 +86,17 @@
     <script src="<?php echo base_url('assets'); ?>/vendors/jquery-knob/dist/jquery.knob.min.js"></script>
     <!-- Cropper -->
     <script src="<?php echo base_url('assets'); ?>/vendors/cropper/dist/cropper.min.js"></script>
-
+         <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="<?php echo base_url('assets'); ?>/vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="<?php echo base_url('assets'); ?>/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="<?php echo base_url('assets'); ?>/vendors/iCheck/icheck.min.js"></script>
+    <!-- PNotify -->
+    <script src="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.js"></script>
+    <script src="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url('assets'); ?>/build/js/custom.min.js"></script>
     

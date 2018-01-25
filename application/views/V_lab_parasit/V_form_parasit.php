@@ -40,13 +40,13 @@
        </div>
     
  <div class="form-group">
-        <label>Jamur Yang Di temukan</label>
-        <input type="text" class="form-control" placeholder="Jamur Yang ditemukan">
+        <label>Parasit Yang Di temukan</label>
+        <input type="text" class="form-control" placeholder="Parasit Yang ditemukan">
        </div>
     
     <div class="form-group">
-        <label>Jumlah Jamur</label>
-         <input type="text" class="form-control" placeholder="Jumlah Jamur">
+        <label>Jumlah Parasit</label>
+         <input type="text" class="form-control" placeholder="Jumlah Parasit">
        </div>
        <div class="form-group">
         <label>Analis</label>

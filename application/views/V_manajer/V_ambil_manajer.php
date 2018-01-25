@@ -104,7 +104,7 @@ foreach ($data_customer->result_array() as $customer){
      <div class="input-group">
          <input readonly="" value=" <?php echo $penganalis['jabatan']; ?> " class="form-control"  placeholder="Jabatan" type="text">
               <span class="input-group-btn">
-                  <a href="<?php echo base_url('C_manajer/hapus/'); ?><?php echo $penganalis['id_data_penganalis']; ?>/<?php echo $penganalis['record_number_penganalis']; ?>"><button type="button" class="btn btn-danger"><span class="fa fa-minus"></span></button></a>
+                  <a href="<?php echo base_url('C_manajer/hapus/'); ?><?php echo $penganalis['id_data_penganalis']; ?>/<?php echo $penganalis['record_number_penganalis']; ?>"><button type="button" class="btn btn-flat btn-danger"><span class="fa fa-minus"></span></button></a>
                <form>    
  
               </span>

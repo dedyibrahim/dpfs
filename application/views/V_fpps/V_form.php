@@ -11,7 +11,6 @@
                 <input class="form-control"  placeholder="nama customer" name="nama_customer" type="text"><br>
                 <input class="form-control"  name="alamat" placeholder="Alamat" type="text"><br>
                 <input class="form-control"  name="telp" placeholder="Telp" type="text"><br>
-                <input class="form-control"  name="project_id" placeholder="Project Id" type="text"><br>
                 <input class="form-control"  name="contact_person" placeholder="Contact Person" type="text"><br>
                 <input class="form-control"  name="telp_fax" placeholder="Telp/Fax" type="text">
     
@@ -42,7 +41,6 @@
                 $('#nama_customer').val(ui.item.nama_customer);
                 $('#alamat').val(ui.item.alamat);
                 $('#telp').val(ui.item.telp);
-                $('#project_id').val(ui.item.project_id);
                 $('#contact_person').val(ui.item.contact_person);
                 $('#telp_fax').val(ui.item.telp_fax);
                 }
@@ -79,10 +77,6 @@
        <div class="form-group has-feedback">
           <input class="form-control" readonly="" id="telp" name="telp" placeholder="Telp" type="text">
         <span class="fa fa-tty form-control-feedback"></span>
-      </div>
-       <div class="form-group has-feedback">
-          <input class="form-control" readonly="" id="project_id" name="project_id" placeholder="Project Id" type="text">
-        <span class="fa fa-book form-control-feedback"></span>
       </div>
        
   </div>
@@ -288,7 +282,7 @@
     <div class="col-md-2">
        <div class="checkbox">
                 <label>
-                    <input value="Jamur" name="identifikasi_Jamur" type="checkbox"> Jamur
+                    <input value="Jamur" name="identifikasi_jamur" type="checkbox"> Jamur
                 </label>
          </div>
        </div>    

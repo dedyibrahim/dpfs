@@ -3,7 +3,7 @@
     <div class="x_title">
   
  <!--------- end input customer--------------->     
-    <h2>DATA TABEL NEKROPSI</h2>
+    <h2>DATA TABEL UJI PARASIT</h2>
         <ul class="nav navbar-right panel_toolbox">
                 </li>
                     </ul>              
@@ -82,8 +82,8 @@
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Jenis</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">pemilik</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 150px;" aria-label="Position: activate to sort column ascending">Organ Target</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Bakteri ditemukan</th>
-           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending"> JML Bakteri</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Parasit ditemukan</th>
+           <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending"> JML Parasit</th>
            <th class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Action</th>
          </thead>
         <tbody>

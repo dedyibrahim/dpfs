@@ -49,13 +49,13 @@ foreach ($data_customer->result_array() as $customer){
        </div>
     
  <div class="form-group">
-        <label>Jamur Yang Di temukan</label>
-        <input type="text" value ="<?php echo $data['virus_ditemukan'];?>" name="virus_ditemukan" class="form-control" placeholder="Jamur Yang ditemukan">
+        <label>Virus Yang Di temukan</label>
+        <input type="text" value ="<?php echo $data['virus_ditemukan'];?>" name="virus_ditemukan" class="form-control" placeholder="Virus Yang ditemukan">
        </div>
     
     <div class="form-group">
-        <label>Jumlah Jamur</label>
-        <input type="text" value ="<?php echo $data['jumlah_virus'];?>" name="jumlah_virus"  class="form-control" placeholder="Jumlah Jamur">
+        <label>Jumlah Virus</label>
+        <input type="text" value ="<?php echo $data['jumlah_virus'];?>" name="jumlah_virus"  class="form-control" placeholder="Jumlah Vitus">
        </div>
       <?php $no = 1; foreach ($data_penganalis->result_array() as $penganalis){?>   
        <div class="form-group">
