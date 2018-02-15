@@ -20,9 +20,9 @@ return $query->result();
 
 
 }
-function get_allpenganalis($term) {
-$this->db->from('penganalis');
-$this->db->like("nama",$term); //untuk filter
+function get_allproduk($term) {
+$this->db->from('produk');
+$this->db->like("nama_produk",$term); //untuk filter
 $query = $this->db->get();
 
 //cek apakah ada data

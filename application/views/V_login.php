@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SILAB MAJU</title>
+    <title>DPFS</title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets');?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,15 +42,12 @@
               </div>
 
               <div class="clearfix"></div>
-
-              <div class="separator">
-               
+             <div class="separator">
                 <div class="clearfix"></div>
                 <br />
-
                 <div>
-                  <h1><i class="fa fa-anchor"></i> SilabKarimutu Mamuju!</h1>
-                  <p>©2018 All Rights Reserved.BKIPM Mamuju</p>
+                  <h1><i class="fa fa-shopping-basket"></i> DPFS</h1>
+                  <p>©2018 All Rights Reserved.DPFS</p>
                 </div>
               </div>
             </form>
