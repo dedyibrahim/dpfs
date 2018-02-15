@@ -1,21 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-<<<<<<< HEAD
-class C_menu extends CI_Controller {
-    
-    public function __construct() {
-        parent::__construct();
-         $this->load->library('session');
-        
-        $this->load->helper('url');
-    }
-
-        public function index()
-	{
-		$this->load->view('V_menu_awal');
-	}
-=======
 class C_produk extends CI_Controller {
   public function __construct() {
         parent::__construct();
@@ -161,5 +146,4 @@ echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
 );
 }
->>>>>>> 4959a128adcdb85deeb124b64d948caf3a493daf
 }
