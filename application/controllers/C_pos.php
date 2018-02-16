@@ -113,10 +113,6 @@ class C_pos extends CI_Controller {
     }
   
    public function load_data_barcode_sementara(){
-        //$query    = $this->db->get('produk');
-      
-       //$query    = $this->db->get('data_barcode_sementara');
-       
     $this->db->select('*');
     $this->db->from('data_barcode_sementara');
     $this->db->join('produk', 'produk.id_produk = data_barcode_sementara.id_produk');
@@ -248,12 +244,75 @@ class C_pos extends CI_Controller {
            echo "</td>";
         
         //PPN//
-           
-           
-      
-           
-           
         
+            //FREIGHT//
+            
+           echo "<tr align='center' ><td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td> ";
+           echo "<input type='text' onmouseout='input_freight()' id='freight' class='col-md-2 col-sm-12 col-xs-12 form-control' value='".$data['freight']."' ></div>";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "Freight";
+           echo "</td>";
+        
+        //FREIGHT//
+        
+           echo "<tr align='center' style='background-color:#ec971f; color:#FFFFFF;'><td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td>";
+           echo  "";
+           echo "</td>";
+           
+           echo "<td style='width: 10px; font-size:18px;'>";
+           echo "Rp. ".number_format($total*$ppn-$hasil_kurang_diskon+$data['freight']);
+           echo "</td>";
+           
+           echo "<td style='font-size:16px;'>";
+           echo "TOTAL";
+           echo "</td>";
+     
+//UANG//
+            
+           echo "<tr align='center' ><td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "";
+           echo "</td>";
+           
+           echo "<td> ";
+           echo "<input type='text' id='nominal' onmouseout='input_nominal()'  class='col-md-2 col-sm-12 col-xs-12 form-control' value='".$data['uang']."'  ></div>";
+           echo "</td>";
+           
+           echo "<td>";
+           echo "Nominal uang";
+           echo "</td>";
+        
+        //UANG//
+//KEMBALIAN
            echo "<tr align='center' style='background-color:#1ABB9C; color:#FFFFFF;'><td>";
            echo "";
            echo "</td>";
@@ -263,19 +322,27 @@ class C_pos extends CI_Controller {
            echo "</td>";
            
            echo "<td>";
-           echo "";
+           echo  "";
            echo "</td>";
            
            echo "<td style='width: 90px; font-size:25px;'>";
-           echo "Rp. ".number_format($total*$ppn-$hasil_kurang_diskon);
+           $total_banget = $total*$ppn-$hasil_kurang_diskon+$data['freight'];
+           $kembalian =  $data['uang'] - $total_banget;
+           if($data['uang']==0){
+              
+             echo "Rp.".'0';
+             
+           }else{
+           echo "Rp. ".number_format($kembalian);
+              }
            echo "</td>";
            
            echo "<td style='font-size:16px;'>";
-           echo "TOTAL";
-           echo "</td>";
-    
-    
-   }
+           echo "KEMBALIAN";
+           echo "</td>";   
+   
+ //KEMBALIAN          
+         }
    
    public function hapus_data_barcode_sementara(){
        
@@ -315,7 +382,46 @@ class C_pos extends CI_Controller {
      }
        
    }
+    public function input_freight(){
+    
+   $pengulangan = $this->db->get('data_barcode_sementara');   
    
+   
+   foreach ($pengulangan->result_array() as $data){
+      
+       $id = $data['id_data_barcode_sementara'];
+       
+       $input = array(
+           
+           'freight' => $_POST['freight'],
+           
+       );
+      
+    $this->db->update('data_barcode_sementara',$input, array('id_data_barcode_sementara' => $id));    
+   
+     }
+       
+   }
+   public function input_nominal(){
+    
+   $pengulangan = $this->db->get('data_barcode_sementara');   
+   
+   
+   foreach ($pengulangan->result_array() as $data){
+      
+       $id = $data['id_data_barcode_sementara'];
+       
+       $input = array(
+           
+           'uang' => $_POST['nominal'],
+           
+       );
+      
+    $this->db->update('data_barcode_sementara',$input, array('id_data_barcode_sementara' => $id));    
+   
+     }
+       
+   }
    public function input_diskon(){
        
 

@@ -67,7 +67,7 @@
     
 <div class="x_panel">
  <div class="x_title">
-    <h2>PENJUALAN<input class="form-control" id="id_inv" name="id_inv" type="text" value="<?php echo $id_inv; ?>">
+    <h2>PENJUALAN<input class="form-control" id="id_inv" name="id_inv" type="hidden" value="<?php echo $id_inv; ?>">
       </h2>
         <div class="clearfix"></div>
      </div>
@@ -197,39 +197,110 @@ function input_barcode(){
                url:"<?php echo base_url('C_pos/input_barcode')?>",
                data:"foo="+foo,
                success:function(html){
-                 window.location.reload();
+                 load_data_barcode_sementara();
+                 $("#foo").val("");
               }
             });
            
     } 
-  </script>          
+  </script>
+   <script type="text/javascript">    
+function tampil_barcode(){
+          
+      $('#tampil_barcode').show(500);
+      $('#tampil_nama').hide(500);
+    } 
+  </script>
+   <script type="text/javascript">    
+function tampil_nama(){
+          
+      $('#tampil_nama').show(500);
+      $('#tampil_barcode').hide(500);
   
-            
+    } 
+  </script>
+  
+  <script type="text/javascript">    
+function input_freight(){
+      
+        var freight=$("#freight").val();
+       
+         $.ajax({
+               type:"POST",
+               url:"<?php echo base_url('C_pos/input_freight')?>",
+               data:"freight="+freight,
+               success:function(html){
+                 load_data_barcode_sementara();
+                 
+              }
+            });
+  
+    } 
+  </script>
+  <script type="text/javascript">    
+function input_nominal(){
+      
+        var nominal=$("#nominal").val();
+       
+         $.ajax({
+               type:"POST",
+               url:"<?php echo base_url('C_pos/input_nominal')?>",
+               data:"nominal="+nominal,
+               success:function(html){
+                 load_data_barcode_sementara();
+                 
+              }
+            });
+  
+    } 
+  </script>
+  <script type="text/javascript">
+  
+  function tampil_ship(){
+      $("#tampil_ship").show(200);
+   }
+  function tutup_ship(){
+      $("#tampil_ship").hide(200);
+  }
+  </script>
    <!------------BUAT BARCODE-----------------> 
      
      <div class="col-md-8">
          
-         <p align ="center">
        <div class="col-md-12">
-         <div class="col-md-5 center-margin">
-         <div class="form-group has-feedback">
+       
+        <div class="col-md-12 center-margin">
+            <div class="btn-group">
+                      <button type="button" class="btn btn-success">CARI BERDASARKAN</button>
+                      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#" onclick="tampil_barcode()" >Barcode</a>
+                        </li>
+                        <li><a href="#" onclick="tampil_nama()">Nama Produk</a>
+                        </li>
+                        </ul>
+                    </div>
+            
+            <div class="col-md-8" >
+            <div  id ="tampil_barcode"  class="form-group has-feedback">
+              <input class="form-control" placeholder="Scan Barcode" id="foo" onkeyup="input_barcode()" type="text" name="foo"/>
+             <span class="fa fa-barcode form-control-feedback"></span>
+            </div>
          
-             <input class="form-control" placeholder="Scan Barcode" id="foo" onkeyup="input_barcode()" type="text" name="foo"/>
-          <span   class="fa fa-barcode form-control-feedback"></span>
-         </div>
-         
-         <div class="form-group has-feedback">
+          <div id="tampil_nama" style="display: none;"  class="form-group has-feedback">
           <input type="hidden" class="form-control" id="valppn" value="10">
           <input class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama produk" type="text">
           <input class="form-control" id="id_produk"   name="id_produk" placeholder="id produk" type="hidden">
           <input class="form-control" id="harga_produk" name="harga_produk" placeholder="harga produk" type="hidden">
-          
           <span   class="fa fa-product-hunt form-control-feedback"></span>
-         
          </div>
-           </div>   
-         
+      
+          </div>  
          </div>
+      </div>
         
       <div class="clearfix"></div>
          <div class="form-group has-feedback">
@@ -269,19 +340,34 @@ function input_barcode(){
             <textarea class="form-control" readonly="" id="alamat" name="alamat" placeholder="Alamat" type="text"></textarea>
         <span on class="glyphicon glyphicon-map-marker form-control-feedback"></span>
       </div>
-   
     
-    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Metode pengiriman</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control">
-                            <option></option>
-                            <option>In shop</option>
-                            <option>Ship</option>
-                            <option>Drop ship</option>
+    <div class="btn-group form-group ">
+                      <button type="button" class="btn btn-success">METODE PENGIRIMAN</button>
+                      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#" onclick="tutup_ship()" >On ship</a>
+                        </li>
+                        <li><a href="#" onclick="tampil_ship()" >Ship</a>
+                        </li>
+                        <li><a href="#" onclick="tampil_ship()" >Drop Ship</a>
+                        </li>
+                        </ul>
+    </div>
+    
+    <select style="display: none;" id="tampil_ship" class="form-control form-group">
+                            <option>JNE</option>
+                            <option>TIKI</option>
+                            <option>WAHANA</option>
+                            <option>J&T</option>
+                            <option>GRABCELL</option>
+                            <option>Ninja Xpress</option>
+                            <option>MPX</option>
+                            <option>TELL & C</option>
                           </select>
-                        </div>
-                      </div>
+    
     
     <div class="form-group">
         <textarea class="form-control" placeholder="Catatan" ></textarea>
@@ -299,10 +385,5 @@ function input_barcode(){
         </div>
     </div>
 </div>
- 
-            
-            
-            
-            
-            
-    
+   
+                   

@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/Dpfs/application/controllers/C_pos.php</file>
-            <file>file:/var/www/html/Dpfs/application/views/V_pos/umum/V_header.php</file>
-            <file>file:/var/www/html/Dpfs/application/views/V_pos/V_pos.php</file>
+            <file>file:/var/www/html/dpfs/application/controllers/C_pos.php</file>
+            <file>file:/var/www/html/dpfs/application/views/V_pos/V_pos.php</file>
         </group>
     </open-files>
 </project-private>
