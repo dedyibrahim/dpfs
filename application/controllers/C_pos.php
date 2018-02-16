@@ -130,13 +130,10 @@ class C_pos extends CI_Controller {
            
            echo "<tr align='center' class='sembunyikan".$data['id_data_barcode_sementara']."'><td>";
            echo $data['nama_produk'];
-           echo "<input type='hidden' id='id_produk' name='id_produk'  class='col-md-2 col-sm-12 col-xs-12 form-control'  value='".$data['id_produk']."'>";
            echo "</td>";
            
            echo "<td>";
            echo "Rp.".number_format($data['harga_produk']);
-           echo "<input type='hidden' id='harga_produk' name='harga_produk'  class='col-md-2 col-sm-12 col-xs-12 form-control'  value='".$data['harga_produk']."'>";
-           
            echo "</td>";
            
            if( $data['stok_produk'] < $data['qty_produk']){
@@ -283,6 +280,9 @@ class C_pos extends CI_Controller {
            
            echo "<td style='width: 10px; font-size:18px;'>";
            echo "Rp. ".number_format($total*$ppn-$hasil_kurang_diskon+$data['freight']);
+           $total_kirim = $total*$ppn-$hasil_kurang_diskon+$data['freight'];
+           echo "<input type='hidden'  class='col-md-2 col-sm-12 col-xs-12 form-control' id='subtotal' value='".$total_kirim."'  >";
+           
            echo "</td>";
            
            echo "<td style='font-size:16px;'>";
@@ -328,13 +328,17 @@ class C_pos extends CI_Controller {
            echo "<td style='width: 90px; font-size:25px;'>";
            $total_banget = $total*$ppn-$hasil_kurang_diskon+$data['freight'];
            $kembalian =  $data['uang'] - $total_banget;
+           
            if($data['uang']==0){
               
-             echo "Rp.".'0';
-             
+            echo 'Rp.0';
+            echo "<input type='hidden'  class='col-md-2 col-sm-12 col-xs-12 form-control' id='kembalian' value='0'  >";
+            
            }else{
            echo "Rp. ".number_format($kembalian);
-              }
+           echo "<input type='hidden'  class='col-md-2 col-sm-12 col-xs-12 form-control' id='kembalian' value='".$kembalian."'  >";
+           }
+           
            echo "</td>";
            
            echo "<td style='font-size:16px;'>";
@@ -478,8 +482,53 @@ class C_pos extends CI_Controller {
  }
  
  public function simpan_invoices(){
+    $cek = $_POST['id_inv'];
+    
+    $query = $this->db->get_where('data_customer_invoices');
      
-     if($this->input->post('id_inv')==0 || $this->input->post('id_inv')==$this->input->post('id_inv')){
+    foreach ($query->result_array() as $hasil){
+        
+        $hasil_cek = $hasil['id_invoices_customer_data']; 
+        
+    }
+    
+    if($hasil_cek == $_POST['id_inv'] ){
+    
+        
+    }elseif ($_POST['subtotal'] != 0 ) {
+      
+      if($this->input->post('id_inv')== 0 || $this->input->post('id_inv')== $this->input->post('id_inv')){
+         
+         $data_barcode = $this->db->get('data_barcode_sementara');
+        
+         foreach ($data_barcode->result_array() as $data){
+             
+             $simpan_data = array(
+              
+            'id_invoices_produk'   =>    $_POST['id_inv'],     
+            'id_produk'            =>    $data['id_produk'], 
+            'nama_produk'          =>    $data['nama_produk'], 
+            'harga_produk'         =>    $data['harga_produk'], 
+            'qty_produk'           =>    $data['qty_produk'], 
+            'ppn'                  =>    $data['ppn'], 
+            'diskon'               =>    $data['diskon'], 
+            'freight'              =>    $data['freight'], 
+            'uang'                 =>    $data['uang'], 
+                 
+             );
+             
+           $this->db->insert('data_produk_invoices',$simpan_data);  
+             
+         }
+         
+          $data_jumlah_invoices= array(
+            'id_invoices_jumlah' => $this->input->post('id_inv'), 
+            'total'              => $this->input->post('subtotal'), 
+            'kembalian'          => $this->input->post('kembalian'), 
+               
+              );
+         
+          $this->db->insert('data_jumlah_invoices',$data_jumlah_invoices);
          
          $data_invoices= array(
             'invoices_record' => $this->input->post('id_inv'), 
@@ -495,12 +544,24 @@ class C_pos extends CI_Controller {
             'catatan'                   => $this->input->post('catatan'), 
          );
           $this->db->insert('data_customer_invoices',$simpan_data_customer_invoices);
-       }
-     
-     
-     
-    // redirect('C_pos');
-     
+       
+        $this->db->empty_table('data_barcode_sementara'); 
+         }
+    
+   }
  }
-  
+ 
+   public function cetak_struk(){
+    $id = $this->uri->segment(3);
+ 
+ $this->db->select('*');
+$this->db->where('id_invoices_customer_data',$id);
+$this->db->from('data_customer_invoices');
+$this->db->join('data_jumlah_invoices', 'data_jumlah_invoices.id_invoices_jumlah = data_customer_invoices.id_invoices_customer_data');
+$this->db->join('data_produk_invoices', 'data_produk_invoices.id_invoices_produk = data_customer_invoices.id_invoices_customer_data');
+$query = $this->db->get()->result();   
+   
+echo print_r($query);
+   }
+ 
 }

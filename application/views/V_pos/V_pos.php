@@ -264,22 +264,22 @@ function input_nominal(){
   </script>
   <script type="text/javascript">
   function simpan_data(){
-      
       var id_inv=$("#id_inv").val();
       var customer=$("#customer").val();
       var telp=$("#telp").val();
       var alamat=$("#alamat").val();
       var tampil_ship=$("#tampil_ship").val();
       var catatan=$("#catatan").val();
+      var subtotal=$("#subtotal").val();
+      var kembalian=$("#kembalian").val();
        
          $.ajax({
                type:"POST",
                url:"<?php echo base_url('C_pos/simpan_invoices')?>",
-               data:"id_inv="+id_inv+"&customer="+customer+"&telp="+telp+"&alamat="+alamat+"&tampil_ship="+tampil_ship+"&catatan="+catatan,
+               data:"id_inv="+id_inv+"&customer="+customer+"&telp="+telp+"&alamat="+alamat+"&tampil_ship="+tampil_ship+"&catatan="+catatan+"&subtotal="+subtotal+"&kembalian="+kembalian,
                success:function(html){
-                
-                   load_data_barcode_sementara();
-                 
+                 load_data_barcode_sementara();
+                 $("#tampil_print").show(500);
               }
             });
       
@@ -290,8 +290,8 @@ function input_nominal(){
   
    
    <!------------BUAT BARCODE-----------------> 
-     
-     <input class="form-control" id="id_inv" name="id_inv" type="text" value="<?php echo $id_inv; ?>">
+           
+   <input class="form-control" id="id_inv" name="id_inv" type="hidden" value="<?php echo $id_inv; ?>">
        <div class="col-md-8">
        <div class="col-md-12">
         <div class="col-md-12 center-margin">
@@ -409,8 +409,13 @@ function input_nominal(){
             <div class="col-xs-4 pull-right">
                 <button type="button" onclick='input_ppn()'  class="btn btn-warning btn-block btn-flat"><span class="fa fa-money"> Ppn </span></button>
           
+        </div> 
+    <div style="display: none" id="tampil_print" class="col-xs-4 pull-right">
+        <a href="<?php echo base_url('C_pos/cetak_struk/'.$id_inv) ?>"> <button type="button"  class="btn btn-primary btn-block btn-flat"><span class="fa fa-print"> Print </span></button></a>
+          
         </div>
     </div>
 </div>
+ 
    
                    
