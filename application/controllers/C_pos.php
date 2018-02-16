@@ -476,5 +476,31 @@ class C_pos extends CI_Controller {
     }
    } 
  }
+ 
+ public function simpan_invoices(){
+     
+     if($this->input->post('id_inv')==0 || $this->input->post('id_inv')==$this->input->post('id_inv')){
+         
+         $data_invoices= array(
+            'invoices_record' => $this->input->post('id_inv'), 
+           );
+         $this->db->insert('data_invoices',$data_invoices);
+         
+         $simpan_data_customer_invoices= array(
+            'id_invoices_customer_data' => $this->input->post('id_inv'), 
+            'nama_customer'             => $this->input->post('customer'), 
+            'telp'                      => $this->input->post('telp'), 
+            'alamat'                    => $this->input->post('alamat'), 
+            'ship'                      => $this->input->post('tampil_ship'), 
+            'catatan'                   => $this->input->post('catatan'), 
+         );
+          $this->db->insert('data_customer_invoices',$simpan_data_customer_invoices);
+       }
+     
+     
+     
+    // redirect('C_pos');
+     
+ }
   
 }

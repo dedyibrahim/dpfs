@@ -49,7 +49,7 @@
         });
     </script>
     
-    <script>
+    <script type="text/javascript">
      $(function () {
         $("#nama_produk").autocomplete({
             minLength:0,
@@ -67,10 +67,10 @@
     
 <div class="x_panel">
  <div class="x_title">
-    <h2>PENJUALAN<input class="form-control" id="id_inv" name="id_inv" type="hidden" value="<?php echo $id_inv; ?>">
-      </h2>
-        <div class="clearfix"></div>
+    <h2>PENJUALAN</h2>
+        <div class="clearfix">
      </div>
+  </div>
     
    
   <script type="text/javascript">
@@ -251,7 +251,6 @@ function input_nominal(){
                  
               }
             });
-  
     } 
   </script>
   <script type="text/javascript">
@@ -263,23 +262,49 @@ function input_nominal(){
       $("#tampil_ship").hide(200);
   }
   </script>
+  <script type="text/javascript">
+  function simpan_data(){
+      
+      var id_inv=$("#id_inv").val();
+      var customer=$("#customer").val();
+      var telp=$("#telp").val();
+      var alamat=$("#alamat").val();
+      var tampil_ship=$("#tampil_ship").val();
+      var catatan=$("#catatan").val();
+       
+         $.ajax({
+               type:"POST",
+               url:"<?php echo base_url('C_pos/simpan_invoices')?>",
+               data:"id_inv="+id_inv+"&customer="+customer+"&telp="+telp+"&alamat="+alamat+"&tampil_ship="+tampil_ship+"&catatan="+catatan,
+               success:function(html){
+                
+                   load_data_barcode_sementara();
+                 
+              }
+            });
+      
+  }
+  
+  
+  </script>
+  
+   
    <!------------BUAT BARCODE-----------------> 
      
-     <div class="col-md-8">
-         
+     <input class="form-control" id="id_inv" name="id_inv" type="text" value="<?php echo $id_inv; ?>">
+       <div class="col-md-8">
        <div class="col-md-12">
-       
         <div class="col-md-12 center-margin">
             <div class="btn-group">
                       <button type="button" class="btn btn-success">CARI BERDASARKAN</button>
-                      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
+                          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="caret"></span>
+                               <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
                           <li><a href="#" onclick="tampil_barcode()" >Barcode</a>
-                        </li>
-                        <li><a href="#" onclick="tampil_nama()">Nama Produk</a>
+                          </li>
+                          <li><a href="#" onclick="tampil_nama()">Nama Produk</a>
                         </li>
                         </ul>
                     </div>
@@ -325,14 +350,14 @@ function input_nominal(){
 <div class="col-md-4">
       <div class="input-group">
         <input class="form-control" id="id_customer" name="id_customer" type="hidden">
-          <input class="form-control ui-autocomplete-input" id="customer" placeholder="nama customer" name="nama_customer" type="text" autocomplete="off">
+           <input class="form-control ui-autocomplete-input" id="customer" placeholder="nama customer" name="nama_customer" type="text" autocomplete="off">
               <span class="input-group-btn">
                  <button type="button"  class="btn btn-primary bg-green" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="fa fa-plus"></span></button>
                </span>
         </div>
        <div class="form-group has-feedback">
           <input class="form-control" readonly="" id="telp" name="telp" placeholder="Telp" type="text">
-        <span class="fa fa-tty form-control-feedback"></span>
+         <span class="fa fa-tty form-control-feedback"></span>
       </div>
        
 
@@ -345,10 +370,10 @@ function input_nominal(){
                       <button type="button" class="btn btn-success">METODE PENGIRIMAN</button>
                       <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                         <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
+                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
-                          <li><a href="#" onclick="tutup_ship()" >On ship</a>
+                         <li><a href="#" onclick="tutup_ship()" >On ship</a>
                         </li>
                         <li><a href="#" onclick="tampil_ship()" >Ship</a>
                         </li>
@@ -357,8 +382,10 @@ function input_nominal(){
                         </ul>
     </div>
     
-    <select style="display: none;" id="tampil_ship" class="form-control form-group">
+    <select style="display: none;" id="tampil_ship" name="ship" class="form-control form-group">
+                            <option></option>
                             <option>JNE</option>
+                            <op<option>JNE</option>
                             <option>TIKI</option>
                             <option>WAHANA</option>
                             <option>J&T</option>
@@ -370,13 +397,13 @@ function input_nominal(){
     
     
     <div class="form-group">
-        <textarea class="form-control" placeholder="Catatan" ></textarea>
+        <textarea class="form-control" id="catatan" name="catatan" placeholder="Catatan" ></textarea>
     </div>
     
     <div class="clearfix"></div>
     <hr>
           <div class="col-xs-4 pull-right">
-              <button type="submit" name="btnTambah" class="btn bg-green btn-block btn-flat"><span class="fa fa-money"> Bayar</span></button>
+              <button type="button" onclick="simpan_data()" class="btn bg-green btn-block btn-flat"><span class="fa fa-save"> Simpan</span></button>
           
           </div>
             <div class="col-xs-4 pull-right">
