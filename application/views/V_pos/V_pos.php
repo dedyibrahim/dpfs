@@ -416,6 +416,4 @@ function input_nominal(){
         </div>
     </div>
 </div>
- 
-   
                    

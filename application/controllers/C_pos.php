@@ -559,9 +559,18 @@ $this->db->where('id_invoices_customer_data',$id);
 $this->db->from('data_customer_invoices');
 $this->db->join('data_jumlah_invoices', 'data_jumlah_invoices.id_invoices_jumlah = data_customer_invoices.id_invoices_customer_data');
 $this->db->join('data_produk_invoices', 'data_produk_invoices.id_invoices_produk = data_customer_invoices.id_invoices_customer_data');
-$query = $this->db->get()->result();   
-   
-echo print_r($query);
-   }
+$query = $this->db->get();
+
+foreach ($query->result_array() as $data){
+    
+    echo $data['nama_produk'];
+    echo $data['harga_produk'];
+    echo $data['qty_produk'];
+    
+    
+}
+
+$this->load->view('V_pos/V_print');
+}
  
 }
