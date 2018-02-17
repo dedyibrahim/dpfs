@@ -20,14 +20,17 @@ class C_pos extends CI_Controller {
         
    }
    public function index(){
-               $this->load->view('V_pos/umum/V_header');
+    $id_inv = $this->db->get('data_invoices')->num_rows();
+    redirect('C_pos/penjualan/'.$id_inv);          
+   }
+   public function penjualan(){
+                $this->load->view('V_pos/umum/V_header');
                 $this->load->view('V_pos/umum/V_sidebar');
 		$this->load->view('V_pos/umum/V_top_navigasi');
 		$this->load->view('V_pos/V_pos');
                 $this->load->view('V_pos/umum/V_footer');
-		
-                
    }
+
    public function get_allcustomer(){
         $kode = $this->input->post('customer',TRUE); //variabel kunci yang di bawa dari input text id kode
         $term =strtolower ($_GET['term']); // tambahan baris untuk filtering data
@@ -157,8 +160,15 @@ class C_pos extends CI_Controller {
            echo "</td>";
            
            echo "<td>";
-           echo "<input type='text' class='col-md-2 col-sm-12 col-xs-12 form-control'  Readonly=''   value='". number_format($hasil_jumlah)."' placeholder='Hasil' >";
+           echo "<input type='text'  class='col-md-2 col-sm-12 col-xs-12 form-control' readonly='' value='Rp.".number_format($hasil_jumlah)."' placeholder='Hasil' >";
            echo "</td>";
+           
+           $input_hasil = array(
+               
+             'hasil_jml'=>$hasil_jumlah,  
+           );
+           $this->db->update('data_barcode_sementara',$input_hasil, array('id_produk' => $data['id_produk']));    
+     
            
            }
                       
@@ -177,11 +187,12 @@ class C_pos extends CI_Controller {
             $ppn = 1.1;
             $data_ppn = $total_sementara*10/100; 
            }
-          }
-           
+         }
+         
+         $input_total = $this->db->get('data_barcode_sementara');
+         
+         
         
-    
-          
          if($data['diskon'] == $data['diskon']){
              
              $nilaidiskon = $data['diskon'];
@@ -189,8 +200,21 @@ class C_pos extends CI_Controller {
          }
            
          $hasil_kurang_diskon = $total_sementara*$nilaidiskon/100;
-     
+         $hasil_total = $total-$hasil_kurang_diskon;
          
+        foreach ($input_total->result_array() as $id_total){
+             
+            $id = $id_total['id_produk'];
+            
+             $input_hasil_total = array(
+               
+             'hasil_total'=>$hasil_total,   
+             'hasil_diskon'=>$hasil_kurang_diskon,   
+          
+             );
+           $this->db->update('data_barcode_sementara',$input_hasil_total, array('id_produk' => $id));    
+     
+         }
               //diskon//
             
            echo "<tr align='center' ><td>";
@@ -234,7 +258,16 @@ class C_pos extends CI_Controller {
            echo "<td> ";
            echo "<input type='text' readonly='' class='col-md-2 col-sm-12 col-xs-12 form-control'  value='Rp. ".number_format($data_ppn)."'></div>";
            echo "</td>";
-           
+          
+           foreach ($input_total->result_array() as $id_total){
+             
+         $id = $id_total['id_produk'];
+          $input_hasil_ppn = array(
+               
+             'hasil_ppn'=>$data_ppn,
+           );
+           $this->db->update('data_barcode_sementara',$input_hasil_ppn, array('id_produk' =>$id));    
+          }
            echo "<td>";
            echo "PPN 10 %";
            echo "</td>";
@@ -282,6 +315,7 @@ class C_pos extends CI_Controller {
            $total_kirim = $total*$ppn-$hasil_kurang_diskon+$data['freight'];
            echo "<input type='hidden'  class='col-md-2 col-sm-12 col-xs-12 form-control' id='subtotal' value='".$total_kirim."'  >";
            
+             
            echo "</td>";
            
            echo "<td style='font-size:16px;'>";
@@ -359,6 +393,7 @@ class C_pos extends CI_Controller {
      
      $update_qty_barcode= array(
      'qty_produk'        => $_POST['qty_produk'],
+     'hasil_jml'         => $_POST['hasil_jml'],
                                 );
      $this->db->update('data_barcode_sementara',$update_qty_barcode, array('id_data_barcode_sementara' => $id_data_barcode_sementara));    
       
@@ -494,7 +529,7 @@ class C_pos extends CI_Controller {
     if($hasil_cek == $_POST['id_inv'] ){
     
         
-    }elseif ($_POST['subtotal'] != 0 ) {
+    }elseif ($_POST['subtotal'] != 0  ) {
       
       if($this->input->post('id_inv')== 0 || $this->input->post('id_inv')== $this->input->post('id_inv')){
          
@@ -508,11 +543,15 @@ class C_pos extends CI_Controller {
             'id_produk'            =>    $data['id_produk'], 
             'nama_produk'          =>    $data['nama_produk'], 
             'harga_produk'         =>    $data['harga_produk'], 
+            'hasil_jml'            =>    $data['hasil_jml'], 
             'qty_produk'           =>    $data['qty_produk'], 
             'ppn'                  =>    $data['ppn'], 
             'diskon'               =>    $data['diskon'], 
             'freight'              =>    $data['freight'], 
             'uang'                 =>    $data['uang'], 
+            'hasil_ppn'            =>    $data['hasil_ppn'], 
+            'hasil_total'          =>    $data['hasil_total'], 
+            'hasil_diskon'          =>    $data['hasil_diskon'], 
                  
              );
              
@@ -534,6 +573,9 @@ class C_pos extends CI_Controller {
            );
          $this->db->insert('data_invoices',$data_invoices);
          
+         $valid =  $this->session->all_userdata();
+
+         
          $simpan_data_customer_invoices= array(
             'id_invoices_customer_data' => $this->input->post('id_inv'), 
             'nama_customer'             => $this->input->post('customer'), 
@@ -541,6 +583,7 @@ class C_pos extends CI_Controller {
             'alamat'                    => $this->input->post('alamat'), 
             'ship'                      => $this->input->post('tampil_ship'), 
             'catatan'                   => $this->input->post('catatan'), 
+            'cashier'                   => $valid['nama'], 
          );
           $this->db->insert('data_customer_invoices',$simpan_data_customer_invoices);
        
@@ -572,5 +615,99 @@ foreach ($query->result_array() as $data){
 ///$this->load->view('V_pos/V_print');
 
 }
+public function load_preview(){
+    
+$id = $this->uri->segment(3);
  
+$this->db->select('*');
+$this->db->where('id_invoices_customer_data',$id);
+$this->db->from('data_customer_invoices','left');
+$this->db->join('data_jumlah_invoices', 'data_jumlah_invoices.id_invoices_jumlah = data_customer_invoices.id_invoices_customer_data','left');
+$this->db->join('data_produk_invoices', 'data_produk_invoices.id_invoices_produk = data_customer_invoices.id_invoices_customer_data','left');
+$query = $this->db->get();    
+foreach ($query->result_array() as $data){
+}
+if($query->result_array() == NULL){
+echo "<h2>ADA KESALAHAN MOHON PERHATIKAN KEMBALI</h2><br><H1> :-(</H1>";    
+    
+}else{
+echo "<p align='center'>TOKO NIAGARA WATERMART<br>JL.Muara Karang Blok L9 T No.8 Penjaringan <br> Jakarta Utara, 14450, Telp.021-6697706</p>";
+echo "<p align='center'>---------------------------------------------------------</p>";
+echo "customer &nbsp;&nbsp;&nbsp; : ".$data['nama_customer']."<br>";    
+echo "Telp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$data['telp']."<br>";    
+echo "Pengiriman : ".$data['ship']."<br>";    
+echo "Pukul &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$data['waktu'];    
+echo "<p align='center'>---------------------------------------------------------</p>";
+echo "Kasir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$data['cashier']."<br>";    
+echo "No.Struk &nbsp;: #".$data['id_invoices_customer_data']."<br>";    
+echo "<p align='center'>---------------------------------------------------------</p>";
+echo "<table class='table table-striped'>";
+echo "<tr>";
+echo "<td>Nama</td>";
+echo "<td>Harga</td>";
+echo "<td>Qty</td>";
+echo "<td>Jumlah</td>";
+echo "</tr>";
+foreach ($query->result_array() as $data2){
+
+echo "<tr>";
+echo "<td>".$data2['nama_produk']."</td>";
+echo "<td>Rp ".number_format($data2['harga_produk'])."</td>";
+echo "<td>".$data2['qty_produk']."</td>";
+echo "<td>Rp ".number_format($data2['hasil_jml'])."</td>";
+echo "</tr>";
+}
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>Disc ".$data2['diskon']." %</td>";
+echo "<td>Rp ".number_format($data['hasil_diskon'])."</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>Total</td>";
+echo "<td>Rp ".number_format($data['hasil_total'])."</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>PPN 10 %</td>";
+echo "<td>Rp ".number_format($data['hasil_ppn'])."</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>Freight</td>";
+echo "<td>Rp ".number_format($data['freight'])."</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>SubTotal</td>";
+echo "<td>Rp ".number_format($data['total'])."</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>Uang</td>";
+echo "<td>Rp ".number_format($data['uang'])."</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>Kembali</td>";
+echo "<td>Rp ".number_format($data['kembalian'])."</td>";
+echo "</tr>";
+echo "</table>";
+
+}
+}
+
 }

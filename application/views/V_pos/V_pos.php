@@ -1,3 +1,22 @@
+<!-------PREVIEW-------->
+<div  class="modal fade bs-example-modal-xs" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                           <div class="modal-body">
+                               <div class="col-md-10  center-margin" style="border:1px solid ;"  id="data_preview">  
+                                                      
+                             </div>      
+                           </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-warning "data-dismiss="modal"><span class="fa fa-edit"></span>Edit</button>
+                            <button type="submit" name="simpan_customer" class="btn bg-green"><span class="fa fa-print"></span> Print</button>
+                        </form>
+                        </div>
+               </div>
+           </div>
+    </div>
+<!-------PREVIEW-------->
+
 <body onload="load_data_barcode_sementara()"></body>
 
 <script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
@@ -145,12 +164,13 @@
                data:"qty_produk="+qty_produk+"&id_data_barcode_sementara="+id,
                success:function(html){
                load_data_barcode_sementara(); 
-            
+              
                 }
             });
            
     } 
 </script>
+
 <script type="text/javascript">
    function input_ppn(){
             
@@ -288,10 +308,23 @@ function input_nominal(){
   
   </script>
   
-   
+  <script type="text/javascript">
+  function load_preview(){
+      $.ajax({
+                type:"GET",
+                url:"<?php echo base_url('C_pos/load_preview/'.$this->uri->segment(3))?>",
+                data:"",
+                success:function(html){
+                 $("#data_preview").html(html);
+                }
+               
+            });
+      
+  }
+</script> 
    <!------------BUAT BARCODE-----------------> 
            
-   <input class="form-control" id="id_inv" name="id_inv" type="hidden" value="<?php echo $id_inv; ?>">
+   <input class="form-control"  id="id_inv" name="id_inv" type="hidden" value="<?php echo $id_inv; ?>">
        <div class="col-md-8">
        <div class="col-md-12">
         <div class="col-md-12 center-margin">
@@ -320,7 +353,7 @@ function input_nominal(){
           <input class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama produk" type="text">
           <input class="form-control" id="id_produk"   name="id_produk" placeholder="id produk" type="hidden">
           <input class="form-control" id="harga_produk" name="harga_produk" placeholder="harga produk" type="hidden">
-          <span   class="fa fa-product-hunt form-control-feedback"></span>
+          <span class="fa fa-product-hunt form-control-feedback"></span>
          </div>
       
           </div>  
@@ -363,7 +396,7 @@ function input_nominal(){
 
         <div class="form-group has-feedback">
             <textarea class="form-control" readonly="" id="alamat" name="alamat" placeholder="Alamat" type="text"></textarea>
-        <span on class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+        <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
       </div>
     
     <div class="btn-group form-group ">
@@ -410,10 +443,13 @@ function input_nominal(){
                 <button type="button" onclick='input_ppn()'  class="btn btn-warning btn-block btn-flat"><span class="fa fa-money"> Ppn </span></button>
           
         </div> 
+   
     <div style="display: none" id="tampil_print" class="col-xs-4 pull-right">
-        <a href="<?php echo base_url('C_pos/cetak_struk/'.$id_inv) ?>"> <button type="button"  class="btn btn-primary btn-block btn-flat"><span class="fa fa-print"> Print </span></button></a>
+        
+        <button type="button" onclick="load_preview()"  class="btn btn-primary bg-green" data-toggle="modal" data-target=".bs-example-modal-xs"><span class="fa fa-eye"> Preview </span></button>
           
         </div>
     </div>
 </div>
-                   
+       
+          
