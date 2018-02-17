@@ -20,9 +20,7 @@ class C_pos extends CI_Controller {
         
    }
    public function index(){
-      
-       
-                $this->load->view('V_pos/umum/V_header');
+               $this->load->view('V_pos/umum/V_header');
                 $this->load->view('V_pos/umum/V_sidebar');
 		$this->load->view('V_pos/umum/V_top_navigasi');
 		$this->load->view('V_pos/V_pos');
@@ -571,7 +569,8 @@ foreach ($query->result_array() as $data){
     
 }
 
-$this->load->view('V_pos/V_print');
+///$this->load->view('V_pos/V_print');
+
 }
  
 }
