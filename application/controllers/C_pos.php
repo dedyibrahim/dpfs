@@ -13,9 +13,10 @@ class C_pos extends CI_Controller {
         $this->load->helper('html');
         $this->load->helper('url');
         $this->load->library('datatables');
+        $this->load->helper('printer_helper'); 
         $this->load->library('session');
         $this->load->helper('url');
-         $this->load->model('M_customer');
+        $this->load->model('M_customer');
         
    }
    public function index(){
