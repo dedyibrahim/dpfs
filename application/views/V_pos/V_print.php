@@ -101,9 +101,9 @@ echo "<hr><p align='center'>Terimakasih,<br>Datang kembali</p>";
 <?php
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
-use Mike42\Escpos\PrintConnectors\CupsPrintConnector;
+use Mike42\Escpos\PrintConnectors\UsbPrintConnector;
 
-$connector = new CupsPrintConnector("Epson-9-Pin"); // Add connector for your printer here.
+$connector = new UsbPrintConnector("Epson-9-Pin"); // Add connector for your printer here.
 $printer = new Printer($connector);
 
 $printer -> initialize();

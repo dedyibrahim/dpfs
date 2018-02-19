@@ -618,9 +618,9 @@ class C_pos extends CI_Controller {
     
 //}
        
-//$this->load->view('V_pos/umum/V_print');
-//$this->load->view('V_pos/V_print');
-        redirect('C_pos');
+$this->load->view('V_pos/umum/V_print');
+$this->load->view('V_pos/V_print');
+  //      redirect('C_pos');
 }
 public function load_preview(){
     
