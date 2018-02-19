@@ -1,18 +1,4 @@
-<div class="col-md-4">
-                        BUAT LAPORAN PENJUALAN
-                        <form class="form-horizontal">
-                          <fieldset>
-                            <div class="control-group">
-                              <div class="controls">
-                                <div class="input-prepend input-group">
-                                  <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                  <input style="width: 200px" name="reservation" id="reservation" class="form-control" value="" type="text">
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </form>
-                      </div>
+
 <div class="x_panel">
 <div class="x_title">
     <h2>DATA PENJUALAN ONLINE DAN OFFLINE</h2>
