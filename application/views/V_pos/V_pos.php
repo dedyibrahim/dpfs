@@ -2,6 +2,8 @@
  $id_inv = $this->db->get('data_invoices')->num_rows();
  
 ?>
+
+
 <!-------PREVIEW-------->
 <div  class="modal fade bs-example-modal-xs" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-md">
@@ -24,8 +26,6 @@
 <!-------PREVIEW-------->
 
 <body onload="load_data_barcode_sementara()"></body>
-
-<script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-md">
@@ -52,11 +52,10 @@
     </div >
 
 
-    
- <link href="<?php echo base_url()?>assets/jquery/jquery-ui.css" rel="stylesheet">
+ <script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
    <script>
      $(function () {
-        $("#customr").autocomplete({
+        $("#customer").autocomplete({
             minLength:0,
             delay:0,
             source:'<?php echo site_url('C_pos/get_allcustomer'); ?>',   //nama source kita ambil langsung memangil fungsi get_allkota
@@ -386,7 +385,7 @@ function input_nominal(){
 <div class="col-md-4">
       <div class="input-group">
         <input class="form-control" id="id_customer" name="id_customer" type="hidden">
-           <input class="form-control ui-autocomplete-input" id="customr" placeholder="nama customer" name="nama_customer" type="text" autocomplete="off">
+           <input class="form-control ui-autocomplete-input" id="customer" placeholder="nama customer" name="nama_customer" type="text" autocomplete="off">
               <span class="input-group-btn">
                  <button type="button"  class="btn btn-primary bg-green" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="fa fa-plus"></span></button>
                </span>
