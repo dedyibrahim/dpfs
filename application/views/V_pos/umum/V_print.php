@@ -1,14 +1,15 @@
 <?php
+
 $valid =  $this->session->all_userdata();
+
 $level    = $valid['level'];
 $status   = $valid['status'];
 $gambar   =$valid['gambar'];
-if ($level == NULL){
-    redirect('C_login');
-}
 
-if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif' )
+if($level == 'admin pos' || $level == 'super admin')
+
  {
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,42 +42,13 @@ if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif' )
     <!-- bootstrap-datetimepicker -->
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url('assets'); ?>/build/css/custom.min.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
-  </head>
+   </head>
   
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo base_url(); echo $this->uri->segment(1); ?>" class="site_title"><i class="fa fa-shopping-basket"></i> <span>DPFS</span></a>
-            </div>
-
-            <div class="clearfix"></div>
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                  <img src="<?php echo base_url('/uploads/user_thumb/');?><?php  $valid =  $this->session->all_userdata();
-                     echo  $valid['gambar']; ?> " alt="..." class="img-thumbnail profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Selamat Datang,</span>
-                <h2><?php echo  $valid['nama']; ?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
+  
             
-            <?php
+<?php
 }else{
-echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
-
+redirect('C_login');
 }
 
 ?>   

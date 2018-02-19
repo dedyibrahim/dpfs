@@ -25,20 +25,20 @@
   <body class="login">
     <div>
 
-      <div class="login_wrapper">
-        <div class="animate form login_form">
+        <div class="login_wrapper" >
+        <div class="animate form login_form" style="border: 1px dashed;">
           <section class="login_content">
              <form action="<?php echo base_url('C_login/login');?>" method="post" enctype="multipart/formdata">
-               <h1>Login</h1>
+                 <p style="font-size:80px;"><span class="glyphicon glyphicon-lock"></span></p>
               
-              <div>
+                 <div class="col-md-12">
                   <input name="email" type="email" class="form-control" placeholder="email" required="" />
               </div>
-              <div>
+              <div class="col-md-12">
                   <input name="password" type="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
-                  <button type="submit" name="btn_login" class="btn btn-default submit" >LOGIN</button>
+                  <button type="submit" name="btn_login" class="btn btn-success " ><span class="fa fa-lock"></span> LOGIN</button>
               </div>
 
               <div class="clearfix"></div>
@@ -46,7 +46,7 @@
                 <div class="clearfix"></div>
                 <br />
                 <div>
-                  <h1><i class="fa fa-shopping-basket"></i> DPFS</h1>
+                  <i class="fa fa-shopping-basket"></i> DPFS
                   <p>©2018 All Rights Reserved.DPFS</p>
                 </div>
               </div>

@@ -1,16 +1,16 @@
 <?php
-
 $valid =  $this->session->all_userdata();
-
 $level    = $valid['level'];
 $status   = $valid['status'];
-$gambar   =$valid['gambar'];
+$gambar   = $valid['gambar'];
+if ($level == NULL){
+    redirect('C_login');
+}
 
-if($level == 'admin' || $level == 'user')
-
+if($level == 'admin inventory' || $level == 'super admin' && $status == 'aktif')
  {
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -72,7 +72,9 @@ if($level == 'admin' || $level == 'user')
             
             <?php
 }else{
-redirect('C_login');
+
+echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
+    
 }
 
 ?>   

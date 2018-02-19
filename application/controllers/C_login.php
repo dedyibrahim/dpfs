@@ -22,14 +22,12 @@ class C_login extends CI_Controller {
        $tampil   = $this->M_login->login($email,$password);
     
     if($tampil==1 ){
-       
         $setsesi = $this->db->get_where('user',['email'=>$email]);
-         
         foreach ($setsesi->result() as $value) {
            $sess_data= array(
             'nama'              =>$value->nama,
-            'level'                =>$value->level,
-            'status'             =>$value->status,
+            'level'             =>$value->level,
+            'status'            =>$value->status,
             'tanggal_daftar'    =>$value->tanggal_daftar,
             'gambar'            =>$value->gambar,
                        );

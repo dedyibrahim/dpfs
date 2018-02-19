@@ -40,6 +40,13 @@ class C_produk extends CI_Controller {
                 $this->load->view('produk/umum/V_footer');
    }
    
+    public function data_penjualan_produk(){
+                $this->load->view('produk/umum/V_header');
+                $this->load->view('produk/umum/V_sidebar');
+		$this->load->view('produk/umum/V_top_navigasi');
+		$this->load->view('produk/V_data_penjualan_produk');
+                $this->load->view('produk/umum/V_footer');
+   }
    public function simpan_produk(){
     if(isset($_POST['btnTambah'])){
          
@@ -146,4 +153,10 @@ echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
 );
 }
+public function data_json_penjualan(){
+  $this->load->model('Data_penjualan');
+   header('Content-Type: application/json');
+  echo $this->Data_penjualan->json_penjualan();       
+ }
+
 }

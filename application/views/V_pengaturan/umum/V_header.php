@@ -6,8 +6,7 @@ $gambar   =$valid['gambar'];
 if ($level == NULL){
     redirect('C_login');
 }
-
-if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif' )
+if($level == 'super admin' && $status == 'aktif' )
  {
 ?>
 <!DOCTYPE html>
@@ -75,7 +74,7 @@ if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif' )
             
             <?php
 }else{
-echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
+echo "<script>alert('Maaf anda bukanlah seorang superadmin');javascript:history.go(-1);</script>";
 
 }
 

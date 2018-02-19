@@ -30,7 +30,13 @@ class C_pos extends CI_Controller {
 		$this->load->view('V_pos/V_pos');
                 $this->load->view('V_pos/umum/V_footer');
    }
-
+ public function data_penjualan(){
+                $this->load->view('V_pos/umum/V_header');
+                $this->load->view('V_pos/umum/V_sidebar');
+		$this->load->view('V_pos/umum/V_top_navigasi');
+		$this->load->view('V_pos/V_data_penjualan');
+                $this->load->view('V_pos/umum/V_footer');
+   }
    public function get_allcustomer(){
         $kode = $this->input->post('customer',TRUE); //variabel kunci yang di bawa dari input text id kode
         $term =strtolower ($_GET['term']); // tambahan baris untuk filtering data
@@ -594,26 +600,27 @@ class C_pos extends CI_Controller {
  }
  
    public function cetak_struk(){
-    $id = $this->uri->segment(3);
+ //   $id = $this->uri->segment(3);
  
- $this->db->select('*');
-$this->db->where('id_invoices_customer_data',$id);
-$this->db->from('data_customer_invoices');
-$this->db->join('data_jumlah_invoices', 'data_jumlah_invoices.id_invoices_jumlah = data_customer_invoices.id_invoices_customer_data');
-$this->db->join('data_produk_invoices', 'data_produk_invoices.id_invoices_produk = data_customer_invoices.id_invoices_customer_data');
-$query = $this->db->get();
+// $this->db->select('*');
+//$this->db->where('id_invoices_customer_data',$id);
+//$this->db->from('data_customer_invoices');
+//$this->db->join('data_jumlah_invoices', 'data_jumlah_invoices.id_invoices_jumlah = data_customer_invoices.id_invoices_customer_data');
+//$this->db->join('data_produk_invoices', 'data_produk_invoices.id_invoices_produk = data_customer_invoices.id_invoices_customer_data');
+//$query = $this->db->get();
 
-foreach ($query->result_array() as $data){
+//foreach ($query->result_array() as $data){
     
-    echo $data['nama_produk'];
-    echo $data['harga_produk'];
-    echo $data['qty_produk'];
+  //  echo $data['nama_produk'];
+   // echo $data['harga_produk'];
+   // echo $data['qty_produk'];
     
     
-}
-
-///$this->load->view('V_pos/V_print');
-
+//}
+       
+//$this->load->view('V_pos/umum/V_print');
+//$this->load->view('V_pos/V_print');
+        redirect('C_pos');
 }
 public function load_preview(){
     
@@ -632,15 +639,15 @@ echo "<h2>ADA KESALAHAN MOHON PERHATIKAN KEMBALI</h2><br><H1> :-(</H1>";
     
 }else{
 echo "<p align='center'>TOKO NIAGARA WATERMART<br>JL.Muara Karang Blok L9 T No.8 Penjaringan <br> Jakarta Utara, 14450, Telp.021-6697706</p>";
-echo "<p align='center'>---------------------------------------------------------</p>";
+echo "<p align='center'>---------------------------------------------------------------------------</p>";
 echo "customer &nbsp;&nbsp;&nbsp; : ".$data['nama_customer']."<br>";    
 echo "Telp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$data['telp']."<br>";    
 echo "Pengiriman : ".$data['ship']."<br>";    
 echo "Pukul &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$data['waktu'];    
-echo "<p align='center'>---------------------------------------------------------</p>";
+echo "<p align='center'>---------------------------------------------------------------------------</p>";
 echo "Kasir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$data['cashier']."<br>";    
 echo "No.Struk &nbsp;: #".$data['id_invoices_customer_data']."<br>";    
-echo "<p align='center'>---------------------------------------------------------</p>";
+echo "<p align='center'>---------------------------------------------------------------------------</p>";
 echo "<table class='table table-striped'>";
 echo "<tr>";
 echo "<td>Nama</td>";
@@ -657,38 +664,41 @@ echo "<td>".$data2['qty_produk']."</td>";
 echo "<td>Rp ".number_format($data2['hasil_jml'])."</td>";
 echo "</tr>";
 }
+if($data['diskon']!=NULL&$data['diskon']!=0){
 echo "<tr>";
 echo "<td></td>";
 echo "<td></td>";
 echo "<td>Disc ".$data2['diskon']." %</td>";
 echo "<td>Rp ".number_format($data['hasil_diskon'])."</td>";
 echo "</tr>";
-
+}else{}
 echo "<tr>";
 echo "<td></td>";
 echo "<td></td>";
-echo "<td>Total</td>";
+echo "<td>SubTotal</td>";
 echo "<td>Rp ".number_format($data['hasil_total'])."</td>";
 echo "</tr>";
 
+if($data['hasil_ppn']!=NULL & $data['hasil_ppn']!=0){
 echo "<tr>";
 echo "<td></td>";
 echo "<td></td>";
 echo "<td>PPN 10 %</td>";
 echo "<td>Rp ".number_format($data['hasil_ppn'])."</td>";
 echo "</tr>";
-
+}else{}
+if($data['freight']!=NULL & $data['freight']!=0){
 echo "<tr>";
 echo "<td></td>";
 echo "<td></td>";
 echo "<td>Freight</td>";
 echo "<td>Rp ".number_format($data['freight'])."</td>";
 echo "</tr>";
-
+}else{}
 echo "<tr>";
 echo "<td></td>";
 echo "<td></td>";
-echo "<td>SubTotal</td>";
+echo "<td>Total</td>";
 echo "<td>Rp ".number_format($data['total'])."</td>";
 echo "</tr>";
 
@@ -699,6 +709,7 @@ echo "<td>Uang</td>";
 echo "<td>Rp ".number_format($data['uang'])."</td>";
 echo "</tr>";
 
+
 echo "<tr>";
 echo "<td></td>";
 echo "<td></td>";
@@ -706,6 +717,7 @@ echo "<td>Kembali</td>";
 echo "<td>Rp ".number_format($data['kembalian'])."</td>";
 echo "</tr>";
 echo "</table>";
+echo "<hr><p align='center'>Terimakasih,<br>Datang kembali</p>";
 
 }
 }

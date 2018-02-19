@@ -1,3 +1,7 @@
+<?php  
+ $id_inv = $this->db->get('data_invoices')->num_rows();
+ 
+?>
 <!-------PREVIEW-------->
 <div  class="modal fade bs-example-modal-xs" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-md">
@@ -7,9 +11,11 @@
                                                       
                              </div>      
                            </div>
+                          <p align="center" style="color:#9e0505; font-size:16px;  ">Untuk melakukan edit silahkan datangi bagian inventory untuk di koordinasikan karena stok tersebut telah berkurang</p> 
+        
                         <div class="modal-footer">
-                            <button type="reset" class="btn btn-warning "data-dismiss="modal"><span class="fa fa-edit"></span>Edit</button>
-                            <button type="submit" name="simpan_customer" class="btn bg-green"><span class="fa fa-print"></span> Print</button>
+                           <button type="button" class="btn btn-warning "data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+                            <a href="<?php echo base_url('C_pos/cetak_struk/'.$id_inv)  ?>"><button type="button" name="simpan_customer" class="btn bg-green"><span class="fa fa-print"></span> Print</button></a>
                         </form>
                         </div>
                </div>
@@ -45,10 +51,7 @@
            </div>
     </div >
 
-<?php  
- $id_inv = $this->db->get('data_invoices')->num_rows();
- 
-?>
+
     
  <link href="<?php echo base_url()?>assets/jquery/jquery-ui.css" rel="stylesheet">
    <script>
@@ -447,7 +450,6 @@ function input_nominal(){
     <div style="display: none" id="tampil_print" class="col-xs-4 pull-right">
         
         <button type="button" onclick="load_preview()"  class="btn btn-primary bg-green" data-toggle="modal" data-target=".bs-example-modal-xs"><span class="fa fa-eye"> Preview </span></button>
-          
         </div>
     </div>
 </div>

@@ -3,8 +3,12 @@ $valid =  $this->session->all_userdata();
 $level    = $valid['level'];
 $status   = $valid['status'];
 $gambar   =$valid['gambar'];
-if($level == 'admin' || $level == 'user')
+if($level == 'admin pos' || $level == 'admin toko' || $level == 'admin inventory' || $level == 'super admin')
  {
+if($status != 'aktif'){
+$this->session->sess_destroy();
+echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>";    
+ } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +66,7 @@ if($level == 'admin' || $level == 'user')
                             <div class="mask">
                               <p>TOKO</p>
                               <div class="tools tools-bottom">
-                                <a href="<?php echo base_url('C_fpps'); ?>"><i class="fa fa-link"></i></a>
+                                <a href="#"><i class="fa fa-link"></i></a>
                               </div>
                             </div>
                           </div>
@@ -78,7 +82,7 @@ if($level == 'admin' || $level == 'user')
                             <div class="mask">
                               <p>PENGATURAN</p>
                               <div class="tools tools-bottom">
-                                <a href="<?php echo base_url('C_fpps'); ?>"><i class="fa fa-link"></i></a>
+                                <a href="<?php echo base_url('C_pengaturan'); ?>"><i class="fa fa-link"></i></a>
                               </div>
                             </div>
                           </div>
@@ -104,6 +108,7 @@ if($level == 'admin' || $level == 'user')
 </html>
 <?php
 }else{
-redirect('C_login');
+    
+redirect('C_login/keluar');
 }
 ?>   

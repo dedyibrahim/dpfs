@@ -13,6 +13,8 @@ class Data_produk extends CI_Model {
         return $this->datatables->generate();
         
     }
+      
+
 }
 
 ?>
