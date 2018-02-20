@@ -3,15 +3,15 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-list-alt"></i>PRODUK <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"><li><a href="<?php echo base_url(); ?>C_produk">PRODUK</a></li>
+                    <ul class="nav child_menu"><li><a href="<?php echo base_url(); ?>C_produk/produk_toko">PRODUK TOKO</a></li>
+                   <li><a href="<?php echo base_url(); ?>C_produk/produk_pabrik">PRODUK PABRIK</a></li>
                     </ul>
                   </li>
                   <li>
                      <a>
                   <i class="fa fa-plus-circle"></i>TAMBAH PRODUK<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url('C_produk/tambah_produk_online'); ?>">PRODUK ONLINE</a></li>
-                      <li><a href="<?php echo base_url('C_produk/tambah_produk_offline'); ?>">PRODUK OFFLINE</a></li>
+                      <li><a href="<?php echo base_url('C_produk/tambah_produk'); ?>">TAMBAHKAN</a></li>
                     </ul>
                   </li>
                    <li>

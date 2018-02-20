@@ -4,13 +4,13 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-user"></i>USER<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="<?php echo base_url(); ?>C_pengaturan/data_user">User</a></li>
-                         <li><a href="<?php echo base_url(); ?>C_pengaturan/tambah_user">Tambah User</a></li>
+                        <li><a href="<?php echo base_url(); ?>C_pengaturan/data_user">USER</a></li>
+                         <li><a href="<?php echo base_url(); ?>C_pengaturan/tambah_user">TAMBAH USER</a></li>
                    </ul>
                   </li>
                  <li><a><i class="fa fa-users"></i>CUSTOMER<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="<?php echo base_url(); ?>C_pos">DATA CUSTOMER</a></li>
+                        <li><a href="<?php echo base_url('C_pengaturan/data_customer'); ?>">DATA CUSTOMER</a></li>
                     </ul>
                   </li>
                 </ul>
