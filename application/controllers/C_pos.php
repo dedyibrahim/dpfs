@@ -17,6 +17,7 @@ class C_pos extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->model('M_customer');
+        $this->load->model('M_produk');
         
    }
    public function index(){
@@ -57,7 +58,7 @@ class C_pos extends CI_Controller {
     public function get_allproduk(){
         $kode = $this->input->post('nama_produk',TRUE); //variabel kunci yang di bawa dari input text id kode
         $term =strtolower($_GET['term']); // tambahan baris untuk filtering data
-        $query =$this->M_customer->get_allproduk($term); //query model
+        $query =$this->M_produk->get_allproduk($term); //query model
  
         $customer    =  array();
         foreach ($query as $d) {
@@ -113,17 +114,14 @@ class C_pos extends CI_Controller {
            );
             $this->db->insert('data_barcode_sementara',$daftar);
            
-      // }
-       
-      }
+     }
       
        
     }
-  
    public function load_data_barcode_sementara(){
     $this->db->select('*');
     $this->db->from('data_barcode_sementara');
-    $this->db->join('produk', 'produk.id_produk = data_barcode_sementara.id_produk');
+    $this->db->join('data_produk_ditoko', 'data_produk_ditoko.id_produk = data_barcode_sementara.id_produk');
     $query = $this->db->get();
        
        $total = 0;
@@ -144,14 +142,14 @@ class C_pos extends CI_Controller {
            echo "Rp.".number_format($data['harga_produk']);
            echo "</td>";
            
-           if( $data['stok_produk'] < $data['qty_produk']){
+           if( $data['stok_toko'] < $data['qty_produk']){
            
            echo "<td >";
            echo " <input type='text'  class='col-md-2 col-sm-12 col-xs-12 form-control parsley-error' id='qty_produk".$data['id_data_barcode_sementara']."' onmouseout='input_qty(".$data['id_data_barcode_sementara'].")'    value='0' placeholder='Qty' >";
            echo "<div class='alert alert-danger alert-dismissible fade in' role='alert'>
                     <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span>
                     </button>
-                    <strong>Stok ".$data['stok_produk']." </strong>
+                    <strong>Stok ".$data['stok_toko']." </strong>
                   </div>";
            echo "</td>";
            
@@ -494,7 +492,7 @@ class C_pos extends CI_Controller {
      
     $barcode = $_GET['foo'];
   
-    $data = $this->db->get_where('produk',['barcode'=>$barcode]);   
+    $data = $this->db->get_where('data_produk_ditoko',['barcode'=>$barcode]);   
  
     foreach ($data->result_array() as $simpan){
      
@@ -535,7 +533,7 @@ class C_pos extends CI_Controller {
     if($hasil_cek == $_POST['id_inv'] ){
     
         
-    }elseif ($_POST['subtotal'] != 0  ) {
+    }elseif ($_POST['subtotal'] != 0 && $this->input->post('customer') != NULL  ) {
       
       if($this->input->post('id_inv')== 0 || $this->input->post('id_inv')== $this->input->post('id_inv')){
          
@@ -721,5 +719,6 @@ echo "<hr><p align='center'>Terimakasih,<br>Datang kembali</p>";
 
 }
 }
+
 
 }

@@ -45,9 +45,9 @@ $columns = array(
         array( 'db' => 'id_user',    
                'dt' => 5,
                'formatter' => function ( $d, $row) {
-                return anchor('C_pengaturan/lihat_user/'.md5($d),'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success' id='modal1' data-toggle='modal' data-target='.bs-example-modal-sm'").' '.
-                       anchor('C_pengaturan/edit_user/'.md5($d),'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
-                       anchor('C_pengaturan/hapus_user/'.md5($d),'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
+                return anchor('C_pengaturan/lihat_user/'.$d,'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success' id='modal1' data-toggle='modal' data-target='.bs-example-modal-sm'").' '.
+                       anchor('C_pengaturan/edit_user/'.$d,'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
+                       anchor('C_pengaturan/hapus_user/'.$d,'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
                        
             })
            
@@ -148,5 +148,75 @@ public function simpan_user(){
         echo 'DAFTAR GAGAL';
     }
     
+}
+
+public function data_customer(){
+    
+            $this->load->view('V_pengaturan/umum/V_header');
+            $this->load->view('V_pengaturan/umum/V_sidebar');
+            $this->load->view('V_pengaturan/umum/V_top_navigasi');
+            $this->load->view('V_pengaturan/customer/V_data_customer');
+            $this->load->view('V_pengaturan/umum/V_footer');
+           
+	
+    
+}
+
+public function json_customer(){
+$table = 'customer';
+$primaryKey = 'id_customer';
+$columns = array(
+	array( 'db' => 'nama_customer',       'dt' => 0 ),
+	array( 'db' => 'alamat',              'dt' => 1 ),
+	array( 'db' => 'telp',                'dt' => 2 ),
+       
+            
+        array( 'db' => 'id_customer',    
+               'dt' => 3,
+               'formatter' => function ( $d, $row) {
+                return anchor('C_pengaturan/lihat_customer/'.$d,'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success' id='modal1' data-toggle='modal' data-target='.bs-example-modal-sm'").' '.
+                       anchor('C_pengaturan/edit_customer/'.$d,'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
+                       anchor('C_pengaturan/hapus_customer/'.$d,'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
+                       
+            })
+           
+            );
+       
+            
+           
+$sql_details = array(
+	'user' => $this->db->username,
+	'pass' => $this->db->password,
+	'db'   => $this->db->database,
+	'host' => $this->db->hostname
+);
+
+
+$this->load->library('ssp');
+
+echo json_encode(
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+);
+}
+public function hapus_customer(){
+   
+ 
+ $id = $this->uri->segment(3);
+ $this->db->delete('customer', array('id_customer' => $id)); 
+ redirect('C_pengaturan/data_customer');   
+}
+public function hapus_user($id_detail){
+    
+    $query = $this->db->get_where('user',['id_user'=>$id_detail]);
+    
+    $row = $query->row($id_detail);
+    
+    unlink(FCPATH.'uploads/user/'.$row->gambar);
+    unlink(FCPATH.'uploads/user_thumb/'.$row->gambar);
+   
+    $this->db->delete('user',array ('id_user'=>$id_detail));
+    
+    redirect('C_pengaturan/data_user');
+
 }
 }

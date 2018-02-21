@@ -219,7 +219,10 @@ function input_barcode(){
                data:"foo="+foo,
                success:function(html){
                  load_data_barcode_sementara();
+<<<<<<< HEAD
                  //$("#foo").val("");
+=======
+>>>>>>> 14d1d82bc012879be249bb8be7b3003fc6524ee5
               }
             });
            
@@ -301,6 +304,14 @@ function input_nominal(){
                success:function(html){
                  load_data_barcode_sementara();
                  $("#tampil_print").show(500);
+                 $("#id_inv").val("");
+                 $("#customer").val("");
+                 $("#telp").val("");
+                 $("#alamat").val("");
+                 $("#tampil_ship").val("");
+                 $("#catatan").val("");
+                 $("#subtotal").val("");
+                 $("#kembalian").val("");
               }
             });
       

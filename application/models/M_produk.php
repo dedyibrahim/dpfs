@@ -1,5 +1,5 @@
 <?php
-class M_customer extends CI_Model{
+class M_produk extends CI_Model{
     public function __construct() {
         parent::__construct();
 $this->load->helper('url');
@@ -7,9 +7,9 @@ $this->load->helper('url');
        $this->load->database();
              
     }
- function get_allcustomer($term) {
-$this->db->from('customer');
-$this->db->like("nama_customer",$term); //untuk filter
+function get_allproduk($term) {
+$this->db->from('data_produk_ditoko');
+$this->db->like("nama_produk",$term); //untuk filter
 $query = $this->db->get();
 
 //cek apakah ada data

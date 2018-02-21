@@ -3,7 +3,7 @@ $valid =  $this->session->all_userdata();
 $level    = $valid['level'];
 $status   = $valid['status'];
 $gambar   =$valid['gambar'];
-if($level == 'admin pos' || $level == 'admin toko' || $level == 'admin inventory' || $level == 'super admin')
+if($level == 'admin pos' || $level == 'super admin')
  {
 if($status != 'aktif'){
 $this->session->sess_destroy();
@@ -76,7 +76,8 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
             
             <?php
 }else{
-redirect('C_login');
+echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
+    
 }
 
 ?>   

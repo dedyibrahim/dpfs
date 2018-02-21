@@ -26,7 +26,7 @@
     <div>
 
         <div class="login_wrapper" >
-        <div class="animate form login_form" style="border: 1px dashed;">
+        <div class="animate form login_form" style="background-color:#FFFFFF;  border: 1px dashed;">
           <section class="login_content">
              <form action="<?php echo base_url('C_login/login');?>" method="post" enctype="multipart/formdata">
                  <p style="font-size:80px;"><span class="glyphicon glyphicon-lock"></span></p>
