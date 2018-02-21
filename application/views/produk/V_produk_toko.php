@@ -22,10 +22,11 @@
      <table id="mytable" class="table table-striped table-bordered dataTable"  role="grid" aria-describedby="datatable-fixed-header_info"><thead>
        <tr role="row" align="center">
            <th class="sorting_asc" align="center"   aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:100px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">NAMA BARANG</th>
-           <th class="sorting" align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">HARGA BARANG</th>
-           <th class="sorting"align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">STOK TOKO</th>
+           <th class="sorting" align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">BARCODE</th>
+           <th class="sorting" align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">HARGA </th>
+           <th class="sorting"align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">STOK</th>
            <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">STATUS</th>
-           <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">STATUS BARANG</th>
+           <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">KEPEMILIKAN</th>
            <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">AKSI</th>
          </thead>
         <tbody>

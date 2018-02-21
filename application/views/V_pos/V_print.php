@@ -113,17 +113,17 @@ use Mike42\Escpos\PrintConnectors\CupsPrintConnector;
 $connector = new CupsPrintConnector("Epson-TM-Slip"); // Add connector for your printer here.
 $printer = new Printer($connector);
 $printer -> initialize();
-$printer -> selectPrintMode(Printer::MODE_EMPHASIZED);
+
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
 $printer -> setTextSize(2, 2);
 $printer -> text("NIAGARA WATERMART \n");
 $printer -> setJustification();
+
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
 $printer -> text("JL.Muara Karang Blok L9T No.8 \n");
 $printer -> text("Penjaringan Jakarta Utara, 14450 \n");
 $printer -> text("Telp.021-6697706\n");
 $printer -> setJustification();
-
 
 $printer -> text("--------------------------------\n");
 $printer -> text("Customer :".$data['nama_customer']."\n");    
@@ -138,12 +138,30 @@ $printer -> text("Nama     Harga    Qty   Jumlah \n");
 $printer -> text("---------------------------------\n");
 
 foreach ($query->result_array() as $data2){
-
-//$printer -> text("".$data2['nama_produk']." Rp.".number_format($data2['harga_produk'])."".$data2['qty_produk']." Rp.".number_format($data2['hasil_jml'])."\n");    
-$printer -> text("--------------------------------\n");
+$printer -> text("".$data2['nama_produk']." Rp.".number_format($data2['harga_produk'])."".$data2['qty_produk']." Rp.".number_format($data2['hasil_jml'])."\n");    
 }
-$printer -> cut(Printer::CUT_FULL);
-//$printer -> cut();
+$printer -> text("---------------------------------\n");
+$printer -> text("Disc ".$data2['diskon'].":".number_format($data['hasil_diskon']."/n"));
+$printer -> text("---------------------------------\n");
+$printer -> text("Subtotal".number_format($data['hasil_total'])."/n");
+$printer -> text("---------------------------------\n");
+$printer -> text("PPN 10 %".number_format($data['hasil_ppn'])."/n");
+$printer -> text("---------------------------------\n");
+$printer -> text("Freight".number_format($data['freight'])."/n");
+$printer -> text("---------------------------------\n");
+$printer -> text("Total".number_format($data['total'])."/n");
+$printer -> text("---------------------------------\n");
+$printer -> text("Uang : Rp.".number_format($data['uang'])."/n");
+$printer -> text("---------------------------------\n");
+$printer -> text("Kembali :Rp.".number_format($data['kembalian'])."/n");
+$printer -> text("---------------------------------\n");
+
+$printer -> setJustification(Printer::JUSTIFY_CENTER);
+$printer -> text("Alamat :".$data['alamat']."\n");
+$printer -> text("Terimakasih \n");
+$printer -> text("Datang Kembali \n");
+$printer -> setJustification();
+$printer -> cut();
 
 $printer -> pulse();
 $printer -> close();
