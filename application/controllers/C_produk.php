@@ -92,6 +92,12 @@ class C_produk extends CI_Controller {
         $this->image_lib->initialize($conf);
         $this->image_lib->resize();
         
+        $record_produk = array(
+            'record_data_produk'        => $this->input->post('id_produk'),
+        );
+        
+        $this->db->insert('data_produk',$record_produk); 
+        
         $daftar_toko = array(
             'id_produk'        => $this->input->post('id_produk'),
             'barcode'          => $this->input->post('barcode'),

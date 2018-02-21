@@ -114,13 +114,10 @@ class C_pos extends CI_Controller {
            );
             $this->db->insert('data_barcode_sementara',$daftar);
            
-      // }
-       
-      }
+     }
       
        
     }
-  
    public function load_data_barcode_sementara(){
     $this->db->select('*');
     $this->db->from('data_barcode_sementara');
@@ -536,7 +533,7 @@ class C_pos extends CI_Controller {
     if($hasil_cek == $_POST['id_inv'] ){
     
         
-    }elseif ($_POST['subtotal'] != 0  ) {
+    }elseif ($_POST['subtotal'] != 0 && $this->input->post('customer') != NULL  ) {
       
       if($this->input->post('id_inv')== 0 || $this->input->post('id_inv')== $this->input->post('id_inv')){
          
@@ -722,5 +719,6 @@ echo "<hr><p align='center'>Terimakasih,<br>Datang kembali</p>";
 
 }
 }
+
 
 }

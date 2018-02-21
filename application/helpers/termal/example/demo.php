@@ -25,9 +25,9 @@ $printer -> cut();
 
 /* Line feeds */
 $printer -> text("ABC");
-$printer -> feed(7);
+$printer -> feed(1);
 $printer -> text("DEF");
-$printer -> feedReverse(3);
+$printer -> feedReverse(1);
 $printer -> text("GHI");
 $printer -> feed();
 $printer -> cut();
