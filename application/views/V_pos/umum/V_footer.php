@@ -62,7 +62,7 @@
     <script src="<?php echo base_url('assets'); ?>/vendors/jszip/dist/jszip.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/vendors/pdfmake/build/vfs_fonts.js"></script>
-      <script src="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
    
     <!-- bootstrap-daterangepicker -->
     <script src="<?php echo base_url('assets'); ?>/vendors/moment/min/moment.min.js"></script>

@@ -105,7 +105,7 @@ class C_pos extends CI_Controller {
            
          echo "cek kembali produk";
        
-        }elseif ($_POST['nama_produk'] != NULL){
+        }elseif ($_POST['id_produk'] != NULL){
            
             $daftar = array(
             'nama_produk'      => $this->input->post('nama_produk'),
@@ -598,27 +598,10 @@ class C_pos extends CI_Controller {
  }
  
    public function cetak_struk(){
- //   $id = $this->uri->segment(3);
- 
-// $this->db->select('*');
-//$this->db->where('id_invoices_customer_data',$id);
-//$this->db->from('data_customer_invoices');
-//$this->db->join('data_jumlah_invoices', 'data_jumlah_invoices.id_invoices_jumlah = data_customer_invoices.id_invoices_customer_data');
-//$this->db->join('data_produk_invoices', 'data_produk_invoices.id_invoices_produk = data_customer_invoices.id_invoices_customer_data');
-//$query = $this->db->get();
-
-//foreach ($query->result_array() as $data){
-    
-  //  echo $data['nama_produk'];
-   // echo $data['harga_produk'];
-   // echo $data['qty_produk'];
-    
-    
-//}
-       
+   
 $this->load->view('V_pos/umum/V_print');
 $this->load->view('V_pos/V_print');
-  //      redirect('C_pos');
+redirect('C_pos');
 }
 public function load_preview(){
     
@@ -719,6 +702,11 @@ echo "<hr><p align='center'>Terimakasih,<br>Datang kembali</p>";
 
 }
 }
+public function data_json_penjualan(){
+  $this->load->model('Data_penjualan');
+   header('Content-Type: application/json');
+  echo $this->Data_penjualan->json_penjualan_pos();       
+ }
 
 
 }

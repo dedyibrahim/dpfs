@@ -2,13 +2,13 @@
 $valid =  $this->session->all_userdata();
 $level    = $valid['level'];
 $status   = $valid['status'];
-$gambar   =$valid['gambar'];
-if($level == 'admin pos' || $level == 'super admin')
+$gambar   = $valid['gambar'];
+if ($level == NULL){
+    redirect('C_login');
+}
+
+if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif')
  {
-if($status != 'aktif'){
-$this->session->sess_destroy();
-echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>";    
- } 
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,8 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="icon" href="<?php echo base_url('assets/');?>white_logo.png" type="image/ico" />
 
-    <title>DPFS</title>
+    <title>FPPS</title>
+<title>DPFS</title>
      <link href="<?php echo base_url('assets'); ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,6 +49,7 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
     <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
 
   </head>
+  
   
   <body class="nav-md">
     <div class="container body">
@@ -76,6 +78,7 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
             
             <?php
 }else{
+
 echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
     
 }

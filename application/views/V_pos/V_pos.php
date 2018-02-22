@@ -24,7 +24,6 @@
 <!-------PREVIEW-------->
 
 <body onload="load_data_barcode_sementara()"></body>
-<script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-md">
                       <div class="modal-content">
@@ -50,9 +49,9 @@
     </div >
 
 
-    
+ <script src="<?php echo base_url('assets'); ?>/js/jquery-2.1.1.min.js"></script>
  <link href="<?php echo base_url()?>assets/jquery/jquery-ui.css" rel="stylesheet">
-   <script>
+ <script type="text/javascript">
      $(function () {
         $("#customer").autocomplete({
             minLength:0,
@@ -219,11 +218,7 @@ function input_barcode(){
                data:"foo="+foo,
                success:function(html){
                  load_data_barcode_sementara();
-<<<<<<< HEAD
-                 //$("#foo").val("");
-=======
->>>>>>> 14d1d82bc012879be249bb8be7b3003fc6524ee5
-              }
+                }
             });
            
     } 
