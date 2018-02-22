@@ -140,14 +140,15 @@ $table = 'data_produk_ditoko';
 $primaryKey = 'id_produk';
 $columns = array(
 	array( 'db' => 'nama_produk',       'dt' => 0 ),
-	array( 'db' => 'harga_produk',      'dt' => 1 ),
-	array( 'db' => 'stok_toko',       'dt' => 2 ),
-	array( 'db' => 'status',            'dt' => 3 ),
-       array( 'db'  => 'milik',             'dt' => 4 ),
+	array( 'db' => 'barcode',           'dt' => 1 ),
+	array( 'db' => 'harga_produk',      'dt' => 2 ),
+	array( 'db' => 'stok_toko',         'dt' => 3 ),
+	array( 'db' => 'status',            'dt' => 4 ),
+       array( 'db'  => 'milik',             'dt' => 5 ),
        
             
         array( 'db' => 'id_produk',    
-               'dt' => 5,
+               'dt' => 6,
                'formatter' => function ( $d, $row) {
                 return anchor('C_produk/lihat_produk/'.$d,'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success' id='modal1' data-toggle='modal' data-target='.bs-example-modal-sm'").' '.
                        anchor('C_produk/edit_produk/'.$d,'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
@@ -176,14 +177,15 @@ $table = 'data_produk_dipabrik';
 $primaryKey = 'id_produk';
 $columns = array(
 	array( 'db' => 'nama_produk',       'dt' => 0 ),
-	array( 'db' => 'harga_produk',      'dt' => 1 ),
-	array( 'db' => 'stok_pabrik',       'dt' => 2 ),
-	array( 'db' => 'status',            'dt' => 3 ),
-       array( 'db'  => 'milik',             'dt' => 4 ),
+	array( 'db' => 'barcode',           'dt' => 1 ),
+	array( 'db' => 'harga_produk',      'dt' => 2 ),
+	array( 'db' => 'stok_pabrik',       'dt' => 3 ),
+	array( 'db' => 'status',            'dt' => 4 ),
+       array( 'db'  => 'milik',             'dt' => 5 ),
        
             
         array( 'db' => 'id_produk',    
-               'dt' => 5,
+               'dt' => 6,
                'formatter' => function ( $d, $row) {
                 return anchor('C_produk/lihat_produk/'.$d,'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success' id='modal1' data-toggle='modal' data-target='.bs-example-modal-sm'").' '.
                        anchor('C_produk/edit_produk/'.$d,'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.

@@ -32,36 +32,41 @@
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-home"></i></div>
-                  <div class="count">179</div>
-                  <h3>Produk Ditoko</h3>
-                  <p>Lorem ipsum psdea itgum rixt</p>
+                  <div class="count"><?php echo $this->db->get_where('data_produk_dipabrik',['status'=>'Aktif'])->num_rows(); ?></div>
+                  <h3>Produk Di toko</h3>
+                  <p>Data Produk di Toko Yang Aktif</p>
                 </div>
               </div>
             
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-list-alt"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?php echo $this->db->get_where('data_produk_dipabrik',['status'=>'Aktif'])->num_rows(); ?></div>
                   <h3>Produk Di Pabrik</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p>Data Produk di Pabrik Yang Aktif</p>
                 </div>
               </div>
             
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?php echo 
+                 $this->db->get_where('data_produk_ditoko',array('stok_toko <='=>20,'stok_toko !='=>0))->num_rows();
+                   ?></div>
                   <h3>Produk Mau Habis</h3>
-                  <p>Produk Mau Habis</p>
+                  <p>Produk Habis di Toko</p>
                 </div>
               </div>
               
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-warning"></i></div>
-                  <div class="count">179</div>
+                   <div class="count"><?php echo 
+                 $this->db->get_where('data_produk_ditoko',array('stok_toko ='=>0))->num_rows();
+                   ?></div>
+                 
                   <h3>Produk Habis</h3>
-                  <p>Produk Hbis</p>
+                  <p>Produk Habis</p>
                 </div>
               </div>
             </div>
