@@ -44,10 +44,7 @@ if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif')
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('assets'); ?>/build/css/custom.min.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
+    
   </head>
   
   
