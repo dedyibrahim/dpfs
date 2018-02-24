@@ -3,23 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/var/www/html/dpfs/application/helpers/termal/example/print-from-html.php</file>
-            <file>file:/var/www/html/dpfs/application/controllers/C_pos.php</file>
-            <file>file:/var/www/html/dpfs/application/helpers/termal/example/demo.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pos/V_print.php</file>
-            <file>file:/var/www/html/dpfs/application/helpers/termal/example/text-size.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pos/V_pos.php</file>
-=======
             <file>file:/var/www/html/dpfs/application/controllers/C_pengaturan.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/umum/V_sidebar.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/customer/V_data_customer.php</file>
->>>>>>> 14d1d82bc012879be249bb8be7b3003fc6524ee5
-=======
-            <file>file:/var/www/html/dpfs/application/views/V_pos/umum/V_header.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/umum/V_top_navigasi.php</file>
->>>>>>> 886284a4f0cb92aa2ec6e630d29958de5e05d376
+            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/mutasi/V_data_mut_pabrik_toko.php</file>
+            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/mutasi/V_data_mut_toko_pabrik.php</file>
+            <file>file:/var/www/html/dpfs/application/models/Data_mutasi.php</file>
         </group>
     </open-files>
 </project-private>

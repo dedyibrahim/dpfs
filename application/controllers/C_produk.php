@@ -40,7 +40,7 @@ class C_produk extends CI_Controller {
 		$this->load->view('produk/V_tambah_produk');
                 $this->load->view('produk/umum/V_footer');
    }
-    public function data_penjualan_produk(){
+  public function data_penjualan_produk(){
                 $this->load->view('produk/umum/V_header');
                 $this->load->view('produk/umum/V_sidebar');
 		$this->load->view('produk/umum/V_top_navigasi');
@@ -187,11 +187,11 @@ $columns = array(
         array( 'db' => 'id_produk',    
                'dt' => 6,
                'formatter' => function ( $d, $row) {
-                return anchor('C_produk/lihat_produk/'.$d,'<i class="fa fa-eye"></i>',"class='btn btn-sm btn-success' id='modal1' data-toggle='modal' data-target='.bs-example-modal-sm'").' '.
-                       anchor('C_produk/edit_produk/'.$d,'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'").' '.
-                       anchor('C_produk/hapus_produk/'.$d,'<i class="fa fa-trash"></i>',"class='btn btn-sm btn-danger'");
+              return anchor('C_produk/mutasi/'.$d,'<i class="fa fa-exchange"> Mutasikan</i>',"class='btn btn-sm btn-warning'");
+                
+               }
                        
-            })
+            )
            
             );
 $sql_details = array(
@@ -235,4 +235,80 @@ public function data_json_penjualan(){
     
  }
  
+public function mutasi($id){
+    
+    $this->db->select('*');
+    $this->db->where('data_produk_dipabrik.id_produk',$id);
+    $this->db->from('data_produk_dipabrik');
+    $this->db->join('data_produk_ditoko', 'data_produk_ditoko.id_produk = data_produk_dipabrik.id_produk');
+    $query = $this->db->get();
+    
+    $this->load->view('produk/umum/V_header');
+    $this->load->view('produk/umum/V_sidebar');
+    $this->load->view('produk/umum/V_top_navigasi');
+    $this->load->view('produk/V_data_mutasikan',['query'=>$query]);
+    $this->load->view('produk/umum/V_footer');    
+   }
+public function simpan_mutasi(){
+
+    
+ if(isset($_POST['btnToko'])){
+   $tarik = $this->db->get_where('data_produk_dipabrik',['id_produk'=>  $this->input->post('id_produk')]); 
+    
+   foreach ($tarik->result_array() as $validasi){
+   }
+   if( $this->input->post('mut_stok_pabrik')== NULL){
+ 
+    echo "<script>alert('Maaf anda tidak boleh membuat perubahan dengan kondisi yang kosong');javascript:history.go(-1);</script>";
+   }else{
+   
+   if($this->input->post('mut_stok_pabrik')> $validasi['stok_pabrik']){
+       
+     echo "<script>alert('Maaf anda tidak boleh memotong stok lebih besar dari pabrik');javascript:history.go(-1);</script>";
+  
+       
+   }else{
+   
+    $data = array(
+    'id_produk' =>$this->input->post('id_produk'),
+    'mut_stok_pabrik' =>$this->input->post('mut_stok_pabrik'),
+    'status' =>'<span class="label label-info">PENDING</span>',
+    );
+    $this->db->insert('mut_pabrik_toko',$data);
+    
+    redirect('C_produk/mutasi/'.$this->input->post('id_produk'));
+}
+   }
+}
+if(isset($_POST['btnPabrik'])){
+   $tarik = $this->db->get_where('data_produk_ditoko',['id_produk'=>  $this->input->post('id_produk')]); 
+    
+   foreach ($tarik->result_array() as $validasi){
+   }
+    if( $this->input->post('mut_stok_toko')== NULL){
+ 
+    echo "<script>alert('Maaf anda tidak boleh membuat perubahan dengan kondisi yang kosong');javascript:history.go(-1);</script>";
+   
+    }else{
+  
+   if($this->input->post('mut_stok_toko')> $validasi['stok_toko']){
+       
+     echo "<script>alert('Maaf anda tidak boleh memotong stok lebih besar dari toko');javascript:history.go(-1);</script>";
+  
+       
+   }else{
+   
+    $data = array(
+    'id_produk' =>$this->input->post('id_produk'),
+    'mut_stok_toko' =>$this->input->post('mut_stok_toko'),
+    'status' =>'<span class="label label-info">PENDING</span>',
+    );
+    $this->db->insert('mut_toko_pabrik',$data);
+    
+    redirect('C_produk/mutasi/'.$this->input->post('id_produk'));
+}
+
+}
+
+}}
 }

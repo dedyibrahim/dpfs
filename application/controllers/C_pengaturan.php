@@ -10,7 +10,8 @@ class C_pengaturan extends CI_Controller {
         $this->load->library('session');
         $this->load->library('upload');
         $this->load->library('form_validation');
-        $this->load->database();
+         $this->load->library('datatables');
+       $this->load->database();
         $this->load->helper('html');
         $this->load->helper('url');
     }
@@ -309,10 +310,7 @@ public function simpan_edit_user(){
     
 }
 public function lihat_user($id){
-    
-    
-      $data_edit = $this->db->get_where('user',['id_user'=>$id]);
-            
+            $data_edit = $this->db->get_where('user',['id_user'=>$id]);
             $this->load->view('V_pengaturan/umum/V_header');
             $this->load->view('V_pengaturan/umum/V_sidebar');
             $this->load->view('V_pengaturan/umum/V_top_navigasi');
@@ -321,4 +319,36 @@ public function lihat_user($id){
           
     
 }
+public function mut_pabrik_toko(){
+           
+            $this->load->view('V_pengaturan/umum/V_header');
+            $this->load->view('V_pengaturan/umum/V_sidebar');
+            $this->load->view('V_pengaturan/umum/V_top_navigasi');
+            $this->load->view('V_pengaturan/mutasi/V_data_mut_pabrik_toko');
+            $this->load->view('V_pengaturan/umum/V_footer');
+           
+	}
+
+public function mut_toko_pabrik(){
+           
+            $this->load->view('V_pengaturan/umum/V_header');
+            $this->load->view('V_pengaturan/umum/V_sidebar');
+            $this->load->view('V_pengaturan/umum/V_top_navigasi');
+            $this->load->view('V_pengaturan/mutasi/V_data_mut_toko_pabrik');
+            $this->load->view('V_pengaturan/umum/V_footer');
+           
+	}
+        
+public function data_json_mut_pabrik_toko(){
+  $this->load->model('Data_mutasi');
+  header('Content-Type: application/json');
+  echo $this->Data_mutasi->json_mut_pabrik_toko();       
+ }
+ 
+ public function data_json_mut_toko_pabrik(){
+  $this->load->model('Data_mutasi');
+   header('Content-Type: application/json');
+  echo $this->Data_mutasi->json_mut_toko_pabrik();       
+ }
+ 
 }

@@ -13,6 +13,9 @@
       </div>
     </div>
 <!-- jQuery -->
+   <script type="text/javascript" language="javascript" src="<?php echo base_url('assets/');?>vendors/datatables/datatables/media/js/jquery.js"></script>
+ 
+
     <script src="<?php echo base_url('assets'); ?>/jquery-ui/jquery-ui.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo base_url('assets'); ?>/vendors/fastclick/lib/fastclick.js"></script>

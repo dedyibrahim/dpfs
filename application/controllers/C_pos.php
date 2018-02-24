@@ -38,6 +38,22 @@ class C_pos extends CI_Controller {
 		$this->load->view('V_pos/V_data_penjualan');
                 $this->load->view('V_pos/umum/V_footer');
    }
+   public function data_customer(){
+                $this->load->view('V_pos/umum/V_header');
+                $this->load->view('V_pos/umum/V_sidebar');
+		$this->load->view('V_pos/umum/V_top_navigasi');
+		$this->load->view('V_pos/customer/V_data_customer');
+                $this->load->view('V_pos/umum/V_footer');
+   }
+   public function edit_customer($id){
+     $query = $this->db->get_where('customer',['id_customer'=>$id]);
+     $this->load->view('V_pos/umum/V_header');
+     $this->load->view('V_pos/umum/V_sidebar');
+     $this->load->view('V_pos/umum/V_top_navigasi');
+     $this->load->view('V_pos/customer/V_edit_customer',["query"=>$query]);
+     $this->load->view('V_pos/umum/V_footer');
+           
+   }
    public function get_allcustomer(){
         $kode = $this->input->post('customer',TRUE); //variabel kunci yang di bawa dari input text id kode
         $term =strtolower ($_GET['term']); // tambahan baris untuk filtering data
@@ -46,11 +62,11 @@ class C_pos extends CI_Controller {
         $customer    =  array();
         foreach ($query as $d) {
             $json[]     = array(
-                'label'                 => $d->nama_customer, //variabel array yg dibawa ke label ketikan kunci
-                'id_customer'           => $d->id_customer , //variabel yg dibawa ke id nama
-                'nama_customer'         => $d->nama_customer , //variabel yg dibawa ke id nama
-                'alamat'                => $d->alamat, //variabel yang dibawa ke id ibukota
-                'telp'                  => $d->telp, //variabel yang dibawa ke id ibukota
+                'label'              => $d->nama_customer, //variabel array yg dibawa ke label ketikan kunci
+                'id_customer'        => $d->id_customer , //variabel yg dibawa ke id nama
+                'nama_customer'      => $d->nama_customer , //variabel yg dibawa ke id nama
+                'alamat'             => $d->alamat, //variabel yang dibawa ke id ibukota
+                'telp'                => $d->telp, //variabel yang dibawa ke id ibukota
             );
         }
         echo json_encode($json);      //data array yang telah kota deklarasikan dibawa menggunakan json
@@ -707,6 +723,52 @@ public function data_json_penjualan(){
    header('Content-Type: application/json');
   echo $this->Data_penjualan->json_penjualan_pos();       
  }
+ public function json_customer(){
+$table = 'customer';
+$primaryKey = 'id_customer';
+$columns = array(
+	array( 'db' => 'nama_customer',       'dt' => 0 ),
+	array( 'db' => 'alamat',              'dt' => 1 ),
+	array( 'db' => 'telp',                'dt' => 2 ),
+       
+            
+        array( 'db' => 'id_customer',    
+               'dt' => 3,
+               'formatter' => function ( $d, $row) {
+                return anchor('C_pos/edit_customer/'.$d,'<i class="fa fa-edit"></i>',"class='btn btn-sm btn-warning'");
+                       
+            })
+           
+            );
+       
+            
+           
+$sql_details = array(
+	'user' => $this->db->username,
+	'pass' => $this->db->password,
+	'db'   => $this->db->database,
+	'host' => $this->db->hostname
+);
 
+
+$this->load->library('ssp');
+
+echo json_encode(
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+);
+}
+public function simpan_edit_customer($id){
+    
+    $data = array(
+    'nama_customer'=>$this->input->post('nama_customer'),    
+    'telp'         =>$this->input->post('telp'),    
+    'alamat'       =>$this->input->post('alamat'),    
+    );
+    
+    $this->db->update('customer',$data,array('id_customer'=>$id));
+
+    redirect('C_pos/data_customer');
+    
+}
 
 }

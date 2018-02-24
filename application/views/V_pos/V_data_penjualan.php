@@ -55,7 +55,7 @@
                         
                         
                        ],
-                    order: [[1, 'asc']],
+                    order: [[1, 'desc']],
                     rowCallback: function(row, data, iDisplayIndex) {
                         var info = this.fnPagingInfo();
                         var page = info.iPage;

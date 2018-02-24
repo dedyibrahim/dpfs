@@ -9,7 +9,7 @@
                 $('#mytable').DataTable( {
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "<?php echo base_url('C_pengaturan/json_customer')?>"
+                    "ajax": "<?php echo base_url('C_pos/json_customer')?>"
                 } );
             } );
 
