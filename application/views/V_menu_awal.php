@@ -24,10 +24,10 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
     <link href="<?php echo base_url('assets'); ?>/build/css/custom.min.css" rel="stylesheet">
   </head>
   <body  >
-  <p align="center" style=" padding: 5%; font-size: 35px; color:rgba(38,185,154,.88);"><i class="fa fa-shopping-basket"></i> Aplikasi Point Of Sales <br> © DPFS </h1>
+  <p align="center" style=" padding: 5%; font-size: 35px; color:rgba(38,185,154,.88);"><i class="fa fa-shopping-basket"></i> Aplikasi Point Of Sales</h1>
      <div class="col-lg-12" style="padding: 3%;">
         <div class="col-md-pull-11">
-          <div class="col-sm-3" >
+          <div class="col-sm-3 col-xs-8" >
                 <div class="thumbnail" >
                     <div class="image view view-first">
                        <span style="font-size: 120px; color:rgba(38,185,154,.88); " class="fa fa-shopping-cart " </span>
@@ -43,7 +43,7 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
                     </div>
                  </div>
             </div>
-            <div class="col-sm-3" >
+            <div class="col-sm-3 col-xs-8" >
                 <div class="thumbnail" >
                     <div class="image view view-first">
                        <span style="font-size: 120px; color:rgba(38,185,154,.88); " class="fa fa-list-alt " </span>
@@ -59,14 +59,14 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
                     </div>
                  </div>
             </div>
-            <div class="col-sm-3" >
+            <div class="col-sm-3 col-xs-8" >
                 <div class="thumbnail" >
                     <div class="image view view-first">
                        <span style="font-size: 120px; color:rgba(38,185,154,.88); " class="fa fa-home " </span>
                             <div class="mask">
                               <p>TOKO</p>
                               <div class="tools tools-bottom">
-                                <a href="#"><i class="fa fa-link"></i></a>
+                                <a href="<?php echo base_url('C_toko'); ?>"><i class="fa fa-link"></i></a>
                               </div>
                             </div>
                           </div>
@@ -75,7 +75,7 @@ echo "<script>alert('akun anda tidak aktif');javascript:history.go(-1);</script>
                     </div>
                  </div>
             </div>
-            <div class="col-sm-3" >
+            <div class="col-sm-3  col-xs-8" >
                 <div class="thumbnail" >
                     <div class="image view view-first">
                        <span style="font-size: 120px; color:rgba(38,185,154,.88); " class="fa fa-gears" </span>

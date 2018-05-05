@@ -11,6 +11,7 @@
                    <a><i class="fa fa-share-alt"></i>DATA PENJUALAN<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="<?php echo base_url(); ?>C_pos/data_penjualan">Penjualan</a></li>
+                       <li><a href="<?php echo base_url(); ?>C_pos/edit_penjualan">Edit Penjualan</a></li>
                     </ul>
                   </li>
                   <li>

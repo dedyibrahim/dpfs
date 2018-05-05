@@ -9,6 +9,7 @@ $this->load->helper('url');
     }
 function get_allproduk($term) {
 $this->db->from('data_produk_ditoko');
+$this->db->limit(9);
 $this->db->like("nama_produk",$term); //untuk filter
 $query = $this->db->get();
 

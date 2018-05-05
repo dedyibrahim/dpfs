@@ -1,36 +1,88 @@
 
-    
 <div class="x_panel">
 <div class="x_title">
-    <h2>DATA PRODUK YANG BERADA DI PABRIK</h2>
+  
+    <h2 class="pull-left">DATA STOK PRODUK YANG ADA DI PABRIK</h2>
         <div class="clearfix"></div>
             </div>
 <script type="text/javascript" language="javascript" src="<?php echo base_url('assets/');?>vendors/datatables/datatables/media/js/jquery.js"></script>
 <script type="text/javascript">
-          $(document).ready(function() {
-                $('#mytable').DataTable( {
-                    "processing": true,
-                    "serverSide": true,
-                    "ajax": "<?php echo base_url('C_produk/json_produk_pabrik')?>"
-                } );
-            } );
+            $(document).ready(function() {
+                $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
+                {
+                    return {
+                        "iStart": oSettings._iDisplayStart,
+                        "iEnd": oSettings.fnDisplayEnd(),
+                        "iLength": oSettings._iDisplayLength,
+                        "iTotal": oSettings.fnRecordsTotal(),
+                        "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                        "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                        "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+                    };
+                };
 
-        </script>
+                var t = $("#mytable").dataTable({
+                    initComplete: function() {
+                        var api = this.api();
+                        $('#mytable')
+                                .off('.DT')
+                                .on('keyup.DT', function(e) {
+                                    if (e.keyCode == 13) {
+                                        api.search(this.value).draw();
+                            }
+                        });
+                    },
+                    oLanguage: {
+                        sProcessing: "loading..."
+                    },
+                    processing: true,
+                    serverSide: true,
+                    ajax: {"url": "<?php echo base_url('C_produk/json_produk_pabrik') ?> ", "type": "POST"},
+                    columns: [
+                        {
+                            "data": "id_produk",
+                            "orderable": false
+                        },
+                        {"data": "nama"},
+                        {"data": "barcode"},
+                        {"data": "harga"},
+                        {"data": "stok"},
+                        {"data": "milik"},
+                        {"data": "status"},
+                        {"data": "kategori"},
+                        {"data": "gambar"},
+                        {"data": "view"},
+                        
+                        
+                       ],
+                    order: [[1, 'desc']],
+                    rowCallback: function(row, data, iDisplayIndex) {
+                        var info = this.fnPagingInfo();
+                        var page = info.iPage;
+                        var length = info.iLength;
+                        var index = page * length + (iDisplayIndex + 1);
+                        $('td:eq(0)', row).html(index);
+                    }
+                });
+            });
+        </script>    
     
     
-    
-   <div class="dashboard_graph">
-     <table id="mytable" class="table table-striped table-bordered dataTable"  role="grid" aria-describedby="datatable-fixed-header_info"><thead>
-       <tr role="row" align="center">
-           <th class="sorting_asc" align="center"   aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:100px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">NAMA BARANG</th>
-           <th class="sorting" align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">BARCODE</th>
-           <th class="sorting" align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">HARGA </th>
-           <th class="sorting"align="center"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">STOK</th>
-           <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">STATUS</th>
-           <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">KEPEMILIKAN</th>
-           <th class="sorting"align="center" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">AKSI</th>
+    <div class="dashboard_graph">
+     <table id="mytable" class="table table-striped  table-hover table-bordered dataTable"  role="grid" aria-describedby="datatable-fixed-header_info"><thead>
+       <tr role="row">
+           <th  align="center" class="sorting_asc"    aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">N0</th>
+           <th  align="center" class="sorting_asc"    aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">Nama</th>
+           <th  align="center" class="sorting"  aria-controls="datatable-fixed-header" rowspan="1"      colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">Barcode</th>
+           <th  align="center" class="sorting"  aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">Harga</th>
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Stok</th>
+           <th  align="center" class="sorting"aria-controls="datatable-fixed-header" rowspan="1"  colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Milik</th>
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Status</th>
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Kategori</th>
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Gambar</th>
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header" rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Aksi</th>
          </thead>
-        <tbody>
+        <tbody align="center">
         </table>
        
     </div></div>

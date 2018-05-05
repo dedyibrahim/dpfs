@@ -5,6 +5,8 @@
                   <li><a><i class="fa fa-list-alt"></i>PRODUK <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"><li><a href="<?php echo base_url(); ?>C_produk/produk_toko">PRODUK TOKO</a></li>
                    <li><a href="<?php echo base_url(); ?>C_produk/produk_pabrik">PRODUK PABRIK</a></li>
+                   <li><a href="<?php echo base_url(); ?>C_produk/produk_mau_habis">PRODUK MAU HABIS</a></li>
+                   <li><a href="<?php echo base_url(); ?>C_produk/produk_habis">PRODUK HABIS</a></li>
                     </ul>
                   </li>
                   <li>
@@ -21,7 +23,12 @@
                       <li><a href="<?php echo base_url('C_produk/data_penjualan_produk'); ?>">DATA PENJUALAN</a></li>
                     </ul>
                   </li>
-                  
+                  <li><a><i class="fa fa-exchange"></i>DATA MUTASI<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="<?php echo base_url('C_produk/mut_pabrik_toko'); ?>">PABRIK KE TOKO</a></li>
+                        <li><a href="<?php echo base_url('C_produk/mut_toko_pabrik'); ?>">TOKO KE PABRIK</a></li>
+                    </ul>
+                  </li>
                   
                   
                 </ul>

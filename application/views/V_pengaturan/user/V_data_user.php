@@ -1,3 +1,19 @@
+  
+   <script type="text/javascript">
+  function tes(){
+      swal({title:"STOP BAHAYA", 
+               text:"ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI",
+               timer:5000,
+               type:"error",
+               confirmButtonText:"Iya saya paham !! "
+                        
+       
+ });
+      
+  }
+   
+   </script>
+       
 <div class="alert alert-warning alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                     </button>

@@ -2,15 +2,13 @@
 $valid =  $this->session->all_userdata();
 $level    = $valid['level'];
 $status   = $valid['status'];
-$gambar   = $valid['gambar'];
+$gambar   =$valid['gambar'];
 if ($level == NULL){
     redirect('C_login');
 }
-
-if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif')
+if($level == 'admin pos' || $level == 'super admin'  && $status == 'aktif'  )
  {
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,8 +19,7 @@ if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif')
     <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="icon" href="<?php echo base_url('assets/');?>white_logo.png" type="image/ico" />
 
-    <title>FPPS</title>
-<title>DPFS</title>
+    <title>DPFS</title>
      <link href="<?php echo base_url('assets'); ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,12 +41,12 @@ if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif')
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('assets'); ?>/build/css/custom.min.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
+    <script src="<?php echo  base_url(); ?>assets/css/sweetalert.min.js" type="text/javascript"></script>
+    <link href="<?php echo  base_url(); ?>assets/css/sweetalert.css" rel="stylesheet" type="text/css"/>
+   
   </head>
-  
+  <div style="display: none;  background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ display:none;width:69px;height:89px;border:0px solid black;position:absolute;top:50%;left:45%;padding:2px;"   id="loading"><img src="<?php echo base_url("assets/spinner-large.gif");?>" width="100" height="100"></span></div>    
   
   <body class="nav-md">
     <div class="container body">
@@ -78,9 +75,8 @@ if($level == 'admin pos' || $level == 'super admin' && $status == 'aktif')
             
             <?php
 }else{
+echo "<script>alert('ANDA TIDAK MEMILIK AKSES KE HALAMAN INI');javascript:history.go(-1);</script>";
 
-echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
-    
 }
 
 ?>   

@@ -12,8 +12,8 @@
         <!-- /footer content -->
       </div>
     </div>
-
-    <!-- jQuery -->
+   <script src="<?php echo  base_url(); ?>assets/css/sweetalert.min.js" type="text/javascript"></script>
+ <!-- jQuery -->
     <script src="<?php echo base_url('assets'); ?>/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -67,6 +67,7 @@
     <script src="<?php echo base_url('assets'); ?>/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/vendors/jszip/dist/jszip.min.js"></script>
     <script src="<?php echo base_url('assets'); ?>/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="<?php echo base_url('assets'); ?>/vendors/pdfmake/build/vfs_fonts.js"></script>	
+    <script src="<?php echo base_url('assets'); ?>/vendors/pdfmake/build/vfs_fonts.js"></script>
+     <script src="<?php echo base_url('assets'); ?>/vendors/dropzone/dist/min/dropzone.min.js"></script>
   </body>
 </html>

@@ -9,6 +9,7 @@ $this->load->helper('url');
     }
  function get_allcustomer($term) {
 $this->db->from('customer');
+$this->db->limit(5);
 $this->db->like("nama_customer",$term); //untuk filter
 $query = $this->db->get();
 

@@ -44,7 +44,8 @@ if($level == 'super admin' && $status == 'aktif' )
     <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
     <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
     <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
+    <link href="<?php echo  base_url(); ?>assets/css/sweetalert.css" rel="stylesheet" type="text/css"/>
+   
   </head>
   
   <body class="nav-md">
