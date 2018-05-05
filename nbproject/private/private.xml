@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/dpfs/application/controllers/C_pengaturan.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/mutasi/V_data_mut_pabrik_toko.php</file>
-            <file>file:/var/www/html/dpfs/application/views/V_pengaturan/mutasi/V_data_mut_toko_pabrik.php</file>
-            <file>file:/var/www/html/dpfs/application/models/Data_mutasi.php</file>
+            <file>file:/var/www/html/lapak/application/models/Data_toko.php</file>
+            <file>file:/var/www/html/lapak/application/views/V_toko/umum/V_sidebar.php</file>
+            <file>file:/var/www/html/lapak/application/controllers/C_toko.php</file>
+            <file>file:/var/www/html/lapak/application/views/V_toko/V_lihat_penjualan_baru.php</file>
         </group>
     </open-files>
 </project-private>

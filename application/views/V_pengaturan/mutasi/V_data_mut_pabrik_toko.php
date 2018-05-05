@@ -1,5 +1,5 @@
 
-<div class="x_panel">
+<div  class="x_panel">
 <div class="x_title">
     <h2>DATA PERPINDAHAN STOK DARI PABRIK KE TOKO</h2>
         <div class="clearfix"></div>
@@ -37,7 +37,8 @@
                     processing: true,
                     serverSide: true,
                     ajax: {"url": "<?php echo base_url('C_pengaturan/data_json_mut_pabrik_toko') ?> ", "type": "POST"},
-                    columns: [
+                  
+                     columns: [
                         {
                             "data": "id_mut_pabrik_toko",
                             "orderable": true
@@ -48,7 +49,8 @@
                         {"data": "stok_toko"},
                         {"data": "waktu"},
                         {"data": "view"},
-                        {"data": "status"},
+                        
+                         {"data": "status"},
                         
                         
                        ],

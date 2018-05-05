@@ -1,4 +1,3 @@
-
 <div class="x_panel">
 <div class="x_title">
     <h2>DATA PENJUALAN ONLINE DAN OFFLINE</h2>
@@ -45,12 +44,14 @@
                             "data": "id_invoices_customer_data",
                             "orderable": false
                         },
+                        {"data": "no_inv"},
                         {"data": "nama"},
                         {"data": "telpon"},
                         {"data": "pengiriman"},
                         {"data": "waktu"},
                         {"data": "kasir"},
                         {"data": "total"},
+                        {"data": "status"},
                         {"data": "view"}
                         
                         
@@ -72,12 +73,15 @@
      <table id="tabel" class="table table-striped table-bordered dataTable"  role="grid" aria-describedby="datatable-fixed-header_info"><thead>
        <tr role="row">
            <th  align="center" class="sorting_asc"    aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">N0</th>
+           <th  align="center" class="sorting_asc"    aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width:1px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">Struk</th>
            <th  align="center" class="sorting"  aria-controls="datatable-fixed-header rowspan="1"      colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">Customer</th>
            <th  align="center" class="sorting"  aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width: 1px;" aria-label="Name: activate to sort column descending">Telepon</th>
            <th  align="center" class="sorting" aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Pengiriman</th>
            <th  align="center" class="sorting"aria-controls="datatable-fixed-header rowspan="1"  colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Waktu</th>
            <th  align="center" class="sorting" aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Kasir</th>
-           <th  align="center" class="sorting" aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Total penjualan</th>
+           
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Penjualan</th>
+           <th  align="center" class="sorting" aria-controls="datatable-fixed-header rowspan="1" colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">Status</th>
            <th  align="center" class="sorting"aria-controls="datatable-fixed-header rowspan="1"  colspan="1" style="width: 50px;" aria-label="Position: activate to sort column ascending">AKSI</th>
          </thead>
         <tbody align="center">

@@ -26,18 +26,20 @@
     <div>
 
         <div class="login_wrapper" >
-        <div class="animate form login_form" style="background-color:#FFFFFF;  border: 1px dashed;">
+        <div class="animate form login_form" style="  border: 1px solid;">
           <section class="login_content">
              <form action="<?php echo base_url('C_login/login');?>" method="post" enctype="multipart/formdata">
-                 <p style="font-size:80px;"><span class="glyphicon glyphicon-lock"></span></p>
+                 <p style="font-size:80px;"><span class="fa fa-gears"></span></p>
               
-                 <div class="col-md-12">
+                 <div class="col-md-12 col-xs-12">
                   <input name="email" type="email" class="form-control" placeholder="email" required="" />
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12 col-xs-12">
                   <input name="password" type="password" class="form-control" placeholder="Password" required="" />
               </div>
-              <div>
+               <div class="clearfix"></div>
+             
+                 <div>
                   <button type="submit" name="btn_login" class="btn btn-success " ><span class="fa fa-lock"></span> LOGIN</button>
               </div>
 

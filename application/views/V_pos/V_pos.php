@@ -1,4 +1,5 @@
-<?php  
+
+    <?php  
  $id_inv = $this->db->get('data_invoices')->num_rows();
  
 ?>
@@ -87,17 +88,18 @@
 <div class="x_panel">
  <div class="x_title">
     <h2>PENJUALAN</h2>
-        <div class="clearfix">
+    <div on class="clearfix">
      </div>
   </div>
     
    
   <script type="text/javascript">
     $(document).ready(function(){
-        $("#nama_produk").mouseout(function(){
-            var nama_produk=$("#nama_produk").val();
-            var harga_produk=$("#harga_produk").val();
-            var id_produk=$("#id_produk").val();
+        $("#nama_produk").keypress(function(e){
+            if(e.keyCode == '13'){
+               var nama_produk=$("#nama_produk").val();
+               var harga_produk=$("#harga_produk").val();
+               var id_produk=$("#id_produk").val();
             
            $.ajax({
                 type:"POST",
@@ -112,7 +114,10 @@
                 
                  }
                
-            });
+            });  
+                
+            }
+           
             
             
         });
@@ -122,7 +127,8 @@
 <script type="text/javascript">
 
   function load_data_barcode_sementara(){
-      $.ajax({
+    
+        $.ajax({
                 type:"GET",
                 url:"<?php echo base_url('C_pos/load_data_barcode_sementara')?>",
                 data:"",
@@ -207,12 +213,11 @@
     } 
 </script>
 
-   <script type="text/javascript">    
-function input_barcode(){
-            
-       var foo=$("#foo").val();
-       
-         $.ajax({
+ <script type="text/javascript">    
+  function input_barcode(){
+    var foo=$("#foo").val();
+             
+             $.ajax({
                type:"GET",
                url:"<?php echo base_url('C_pos/input_barcode')?>",
                data:"foo="+foo,
@@ -220,11 +225,11 @@ function input_barcode(){
                  load_data_barcode_sementara();
                 }
             });
-           
-    } 
-  </script>
-   <script type="text/javascript">    
-function tampil_barcode(){
+       }
+ </script>
+  
+<script type="text/javascript">    
+ function tampil_barcode(){
           
       $('#tampil_barcode').show(500);
       $('#tampil_nama').hide(500);
@@ -283,21 +288,39 @@ function input_nominal(){
   </script>
   <script type="text/javascript">
   function simpan_data(){
-      var id_inv=$("#id_inv").val();
+      var id_inv  =$("#id_inv").val();
       var customer=$("#customer").val();
-      var telp=$("#telp").val();
-      var alamat=$("#alamat").val();
+      var telp    =$("#telp").val();
+      var alamat  =$("#alamat").val();
       var tampil_ship=$("#tampil_ship").val();
       var catatan=$("#catatan").val();
       var subtotal=$("#subtotal").val();
       var kembalian=$("#kembalian").val();
-       
-         $.ajax({
+   if (subtotal == 0 || customer == '' ){
+        swal({
+               title:"", 
+               text:"Data gagal disimpan",
+               timer:1500,
+               type:"error",
+               showCancelButton :false,
+               showConfirmButton :false
+                });   
+   }else{
+       $.ajax({
                type:"POST",
                url:"<?php echo base_url('C_pos/simpan_invoices')?>",
                data:"id_inv="+id_inv+"&customer="+customer+"&telp="+telp+"&alamat="+alamat+"&tampil_ship="+tampil_ship+"&catatan="+catatan+"&subtotal="+subtotal+"&kembalian="+kembalian,
                success:function(html){
                  load_data_barcode_sementara();
+              swal({
+               title:"", 
+               text:"Data berhasil di simpan",
+               timer:1500,
+               type:"success",
+               showCancelButton :false,
+               showConfirmButton :false
+                });
+                
                  $("#tampil_print").show(500);
                  $("#id_inv").val("");
                  $("#customer").val("");
@@ -311,6 +334,7 @@ function input_nominal(){
             });
       
   }
+  } 
   
   
   </script>
@@ -348,16 +372,46 @@ function input_nominal(){
                         </li>
                         </ul>
                     </div>
-            
+            <style>
+   .ui-autocomplete {
+    position: absolute;
+    z-index: 1000;
+    cursor: default;
+    padding: 10px;
+    margin-top: 2px;
+    color:#fff;
+    list-style: none;
+    background-color: #169F85;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.ui-autocomplete > li {
+  padding: 3px 20px;
+}
+.ui-autocomplete > li.ui-state-focus {
+  background-color:#ec971f;
+  color:#fff;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}</style>
+
+ 
+
             <div class="col-md-8" >
             <div  id ="tampil_barcode"  class="form-group has-feedback">
-                <input class="form-control" placeholder="Scan Barcode" id="foo" onkeyup="input_barcode()" type="text" name="foo"/>
-             <span class="fa fa-barcode form-control-feedback"></span>
+                <input class="form-control" placeholder="Scan Barcode"   id="foo" onkeyup="input_barcode()" value=""type="text" name="foo"/>
+                <span class="fa fa-barcode form-control-feedback" ></span>
             </div>
          
           <div id="tampil_nama" style="display: none;"  class="form-group has-feedback">
           <input type="hidden" class="form-control" id="valppn" value="10">
-          <input class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama produk" type="text">
+          <input class="form-control ui-autocomplete-input" id="nama_produk" name="nama_produk" placeholder="Nama produk" type="text">
           <input class="form-control" id="id_produk"   name="id_produk" placeholder="id produk" type="hidden">
           <input class="form-control" id="harga_produk" name="harga_produk" placeholder="harga produk" type="hidden">
           <span class="fa fa-product-hunt form-control-feedback"></span>
@@ -413,26 +467,23 @@ function input_nominal(){
                          <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
-                         <li><a href="#" onclick="tutup_ship()" >On ship</a>
+                         <li><a href="#" onclick="tutup_ship()" >Store</a>
                         </li>
                         <li><a href="#" onclick="tampil_ship()" >Ship</a>
-                        </li>
-                        <li><a href="#" onclick="tampil_ship()" >Drop Ship</a>
                         </li>
                         </ul>
     </div>
     
     <select style="display: none;" id="tampil_ship" name="ship" class="form-control form-group">
-                            <option></option>
+                            <option label="METODE PENGIRIMAN"></option>
                             <option>JNE</option>
-                            <op<option>JNE</option>
                             <option>TIKI</option>
                             <option>WAHANA</option>
                             <option>J&T</option>
-                            <option>GRABCELL</option>
+                            <option>GRAB</option>
                             <option>Ninja Xpress</option>
-                            <option>MPX</option>
-                            <option>TELL & C</option>
+                            <option>GO SEND</option>
+                            <option>POS</option>
                           </select>
     
     

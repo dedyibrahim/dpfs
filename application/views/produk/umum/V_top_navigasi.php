@@ -28,7 +28,7 @@
         <div class="right_col" role="main">
           <!-- top tiles -->
         <div class="row top_tiles">
-              
+            <a href="<?php echo base_url('C_produk/produk_toko');?>">   
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-home"></i></div>
@@ -36,28 +36,31 @@
                   <h3>Produk Di toko</h3>
                   <p>Data Produk di Toko Yang Aktif</p>
                 </div>
-              </div>
+            </div></a>
             
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <a href="<?php echo base_url('C_produk/produk_pabrik');?>">   
+           <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-list-alt"></i></div>
                   <div class="count"><?php echo $this->db->get_where('data_produk_dipabrik',array('stok_pabrik !='=>0))->num_rows(); ?></div>
                   <h3>Produk Di Pabrik</h3>
                   <p>Data Produk di Pabrik Yang Aktif</p>
                 </div>
-              </div>
-            
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+           </div></a>
+          
+        <a href="<?php echo base_url('C_produk/produk_mau_habis');?>">   
+           <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
                   <div class="count"><?php echo 
-                 $this->db->get_where('data_produk_ditoko',array('stok_toko <='=>20,'stok_toko !='=>0))->num_rows();
+                 $this->db->get_where('data_produk_ditoko',array('stok_toko <='=>10,'stok_toko !='=>0))->num_rows();
                    ?></div>
                   <h3>Produk Mau Habis</h3>
                   <p>Produk Mau Habis di Toko</p>
                 </div>
-              </div>
-              
+           </div></a>
+          
+         <a href="<?php echo base_url('C_produk/produk_habis');?>">   
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-warning"></i></div>
@@ -68,6 +71,6 @@
                   <h3>Produk Habis</h3>
                   <p>Produk Habis</p>
                 </div>
-              </div>
+            </div></a>
             </div>
            

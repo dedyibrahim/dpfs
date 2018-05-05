@@ -5,25 +5,20 @@ class C_pengaturan extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-         
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('upload');
         $this->load->library('form_validation');
-         $this->load->library('datatables');
-       $this->load->database();
+        $this->load->library('datatables');
+        $this->load->database();
         $this->load->helper('html');
         $this->load->helper('url');
     }
-
-        public function index()
-	{
+    public function index(){
            
             redirect('C_pengaturan/data_user');
-           
-	}
-        public function data_user(){
-           
+     }
+    public function data_user(){
             $this->load->view('V_pengaturan/umum/V_header');
             $this->load->view('V_pengaturan/umum/V_sidebar');
             $this->load->view('V_pengaturan/umum/V_top_navigasi');
@@ -350,5 +345,48 @@ public function data_json_mut_pabrik_toko(){
    header('Content-Type: application/json');
   echo $this->Data_mutasi->json_mut_toko_pabrik();       
  }
+ public function konfirmasi_pabrik_toko(){
+ $id = $this->uri->segment(3);    
+ $cek = $this->db->get_where('mut_pabrik_toko',array('id_mut_pabrik_toko'=>$id))->row_array();
+ if($cek['status_konfirmasi']!="TERKONFIRMASI"){
+  $data = array(
+       'status_konfirmasi'=>'TERKONFIRMASI',
+ );
+   $this->db->update('mut_pabrik_toko',$data,array('id_mut_pabrik_toko'=>$id)); 
+  redirect('C_pengaturan/mut_pabrik_toko'); 
+ }else{
+  redirect('C_pengaturan/mut_pabrik_toko'); 
+  
+ }
  
+   
+ }
+ public function hapus_mut_pabrik_toko($id){
+   $this->db->delete('mut_pabrik_toko',['id_mut_pabrik_toko'=>$id]);
+   redirect('C_pengaturan/mut_pabrik_toko');
+     
+ }
+ public function konfirmasi_toko_pabrik(){
+     $id = $this->uri->segment(3);    
+ $cek = $this->db->get_where('mut_toko_pabrik',array('id_mut_toko_pabrik'=>$id))->row_array();
+ if($cek['status_konfirmasi']!="TERKONFIRMASI"){
+ 
+    $data = array(
+       'status_konfirmasi'=>'TERKONFIRMASI',
+     
+ );    
+    $this->db->update('mut_toko_pabrik',$data,array('id_mut_toko_pabrik'=>$id)); 
+ redirect('C_pengaturan/mut_toko_pabrik');  
+ }else{
+ redirect('C_pengaturan/mut_toko_pabrik');  
+     
+     
+ }    
+     
+ }
+ public function hapus_mut_toko_pabrik($id){
+   $this->db->delete('mut_toko_pabrik',['id_mut_toko_pabrik'=>$id]);
+   redirect('C_pengaturan/mut_toko_pabrik');
+     
+ }
 }

@@ -55,7 +55,7 @@ class CI_Cart {
 	 *
 	 * @var string
 	 */
-	public $product_id_rules = '\.a-z0-9_-';
+	public $product_id_rules = '\)\(\\/\.\:\-_\"\'\,\ a-z0-9';
 
 	/**
 	 * These are the regular expression rules that we use to validate the product ID and product name
@@ -63,7 +63,7 @@ class CI_Cart {
 	 *
 	 * @var string
 	 */
-	public $product_name_rules = '\w \-\.\:';
+	public $product_name_rules = '\)\(\/\.\:\-_\"\'\,\ a-z0-9';
 
 	/**
 	 * only allow safe product names
@@ -546,7 +546,7 @@ class CI_Cart {
 	 */
 	public function format_number($n = '')
 	{
-		return ($n === '') ? '' : number_format( (float) $n, 2, '.', ',');
+		return ($n === '') ? '' : number_format( (float) $n, 0, '.', ',');
 	}
 
 	// --------------------------------------------------------------------

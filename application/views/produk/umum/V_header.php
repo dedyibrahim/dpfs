@@ -2,15 +2,13 @@
 $valid =  $this->session->all_userdata();
 $level    = $valid['level'];
 $status   = $valid['status'];
-$gambar   = $valid['gambar'];
+$gambar   =$valid['gambar'];
 if ($level == NULL){
     redirect('C_login');
 }
-
-if($level == 'admin inventory' || $level == 'super admin' && $status == 'aktif')
+if($level == 'admin inventory' || $level == 'super admin' && $status == 'aktif' )
  {
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,8 +19,8 @@ if($level == 'admin inventory' || $level == 'super admin' && $status == 'aktif')
     <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="icon" href="<?php echo base_url('assets/');?>white_logo.png" type="image/ico" />
 
-    <title>FPPS</title>
-    <link href="<?php echo base_url('assets'); ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <title>DPFS</title>
+     <link href="<?php echo base_url('assets'); ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -43,6 +41,11 @@ if($level == 'admin inventory' || $level == 'super admin' && $status == 'aktif')
     <link href="<?php echo base_url('assets'); ?>/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('assets'); ?>/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets'); ?>/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+    <link href="<?php echo  base_url(); ?>assets/css/sweetalert.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo base_url('assets'); ?>/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
   </head>
   
   <body class="nav-md">
@@ -72,9 +75,8 @@ if($level == 'admin inventory' || $level == 'super admin' && $status == 'aktif')
             
             <?php
 }else{
+echo "<script>alert('ANDA TIDAK MEMILIK AKSES KE HALAMAN INI');javascript:history.go(-1);</script>";
 
-echo "<script>alert('Maaf anda bukanlah seorang yang berhak mengurusi halaman tersebut');javascript:history.go(-1);</script>";
-    
 }
-
 ?>   
+            
