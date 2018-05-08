@@ -1,6 +1,8 @@
 <div class="x_panel">
 <div class="x_title">
     <h2>DATA PESANAN MASUK</h2>
+    <a href="<?php echo base_url('C_toko/terima_pesanan/'.$no_inv); ?>"><button class="btn btn-success pull-right"><span class="fa fa-plus"></span> TERIMA PESANAN</button></a>
+           <a href="<?php echo base_url('C_toko/tolak_pesanan/'.$no_inv); ?>"><button type="button" class="btn btn-danger  pull-right"><span class="fa fa-ambulance"></span> TOLAK</button></a>
         <div class="clearfix"></div>
             </div>
 <table  style="width: 100%;" class="table-condensed table-responsive  table-bordered table-striped table-hover">
@@ -88,12 +90,8 @@ foreach ($data->result_array() as $order_baru){
                 <tr><td>Nama Provinsi</td><td><?php echo  $order_baru['nama_provinsi'] ?></td></tr>
                 
             </table>
-            <div class="clearfix"></div><br> 
-            <button onclick="window.open('<?php echo base_url('C_toko/tolak_pesanan/'.$no_inv); ?>')"  class="btn btn-danger  pull-left"><span class="fa fa-ambulance"></span> TOLAK</button>
-            <button class="btn btn-success pull-right"><span class="fa fa-pencil"></span> INPUT RESI</button>
-            <button onclick="window.open('<?php echo base_url('C_toko/print_invoices/'.$no_inv); ?>')"class="btn btn-success "><span class="fa fa-print"></span> PRINT INVOICES</button>
-            <button onclick="window.open('<?php echo base_url('C_toko/print_alamat/'.$no_inv); ?>')"class="btn btn-success pull-right"><span class="fa fa-print"></span> PRINT ALAMAT</button>
            </div>
-       
+           
     </div><br>
+    
 </div>

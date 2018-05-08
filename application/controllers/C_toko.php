@@ -70,6 +70,17 @@ header('Content-Type: application/json');
 echo $this->Data_toko->data_penjualan_masuk();       
 }
 
+public function data_penjualan_selesai(){
+$this->load->model('Data_toko');
+header('Content-Type: application/json');
+echo $this->Data_toko->data_penjualan_selesai();       
+}
+
+public function data_konfirmasi_penjualan(){
+$this->load->model('Data_toko');
+header('Content-Type: application/json');
+echo $this->Data_toko->data_konfirmasi_penjualan();       
+}
 public function hapus_menu($id){
 $this->db->delete('layout_menu',array('id_layout_menu'=>$id));
 redirect('C_toko/lyt_menu');
@@ -381,6 +392,17 @@ $this->load->view('V_toko/umum/V_footer');
  
     
 }
+public function penjualan_selesai(){
+    
+    
+$this->load->view('V_toko/umum/V_header');
+$this->load->view('V_toko/umum/V_sidebar');
+$this->load->view('V_toko/umum/V_top_navigasi');
+$this->load->view('V_toko/V_penjualan_selesai');
+$this->load->view('V_toko/umum/V_footer');
+ 
+    
+}
 
 public function lihat_penjualan_baru() {
 $no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
@@ -424,11 +446,118 @@ if($data2['nama_produk'] != ''){
 $this->load->view('V_toko/V_print_invoices',['data'=>$data,'no_inv'=>$no_inv]);
 
 }else{
-    
 redirect('C_404');
+}
 
-} 
+}
+
+public function print_alamat(){
+$no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
+$this->db->select('*');
+$this->db->from('data_toko_penjualan');
+$this->db->join('data_toko_penjualan_produk', 'data_toko_penjualan_produk.no_invoices = data_toko_penjualan.no_invoices');
+$this->db->join('data_customer_toko', 'data_customer_toko.id_customer_toko = data_toko_penjualan.id_customer_toko');
+$this->db->where(array('data_toko_penjualan_produk.no_invoices'=>$no_inv));
+$data = $this->db->get();
+$data2 = $data->row_array();
+
+if($data2['nama_produk'] != ''){
+
+$this->load->view('V_toko/V_print_alamat',['data'=>$data,'no_inv'=>$no_inv]);
+
+}else{
+redirect('C_404');
+}
+
+}
+
+public function terima_pesanan(){
+$no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
+if(isset($no_inv)!= NULL){
+
+$update_penjualan = array(
+      
+  'status_penjualan' => 'Sudah di Proses',
+  );
+$this->db->update('data_toko_penjualan',$update_penjualan,array('no_invoices'=>$no_inv));
+
+redirect('C_toko/penjualan_masuk');
+
+}
+}
+public function konfirmasi_penjualan(){
+$this->load->view('V_toko/umum/V_header');
+$this->load->view('V_toko/umum/V_sidebar');
+$this->load->view('V_toko/umum/V_top_navigasi');
+$this->load->view('V_toko/V_konfirmasi_penjualan');
+$this->load->view('V_toko/umum/V_footer');
 }
 
 
+public function lihat_konfirmasi_penjualan() {
+$no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
+
+
+$this->db->select('*');
+$this->db->from('data_toko_penjualan');
+$this->db->join('data_toko_penjualan_produk', 'data_toko_penjualan_produk.no_invoices = data_toko_penjualan.no_invoices');
+$this->db->join('data_customer_toko', 'data_customer_toko.id_customer_toko = data_toko_penjualan.id_customer_toko');
+$this->db->where(array('data_toko_penjualan_produk.no_invoices'=>$no_inv));
+$data = $this->db->get();
+$data2 = $data->row_array();
+
+if($data2['nama_produk'] != ''){
+
+$this->load->view('V_toko/umum/V_header');
+$this->load->view('V_toko/umum/V_sidebar');
+$this->load->view('V_toko/umum/V_top_navigasi');
+$this->load->view('V_toko/V_lihat_konfirmasi_penjualan',['data'=>$data,'no_inv'=>$no_inv]);
+$this->load->view('V_toko/umum/V_footer');
+    
+
+}else{
+    redirect('C_404');
+    
+}
+}
+
+
+public function simpan_resi(){
+
+ if(isset($_POST['resi'])){   
+  $id = $this->input->post("no_inv");  
+  $update_resi = array(
+      'resi'             =>$this->input->post("resi"),
+      'status_penjualan' =>'Selesai',
+  );  
+   $this->db->update('data_toko_penjualan',$update_resi,array('no_invoices'=>$id));
+}
+}
+
+public function lihat_penjualan_selesai() {
+$no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
+
+
+$this->db->select('*');
+$this->db->from('data_toko_penjualan');
+$this->db->join('data_toko_penjualan_produk', 'data_toko_penjualan_produk.no_invoices = data_toko_penjualan.no_invoices');
+$this->db->join('data_customer_toko', 'data_customer_toko.id_customer_toko = data_toko_penjualan.id_customer_toko');
+$this->db->where(array('data_toko_penjualan_produk.no_invoices'=>$no_inv));
+$data = $this->db->get();
+$data2 = $data->row_array();
+
+if($data2['nama_produk'] != ''){
+
+$this->load->view('V_toko/umum/V_header');
+$this->load->view('V_toko/umum/V_sidebar');
+$this->load->view('V_toko/umum/V_top_navigasi');
+$this->load->view('V_toko/V_lihat_penjualan_selesai',['data'=>$data,'no_inv'=>$no_inv]);
+$this->load->view('V_toko/umum/V_footer');
+    
+
+}else{
+    redirect('C_404');
+    
+}
+}
 }

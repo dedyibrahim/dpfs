@@ -27,6 +27,7 @@
                   <li><a><i class="fa fa-shopping-basket"></i>PENJUALAN<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                          <li><a href="<?php echo base_url('C_toko/penjualan_masuk'); ?>">PENJUALAN MASUK</a></li>
+                         <li><a href="<?php echo base_url('C_toko/konfirmasi_penjualan'); ?>">KONFIRMASI PENJUALAN</a></li>
                          <li><a href="<?php echo base_url('C_toko/penjualan_selesai'); ?>">PENJUALAN SELESAI</a></li>
                   </ul>
                   </li>
