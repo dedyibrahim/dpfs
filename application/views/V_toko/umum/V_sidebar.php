@@ -29,6 +29,7 @@
                          <li><a href="<?php echo base_url('C_toko/penjualan_masuk'); ?>">PENJUALAN MASUK</a></li>
                          <li><a href="<?php echo base_url('C_toko/konfirmasi_penjualan'); ?>">KONFIRMASI PENJUALAN</a></li>
                          <li><a href="<?php echo base_url('C_toko/penjualan_selesai'); ?>">PENJUALAN SELESAI</a></li>
+                         <li><a href="<?php echo base_url('C_toko/penjualan_ditolak'); ?>">PENJUALAN DITOLAK</a></li>
                   </ul>
                   </li>
                 

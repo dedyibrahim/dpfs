@@ -60,16 +60,16 @@
                 </div>
            </div></a>
           
-         <a href="<?php echo base_url('C_produk/produk_habis');?>">   
+         <a href="<?php echo base_url('C_toko/penjualan_ditolak');?>">   
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-warning"></i></div>
+                  <div class="icon"><i class="fa fa-recycle"></i></div>
                    <div class="count"><?php echo 
-                 $this->db->get_where('data_produk_ditoko',array('stok_toko ='=>0))->num_rows();
+                 $this->db->get_where('data_toko_penjualan',array('gambar_pembayaran !='=>'','status_penjualan ='=>'Di Tolak'))->num_rows();
                    ?></div>
-                 
-                  <h3>Produk Habis</h3>
-                  <p>Produk Habis</p>
+                  
+                  <h3>Penjualan ditolak</h3>
+                  <p>Data penjualan yang ditolak</p>
                 </div>
             </div></a>
             </div>

@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/var/www/html/lapak/application/models/Data_toko.php</file>
-            <file>file:/var/www/html/lapak/application/views/V_toko/umum/V_sidebar.php</file>
-            <file>file:/var/www/html/lapak/application/controllers/C_toko.php</file>
-            <file>file:/var/www/html/lapak/application/views/V_toko/V_lihat_penjualan_baru.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -152,12 +152,12 @@ function load_keranjang(){
  $valid =  $this->session->all_userdata();
  
  if (!empty($valid['id_customer_toko'])?$valid['id_customer_toko']:'' != NULL ){ 
-   $nama_depan     = $valid['nama_depan'];
-   $nama_belakang  = $valid['nama_belakang'];
-   $email          = $valid['email'];
-   $id_customer = $valid['id_customer_toko'];
-   $tidak_selesai=$this->db->get_where('data_toko_penjualan',array('id_customer_toko'=>$id_customer,'status_penjualan !=' => 'selesai' ));
-                                
+   $nama_depan      = $valid['nama_depan'];
+   $nama_belakang   = $valid['nama_belakang'];
+   $email           = $valid['email'];
+   $id_customer     = $valid['id_customer_toko'];
+   $tidak_selesai   = $this->db->get_where('data_toko_penjualan',array('id_customer_toko'=>$id_customer,'status_penjualan !=' => 'selesai' ));
+   $dat = $this->db->get_where('data_customer_toko',array('id_customer_toko'=>$id_customer))->row_array();                             
                              
      ?>
       <header ><!--header-->
@@ -197,7 +197,9 @@ function load_keranjang(){
                                      <span id="akun" class="ikon-keranjang fa fa-user" title="<?php echo $nama_depan."&nbsp;".$nama_belakang; ?>"
                                                data-container="body" data-toggle="popover" data-placement="bottom"
                                                data-content=" <ul  class=nav>
-                                               <li class=menupoper><a href=<?php echo base_url('Toko/keluar')?>><i class='fa fa-sign-out'></i> Keluar</a></li>
+                                               <li class=menupoper> <a href=#><i class='fa fa-money'></i> E-cash Rp.<?php echo number_format($dat['saldo_e_cash']);?></a></li>
+                                              <hr>
+                                               <li class=menupoper> <a href=<?php echo base_url('Toko/keluar')?>><i class='fa fa-sign-out'></i> Keluar</a></li>
                                                                 
                                                         </ul>"></span></a>
                                 </div>                   

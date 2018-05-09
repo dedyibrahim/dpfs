@@ -150,5 +150,23 @@ class Data_toko extends CI_Model {
          $this->datatables->add_column('view','<a class="btn btn-sm btn btn-success fa fa-eye " href="'.base_url().'C_toko/lihat_penjualan_selesai/$1"></a>', 'no_invoices');
         return $this->datatables->generate();
 }
+function data_penjualan_ditolak(){
+        $this->datatables->select('data_toko_penjualan.no_invoices,'
+                   .'data_toko_penjualan.no_invoices as no_inv,'
+                   .'data_toko_penjualan.nomor_kontak as no_kontak,'
+                   .'data_toko_penjualan.nama_kurir as nama_kurir,'
+                   .'data_toko_penjualan.jenis_service as jenis_service,'
+                   .'data_toko_penjualan.status_penjualan as status_penjualan,'
+                   .'data_toko_penjualan.gambar_pembayaran as gambar,'
+                   .'data_customer_toko.nama_depan as nama_depan,'
+                   );
+         $this->datatables->where('gambar_pembayaran !=','');
+         $this->datatables->where('status_penjualan =','Di Tolak');
+         $this->datatables->from('data_toko_penjualan');
+         $this->datatables->join('data_customer_toko','data_customer_toko.id_customer_toko = data_toko_penjualan.id_customer_toko');
+         $this->datatables->add_column('bayar','<img style="width:100px; height:100px;" src="'.base_url().'uploads/bukti_bayar/$1"></a> ', 'gambar');
+         $this->datatables->add_column('view','<a class="btn btn-sm btn btn-success fa fa-eye " href="'.base_url().'C_toko/lihat_penjualan_ditolak/$1"></a>', 'no_invoices');
+        return $this->datatables->generate();
+}
 }
 ?>

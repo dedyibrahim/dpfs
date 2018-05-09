@@ -75,7 +75,11 @@ $this->load->model('Data_toko');
 header('Content-Type: application/json');
 echo $this->Data_toko->data_penjualan_selesai();       
 }
-
+public function data_penjualan_ditolak(){
+$this->load->model('Data_toko');
+header('Content-Type: application/json');
+echo $this->Data_toko->data_penjualan_ditolak();       
+}
 public function data_konfirmasi_penjualan(){
 $this->load->model('Data_toko');
 header('Content-Type: application/json');
@@ -393,12 +397,19 @@ $this->load->view('V_toko/umum/V_footer');
     
 }
 public function penjualan_selesai(){
+$this->load->view('V_toko/umum/V_header');
+$this->load->view('V_toko/umum/V_sidebar');
+$this->load->view('V_toko/umum/V_top_navigasi');
+$this->load->view('V_toko/V_penjualan_selesai');
+$this->load->view('V_toko/umum/V_footer');
+}
+public function penjualan_ditolak(){
     
     
 $this->load->view('V_toko/umum/V_header');
 $this->load->view('V_toko/umum/V_sidebar');
 $this->load->view('V_toko/umum/V_top_navigasi');
-$this->load->view('V_toko/V_penjualan_selesai');
+$this->load->view('V_toko/V_penjualan_ditolak');
 $this->load->view('V_toko/umum/V_footer');
  
     
@@ -560,4 +571,48 @@ $this->load->view('V_toko/umum/V_footer');
     
 }
 }
+public function lihat_penjualan_ditolak() {
+$no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
+
+
+$this->db->select('*');
+$this->db->from('data_toko_penjualan');
+$this->db->join('data_toko_penjualan_produk', 'data_toko_penjualan_produk.no_invoices = data_toko_penjualan.no_invoices');
+$this->db->join('data_customer_toko', 'data_customer_toko.id_customer_toko = data_toko_penjualan.id_customer_toko');
+$this->db->where(array('data_toko_penjualan_produk.no_invoices'=>$no_inv));
+$data = $this->db->get();
+$data2 = $data->row_array();
+
+if($data2['nama_produk'] != ''){
+
+$this->load->view('V_toko/umum/V_header');
+$this->load->view('V_toko/umum/V_sidebar');
+$this->load->view('V_toko/umum/V_top_navigasi');
+$this->load->view('V_toko/V_lihat_penjualan_ditolak',['data'=>$data,'no_inv'=>$no_inv]);
+$this->load->view('V_toko/umum/V_footer');
+    
+
+}else{
+    redirect('C_404');
+    
+}
+}
+public function tolak_pesanan(){
+    
+    if(isset($_POST['alasan'])){
+        $id_inv = $this->input->post('no_inv');
+        $id_customer = $this->input->post('id_customer');
+        $tolak = array(
+          'status_penjualan'=> 'Di Tolak',
+          'alasan_penolakan'=> $this->input->post('alasan'),
+        );
+        $this->db->update('data_toko_penjualan',$tolak,array('no_invoices'=>$id_inv));
+        $masukan_saldo =array(
+         'saldo_e_cash' => $this->input->post('uang')   
+        );
+        $this->db->update('data_customer_toko',$masukan_saldo,array('id_customer_toko'=>$id_customer));
+    }
+    
+}
+
 }
