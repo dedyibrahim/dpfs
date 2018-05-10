@@ -28,48 +28,48 @@
         <div class="right_col" role="main">
           <!-- top tiles -->
         <div class="row top_tiles">
-            <a href="<?php echo base_url('C_produk/produk_toko');?>">   
+            <a href="<?php echo base_url('C_toko/penjualan_masuk');?>">   
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-home"></i></div>
-                  <div class="count"><?php echo $this->db->get_where('data_produk_ditoko',array('stok_toko !='=>0))->num_rows(); ?></div>
-                  <h3>Produk Di toko</h3>
-                  <p>Data Produk di Toko Yang Aktif</p>
+                  <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+                  <div class="count"><?php echo $this->db->get_where('data_toko_penjualan',array('gambar_pembayaran !='=>'','status_penjualan ='=>'Dalam Proses'))->num_rows(); ?></div>
+                  <h3>Orderan masuk</h3>
+                  <p>Data orderan yang masuk</p>
                 </div>
             </div></a>
             
-            <a href="<?php echo base_url('C_produk/produk_pabrik');?>">   
+            <a href="<?php echo base_url('C_toko/konfirmasi_penjualan');?>">   
            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-list-alt"></i></div>
-                  <div class="count"><?php echo $this->db->get_where('data_produk_dipabrik',array('stok_pabrik !='=>0))->num_rows(); ?></div>
-                  <h3>Produk Di Pabrik</h3>
-                  <p>Data Produk di Pabrik Yang Aktif</p>
+                  <div class="icon"><i class="fa fa-check"></i></div>
+                  <div class="count"><?php echo $this->db->get_where('data_toko_penjualan',array('gambar_pembayaran !='=>'','status_penjualan ='=>'Sudah di Proses'))->num_rows(); ?></div>
+                  <h3>Konfirmasi penjualan</h3>
+                  <p>Data Penjualan yang perlu di konfirmasi</p>
                 </div>
            </div></a>
           
-        <a href="<?php echo base_url('C_produk/produk_mau_habis');?>">   
+        <a href="<?php echo base_url('C_toko/penjualan_selesai');?>">   
            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                  <div class="icon"><i class="fa fa-check-square-o"></i></div>
                   <div class="count"><?php echo 
-                 $this->db->get_where('data_produk_ditoko',array('stok_toko <='=>10,'stok_toko !='=>0))->num_rows();
+                 $this->db->get_where('data_toko_penjualan',array('gambar_pembayaran !='=>'','status_penjualan ='=>'Selesai'))->num_rows();
                    ?></div>
-                  <h3>Produk Mau Habis</h3>
-                  <p>Produk Mau Habis di Toko</p>
+                  <h3>Penjualan selesai</h3>
+                  <p>Data penjualan yang sudah selesai</p>
                 </div>
            </div></a>
           
-         <a href="<?php echo base_url('C_produk/produk_habis');?>">   
+         <a href="<?php echo base_url('C_toko/penjualan_ditolak');?>">   
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-warning"></i></div>
+                  <div class="icon"><i class="fa fa-recycle"></i></div>
                    <div class="count"><?php echo 
-                 $this->db->get_where('data_produk_ditoko',array('stok_toko ='=>0))->num_rows();
+                 $this->db->get_where('data_toko_penjualan',array('gambar_pembayaran !='=>'','status_penjualan ='=>'Di Tolak'))->num_rows();
                    ?></div>
-                 
-                  <h3>Produk Habis</h3>
-                  <p>Produk Habis</p>
+                  
+                  <h3>Penjualan ditolak</h3>
+                  <p>Data penjualan yang ditolak</p>
                 </div>
             </div></a>
             </div>

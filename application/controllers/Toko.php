@@ -720,7 +720,7 @@ $data_customer = $this->db->get_where('data_customer_toko',array('id_customer_to
 foreach ($this->cart->contents() as $produk){
 
 $data_produk = array(
-'no_invoices'           => 'AD/NW/'.date("Y/m/d/").$no_invoices,
+'no_invoices'           => 'AD/NW/'.date("d/m/Y/").$no_invoices,
 'id_customer_penjualan_produk' =>$this->input->post('id_customer'), 
 'nama_produk'      =>$produk['name'],
 'qty'              =>$produk['qty'],
@@ -751,7 +751,7 @@ $total = $this->cart->total()-$hasil_kupon;
 $total_bayar = $total+$data_sesi['ongkos_terpilih'];
 
 $data_order= array(   
-'no_invoices'           => 'AD/NW/'.date("Y/m/d/").$no_invoices,
+'no_invoices'           => 'AD/NW/'.date("d/m/Y/").$no_invoices,
 'id_customer_toko'      => $this->input->post('id_customer'), 
 'metode_pembayaran'     => $data_sesi['metode_pembayaran'],
 'nomor_kontak'          => $data_customer['nomor_kontak'],
@@ -771,7 +771,7 @@ $data_order= array(
 'total_bayar'           => $total+$data_sesi['ongkos_terpilih'],
 'status_pembayaran'     => 'Belum bayar',
 'gambar_pembayaran'     => '',
-
+'waktu_transaksi'       => date("d/m/Y"),
 );
 
 $this->db->insert('data_toko_penjualan',$data_order);
@@ -890,10 +890,7 @@ echo '}, 1000);</script>';
 
 $config['upload_path']          = './uploads/bukti_bayar/';
 $config['allowed_types']        = 'gif|jpg|png';
-$config['max_size']             = 1000;
-$config['max_width']            = 1024;
-$config['max_height']           = 768;
-$config['max_size']             =10000;
+$config['max_size']             = 1000000;
 $config['encrypt_name']         = TRUE;
 $config['overwrite']              = TRUE;
 $this->upload->initialize($config);
@@ -972,6 +969,7 @@ redirect(base_url("C_404"));
 
 
 }else{
+$this->db->order_by("id_data_toko_penjualan", "desc");
 $data_konfirmasi = $this->db->get_where('data_toko_penjualan',array('id_customer_toko'=>  base64_decode($this->uri->segment(3)),'gambar_pembayaran !='=>''));
 $this->load->view('Toko/umum/V_header');   
 $this->load->view('Toko/V_daftar_transaksi',['data_konfirmasi'=>$data_konfirmasi]);   
@@ -998,4 +996,22 @@ $this->session->unset_userdata(array('metode_pembayaran'));
 
 
 }
+public function cek_pesanan(){
+$data_sesi = $this->session->all_userdata(); 
+if(base64_decode($this->uri->segment(3)) != $data_sesi['id_customer_toko'] || $this->uri->segment(3) == NULL ){
+redirect(base_url("C_404")); 
+
+
+}else{
+$this->db->order_by("id_data_toko_penjualan", "desc");
+$data_konfirmasi = $this->db->get_where('data_toko_penjualan',array('id_customer_toko'=>  base64_decode($this->uri->segment(3)),'gambar_pembayaran !='=>''));
+$this->load->view('Toko/umum/V_header');   
+$this->load->view('Toko/V_cek_pesanan',['data_konfirmasi'=>$data_konfirmasi]);   
+$this->load->view('Toko/umum/V_footer');  
+    
+    
+}
+}
+
+
 }

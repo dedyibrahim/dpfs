@@ -1,110 +1,40 @@
+<body onload="window.print();"></body>
 
 
-<script src="<?php echo base_url('assets/bootstrap/js/') ?>/bootstrap.min.js"></script>    
-<link rel="stylesheet" media='all' href="<?php echo base_url('assets/bootstrap/css/') ?>bootstrap.min.css" >
-<div class="col-md-7">
-<br>    
-
-    <button class="pull-right btn btn-primary fa fa-print" onclick="PrintDiv();" /> Cetak invoices</button> 
-<br>
-<br>
-
-<script type="text/javascript">     
-function PrintDiv() {    
-var divToPrint = document.getElementById('divToPrint');
-var popupWin = window.open('', '',);
-popupWin.document.open();
-popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
-popupWin.document.close();
-}
-</script>
-<div id="divToPrint">
-<?php $data2 = $data->row_array();
-       
- ?>    
-    
-<script src="<?php echo base_url('assets/bootstrap/js/') ?>/bootstrap.min.js"></script>    
-<link rel="stylesheet" media="print" href="<?php echo base_url('assets/bootstrap/css/') ?>bootstrap.min.css" >
+<?php $data2 = $data->row_array();?>    
 <style>
- @media print {
-  *,
-  *:before,enter code here
-  *:after {
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:13px; 
+    border-collapse: collapse;
    
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
+}
 
-    page-break-inside: avoid;
-  }
-  thead {
-    display: table-header-group;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  img {
-    max-width: 100% !important;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-  select {
-    background: #fff !important;
-  }
-  .navbar {
-    display: none;
-  }
-  .btn > .caret,
-  .dropup > .btn > .caret {
-    border-top-color: #000 !important;
-  }
-  .label {
+#customers td, #customers th {
     border: 1px solid #000;
-  }
-  .table {
-    border-collapse: collapse !important;
-  }
-  .table td,
-  .table th {
-    background-color: #fff !important;
-  }
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #ddd !important;
-  }
-}   
-    
-    
-</style>
+    padding: 8px;
+}
 
-<table class="table table-condensed table-striped table-bordered">
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #ccc;
+    color: black;
+}
+</style>
+<table style="width:100%;"  id="customers">
 <tr>
-    <th colspan="4" style="text-align:center;">Bukti Pembayaran</th>        
+    <th colspan="2" style="text-align:center;">Bukti Pembayaran</th>        
+<th colspan="2" style="text-align:center;"><p align ="center"><img src="<?php echo  base_url('assets/toko/images/home/logo.png') ?>"></p></th>        
 </tr>
+<tr>
+    <td colspan="4"></td>   
+</tr> 
 <tr>
     <td  width="30px" style="text-align:center;">No.Transaksi</td>        
     <td colspan="3" style="text-align:center;"><?php echo $no_inv; ?></td>        
@@ -144,15 +74,47 @@ foreach ($data->result_array() as $pr_inv){
 <tr>
 <td><?php echo $pr_inv['nama_produk']; ?></td>  
 <td><?php echo $pr_inv['qty']; ?></td>  
-<td><?php echo $pr_inv['harga']; ?></td>  
-<td><?php echo $pr_inv['harga_total']; ?></td>  
+<td>Rp. <?php echo number_format($pr_inv['harga']); ?></td>  
+<td>Rp. <?php echo number_format($pr_inv['harga_total']); ?></td>  
 </tr>
 
 <?php
 }
 ?> 
+<tr>
+<td></td>   
+<td></td>   
+<td>Subtotal</td>   
+<td>Rp. <?php echo number_format($data2['sub_total']); ?></td>   
+</tr>
+
+<?php  if(!empty($data2['kode_diskon'])?$data2['kode_diskon']:NULL !=NULL){ ?>
+<tr >
+<td></td>
+<td></td>
+<td>Diskon <?php echo $data2['nilai_diskon'] ?> % </td>   
+<td>Rp.<?php echo number_format($data2['hasil_diskon']); ?></td>   
+</tr>
+<?php } ?>
+
+<tr>
+<td></td>   
+<td></td>   
+<td>Total</td>   
+<td>Rp. <?php echo number_format($data2['total']); ?></td>   
+</tr>
+<tr>
+<td></td>   
+<td></td>   
+<td>Ongkos kirim</td>   
+<td>Rp. <?php echo number_format($data2['ongkos_kirim']); ?></td>   
+</tr>
+
+<tr>
+<td></td>   
+<td></td>   
+<td>Total bayar</td>   
+<td>Rp. <?php echo number_format($data2['total_bayar']); ?></td>   
+</tr>
 
 </table>
-</div>  
-
-</div>
