@@ -107,7 +107,7 @@ foreach ($data->result_array() as $order_baru){
                         <div class="modal-body">
                             <textarea id="alasan" class="form-control" id="alasan"  placeholder="Alasan penolakan . . ."></textarea><br>
                                               
-                             <h4 align="center">Jika melakukan penolakan makan jumlah uang yang dibayarkan sebesar Rp.<?php echo number_format($databaru['total_bayar']); ?> akan dikembalikan <br> e-cash store niagara milik  <?php echo  $databaru['nama_depan']."&nbsp;".$databaru['nama_belakang'] ?></h4> 
+                             <h4 align="center">Jika melakukan penolakan makan jumlah uang yang dibayarkan sebesar Rp.<?php echo number_format($databaru['total_bayar']); ?> harap di transfer kembali ke pemilik  <?php echo  $databaru['nama_depan']."&nbsp;".$databaru['nama_belakang'] ?></h4> 
                            <input class="form-control" id="no_inv"  name="telp" placeholder="Service kirim" readonly="" value="<?php echo $no_inv ?>" type="hidden"><br>
                             <input class="form-control" id="id_customer"  name="telp" placeholder="Service kirim" readonly="" value="<?php echo $databaru['id_customer_toko'] ?>" type="hidden"><br>
                             <input class="form-control" id="uang"  name="telp" placeholder="Service kirim" readonly="" value="<?php echo $databaru['total_bayar'] ?>" type="hidden"><br>
@@ -124,15 +124,13 @@ foreach ($data->result_array() as $order_baru){
     function tolak_pesanan(){
        var alasan = $("#alasan").val();
        var no_inv = $("#no_inv").val();
-       var id_customer = $("#id_customer").val();
-       var uang        =$("#uang").val();
        
        if(alasan != ''){
        
         $.ajax({
             type:"POST",
             url:"<?php echo base_url('C_toko/tolak_pesanan') ?>",
-            data:"alasan="+alasan+"&no_inv="+no_inv+"&id_customer="+id_customer+"&uang="+uang, 
+            data:"alasan="+alasan+"&no_inv="+no_inv, 
              
             success:function(html){
               swal({

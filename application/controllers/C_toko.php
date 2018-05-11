@@ -601,17 +601,12 @@ public function tolak_pesanan(){
     
     if(isset($_POST['alasan'])){
         $id_inv = $this->input->post('no_inv');
-        $id_customer = $this->input->post('id_customer');
         $tolak = array(
           'status_penjualan'=> 'Di Tolak',
           'alasan_penolakan'=> $this->input->post('alasan'),
         );
         $this->db->update('data_toko_penjualan',$tolak,array('no_invoices'=>$id_inv));
-        $masukan_saldo =array(
-         'saldo_e_cash' => $this->input->post('uang')   
-        );
-        $this->db->update('data_customer_toko',$masukan_saldo,array('id_customer_toko'=>$id_customer));
-    }
+      }
     
 }
 

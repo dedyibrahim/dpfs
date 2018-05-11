@@ -720,7 +720,7 @@ $data_customer = $this->db->get_where('data_customer_toko',array('id_customer_to
 foreach ($this->cart->contents() as $produk){
 
 $data_produk = array(
-'no_invoices'           => 'AD/NW/'.date("Y/m/d/").$no_invoices,
+'no_invoices'           => 'AD/NW/'.date("d/m/Y/").$no_invoices,
 'id_customer_penjualan_produk' =>$this->input->post('id_customer'), 
 'nama_produk'      =>$produk['name'],
 'qty'              =>$produk['qty'],
@@ -751,7 +751,7 @@ $total = $this->cart->total()-$hasil_kupon;
 $total_bayar = $total+$data_sesi['ongkos_terpilih'];
 
 $data_order= array(   
-'no_invoices'           => 'AD/NW/'.date("Y/m/d/").$no_invoices,
+'no_invoices'           => 'AD/NW/'.date("d/m/Y/").$no_invoices,
 'id_customer_toko'      => $this->input->post('id_customer'), 
 'metode_pembayaran'     => $data_sesi['metode_pembayaran'],
 'nomor_kontak'          => $data_customer['nomor_kontak'],
@@ -771,7 +771,7 @@ $data_order= array(
 'total_bayar'           => $total+$data_sesi['ongkos_terpilih'],
 'status_pembayaran'     => 'Belum bayar',
 'gambar_pembayaran'     => '',
-
+'waktu_transaksi'       => date("d/m/Y"),
 );
 
 $this->db->insert('data_toko_penjualan',$data_order);

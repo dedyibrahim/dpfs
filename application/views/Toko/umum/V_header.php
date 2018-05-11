@@ -197,8 +197,6 @@ function load_keranjang(){
                                      <span id="akun" class="ikon-keranjang fa fa-user" title="<?php echo $nama_depan."&nbsp;".$nama_belakang; ?>"
                                                data-container="body" data-toggle="popover" data-placement="bottom"
                                                data-content=" <ul  class=nav>
-                                               <li class=menupoper> <a href=#><i class='fa fa-money'></i> E-cash Rp.<?php echo number_format($dat['saldo_e_cash']);?></a></li>
-                                              <hr>
                                                <li class=menupoper> <a href=<?php echo base_url('Toko/keluar')?>><i class='fa fa-sign-out'></i> Keluar</a></li>
                                                                 
                                                         </ul>"></span></a>
