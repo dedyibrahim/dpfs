@@ -811,8 +811,8 @@ $this->email->message($email_pesanan);
 
 if($this->email->send())
 {
-// $this->cart->destroy(); 
-//$this->session->unset_userdata(array('metode_pembayaran','alamat','ongkos_terpilih','service','nama_kurir','kode_voucher','diskon_voucher','hasil_kupon'));
+ $this->cart->destroy(); 
+$this->session->unset_userdata(array('metode_pembayaran','alamat','ongkos_terpilih','service','nama_kurir','kode_voucher','diskon_voucher','hasil_kupon'));
 
 echo 'email berhasil dikirim';
 }
@@ -970,6 +970,7 @@ redirect(base_url("C_404"));
 
 }else{
 $this->db->order_by("id_data_toko_penjualan", "desc");
+$this->db->limit(7);
 $data_konfirmasi = $this->db->get_where('data_toko_penjualan',array('id_customer_toko'=>  base64_decode($this->uri->segment(3)),'gambar_pembayaran !='=>''));
 $this->load->view('Toko/umum/V_header');   
 $this->load->view('Toko/V_daftar_transaksi',['data_konfirmasi'=>$data_konfirmasi]);   
@@ -996,22 +997,25 @@ $this->session->unset_userdata(array('metode_pembayaran'));
 
 
 }
-public function cek_pesanan(){
-$data_sesi = $this->session->all_userdata(); 
-if(base64_decode($this->uri->segment(3)) != $data_sesi['id_customer_toko'] || $this->uri->segment(3) == NULL ){
-redirect(base_url("C_404")); 
 
+public function print_invoices(){
+$no_inv =  $this->uri->segment(3)."/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6)."/".$this->uri->segment(7)."/".$this->uri->segment(8);
+$this->db->select('*');
+$this->db->from('data_toko_penjualan');
+$this->db->join('data_toko_penjualan_produk', 'data_toko_penjualan_produk.no_invoices = data_toko_penjualan.no_invoices');
+$this->db->join('data_customer_toko', 'data_customer_toko.id_customer_toko = data_toko_penjualan.id_customer_toko');
+$this->db->where(array('data_toko_penjualan_produk.no_invoices'=>$no_inv));
+$data = $this->db->get();
+$data2 = $data->row_array();
+
+if($data2['nama_produk'] != ''){
+
+$this->load->view('Toko/V_print_invoices',['data'=>$data,'no_inv'=>$no_inv]);
 
 }else{
-$this->db->order_by("id_data_toko_penjualan", "desc");
-$data_konfirmasi = $this->db->get_where('data_toko_penjualan',array('id_customer_toko'=>  base64_decode($this->uri->segment(3)),'gambar_pembayaran !='=>''));
-$this->load->view('Toko/umum/V_header');   
-$this->load->view('Toko/V_cek_pesanan',['data_konfirmasi'=>$data_konfirmasi]);   
-$this->load->view('Toko/umum/V_footer');  
-    
-    
+redirect('C_404');
 }
 }
 
-
 }
+

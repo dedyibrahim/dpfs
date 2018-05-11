@@ -187,7 +187,6 @@ function load_keranjang(){
                                                data-content="
                                                <ul  class=nav>
                                                <li class=menupoper><a  href=<?php echo base_url('Toko/daftar_transaksi/'.base64_encode($id_customer))?>><i class='fa fa-exchange'></i> Daftar Transaksi</a></li>
-								<li class=menupoper><a href=<?php echo base_url('Toko/cek_pesanan/'.base64_encode($id_customer))?>><i class='fa fa-search'></i> Cek pesanan</a></li>
 								<li class=menupoper><a href=<?php echo base_url('Toko/konfirmasi_bayar/'.base64_encode($id_customer))?>><i class='fa fa-sign-out'></i> Konfirmasi bayar</a></li>
                                                                 
                                                         </ul>
@@ -237,7 +236,6 @@ function load_keranjang(){
                                                data-content="
                                                <ul  class=nav>
 								<li class=menupoper><a  href=<?php echo base_url('Toko/login')?>><i class='fa fa-exchange'></i> Daftar Transaksi</a></li>
-								<li class=menupoper><a href=<?php echo base_url('Toko/login')?>><i class='fa fa-search'></i> Cek pesanan</a></li>
 								<li class=menupoper><a href=<?php echo base_url('Toko/login')?>><i class='fa fa-sign-out'></i> Konfirmasi bayar</a></li>
                                                                 
                                                         </ul>
